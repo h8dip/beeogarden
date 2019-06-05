@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="4a8f5775-91ec-4dfa-adf9-ded4164ba2d5" name="lab_mm_4" url="http://labmm.clients.ua.pt/deca_18L4/deca_18L4_36/beeogarden">
+        <fileTransfer host="labmm.clients.ua.pt" port="21" rootFolder="/deca_18L4_36">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
