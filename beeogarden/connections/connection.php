@@ -4,10 +4,10 @@ error_reporting(E_ALL);
 function new_db_connection()
 {
     // Variables for the database connection
-    $hostname = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "beeogarden";
+    $hostname = "labmm.clients.ua.pt";
+    $username = "deca_18L4_37_web";
+    $password = "8DvaY5";
+    $dbname = "deca_18l4_37";
 
 
 // Makes the connection
