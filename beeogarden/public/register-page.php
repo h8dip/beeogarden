@@ -32,7 +32,7 @@
             </form>
         </div>
         <div id="login-option-container">
-            <p>Já tens uma conta? <a class="highlight-text" href="login-page.html">Faz login</a></p>
+            <p>Já tens uma conta? <a class="highlight-text" href="login-page.php">Faz login</a></p>
         </div>
     </div>
 </body>

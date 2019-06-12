@@ -7,6 +7,7 @@
 :root{
     --primary-color: #FBC02D;
     --light-text:#fff;
+    --hover-color: rgb(212, 165, 46);
 }
 
 body{
@@ -34,6 +35,11 @@ body{
     color: var(--primary-color);
     text-decoration: none;
     font-weight: bold;
+}
+
+.highlight-text:hover{
+    color: var(--hover-color);
+    cursor: pointer;
 }
 
 .filter-active{
@@ -195,6 +201,11 @@ body{
 #register-form select:focus,
 #register-form button:focus{
     outline: none;
+}
+
+#register-form button:hover{
+    background-color: var(--hover-color);
+    cursor: pointer;
 }
 
 #register-form{
@@ -415,7 +426,10 @@ nav #shopping-cart{
     display: none;
 }
 
-/* media queries */
+
+/* MEDIA QUERIES */
+
+/* tablet */
 
 @media (min-width: 600px) {
 
@@ -476,6 +490,7 @@ nav #shopping-cart{
     #register-form button{
         border-radius: 40px;
     }
+    
 
     /* Login */
 
@@ -555,6 +570,7 @@ nav #shopping-cart{
     }
 }
 
+/* computador */
 @media (min-width: 1025px) {
     body::-webkit-scrollbar { width: 0 !important };
 
