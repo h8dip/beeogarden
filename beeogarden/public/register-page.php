@@ -17,8 +17,8 @@
             </div>
         </div>
         <div id="register-form">
-            <form action="register.php" method="POST">
-                <input type="text" name="name" placeholder="Nome">
+            <form action="scripts/register.php" method="POST">
+                <input type="text" name="username" placeholder="Nome">
                 <input type="email" name="email" placeholder="Email">
                 <input type="password" name="password" placeholder="Password">
                 <select name="entidade" id="entidade">
