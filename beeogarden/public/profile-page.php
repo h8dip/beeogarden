@@ -27,6 +27,16 @@
                 </div>
                 <h2>Utilizador</h2>
             </div>
+            <div id="stats-field">
+                <div id="beeopoints">
+                    <img src="img/beeopoints.png" alt="">
+                    <h3>30</h3>
+                </div>
+                <div id="campos">
+                    <img src="img/campos.png" alt="">
+                    <h3>3</h3>
+                </div>
+            </div>
             <div id="profile-name">
             
             </div>

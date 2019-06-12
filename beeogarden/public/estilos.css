@@ -315,6 +315,38 @@ body{
 }
 
 #profile{
+    display: grid;
+    grid-template-columns: 100vw;
+    grid-template-rows: 70% 30%;
+}
+
+#profile #profile-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100vw;
+}
+
+#profile #profile-img img{
+    border-radius: 100%;
+    width: 50%;
+}
+
+#profile-img h3{
+    font-weight: 700;
+}
+
+#stats-field{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 30vw;
+}
+
+#beeopoints{
+    width: 20%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -322,19 +354,25 @@ body{
     text-align: center;
 }
 
-#profile #profile-img {
-    width: 35%;
-    margin-bottom: 10vh;
-}
-
-#profile #profile-img img{
-    border-radius: 100%;
+#beeopoints img{
     width: 100%;
+    margin-bottom: 1vh;
 }
 
-#profile-img h3{
-    font-weight: 700;
+#campos{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
+
+#campos img{
+    width: 100%;
+    margin-bottom: 1vh;
+}
+
 
 
 
