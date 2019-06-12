@@ -16,89 +16,25 @@
     <script src="https://kit.fontawesome.com/9327c61162.js"></script>
 </head>
 <body>
+    <?php
+        include_once "components/navbar.php";
+    ?>
     <div id="profile-container">
-        <nav>
-            <button id="hamburger" class="hamburger hamburger--elastic" type="button">
-                <span class="hamburger-box">
-                    <span class="hamburger-inner"></span>
-                </span>
-            </button> 
-        </nav>
-        <div id="perfil-topo">
-            <div id="perfil-dados">
-                <img id="img-profile" src="img/img-perfil.PNG">
-                <p id="username">Username</p>
+        <div id="profile">
+            <div id="profile-img">
+                <div id="img-perfil">
+                    <img src="img/img-perfil.PNG" alt="">
+                </div>
+                <h2>Utilizador</h2>
             </div>
-            <div id="abelhas-campos">
-                <div id="abelhas-user">
-                    <img src="img/beeopoints.png">  
-                    <p>20</p>
-                </div>
-                <div id="campos-user">
-                    <img src="img/campos.png">
-                    <p>0</p>
-                </div>
+            <div id="profile-name">
+            
             </div>
         </div>
-        <div id="perfil-campos">
-            <h1>OS MEUS CAMPOS</h1>
-            <!-- MUDAR DEFORMA DINÂMICA CONSOANTE OS CAMPOS -->
-            <!-- <img>
-            <h2>Ainda não tens campos plantados!</h2> -->
 
-            <div class="campo">
-                <div class="topo-campo">
-                    <p class="nome-campo">nome do campo</p>
-                    <i class="far fa-comment"></i>
-                </div>
-                <div class="dados-campo">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <p class="local-campo">Local</p>
-                    <p>0</p>
-                    <img src="img/beeopoints.png">
-                </div>
-            </div>
-            <div class="campo">
-                <div class="topo-campo">
-                    <p class="nome-campo">nome do campo</p>
-                    <i class="far fa-comment"></i>
-                </div>
-                <div class="dados-campo">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <p class="local-campo">Local</p>
-                    <p>0</p>
-                    <img src="img/beeopoints.png">
-                </div>
-            </div>
-            <div class="campo">
-                <div class="topo-campo">
-                    <p class="nome-campo">nome do campo</p>
-                    <i class="far fa-comment"></i>
-                </div>
-                <div class="dados-campo">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <p class="local-campo">Local</p>
-                    <p>0</p>
-                    <img src="img/beeopoints.png">
-                </div>
-            </div>
-           
-            <div class="campo">
-                <div class="topo-campo">
-                    <p class="nome-campo">nome do campo</p>
-                    <i class="far fa-comment"></i>
-                </div>
-                <div class="dados-campo">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <p class="local-campo">Local</p>
-                    <p>0</p>
-                    <img src="img/beeopoints.png">
-                </div>
-            </div>
-           
+        <div id="campos-container">
+
         </div>
     </div>
-
-
 </body>
 </html>

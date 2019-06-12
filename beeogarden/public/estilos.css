@@ -61,64 +61,6 @@ body{
 
 /* Loading */
 
-/* @import url(https://fonts.googleapis.com/css?family=Thasadith:400,400i,700,700i&display=swap);
-.loading {
-  margin: 0 auto;
-  width: 100%;
-  font: bolder 6vw 'Thasadith', sans-serif;
-  color: #FBC02D;
-  text-align: center;
-}
-.loading div {
-  margin: 0;
-  display: inline-block;
-  animation: load 2s infinite alternate; 
-}
-@keyframes load {
-  5% {opacity: 0.3;color: #FBC02D;}
-  100% {color: #fff; text-shadow: 1.4% 2% 2.4% #FBC02D;}
-}
-
-.loading div:nth-child(2) {
-  animation-delay: .25s;
-}
-.loading div:nth-child(3) {
-  animation-delay: .50s;
-}
-.loading div:nth-child(4) {
-  animation-delay: .75s;
-}
-.loading div:nth-child(5) {
-  animation-delay: 1s;
-}
-.loading div:nth-child(6) {
-  animation-delay: 1.25s;
-}
-.loading div:nth-child(7) {
-  animation-delay: 1.50s;
-}
-.loading div:nth-child(8) {
-  animation-delay: 1.75s;
-}
-.loading div:nth-child(9) {
-  animation-delay: 2s;
-}
-.loading div:nth-child(10) {
-  animation-delay: 2.25s;
-}
-.loading div:nth-child(11) {
-  animation-delay: 2.50s;
-}
-
-.loading div:nth-child(11) img{
-    position: absolute;
-    height: 4vw;
-    width: auto;
-    top:45vh;
-    left:75vw;
-} */
-
-
 
 #container-loading{
     background-color: var(--primary-color);
@@ -355,141 +297,33 @@ body{
 }
 
 /* perfil */
-
- #profile-container{
-    display:grid;
-    height:100vh;
+#profile-container{
+    display: grid;
     grid-template-columns: 100vw;
-    grid-template-rows: 5vh 40vh auto;
-    grid-auto-rows: 55vw;
-    overflow: scroll;
+    grid-template-rows: 40vh 60vh;
 }
 
-#perfil-dados{
-    width:100vw;
-    display:flex;
+#profile{
+    display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content:space-between;
+    justify-content: center;
+    text-align: center;
 }
 
-#img-profile{
+#profile #profile-img {
+    width: 35%;
+    margin-bottom: 10vh;
+}
+
+#profile #profile-img img{
     border-radius: 100%;
-    height:20vh;
-    border: solid var(--primary-color) 5px;
-}
-
-#username{
-    font-size: 1.4rem;
-}
-
-/*
-#perfil-topo{
-    display:grid;
-    text-align:center;
-    justify-items: center;
-    padding:0;
-    margin:0;
-}
-*/
-
-#abelhas-campos{
-    width:100vw;
-    margin: 0 50vw;
-    display: flex;
-    flex-direction:row;
-    justify-content: space-between;
-}
-
-#abelhas-user img{
-    height: 10vw;
-}
-#campos-user img{
-    height: 10vw;
-}
-
-/* 
-#abelhas-user p{
-    font-size: 1.2rem;
-}
-
-#abelhas-user img{
-    width: 10vw;
-}
-
-#campos-user p{  
-    font-size: 1.2rem;
-}
-
-#campos-user img{
-    width: 10vw;
-} */
-
-#perfil-campos{
-    /* display:grid;
-    justify-items: center; */
-    background-color: var(--primary-color);
-    border-radius: 10% 10% 0% 0%;
-    color: var(--light-text);
-    text-align:center;
-}
-
-#perfil-campos h1{
-    margin-top: 2vh;
-}
-
-#perfil-campos h2{
-    display:grid;
-    justify-items:center;
-    width:80%;
-}
-
-.campo{
-    margin: 2% auto;
-    background-color:var(--light-text);
-    color: black;
-    border-radius: 25px;
-    width: 80%;
-    padding: 2% 5%;
-}
-
-.topo-campo{
-    width:100%;
-    height: 7vh;
-    border-bottom: solid 5px var(--primary-color);
-    display:flex;
-    justify-content: space-between;
-}
-
-.nome-campo{
-    font-size: 1.1rem;
-    font-weight: bold;
-}
-
-.campo i{
-    width: 6%;
-}
-
-.dados-campo{
     width: 100%;
-    margin-top: 2%;
-    display:flex;
-    flex-direction: row;
 }
 
-.dados-campo i{
-    justify-content: flex-start;
+#profile-img h3{
+    font-weight: 700;
 }
-
-.dados-campo img{
-    height: 6vw;
-}
-
-.local-campo{
-    width:35%;
-    text-align:left;
-}
-
 
 
 
@@ -501,7 +335,7 @@ body{
     grid-auto-rows: 50vw;
 }
 
-#container-loja nav{
+nav{
     grid-column: 1 / span 2;
     display: flex;
     flex-direction: row;
@@ -509,7 +343,7 @@ body{
     align-items: center;
 }
 
-#container-loja nav #shopping-cart{
+nav #shopping-cart{
     margin-right: 2vh;
 }
 
