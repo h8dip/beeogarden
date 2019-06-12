@@ -37,19 +37,23 @@ if (mysqli_stmt_prepare($stmt, $query)) {
         //variaveis vazias
         header("Location: ../register-page.php?err=2");
     }else{
+
+
+
         $username = htmlspecialchars($_POST['username']); 
         $email = htmlspecialchars($_POST['email']);
         $password_hash = password_hash(htmlspecialchars($_POST['password']), PASSWORD_DEFAULT);
         $entidade = htmlspecialchars($_POST['entidade']);
 
-        if($entidade!="Privado" or $entidade!="Institucional"){
-          $entidade = "Privado";
-          mysqli_stmt_execute($stmt);
-        }
+        mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
         mysqli_close($link);
-        header("Location: ../login-page.php?err=4");
+        header("Location: ../register-page.php");
     }
+
+    
+
+    
 } else {
     mysqli_close($link);
 }

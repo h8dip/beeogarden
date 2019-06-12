@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Thasadith:400,400i,700,700i&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="estilos-temporary.css">
     <script src="scripts/checkQueryString.js"></script>
     <title>beeogarden | Faça login</title>
 </head>
@@ -24,9 +25,6 @@
         break;
         case "3":
             alert('Essa password não é correspondente.');
-        break;
-        case "4":
-            alert("Conta registada com sucesso , pode agora efetuar o login.");
         break;
         default:
         break;
