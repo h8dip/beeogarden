@@ -23,6 +23,16 @@
             $value_to_match = "id_produto";
             $redirect_to = "produtos_loja.php";
           break;
+          case 'i':
+            $table_to_delete="info";
+            $value_to_match = "id_info";
+            $redirect_to = "informacoes.php";
+          break;
+          case 'pub':
+            $table_to_delete= "posts";
+            $value_to_match= "id_post";
+            $redirect_to= "publicacoes.php";
+          break;
       }
       $link = new_db_connection();
       $stmt = mysqli_stmt_init($link);
@@ -31,10 +41,10 @@
         
         mysqli_stmt_bind_param($stmt,'i',$_GET['id']);
         if(mysqli_stmt_execute($stmt)){
-          //
+          
           header('Location: ../'.$redirect_to);
         }
-        header('Location: ../'.$redirect_to);
+          header('Location: ../'.$redirect_to);
       }
     }
   }

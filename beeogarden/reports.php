@@ -16,78 +16,19 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 </head>
+<?php 
+include_once "scripts/check_admin.php";
 
+checkAdmin();
+?>
 <body id="page-top">
 
 <!-- Page Wrapper -->
 <div id="wrapper">
 
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-        <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fab fa-forumbee"></i>
-            </div>
-            <div class="sidebar-brand-text mx-3">beeogarden</div>
-        </a>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0">
-
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-            <a class="nav-link" href="index.php">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
-        </li>
-
-        <li class="nav-item active">
-            <a class="nav-link" href="utilizadores.php">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Utilizadores</span></a>
-        </li>
-
-        <li class="nav-item active">
-            <a class="nav-link" href="campos.php">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Campos</span></a>
-        </li>
-
-        <li class="nav-item active">
-            <a class="nav-link" href="produtos_loja.php">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Produtos Loja</span></a>
-        </li>
-
-        <li class="nav-item active">
-            <a class="nav-link" href="reports.php">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Reports</span></a>
-        </li>
-        
-        <li class="nav-item active">
-            <a class="nav-link" href="publicacoes.php">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Publicações</span></a>
-        </li>
-        
-        <hr class="sidebar-divider my-0">
-
-        <li class="nav-item active">
-            <a class="nav-link" href="login.php">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Logout</span></a>
-        </li>
-
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
-
-    </ul>
-    <!-- End of Sidebar -->
+<?php 
+        include_once "components/Sidebar.php"
+?>
 
 
     <!-- Content Wrapper -->
@@ -129,7 +70,7 @@
 
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Example Admin</span>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $_SESSION['username'] ?></span>
                         <img class="img-profile rounded-circle" style="height: 50px;" src="img/no_user_yellow.png">
                    </li>
 
@@ -150,7 +91,7 @@
                                     $link = new_db_connection();
                                     $stmt = mysqli_stmt_init($link);
                                     $query = "SELECT id_reports, data_report, ref_Utilizador, ref_post, utilizador FROM
-                                    reports INNER JOIN utilizador ON ref_Utilizador = id_utilizador"; 
+                                    reports INNER JOIN utilizador ON ref_Utilizador = id_utilizador ORDER BY id_reports DESC"; 
                                     if(mysqli_stmt_prepare($stmt,$query)){
                                         if(mysqli_stmt_execute($stmt)){
                                             mysqli_stmt_bind_result($stmt,$id_reports,$data_report,$ref_Utilizador,$ref_post,$utilizador);
@@ -192,7 +133,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2019</span>
+                    <span>Copyright &copy; Beeogarden 2019</span>
                 </div>
             </div>
         </footer>

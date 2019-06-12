@@ -17,77 +17,50 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 <body id="page-top">
+<?php 
+include_once "scripts/check_admin.php";
 
+checkAdmin();
+
+/*
+require_once "connections/connection.php";
+
+$link = new_db_connection();
+$stmt = mysqli_stmt_init($link);
+
+$query = "INSERT INTO espaco (nome_espaco, morada, codigo_postal,localidade, dimensao, slots, id_estado_campo,
+ajuda, ref_Utilizador) VALUES (?,?,?,?,?,?,?,?,?)";
+
+    if (mysqli_stmt_prepare($stmt, $query)) {
+        
+        mysqli_stmt_bind_param($stmt, 'sssssiiii', $nome_espaco,$morada,$codigo_postal,$localidade,$dimensao,$slots,$id_estado,$ajuda,$ref_U);
+        for($i = 0; $i < 10000 ; $i++){
+        $nome_espaco = "Campo de Teste";
+        $morada = "Morada de Teste";
+        $codigo_postal = "1200-400";
+        $localidade = "Aveiro";
+        $dimensao = (rand(1,10)."h");
+        $slots = rand(1,1000);
+        $id_estado = rand(1,2);
+        $ajuda = rand(0,1);
+        $ref_U=rand(1,50);
+
+        
+        mysqli_stmt_execute($stmt);}
+        mysqli_stmt_close($stmt);
+        mysqli_close($link);
+    } else {
+       
+    }
+*/
+
+?>
 <!-- Page Wrapper -->
 <div id="wrapper">
 
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-        <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fab fa-forumbee"></i>
-            </div>
-            <div class="sidebar-brand-text mx-3">beeogarden</div>
-        </a>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0">
-
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-            <a class="nav-link" href="index.php">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
-        </li>
-
-        <li class="nav-item active">
-            <a class="nav-link" href="utilizadores.php">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Utilizadores</span></a>
-        </li>
-
-        <li class="nav-item active">
-            <a class="nav-link" href="campos.php">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Campos</span></a>
-        </li>
-
-        <li class="nav-item active">
-            <a class="nav-link" href="produtos_loja.php">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Produtos Loja</span></a>
-        </li>
-
-        <li class="nav-item active">
-                <a class="nav-link" href="reports.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Reports</span></a>
-        </li>
-        
-        <li class="nav-item active">
-                <a class="nav-link" href="publicacoes.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Publicações</span></a>
-        </li>
-
-        <hr class="sidebar-divider my-0">
-
-        <li class="nav-item active">
-            <a class="nav-link" href="login.php">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Logout</span></a>
-        </li>
-
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
-
-    </ul>
-    <!-- End of Sidebar -->
-
+    <?php 
+        include_once "components/Sidebar.php"
+    ?>
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
@@ -127,7 +100,7 @@
 
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Example Admin</span>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $_SESSION['username'] ?></span>
                         <img class="img-profile rounded-circle" style="height: 50px;" src="img/no_user_yellow.png">
                     </li>
 
@@ -180,7 +153,38 @@
                             </div>
                         </div>
                     </div>
+                   <?php 
+                   
+                   require_once "connections/connection.php";
 
+                   $link = new_db_connection();
+                   $stmt = mysqli_stmt_init($link);
+
+                   $ctQ = "SELECT COUNT(*) FROM utilizador";
+                                    $count = 0;
+                                    if(mysqli_stmt_prepare($stmt,$ctQ)){
+                                        if(mysqli_stmt_execute($stmt)){
+                                            mysqli_stmt_bind_result($stmt,$count);
+                                            mysqli_stmt_fetch($stmt);
+                                        }
+                                    }
+
+                    $saved_bees = 0;
+                    
+                    $query = "SELECT beeopoints FROM utilizador";
+                    if(mysqli_stmt_prepare($stmt,$query)){
+                        if(mysqli_stmt_execute($stmt)){
+                            mysqli_stmt_bind_result($stmt,$bee_per_user);
+                            while(mysqli_stmt_fetch($stmt)){
+                                $bee_per_user = intval($bee_per_user);
+                                if(empty($bee_per_user)){
+                                    $saved_bees += 0;
+                                }
+                                else{$saved_bees += $bee_per_user; }
+                            }
+                        }
+                    }
+                   ?> 
                     <!-- Earnings (Monthly) Card Example -->
                     <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card border-left-info shadow h-100 py-2">
@@ -190,7 +194,7 @@
                                         <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Utilizadores</div>
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-auto">
-                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">600</div>
+                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= htmlspecialchars($count) ?></div>
                                             </div>
                                             <div class="col">
                                                 <div class="progress progress-sm mr-2">
@@ -214,7 +218,7 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Abelhas salvas</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">7000</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?=htmlspecialchars($saved_bees)?></div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-comments fa-2x text-gray-300"></i>

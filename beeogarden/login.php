@@ -19,7 +19,33 @@
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
+<script>
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
 
+
+var err = getParameterByName('err');
+switch(err){
+  case "1":
+    alert("Nao podes deixar campos vazios no registro.");
+  break;
+  case "2":
+    alert("Nao podes deixar campos vazios no registro.");
+  break;
+  case "3":
+    alert('Esse utilizador ou e-mail já estão em uso.');
+  break;
+  default:
+  break;
+}
+</script>
 
 <body class="bg-gradient-primary">
 
@@ -58,7 +84,7 @@
                    </form>
                   <hr>
                   <div class="text-center">
-                    <a class="small" href="recuperar_password.php">Esquceu-se da palavra-passe?</a>
+                    <a class="small" href="recuperar_password.php">Esqueceu-se da palavra-passe?</a>
                     <br>
                     <a class="small" href="registar.php">Ainda não está registado?</a>
                   </div>

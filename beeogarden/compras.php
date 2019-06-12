@@ -83,20 +83,20 @@ checkAdmin();
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Tabela Campos Registados</h1>
+                <h1 class="h3 mb-2 text-gray-800">Tabela Compras Concluidas Registadas</h1>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Campos </h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Compras </h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                         <?php 
                         if(isset($_GET['page'])){
-                            $name_of_page = "campos.php?page=".htmlspecialchars($_GET['page']);
+                            $name_of_page = "compras.php?page=".htmlspecialchars($_GET['page']);
                           }else{ 
-                            $name_of_page = "campos.php";
+                            $name_of_page = "compras.php";
                           }
 
                         include_once "components/search_entry.php"
@@ -105,29 +105,20 @@ checkAdmin();
                             <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                                 <thead>
                                 <tr role="row">
-                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 157px;">Nome</th>
-                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 257px;">Localização</th>
-                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 113px;">Utilizador</th>
-                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 49px;">Abelhas</th>
-                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Slots: activate to sort column ascending" style="width: 49px;">Slots</th>
-                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Estado: activate to sort column ascending" style="width= 113px;">Estado</th>
-                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 105px;">Data</th>
-                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 95px;">Ajuda</th>
-                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 95px;">Eliminar</th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 157px;">#</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 257px;">Preço Total</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 257px;">Comprador</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 257px;">Produtos</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 257px;">Compra Concluida</th>
                                 </tr>
                                 </thead>
                                 <tfoot>
                                 <tr role="row">
-                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 157px;">Nome</th>
-                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 257px;">Localização</th>
-                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 113px;">Utilizador</th>
-                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 49px;">Abelhas</th>
-                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Slots: activate to sort column ascending" style="width: 49px;">Slots</th>
-                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Estado: activate to sort column ascending" style="width= 113px;">Estado</th>
-                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 105px;">Data</th>
-                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 95px;">Ajuda</th>
-                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 95px;">Eliminar</th>
-
+                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 157px;">#</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 257px;">Preço Total</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 257px;">Comprador</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 257px;">Produtos</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 257px;">Compra Concluida</th>
                                 </tr>
                                 </tfoot>
                                 <tbody>
@@ -136,6 +127,9 @@ checkAdmin();
 
                                     $link = new_db_connection();
                                     $stmt = mysqli_stmt_init($link);
+
+                                    $link2 = new_db_connection();
+                                    $stmt2 = mysqli_stmt_init($link2);
 
                                     if(isset($_POST['select_entries'])){
                                         if(!empty($_POST['select_entries'])){
@@ -153,7 +147,7 @@ checkAdmin();
 
                                     $start = ($current_page * $items_per_page) - $items_per_page;
                                     
-                                    $ctQ = "SELECT COUNT(*) FROM espaco";
+                                    $ctQ = "SELECT COUNT(*) FROM compras";
                                     $count = 0;
                                     if(mysqli_stmt_prepare($stmt,$ctQ)){
                                         if(mysqli_stmt_execute($stmt)){
@@ -166,53 +160,52 @@ checkAdmin();
                                     $start_page = 1;
                                     $next_page = $current_page+1;
                                     $previous_page = $current_page-1;
-
+                                    
                                     if(isset($_POST)){
                                         if(!empty($_POST['search_query'])){
-                                            $query = "SELECT nome_espaco, localidade, ref_Utilizador, ajuda, utilizador, date_creation, beeopoints,id_espaco,slots,id_estado_campo
-                                            FROM espaco INNER JOIN utilizador ON ref_Utilizador = id_utilizador WHERE utilizador LIKE \"%" . htmlspecialchars($_POST['search_query']) . "%\"" . " LIMIT $start, $items_per_page";
+                                            $query = "SELECT id_compra, preco_total, data_compra, ref_Utilizador,utilizador FROM compras INNER JOIN utilizador ON ref_Utilizador = id_utilizador WHERE utilizador LIKE \"%" . htmlspecialchars($_POST['search_query']) . "%\"" . " LIMIT $start, $items_per_page";
                                         }else{
-                                            $query = "SELECT nome_espaco, localidade, ref_Utilizador, ajuda, utilizador, date_creation, beeopoints,id_espaco,slots,id_estado_campo
-                                            FROM espaco INNER JOIN utilizador ON ref_Utilizador = id_utilizador LIMIT $start, $items_per_page";
+                                            $query = "SELECT id_compra, preco_total, data_compra, ref_Utilizador,utilizador FROM compras INNER JOIN utilizador ON ref_Utilizador = id_utilizador LIMIT $start, $items_per_page";
                                         }
                                     }else{
-                                        $query = "SELECT nome_espaco, localidade, ref_Utilizador, ajuda, utilizador, date_creation, beeopoints,id_espaco,slots,id_estado_campo
-                                        FROM espaco INNER JOIN utilizador ON ref_Utilizador = id_utilizador LIMIT $start, $items_per_page";
+                                        $query = "SELECT id_compra, preco_total, data_compra, ref_Utilizador,utilizador FROM compras INNER JOIN utilizador ON ref_Utilizador = id_utilizador LIMIT $start, $items_per_page";
                                     }
-
+                                    
+                                    
 
                                     if(mysqli_stmt_prepare($stmt,$query)){
                                         if(mysqli_stmt_execute($stmt)){
-                                            mysqli_stmt_bind_result($stmt,$nome,$localidade,$ref_user,$ajuda,$username,$date,$beepts,$id_espaco,$slots,$id_estado_campo);
-                                            
+                                            mysqli_stmt_bind_result($stmt,$id_compra,$preco_total,$data_compra,$ref_U,$utilizador);
+
                                             while(mysqli_stmt_fetch($stmt)){
-                                                
                                                 echo '<tr role="row" class="odd">';
-                                                echo '<td class="sorting_1">'.$nome.'</td>';
-                                                echo '<td>'.$localidade.'</td>';
-                                                echo '<td>'.$username.'</td>';
-                                                echo '<td>'.$beepts.'</td>';
-                                                echo '<td>'.$slots.'</td>';
-                                                if($id_estado_campo==1){
-                                                    echo '<td>Completamente Cheio</td>';
-                                                }else{
-                                                    echo '<td>Incompleto</td>';
+                                                echo '<td class="sorting_1">'.$id_compra.'</td>';
+                                                echo '<td>'.$preco_total.'€</td>';
+                                                echo '<td>'.$utilizador.'</td>';
+                                                echo '<td>';
+                                                $new_query = "SELECT ref_compra, ref_produto, quantidade,custo_produto,nome_produto
+                                                FROM compras_has_produto INNER JOIN produto WHERE id_produto = ref_produto AND ref_compra = ?";
+                                                if(mysqli_stmt_prepare($stmt2,$new_query)){
+                                                    mysqli_stmt_bind_param($stmt2,'i',$id_compra);
+                                                    if(mysqli_stmt_execute($stmt2)){
+                                                    mysqli_stmt_bind_result($stmt2,$ref_compra,$ref_produto,$quantidade
+                                                    ,$custo_produto,$nome_produto);
+                                                    while(mysqli_stmt_fetch($stmt2)){
+                                                        echo $nome_produto . ' - ' . $quantidade . 'x - ' . $custo_produto . '€;<br>'; 
+                                                    }
                                                 }
-                                                echo '<td>'.$date.'</td>';
-                                                if($ajuda==1){
-                                                    echo '<td>Sim</td>';
-                                                }else{
-                                                    echo '<td>Nao</td>';
                                                 }
-                                                echo '<td style="text-align: center;">
-                                                <a href="scripts/delete_data.php?class=c&id='.$id_espaco.'" class="btn btn-danger btn-circle">
-                                                 <i class="fas fa-trash"></i>
-                                                </a>
-                                            </td></tr>';
-                                            
+                                                echo '</td>';
+                                                if(empty($data_compra)){
+                                                    echo '<td>Compra ainda não concluida.</td>';
+                                                }else{
+                                                    echo '<td>Concluida : '.$data_compra.'</td>';
+                                                }
                                             }
                                             mysqli_stmt_close($stmt);
                                             mysqli_close($link);
+                                            mysqli_stmt_close($stmt2);
+                                            mysqli_close($link2);
                                         }else{
                                          //failed execute
                                          

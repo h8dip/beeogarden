@@ -16,78 +16,19 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 </head>
+<?php 
+include_once "scripts/check_admin.php";
 
+checkAdmin();
+?>
 <body id="page-top">
 
 <!-- Page Wrapper -->
 <div id="wrapper">
 
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-        <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fab fa-forumbee"></i>
-            </div>
-            <div class="sidebar-brand-text mx-3">beeogarden</div>
-        </a>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0">
-
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-            <a class="nav-link" href="index.php">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
-        </li>
-
-        <li class="nav-item active">
-            <a class="nav-link" href="utilizadores.php">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Utilizadores</span></a>
-        </li>
-
-        <li class="nav-item active">
-            <a class="nav-link" href="campos.php">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Campos</span></a>
-        </li>
-
-        <li class="nav-item active">
-            <a class="nav-link" href="produtos_loja.php">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Produtos Loja</span></a>
-        </li>
-        
-        <li class="nav-item active">
-                <a class="nav-link" href="reports.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Reports</span></a>
-        </li>
-
-        <li class="nav-item active">
-            <a class="nav-link" href="publicacoes.php">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Publicações</span></a>
-        </li>
-        
-        <hr class="sidebar-divider my-0">
-
-        <li class="nav-item active">
-            <a class="nav-link" href="login.php">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Logout</span></a>
-        </li>
-
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
-
-    </ul>
-    <!-- End of Sidebar -->
+<?php 
+        include_once "components/Sidebar.php"
+?>
 
 
     <!-- Content Wrapper -->
@@ -129,7 +70,7 @@
 
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Example Admin</span>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $_SESSION['username'] ?></span>
                         <img class="img-profile rounded-circle" style="height: 50px;" src="img/no_user_yellow.png">
                    </li>
 
@@ -151,7 +92,19 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_length"><label>Show <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="dataTable_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable"></label></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                        <?php 
+                        
+                        if(isset($_GET['page'])){
+                            $name_of_page = "publicacoes.php?page=".htmlspecialchars($_GET['page']);
+                          }else{ 
+                            $name_of_page = "publicacoes.php";
+                          }
+
+                        include_once "components/search_entry.php"
+                            ?></div>
+                        <div class="row">
+                        <div class="col-sm-12">
+                        <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                                 <thead>
                                 <tr role="row">
                                     <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 157px;">utilizador</th>
@@ -172,15 +125,62 @@
                                 </tfoot>
                                 <tbody>
                                 <?php 
+                                  
+
                                     require_once "connections/connection.php";
 
                                     $link = new_db_connection();
                                     $stmt = mysqli_stmt_init($link);
-                                    $query = "SELECT ref_post_user_id, descricao, data, imagem, utilizador 
-                                    FROM posts INNER JOIN utilizador ON ref_post_user_id = id_utilizador"; 
+
+
+                                    if(isset($_POST['select_entries'])){
+                                        if(!empty($_POST['select_entries'])){
+                                            if(is_numeric($_POST['select_entries'])){
+                                                $items_per_page = $_POST['select_entries'];
+                                            }else{
+                                                $items_per_page = 10;
+                                            }
+                                        }else{$items_per_page = 10;}
+                                    }else{$items_per_page = 10;}
+
+                                    
+                                    $current_page = 1;
+                                    if(isset($_GET['page']) & !empty($_GET['page'])){
+                                        $current_page= $_GET['page'];
+                                    }
+
+                                    $start = ($current_page * $items_per_page) - $items_per_page;
+                                    
+                                    $ctQ = "SELECT COUNT(*) FROM posts";
+                                    $count = 0;
+                                    if(mysqli_stmt_prepare($stmt,$ctQ)){
+                                        if(mysqli_stmt_execute($stmt)){
+                                            mysqli_stmt_bind_result($stmt,$count);
+                                            mysqli_stmt_fetch($stmt);
+                                        }
+                                    }
+
+                                    $end_page = ceil($count/$items_per_page);
+                                    $start_page = 1;
+                                    $next_page = $current_page+1;
+                                    $previous_page = $current_page-1;
+
+                                    if(isset($_POST)){
+                                        if(!empty($_POST['search_query'])){
+                                            $query = "SELECT ref_Utilizador, descricao, data, imagem, utilizador,id_post 
+                                            FROM posts INNER JOIN utilizador ON ref_Utilizador = id_utilizador WHERE utilizador LIKE \"%" . htmlspecialchars($_POST['search_query']) . "%\"" . " LIMIT $start, $items_per_page";
+                                        }else{
+                                            $query = "SELECT ref_Utilizador, descricao, data, imagem, utilizador,id_post 
+                                            FROM posts INNER JOIN utilizador ON ref_Utilizador = id_utilizador LIMIT $start, $items_per_page";
+                                        }
+                                    }else{
+                                        $query = "SELECT ref_Utilizador, descricao, data, imagem, utilizador,id_post 
+                                        FROM posts INNER JOIN utilizador ON ref_Utilizador = id_utilizador LIMIT $start, $items_per_page";
+                                    }
+
                                     if(mysqli_stmt_prepare($stmt,$query)){
                                         if(mysqli_stmt_execute($stmt)){
-                                            mysqli_stmt_bind_result($stmt,$ref_post_user_id,$descricao,$data,$imagem,$utilizador);
+                                            mysqli_stmt_bind_result($stmt,$ref_post_user_id,$descricao,$data,$imagem,$utilizador,$id_post);
                                             
                                             while(mysqli_stmt_fetch($stmt)){
                                                 echo '<tr role="row" class="odd">';
@@ -189,7 +189,7 @@
                                                 echo '<td>'.$imagem.'</td>';
                                                 echo '<td>'.$data.'</td>';
                                                 echo '<td style="text-align: center;">
-                                                <a href="#" class="btn btn-danger btn-circle">
+                                                <a href="scripts/delete_data.php?class=pub&id='.$id_post.'" class="btn btn-danger btn-circle">
                                                  <i class="fas fa-trash"></i>
                                                 </a>
                                             </td>';
@@ -205,13 +205,14 @@
                                         }
                                     }else{
                                         //failed prepare
-                                        mysqli_stmt_close($stmt);
+                                        //mysqli_stmt_close($stmt);
                                         mysqli_close($link);
                                     }
                                 ?>
                                 
                                 </tbody>
-                            </table></div></div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="dataTable_previous"><a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">6</a></li><li class="paginate_button page-item next" id="dataTable_next"><a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li></ul></div></div></div></div>
+                            </table></div></div>
+                            <?php include_once "components/bottom_entries.php" ?>
                         </div>
                     </div>
                 </div>
@@ -224,7 +225,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2019</span>
+                    <span>Copyright &copy; Beeogarden 2019</span>
                 </div>
             </div>
         </footer>
