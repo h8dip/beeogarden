@@ -1,0 +1,15 @@
+.btn-primary:hover{
+    background-color: var(--hover-color);
+    cursor: pointer;
+}
+
+.highlight-text{
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.highlight-text:hover{
+    color: var(--hover-color);
+    cursor: pointer;
+}
