@@ -16,7 +16,7 @@
         <div id="upper-login-text">
             <div>
                 <img src="img/logo_beeogarden-8.png" alt="Logo">
-                <h1>ENTUK</h1>
+                <h1>ENTUK VAI PO CARALHO MARCO</h1>
             </div>
         </div>
         <div id="login-form">
