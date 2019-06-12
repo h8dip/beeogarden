@@ -332,6 +332,7 @@ body{
 #profile #profile-img img{
     border-radius: 100%;
     width: 50%;
+    border: var(--primary-color) solid 1vh;
 }
 
 #profile-img h3{
@@ -373,7 +374,45 @@ body{
     margin-bottom: 1vh;
 }
 
+#campos-container{
+    display: grid;
+    grid-auto-rows: 12vh;
+    margin-top: 2vh;
+    background-color: var(--primary-color);
+    border-radius: 5vh 5vh 0 0; 
+    text-align: center;
+    color: #fff;
+    justify-items: center;
+}
 
+#campos-container h1{
+    margin-top: 3vh;
+}
+
+.campo{
+    display: grid;
+    background-color: #fff;
+    width: 90vw;
+    border-radius: 3vh;
+    grid-template-rows: 50% 50%;
+    color: black;
+    padding: 0 5%;
+}
+
+.campo #upper-campo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: var(--primary-color) solid 0.5vh;
+}
+
+.campo #lower-campo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 
 
 /* Loja */
