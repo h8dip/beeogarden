@@ -25,6 +25,9 @@
         case "3":
             alert('Essa password não é correspondente.');
         break;
+        case "4":
+            alert("Conta registada com sucesso , pode agora efetuar o login.");
+        break;
         default:
         break;
     }
