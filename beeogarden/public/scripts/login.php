@@ -25,20 +25,20 @@
           //wrong password
           mysqli_stmt_close($stmt);
           mysqli_close($link);
-          header('Location: ../login-page.php');
+          header('Location: ../login-page.php?err=3');
         }
     }
     else{
       //wrong username / fetch
       mysqli_stmt_close($stmt);
       mysqli_close($link);
-      header('Location: ../login-page.php');
+      header('Location: ../login-page.php?err=2');
     }
 }else{
     //connection error / execute error
     mysqli_stmt_close($stmt);
     mysqli_close($link);
-    header('Location: ../login-page.php');
+    header('Location: ../login-page.php?err=1');
 }
 }
 ?>

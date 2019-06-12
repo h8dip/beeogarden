@@ -6,12 +6,29 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Thasadith:400,400i,700,700i&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilos.css">
+    <script src="scripts/checkQueryString.js"></script>
     <title>beeogarden | Faça login</title>
 </head>
 <body>
-<?php 
-    
-?>
+
+<script>
+
+    var err = getParameterByName("err");
+
+    switch(err){
+        case "1":
+            alert("A ligação ao servidor falhou.");
+        break;
+        case "2":
+            alert("Esse e-mail não se encontra registado na nossa base de dados.");
+        break;
+        case "3":
+            alert('Essa password não é correspondente.');
+        break;
+        default:
+        break;
+    }
+</script>
     <div id="login-container">
         <div id="upper-login-text">
             <div>
