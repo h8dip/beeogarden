@@ -44,7 +44,7 @@
             </form>
         </div>
         <div id="register-option-container">
-            <p>Ainda não tens uma conta? <a class="highlight-text" href="register-page.html">Regista-te!</a></p>
+            <p>Ainda não tens uma conta? <a class="highlight-text" href="register-page.php">Regista-te!</a></p>
         </div>
     </div>
     
