@@ -30,34 +30,34 @@
             <a href="#">CONSTRUÇÕES</a>
             <a href="#">SEMENTES</a>
         </div>
-        <div class="produto">
+        <div id="produto-1" class="produto">
             <img src="img/produto-1.jpg" alt="">
         </div>
-        <div class="produto produto-span-2">
+        <div id="produto-2" class="produto produto-span-2">
             <img src="img/produto-2.jpg" alt="">
         </div>
-        <div class="produto">
+        <div id="produto-3" class="produto">
             <img src="img/produto-5.jpg" alt="">
         </div>
-        <div class="produto">
+        <div id="produto-4" class="produto">
             <img src="img/produto-4.jpg" alt="">
         </div>
-        <div class="produto">
+        <div id="produto-5" class="produto">
             <img src="img/produto-6.jpg" alt="">
         </div>
-        <div class="produto produto-span-2">
+        <div id="produto-6" class="produto produto-span-2">
             <img src="img/produto-7.png" alt="">
         </div>
-        <div class="produto">
+        <div id="produto-7" class="produto">
             <img src="img/produto-3.png" alt="">
         </div>
-        <div class="produto">
+        <div id="produto-8" class="produto">
             <img src="img/produto-1.jpg" alt="">
         </div>
-        <div class="produto">
+        <div id="produto-9" class="produto">
             <img src="img/produto-5.jpg" alt="">
         </div>
-        <div class="produto">
+        <div id="produto-10" class="produto">
             <img src="img/produto-6.jpg" alt="">
         </div>
         <div class="produto">
