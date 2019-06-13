@@ -729,19 +729,19 @@ nav #shopping-cart{
     }
     
     #container-loja{
-        grid-template-columns: 10vw 10vw 10vw 10vw 10vw 10vw 10vw 10vw 10vw 10vw;
+        grid-template-columns: repeat(8, 12.5vw);
         grid-template-rows: 10vh 80vh;
-        grid-auto-rows: 10vw;
+        grid-auto-rows: 12.5vw;
     }
 
     #container-loja nav{
-        grid-column: 1 / span 10;
+        grid-column: 1 / span 8;
     }
 
     #filter-store{
         grid-row-start: 2;
-        width: 30vw;
-        grid-column: 1 / span 3;
+        width: 37.5vw;
+        grid-column: 1 / span 2;
         flex-direction: column;
         justify-content: center;
         margin-bottom: 10vh;
@@ -759,7 +759,7 @@ nav #shopping-cart{
 
     #showcase-store{
         position: relative;
-        grid-column: 4 / span 7;
+        grid-column: 4 / span 6;
         overflow: hidden;
         margin-bottom: 10vh;
         margin: 3vh;

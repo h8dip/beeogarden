@@ -31,7 +31,7 @@
             <a href="#">SEMENTES</a>
         </div>
         <div class="produto">
-            <img src="img/produto-1.djpg" alt="">
+            <img src="img/produto-1.jpg" alt="">
         </div>
         <div class="produto produto-span-2">
             <img src="img/produto-2.jpg" alt="">
