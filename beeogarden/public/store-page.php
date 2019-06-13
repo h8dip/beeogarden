@@ -19,6 +19,23 @@
             include_once "components/navbar.php";
         ?>
         <div id="showcase-store">
+            <!-- <div id="showcase-image">
+                <div class="mySlides fade"> 
+                <img src="img/bee-house.PNG" style="width:100%">
+            </div>
+            <div id="showcase-image">
+                <div class="mySlides fade"> 
+                <img src="img/bee-house.PNG" style="width:100%">
+            </div>
+            <div id="showcase-image">
+                <div class="mySlides fade"> 
+                <img src="img/bee-house.PNG" style="width:100%">
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
+
+
             <div id="showcase-image">
                 <img src="img/bee-house.PNG" alt="showcase-img">
             </div>
