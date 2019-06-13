@@ -41,7 +41,12 @@
                 if(mysqli_stmt_execute($stmt)){
                     mysqli_stmt_bind_result($stmt,$id_produto,$img_path);
                     while(mysqli_stmt_fetch($stmt)){
-                        echo '<div id="produto-'.$id_produto.'" class="produto">';
+                        //produto-span-2
+                        $rndN = rand(1,10);
+                        if($rndN > 8){
+                            $class = "produto-span-2";        
+                        }else{$class=""; };
+                        echo '<div id="produto-'.$id_produto.'" class="produto '.$class.'">';
                         echo '<a href="store-product.php?id='.$id_produto.'">'
                         .'<img src="'.$img_path.'" alt=""></a></div>';
                     }
