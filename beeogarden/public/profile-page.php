@@ -47,7 +47,71 @@
             <div class="campo">
                 <div id="upper-campo">
                     <h3>Quinta do Marco</h3>
-                    <i class="far fa-comment"></i>
+                    <i class="far fa-comment fa-2x"></i>
+                </div>
+                <div id="lower-campo">
+                    <div>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>Vizela</h4>
+                    </div>
+                    <div>
+                        <p>322</p>
+                        <img src="img/beeopoints.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="campo">
+                <div id="upper-campo">
+                    <h3>Quinta do Marco</h3>
+                    <i class="far fa-comment fa-2x"></i>
+                </div>
+                <div id="lower-campo">
+                    <div>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>Vizela</h4>
+                    </div>
+                    <div>
+                        <p>322</p>
+                        <img src="img/beeopoints.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="campo">
+                <div id="upper-campo">
+                    <h3>Quinta do Marco</h3>
+                    <i class="far fa-comment fa-2x"></i>
+                </div>
+                <div id="lower-campo">
+                    <div>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>Vizela</h4>
+                    </div>
+                    <div>
+                        <p>322</p>
+                        <img src="img/beeopoints.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="campo">
+                <div id="upper-campo">
+                    <h3>Quinta do Marco</h3>
+                    <i class="far fa-comment fa-2x"></i>
+                </div>
+                <div id="lower-campo">
+                    <div>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>Vizela</h4>
+                    </div>
+                    <div>
+                        <p>322</p>
+                        <img src="img/beeopoints.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="campo">
+                <div id="upper-campo">
+                    <h3>Quinta do Marco</h3>
+                    <i class="far fa-comment fa-2x"></i>
                 </div>
                 <div id="lower-campo">
                     <div>
