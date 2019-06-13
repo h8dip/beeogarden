@@ -12,6 +12,32 @@
     <title>beeogarden | Loja</title>
 </head>
 <body>
-    
+    <div id="product-details-container">
+
+        <?php include_once "components/navbar.php"; ?>
+
+        <div id="store-product-image">
+            <div id="showcase-product-detail">
+                <i class="fas fa-arrow-circle-left"></i>
+                <i class="fas fa-arrow-circle-right"></i>
+                <img src="img/bee-house.PNG" alt="">
+            </div>
+            <div id="details">
+                <div id="detail-store-1">
+                    <img src="img/bee-house.PNG" alt="">
+                </div>
+                <div id="detail-store-1">
+                    <img src="img/bee-house.PNG" alt="">
+                </div>
+                <div id="detail-store-1">
+                    <img src="img/bee-house.PNG" alt="">
+                </div>
+                <div id="detail-store-1">
+                    <img src="img/bee-house.PNG" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
 </body>
 </html>
