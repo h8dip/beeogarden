@@ -11,6 +11,7 @@
 
 </head>
 <body>
+
     <div id="register-container">
         <div id="upper-text">
             <div>
