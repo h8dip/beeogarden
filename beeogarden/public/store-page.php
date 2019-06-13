@@ -48,9 +48,6 @@
                 }
             }
         ?>
-        
-
     <script src="main.js"></script>
-    <script src="loja.js"></script>
 </body>
 </html>
