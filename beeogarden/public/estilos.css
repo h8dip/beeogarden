@@ -679,8 +679,15 @@ nav #shopping-cart{
     }
 }
 
+
+
 /* computador */
 @media (min-width: 1025px) {
+    nav {
+        background-color: var(--primary-color);
+        padding: 3vh;
+    }
+
     body::-webkit-scrollbar { width: 0 !important };
 
     body { overflow: -moz-scrollbars-none; }
@@ -786,5 +793,33 @@ nav #shopping-cart{
     #shopping-cart i{
         margin-right: 3vh;
         color: white;
+    }
+
+    /* Perfil */
+    #profile-container{
+        grid-template-columns: 50vw 50vw;
+        grid-template-rows: 100vh;
+    }
+
+    #profile{
+        grid-template-columns: 50vw;
+        grid-template-rows: 50% 50%;
+    }
+
+    #profile #profile-img{
+        width: 50vw;
+    }
+
+    #profile #stats-field{
+        padding: 10vw;
+    }
+
+    #campos-container{
+        margin-top: 0;
+        border-radius: 0;
+    }
+
+    .campo{
+        width: 45vw;
     }
 }
