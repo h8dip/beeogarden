@@ -30,55 +30,25 @@
             <a href="#">CONSTRUÇÕES</a>
             <a href="#">SEMENTES</a>
         </div>
-        <div id="produto-1" class="produto">
-            <img src="img/produto-1.jpg" alt="">
-        </div>
-        <div id="produto-2" class="produto produto-span-2">
-            <img src="img/produto-2.jpg" alt="">
-        </div>
-        <div id="produto-3" class="produto">
-            <img src="img/produto-5.jpg" alt="">
-        </div>
-        <div id="produto-4" class="produto">
-            <img src="img/produto-4.jpg" alt="">
-        </div>
-        <div id="produto-5" class="produto">
-            <img src="img/produto-6.jpg" alt="">
-        </div>
-        <div id="produto-6" class="produto produto-span-2">
-            <img src="img/produto-7.png" alt="">
-        </div>
-        <div id="produto-7" class="produto">
-            <img src="img/produto-3.png" alt="">
-        </div>
-        <div id="produto-8" class="produto">
-            <img src="img/produto-1.jpg" alt="">
-        </div>
-        <div id="produto-9" class="produto">
-            <img src="img/produto-5.jpg" alt="">
-        </div>
-        <div id="produto-10" class="produto">
-            <img src="img/produto-6.jpg" alt="">
-        </div>
-        <div class="produto">
-            <img src="img/produto-7.png" alt="">
-        </div>
-        <div class="produto">
-            <img src="img/produto-1.jpg" alt="">
-        </div>
-        <div class="produto">
-            <img src="img/produto-3.png" alt="">
-        </div>
-        <div class="produto">
-            <img src="img/produto-2.jpg" alt="">
-        </div>
-        <div class="produto">
-            <img src="img/produto-4.jpg" alt="">
-        </div>
-        <div class="produto">
-            <img src="img/produto-5.jpg" alt="">
-        </div>
-    </div>
+        <?php 
+            require_once "connections/connection.php";
+            
+            $link = new_db_connection();
+            $stmt = mysqli_stmt_init($link);
+            $query = "SELECT id_produto, img_path FROM produto";
+
+            if(mysqli_stmt_prepare($stmt,$query)){
+                if(mysqli_stmt_execute($stmt)){
+                    mysqli_stmt_bind_result($stmt,$id_produto,$img_path);
+                    while(mysqli_stmt_fetch($stmt)){
+                        echo '<div id="produto-'.$id_produto.'" class="produto">';
+                        echo '<a href="store-product.php?id='.$id_produto.'">'
+                        .'<img src="'.$img_path.'" alt=""></a></div>';
+                    }
+                }
+            }
+        ?>
+        
 
     <script src="main.js"></script>
 </body>
