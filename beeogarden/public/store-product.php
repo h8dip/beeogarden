@@ -12,7 +12,7 @@
     <title>beeogarden | Loja</title>
 </head>
 <body>
-    <div id="product-details-container">
+    <div id="product-details-container" style="padding-bottom: 10vh">
 
         <?php include_once "components/navbar.php"; ?>
 
@@ -39,7 +39,7 @@
         </div>
 
         <div id="store-product-info">
-            <div>
+            <div id="flex-description">
                 <h2>CASINHA PARA ABELHAS</h2>
                 <h2>44<span>,99€</span></h2>
             </div>
@@ -51,7 +51,7 @@
                     <li>Material:<span>Madeira<span></li>
                 </ul>
             </div>
-            <h1>PRODUTOS SEMELHANTES</h1>
+            <h2 id="similar-title">PRODUTOS SEMELHANTES</h2>
             <div id="similar-products">
                 <div class="similar">
                     <img src="img/bee-house.PNG" alt="">
@@ -66,6 +66,9 @@
                     <img src="img/bee-house.PNG" alt="">
                 </div>
             </div>
+        </div>
+        <div id="add-cart-button">
+            <a>Adicionar ao carrinho</a>
         </div>
     </div>
     <script src="main.js"></script>
