@@ -52,11 +52,11 @@
             
             $link = new_db_connection();
             $stmt = mysqli_stmt_init($link);
-            $query = "SELECT id_produto, img_path FROM produto";
+            $query = "SELECT id_produto, img_path, nome_produto FROM produto";
 
             if(mysqli_stmt_prepare($stmt,$query)){
                 if(mysqli_stmt_execute($stmt)){
-                    mysqli_stmt_bind_result($stmt,$id_produto,$img_path);
+                    mysqli_stmt_bind_result($stmt,$id_produto,$img_path, $nome_produto);
                     while(mysqli_stmt_fetch($stmt)){
                         //produto-span-2
                         $rndN = rand(1,10);
@@ -65,7 +65,9 @@
                         }else{$class=""; };
                         echo '<div id="produto-'.$id_produto.'" class="produto '.$class.'">';
                         echo '<a href="store-product.php?id='.$id_produto.'">'
-                        .'<img src="'.$img_path.'" alt=""></a></div>';
+                        .
+                        '<img src="'.$img_path.'" alt=""></a>'.'<div class="overlay"><div class="text">'.$nome_produto.'</div>
+                        </div></div>';
                     }
                 }
             }

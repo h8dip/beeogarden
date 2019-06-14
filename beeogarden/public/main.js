@@ -8,8 +8,19 @@ window.onload=function(){
     $('#filter-store a').click(function(){
         $('#filter-store a.filter-active').removeClass('filter-active');
         $(this).addClass('filter-active');
-        // $(this).animate({bacgroundColor:"#FBC02D",color:"#fff" })
     });
+
+    $(document).ready(function() {
+        // get current URL path and assign 'active' class
+        var pathname = window.location.pathname;
+        alert(pathname);
+        $('#nav-lg > a[href="'+pathname+'"]').addClass('nav-active');
+    });
+
+    // $('#nav-lg a').click(function(){
+    //     $('#nav-lg a.nav-active').removeClass('nav-active');
+    //     $(this).addClass('nav-active');
+    // });
 
     // $("#btn1").click(function(){
     //     $("#box").animate({height: "300px"});
