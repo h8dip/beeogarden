@@ -40,8 +40,8 @@
 
         <div id="store-product-info">
             <div>
-                <h1>CASINHA PARA ABELHAS</h1>
-                <h1>44<span>,99€</span></h1>
+                <h2>CASINHA PARA ABELHAS</h2>
+                <h2>44<span>,99€</span></h2>
             </div>
             <p>Pequena casinha para fazer as abelhas do seu jardim felizes</p>
             <div>
@@ -52,6 +52,20 @@
                 </ul>
             </div>
             <h1>PRODUTOS SEMELHANTES</h1>
+            <div id="similar-products">
+                <div class="similar">
+                    <img src="img/bee-house.PNG" alt="">
+                </div>
+                <div class="similar">
+                    <img src="img/bee-house.PNG" alt="">
+                </div>
+                <div class="similar">
+                    <img src="img/bee-house.PNG" alt="">
+                </div>
+                <div class="similar">
+                    <img src="img/bee-house.PNG" alt="">
+                </div>
+            </div>
         </div>
     </div>
     <script src="main.js"></script>

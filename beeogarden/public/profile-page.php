@@ -16,10 +16,10 @@
     <script src="https://kit.fontawesome.com/9327c61162.js"></script>
 </head>
 <body>
-    <?php
-        include_once "components/navbar.php";
-    ?>
     <div id="profile-container">
+        <?php
+            include_once "components/navbar.php";
+        ?>
         <div id="profile">
             <div id="profile-img">
                 <div id="img-perfil">
