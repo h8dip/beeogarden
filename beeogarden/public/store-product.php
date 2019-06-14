@@ -37,6 +37,22 @@
                 </div>
             </div>
         </div>
+
+        <div id="store-product-info">
+            <div>
+                <h1>CASINHA PARA ABELHAS</h1>
+                <h1>44<span>,99€</span></h1>
+            </div>
+            <p>Pequena casinha para fazer as abelhas do seu jardim felizes</p>
+            <div>
+                <ul>
+                    <li>Tamanho:<span>20x20x70cm<span></li>
+                    <li>Peso:<span>5kg<span></li>
+                    <li>Material:<span>Madeira<span></li>
+                </ul>
+            </div>
+            <h1>PRODUTOS SEMELHANTES</h1>
+        </div>
     </div>
     <script src="main.js"></script>
 </body>
