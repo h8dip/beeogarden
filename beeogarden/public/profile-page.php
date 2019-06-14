@@ -18,160 +18,98 @@
 <body>
     <div id="profile-container">
         <?php
+            session_start();
+
             include_once "components/navbar.php";
+            require_once "connections/connection.php";
+            
+            $link = new_db_connection();
+            $stmt = mysqli_stmt_init($link);
+            $query = "SELECT beeopoints, foto_perfil, id_utilizador FROM utilizador WHERE utilizador LIKE ?";
+
+            if(mysqli_stmt_prepare($stmt,$query)){
+                mysqli_stmt_bind_param($stmt,'s',$_SESSION['username']);
+                if(mysqli_stmt_execute($stmt)){
+                    mysqli_stmt_bind_result($stmt, $beeopoints,$foto_perfil, $user_id);
+                    if(mysqli_stmt_fetch($stmt)){
+                        
+                    }
+                }
+            }
+            
+            $camp_count = "SELECT COUNT(*) FROM espaco WHERE ref_Utilizador LIKE ?";
+
+            if(mysqli_stmt_prepare($stmt,$camp_count)){
+                mysqli_stmt_bind_param($stmt,'i',$user_id);
+                if(mysqli_stmt_execute($stmt)){
+                    mysqli_stmt_bind_result($stmt,$count);
+                    mysqli_stmt_fetch($stmt);
+                }
+            }
+
+            
         ?>
         <div id="profile">
             <div id="profile-img">
                 <div id="img-perfil">
-                    <img src="img/img-perfil.PNG" alt="">
+                <?php 
+                    if($foto_perfil == NULL or $foto_perfil==""){
+                        
+                    }else{
+                        echo '<img src="'.$foto_perfil.'" alt="">';
+                    }
+                ?>
                 </div>
-                <h2>Utilizador</h2>
+                <h2><?= $_SESSION['username'];?></h2>
             </div>
             <div id="stats-field">
                 <div id="beeopoints">
                     <img src="img/beeopoints.png" alt="">
-                    <h3>30</h3>
+                    <h3><?php if($beeopoints==NULL or $beeopoints==""){
+                        echo '0';
+                    }else{
+                        echo $beeopoints;
+                    }
+                    ?></h3>
                 </div>
                 <div id="campos">
                     <img src="img/campos.png" alt="">
-                    <h3>3</h3>
+                    <h3><?=$count?></h3>
                 </div>
             </div>
             <div id="profile-name">
-            
+                    
             </div>
         </div>
 
         <div id="campos-container">
             <h1>OS MEUS CAMPOS</h1>
-            <div class="campo">
-                <div id="upper-campo">
-                    <h3>Quinta do Marco</h3>
-                    <i class="far fa-comment fa-2x"></i>
-                </div>
-                <div id="lower-campo">
-                    <div>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h4>Vizela</h4>
-                    </div>
-                    <div>
-                        <p>322</p>
-                        <img src="img/beeopoints.png" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="campo">
-                <div id="upper-campo">
-                    <h3>Quinta do Marco</h3>
-                    <i class="far fa-comment fa-2x"></i>
-                </div>
-                <div id="lower-campo">
-                    <div>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h4>Vizela</h4>
-                    </div>
-                    <div>
-                        <p>322</p>
-                        <img src="img/beeopoints.png" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="campo">
-                <div id="upper-campo">
-                    <h3>Quinta do Marco</h3>
-                    <i class="far fa-comment fa-2x"></i>
-                </div>
-                <div id="lower-campo">
-                    <div>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h4>Vizela</h4>
-                    </div>
-                    <div>
-                        <p>322</p>
-                        <img src="img/beeopoints.png" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="campo">
-                <div id="upper-campo">
-                    <h3>Quinta do Marco</h3>
-                    <i class="far fa-comment fa-2x"></i>
-                </div>
-                <div id="lower-campo">
-                    <div>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h4>Vizela</h4>
-                    </div>
-                    <div>
-                        <p>322</p>
-                        <img src="img/beeopoints.png" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="campo">
-                <div id="upper-campo">
-                    <h3>Quinta do Marco</h3>
-                    <i class="far fa-comment fa-2x"></i>
-                </div>
-                <div id="lower-campo">
-                    <div>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h4>Vizela</h4>
-                    </div>
-                    <div>
-                        <p>322</p>
-                        <img src="img/beeopoints.png" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="campo">
-                <div id="upper-campo">
-                    <h3>Quinta do Marco</h3>
-                    <i class="far fa-comment fa-2x"></i>
-                </div>
-                <div id="lower-campo">
-                    <div>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h4>Vizela</h4>
-                    </div>
-                    <div>
-                        <p>322</p>
-                        <img src="img/beeopoints.png" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="campo">
-                <div id="upper-campo">
-                    <h3>Quinta do Marco</h3>
-                    <i class="far fa-comment fa-2x"></i>
-                </div>
-                <div id="lower-campo">
-                    <div>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h4>Vizela</h4>
-                    </div>
-                    <div>
-                        <p>322</p>
-                        <img src="img/beeopoints.png" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="campo">
-                <div id="upper-campo">
-                    <h3>Quinta do Marco</h3>
-                    <i class="far fa-comment fa-2x"></i>
-                </div>
-                <div id="lower-campo">
-                    <div>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h4>Vizela</h4>
-                    </div>
-                    <div>
-                        <p>322</p>
-                        <img src="img/beeopoints.png" alt="">
-                    </div>
-                </div>
-            </div>
+            <?php 
+            $query = "SELECT nome_espaco, localidade FROM espaco WHERE ref_Utilizador LIKE ? ";
+
+            if(mysqli_stmt_prepare($stmt,$query)){
+                mysqli_stmt_bind_param($stmt,'i',$user_id);
+                if(mysqli_stmt_execute($stmt)){
+                    mysqli_stmt_bind_result($stmt, $nome_espaco, $localidade);
+                    while(mysqli_stmt_fetch($stmt)){
+                        echo '<div class="campo">';
+                        echo '<div id="upper-campo">';
+                        echo '<h3>'.$nome_espaco.'</h3>';
+                        echo '<i class="far fa-comment fa-2x"></i>';
+                        echo '</div>';
+                        echo '<div id="lower-campo">';
+                        echo '<div>';
+                        echo '<i class="fas fa-map-marker-alt"></i>';
+                        echo '<h4>'.$localidade.'</h4>';
+                        echo '</div>';
+                        echo '<div>';
+                        echo '<p>'.$beeopoints.'</p>';
+                        echo '<img src="img/beeopoints.png" alt="">';
+                        echo '</div></div></div>';
+                    }
+                }
+            }
+            ?>
         </div>
     </div>
 
