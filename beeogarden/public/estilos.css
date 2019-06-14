@@ -142,7 +142,7 @@ body{
     font-size: 90%; 
 }
 
-#welcome-buttons button:nth-child(even){
+.btn-secondary{
     color: black;
     font-weight: bold;
     background-color: #fff;
@@ -593,10 +593,7 @@ nav #shopping-cart{
 #store-product-image #details{
     display: flex;
     flex-direction: row;
-}
-
-#store-product-image #details div{
-    height: 90%;
+    justify-content: space-between;
 }
 
 #store-product-image #details div img{
@@ -604,6 +601,25 @@ nav #shopping-cart{
     height: 100%;
     padding: 1vh;
     border-radius: 3vh;
+}
+
+#detail-store-1{
+    position: relative;
+    overflow: hidden;
+    width: 90%;
+    margin: 1vh;
+    border-radius: 2vh;
+}
+
+#detail-store-1 img{
+    height: 110% !important;
+    width: auto !important; 
+    position: absolute;
+    top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    margin: auto;
 }
 
 
