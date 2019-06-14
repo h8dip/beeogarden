@@ -13,6 +13,16 @@
     color: var(--hover-color);
     cursor: pointer;
 }
+
+#welcome-buttons a{
+    text-decoration: none;
+}
+
+.btn-secondary:hover{
+    background-color:#f1f1f1;
+    cursor:pointer;
+}
+
 /* 
 .mySlides {
     display: none;

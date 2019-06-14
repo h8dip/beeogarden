@@ -7,6 +7,8 @@
     <title>beeogarden | Registe-se</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Thasadith:400,400i,700,700i&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="animation.css">
+
 </head>
 <body>
     <div id="welcome-container">
@@ -21,8 +23,8 @@
         </div>
 
         <div id="welcome-buttons">
-            <button class="btn-primary">Entrar</button>
-            <button>Registar</button>
+            <a href="login-page.php"><button class="btn-primary">Entrar</button></a>
+            <a href="register-page.php"><button class="btn-secondary">Registar</button></a>
         </div>
     </div>
 </body>
