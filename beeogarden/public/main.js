@@ -11,11 +11,27 @@ window.onload=function(){
     });
 
     $(document).ready(function() {
-        // get current URL path and assign 'active' class
-        var pathname = window.location.pathname;
-        alert(pathname);
+        var current_page = $("#nav-lg").parent();
+        // alert(current_page);
+        if (current_page=="#profile-container"){
+            $('#nav-perfil').addClass('nav-active');
+        }
+        
         $('#nav-lg > a[href="'+pathname+'"]').addClass('nav-active');
     });
+
+    // var nav_perfil = document.getElementById('nav-perfil');
+    // var nav_loja = document.getElementById('nav-loja');
+    // var nav_ranking = document.getElementById('nav-ranking');
+    // var nav_mapa = document.getElementById('nav-mapa');
+    // var nav_info = document.getElementById('nav-info');
+    // var nav_definicoes = document.getElementById('nav-definicoes');
+    // var nav_sair = document.getElementById('nav-sair');
+
+    // nav_perfil.onclick=function(){
+
+    // }
+
 
     // $('#nav-lg a').click(function(){
     //     $('#nav-lg a.nav-active').removeClass('nav-active');
