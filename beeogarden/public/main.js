@@ -10,27 +10,93 @@ window.onload=function(){
         $(this).addClass('filter-active');
     });
 
-    $(document).ready(function() {
-        var current_page = $("#nav-lg").parent();
-        // alert(current_page);
-        if (current_page=="#profile-container"){
+    // $('#nav-lg a').click(function(){    
+    //     var current_page = $(this).parent().parent().attr('id');
+    // var current_page = $("#nav-lg").parent().attr('id');
+    // alert(current_page);
+    // if (current_page=="#profile-container"){
+    //     $('#nav-perfil').addClass('nav-active');
+    
+    // };
+
+    var nav_perfil = document.getElementById('nav-perfil');
+    var nav_loja = document.getElementById('nav-loja');
+    var nav_ranking = document.getElementById('nav-ranking');
+    var nav_mapa = document.getElementById('nav-mapa');
+    var nav_info = document.getElementById('nav-info');
+    var nav_definicoes = document.getElementById('nav-definicoes');
+    var nav_sair = document.getElementById('nav-sair');
+    var posicao;
+
+    navbar();
+
+    nav_perfil.onclick=function(){
+        posicao=1;
+    };
+    
+    nav_loja.onclick=function(){
+        posicao=2;
+    };
+    
+    nav_ranking.onclick=function(){
+        posicao=3;
+    };
+    
+    nav_mapa.onclick=function(){
+        posicao=4;
+    };
+    
+    nav_info.onclick=function(){
+        posicao=5;
+    };
+    
+    nav_definicoes.onclick=function(){
+        posicao=6;
+    };
+    
+    nav_sair.onclick=function(){
+        posicao=0;
+    };
+   
+}
+// FIM WINDOW.ONLOAD
+
+function navbar(){
+    switch (posicao){
+        case 0:
+            $('#nav-lg a').removeClass('nav-active');
+            break;
+        case 1:
+            $('#nav-lg a').removeClass('nav-active');
             $('#nav-perfil').addClass('nav-active');
-        }
-        
-        $('#nav-lg > a[href="'+pathname+'"]').addClass('nav-active');
-    });
+            break;
+        case 2:
+            $('#nav-lg a').removeClass('nav-active');
+            $('#nav-loja').addClass('nav-active');
+            break;
+        case 3:
+            $('#nav-lg a').removeClass('nav-active');
+            $('#nav-ranking').addClass('nav-active');
+            break;
+        case 4:
+            $('#nav-lg a').removeClass('nav-active');
+            $('#nav-mapa').addClass('nav-active');
+            break;
+        case 5:
+            $('#nav-lg a').removeClass('nav-active');
+            $('#nav-info').addClass('nav-active');
+            break;
+        case 6:
+            $('#nav-lg a').removeClass('nav-active');
+            $('#nav-definicoes').addClass('nav-active');
+            break;
+        default:
+            $('#nav-lg a').removeClass('nav-active');           
+    }
+}
 
-    // var nav_perfil = document.getElementById('nav-perfil');
-    // var nav_loja = document.getElementById('nav-loja');
-    // var nav_ranking = document.getElementById('nav-ranking');
-    // var nav_mapa = document.getElementById('nav-mapa');
-    // var nav_info = document.getElementById('nav-info');
-    // var nav_definicoes = document.getElementById('nav-definicoes');
-    // var nav_sair = document.getElementById('nav-sair');
 
-    // nav_perfil.onclick=function(){
 
-    // }
 
 
     // $('#nav-lg a').click(function(){
@@ -72,4 +138,4 @@ window.onload=function(){
 //   dots[slideIndex-1].className += " active";
 // }
 
-}
+
