@@ -66,8 +66,8 @@
                         echo '<div id="produto-'.$id_produto.'" class="produto '.$class.'">';
                         echo '<a href="store-product.php?id='.$id_produto.'">'
                         .
-                        '<img src="'.$img_path.'" alt=""></a>'.'<div class="overlay"><div class="text">'.$nome_produto.'</div>
-                        </div></div>';
+                        '<img src="'.$img_path.'" alt="">'.'<div class="overlay"><div class="text">'.$nome_produto.'</div>
+                        </div></a></div>';
                     }
                 }
             }
