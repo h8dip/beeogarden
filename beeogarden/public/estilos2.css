@@ -15,6 +15,9 @@ body{
     font-family: Thasadith, sans-serif;
 }
 
+body::-webkit-scrollbar { width: 0 !important };
+
+body { overflow: -moz-scrollbars-none; }
 /* Cart */
 
 #cart-container{
@@ -41,6 +44,7 @@ body{
     margin-top: 4vh;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     border-radius: 3vh;
+    padding-top: 2vh;
 }
 
 .product-cart{
@@ -68,4 +72,114 @@ body{
     left: -9999px;
     right: -9999px;
     margin: auto;
+}
+
+.product-cart-info{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: start;
+    text-align: start;
+    margin-left: 2vh;
+}
+
+.line{
+    display: grid;
+    grid-template-rows: 50% 50%;
+}
+
+.dotted-line{
+    justify-self: center;
+    width: 90%;
+    border-bottom: dotted 3px darkgrey;
+}
+
+.product-cart-info h3{
+    overflow: hidden;
+}
+
+#price-pay{
+    margin-top: 10vh;
+    width: 80%;
+    margin-left: 10%;
+    justify-self: center;
+    display: grid;
+    grid-template-rows: 5vh;
+}
+
+#price-pay-info{
+    display: grid;
+    grid-auto-rows: 7vh;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    border-radius: 3vh;
+    background-color: #fff;
+}
+
+.product-buy,
+.portes-envio,
+.iva{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2vh;
+}
+
+#total{
+    margin-top: 10vh;
+    width: 80%;
+    margin-left: 10%;
+    display: grid;
+    grid-template-rows: 5vh;
+}
+
+#total-info{
+    display: grid;
+    grid-auto-rows: 7vh;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    border-radius: 3vh;
+    background-color: #fff;
+}
+
+.total-buy{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2vh;
+}
+
+.product-cart-info h3{
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
+    width: 80%;
+}
+
+.product-buy h3{
+    white-space: nowrap; 
+    text-overflow: clip; 
+    width: 65%;
+}
+
+#buy-btn{
+    display: grid;
+    grid-template-columns: 35vw 65vw;
+    grid-template-rows: 7vh;
+    margin-top: 10vh;
+    position: sticky;
+    bottom: 0;
+}
+
+#buy-btn div{
+    padding-top: 1.1vh;
+    text-align: center;
+    align-items: center;
+}
+
+#buy-btn div:first-child{
+    background-color: grey;
+    color: #fff;
+}
+
+#buy-btn div:last-child{
+    background-color: var(--primary-color);
+    color: #fff;
 }
