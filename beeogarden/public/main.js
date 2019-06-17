@@ -10,14 +10,6 @@ window.onload=function(){
         $(this).addClass('filter-active');
     });
 
-    // $('#nav-lg a').click(function(){    
-    //     var current_page = $(this).parent().parent().attr('id');
-    // var current_page = $("#nav-lg").parent().attr('id');
-    // alert(current_page);
-    // if (current_page=="#profile-container"){
-    //     $('#nav-perfil').addClass('nav-active');
-    
-    // };
 
     var nav_perfil = document.getElementById('nav-perfil');
     var nav_loja = document.getElementById('nav-loja');
@@ -26,74 +18,101 @@ window.onload=function(){
     var nav_info = document.getElementById('nav-info');
     var nav_definicoes = document.getElementById('nav-definicoes');
     var nav_sair = document.getElementById('nav-sair');
-    var posicao;
-
-    navbar();
 
     nav_perfil.onclick=function(){
-        posicao=1;
+        $('#nav-lg a').removeClass('nav-active');
+        $('#nav-perfil').addClass('nav-active');
     };
     
     nav_loja.onclick=function(){
-        posicao=2;
+        $('#nav-lg a').removeClass('nav-active');
+        $('#nav-loja').addClass('nav-active');
     };
     
     nav_ranking.onclick=function(){
-        posicao=3;
+        $('#nav-lg a').removeClass('nav-active');
+        $('#nav-ranking').addClass('nav-active');
     };
     
     nav_mapa.onclick=function(){
-        posicao=4;
+        $('#nav-lg a').removeClass('nav-active');
+        $('#nav-mapa').addClass('nav-active');
     };
     
     nav_info.onclick=function(){
-        posicao=5;
+        $('#nav-lg a').removeClass('nav-active');
+        $('#nav-info').addClass('nav-active');
     };
     
     nav_definicoes.onclick=function(){
-        posicao=6;
+        $('#nav-lg a').removeClass('nav-active');
+        $('#nav-definicoes').addClass('nav-active');
     };
     
     nav_sair.onclick=function(){
-        posicao=0;
+        $('#nav-lg a').removeClass('nav-active');
     };
    
 }
 // FIM WINDOW.ONLOAD
 
-function navbar(){
-    switch (posicao){
-        case 0:
-            $('#nav-lg a').removeClass('nav-active');
-            break;
-        case 1:
-            $('#nav-lg a').removeClass('nav-active');
-            $('#nav-perfil').addClass('nav-active');
-            break;
-        case 2:
-            $('#nav-lg a').removeClass('nav-active');
-            $('#nav-loja').addClass('nav-active');
-            break;
-        case 3:
-            $('#nav-lg a').removeClass('nav-active');
-            $('#nav-ranking').addClass('nav-active');
-            break;
-        case 4:
-            $('#nav-lg a').removeClass('nav-active');
-            $('#nav-mapa').addClass('nav-active');
-            break;
-        case 5:
-            $('#nav-lg a').removeClass('nav-active');
-            $('#nav-info').addClass('nav-active');
-            break;
-        case 6:
-            $('#nav-lg a').removeClass('nav-active');
-            $('#nav-definicoes').addClass('nav-active');
-            break;
-        default:
-            $('#nav-lg a').removeClass('nav-active');           
-    }
-}
+// function navbar(){
+//     if(pos==0){
+//         $('#nav-lg a').removeClass('nav-active');
+//     }else if(pos==1){
+        // $('#nav-lg a').removeClass('nav-active');
+        // $('#nav-perfil').addClass('nav-active');
+//     }else if(pos==2){
+        // $('#nav-lg a').removeClass('nav-active');
+        // $('#nav-loja').addClass('nav-active');
+//     }else if(pos==3){
+        // $('#nav-lg a').removeClass('nav-active');
+        // $('#nav-ranking').addClass('nav-active');
+//     }else if(pos==4){
+        // $('#nav-lg a').removeClass('nav-active');
+        // $('#nav-mapa').addClass('nav-active');
+//     }else if(pos==5){
+        // $('#nav-lg a').removeClass('nav-active');
+        // $('#nav-info').addClass('nav-active');
+//     }else if(pos==6){
+        // $('#nav-lg a').removeClass('nav-active');
+        // $('#nav-definicoes').addClass('nav-active');
+//     }
+
+
+    // switch (pos){
+    //     case 0:
+    //         $('#nav-lg a').removeClass('nav-active');
+    //         break;
+    //     case 1:
+    //         $('#nav-lg a').removeClass('nav-active');
+    //         $('#nav-perfil').addClass('nav-active');
+    //         break;
+    //     case 2:
+    //         $('#nav-lg a').removeClass('nav-active');
+    //         $('#nav-loja').addClass('nav-active');
+    //         break;
+    //     case 3:
+    //         $('#nav-lg a').removeClass('nav-active');
+    //         $('#nav-ranking').addClass('nav-active');
+    //         break;
+    //     case 4:
+    //         $('#nav-lg a').removeClass('nav-active');
+    //         $('#nav-mapa').addClass('nav-active');
+    //         break;
+    //     case 5:
+    //         $('#nav-lg a').removeClass('nav-active');
+    //         $('#nav-info').addClass('nav-active');
+    //         break;
+    //     case 6:
+    //         $('#nav-lg a').removeClass('nav-active');
+    //         $('#nav-definicoes').addClass('nav-active');
+    //         break;
+    //     default:
+    //         $('#nav-lg a').removeClass('nav-active');           
+    // }
+    
+// }
 
 
 
