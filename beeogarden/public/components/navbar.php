@@ -11,7 +11,7 @@
     </div>
     <div id="nav-lg">
         <a href="profile-page.php" id="nav-perfil">Perfil</a>
-        <a href="store-page.php" id="nav-loja">Loja</a>
+        <a href="store-page.php" id="nav-loja" <?php if($current_page == 'store'){echo 'class="nav-active"';}?>>Loja</a>
         <a href="#" id="nav-ranking">Ranking</a>
         <a href="#" id="nav-mapa">Mapa</a>
         <a href="#" id="nav-info">Info</a>

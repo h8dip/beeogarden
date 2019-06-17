@@ -16,6 +16,7 @@
 <body style="overflow-y: auto">
     <div id="container-loja">
         <?php
+            $current_page='store';
             include_once "components/navbar.php";
         ?>
         <div id="showcase-store">
