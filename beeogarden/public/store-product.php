@@ -15,7 +15,7 @@
     <div id="product-details-container" style="padding-bottom: 10vh">
 
         <?php 
-
+            $current_page='store';
             include_once "components/navbar.php"; 
         
             require_once "connections/connection.php";
