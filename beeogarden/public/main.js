@@ -11,6 +11,43 @@ window.onload=function(){
     });
 
 
+
+    // CARROUSEL
+
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var prev = document.getElementsByClassName("prev");
+        var next = document.getElementsByClassName("next");
+        var p = 1;
+
+        // for(i=1; i<slides.length;i++){
+        //     var img[i] = document.getElementById("img-"+i);
+        // }
+
+        document.getElementById("img-"+p).style.display="block";
+
+        prev.onclick = function(){
+            p--;
+            // document.getElementById("img-"+p).style.display = "block"; 
+        }
+
+        next.onclick = function(){
+            p++;
+            // document.getElementById("img-"+p).style.display = "block"; 
+        }
+        
+    }
+    
+
 }
 // FIM WINDOW.ONLOAD
 

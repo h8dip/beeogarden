@@ -20,25 +20,20 @@
             include_once "components/navbar.php";
         ?>
         <div id="showcase-store">
-            <!-- <div id="showcase-image">
-                <div class="mySlides fade"> 
-                <img src="img/bee-house.PNG" style="width:100%">
-            </div>
+        
             <div id="showcase-image">
-                <div class="mySlides fade"> 
-                <img src="img/bee-house.PNG" style="width:100%">
+                <div class="mySlides fade" id="img-1">
+                    <img src="img/bee-house.PNG" alt="showcase-img">
+                </div>
+                <div class="mySlides fade" id="img-2">
+                    <img src="img/semente_girassol.jpg" alt="showcase-img">
+                </div>
+                <a class="prev">&#10094;</a>
+                <a class="next">&#10095;</a>
             </div>
-            <div id="showcase-image">
-                <div class="mySlides fade"> 
-                <img src="img/bee-house.PNG" style="width:100%">
-            </div>
-
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
-
-
-            <div id="showcase-image">
-                <img src="img/bee-house.PNG" alt="showcase-img">
+            <div>
+                <!-- <i id="showcase-left" class="fas fa-chevron-circle-left"></i>
+                <i id="showcase-right" class="fas fa-chevron-circle-right"></i> -->
             </div>
         </div>
         <div id="filter-store">
