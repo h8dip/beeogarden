@@ -11,6 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/9327c61162.js"></script><link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Thasadith:400,400i,700,700i&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="animation.css">
     <link href="hamburger.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/9327c61162.js"></script>
@@ -18,9 +19,13 @@
 <body>
     <div id="profile-container">
         <?php
+            $current_page='profile'; 
+            include_once "components/navbar.php";
+        ?>
+        <?php
+
             session_start();
 
-            include_once "components/navbar.php";
             require_once "connections/connection.php";
             
             $link = new_db_connection();
