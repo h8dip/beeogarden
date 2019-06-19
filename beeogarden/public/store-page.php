@@ -53,8 +53,12 @@
             if(mysqli_stmt_prepare($stmt,$query)){
                 if(mysqli_stmt_execute($stmt)){
                     mysqli_stmt_bind_result($stmt,$id_produto,$img_path, $nome_produto);
+                    
                     while(mysqli_stmt_fetch($stmt)){
-                        //produto-span-2
+                        $img_a = explode(';',$img_path);
+                        if(array_key_exists(0,$img_a)){
+                            $img_s = htmlspecialchars($img_a[0]);
+                        }
                         $rndN = rand(1,10);
                         if($rndN > 8){
                             $class = "produto-span-2";        
@@ -62,7 +66,7 @@
                         echo '<div id="produto-'.$id_produto.'" class="produto '.$class.'">';
                         echo '<a href="store-product.php?id='.$id_produto.'">'
                         .
-                        '<img src="'.$img_path.'" alt="">'.'<div class="overlay"><div class="text">'.$nome_produto.'</div>
+                        '<img src="'.$img_s.'" alt="">'.'<div class="overlay"><div class="text">'.$nome_produto.'</div>
                         </div></a></div>';
                     }
                 }
