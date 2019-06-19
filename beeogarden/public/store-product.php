@@ -83,7 +83,7 @@
 
                     if($presenca > 0){
                         //tem compras, no entanto uma delas pode estar em aberto aka carrinho.
-                        $query = "SELECT COUNT(*) FROM compras WHERE ref_Utilizador = ? AND data_compra = NULL";
+                        $query = "SELECT COUNT(*) FROM compras WHERE ref_Utilizador = ? AND data_compra IS NULL OR data_compra = ' '";
                         if(mysqli_stmt_prepare($stmt,$query)){
                             mysqli_stmt_bind_param($stmt,'i',$id_utilizador);
                             if(mysqli_stmt_execute($stmt)){
@@ -111,9 +111,10 @@
                             $id_de_produto = $_GET['id'];
                         }
                     }
-                    if(!$has_carrinho){
+
+                    if($has_carrinho==false){
                         //criar carrinho e inserir compra
-                        $query = "INSERT INTO compras VALUES(?,?)";
+                        $query = "INSERT INTO compras (preco_total, ref_Utilizador) VALUES(?,?)";
                         if(mysqli_stmt_prepare($stmt,$query)){
                             mysqli_stmt_bind_param($stmt,'di',$preco,$id_utilizador);
                             if(mysqli_stmt_execute($stmt)){
@@ -122,15 +123,88 @@
                             }
                         }
                         $qtd = 1;
-                        $query = "INSERT INTO compras_has_produto VALUES(?,?,?,?)";
+                        $query = "INSERT INTO compras_has_produto (ref_compra,ref_produto,quantidade,custo_produto) VALUES(?,?,?,?)";
                         if(mysqli_stmt_prepare($stmt,$query)){
                             mysqli_stmt_bind_param($stmt,'iiid',$last_id,$id_de_produto,$qtd,$preco);
                             if(mysqli_stmt_execute($stmt)){
                                 //success
+                                $rd_to = 'Location: store-product.php?id='.$id_de_produto;
+                                header($rd_to);
                             }
                         }
                     }else{
                         //modificar compra existente.
+                        /*
+                        -Modificar o preço total na tabela compras.
+                        -Acrescentar novo elemento ao compra has produtos
+                        */
+                        $query = "SELECT preco_total, id_compra FROM compras WHERE ref_Utilizador = ? AND data_compra IS NULL OR data_compra = ' '";
+                        if(mysqli_stmt_prepare($stmt,$query)){
+                            mysqli_stmt_bind_param($stmt,'i',$id_utilizador);
+                            if(mysqli_stmt_execute($stmt)){
+                                mysqli_stmt_bind_result($stmt,$preco_total_atual,$id_da_compra);
+                                if(mysqli_stmt_fetch($stmt)){
+
+                                }
+                            }
+                        }
+
+                        //$preco_total_atual = $preco_total_atual;
+                        $preco_total_atual += $preco;
+                        
+                        $query = "UPDATE compras SET preco_total = ? WHERE id_compra = ?";
+                        if(mysqli_stmt_prepare($stmt,$query)){
+                            mysqli_stmt_bind_param($stmt,'di',$preco_total_atual,$id_da_compra);
+                            if(mysqli_stmt_execute($stmt)){
+                                //yay..
+                                
+                            }
+                        }
+
+                        //verificar se este produto ja se encontra na bd
+                        $query = "SELECT COUNT(*) FROM compras_has_produto WHERE ref_compra = ? AND ref_produto = ?";
+                        if(mysqli_stmt_prepare($stmt,$query)){
+                            mysqli_stmt_bind_param($stmt,'ii',$id_da_compra,$id_de_produto);
+                            if(mysqli_stmt_execute($stmt)){
+                                mysqli_stmt_bind_result($stmt,$ctcP);
+                                mysqli_stmt_fetch($stmt);
+                            }
+                        }
+
+                        if($ctcP >= 1){
+                            //update qty
+                            $query = "SELECT quantidade FROM compras_has_produto WHERE ref_compra = ? AND ref_produto = ?";
+                            if(mysqli_stmt_prepare($stmt,$query)){
+                                mysqli_stmt_bind_param($stmt,'ii',$id_da_compra,$id_de_produto);
+                                if(mysqli_stmt_execute($stmt)){
+                                    mysqli_stmt_bind_result($stmt,$qty);
+                                    mysqli_stmt_fetch($stmt);
+                                }
+                            }
+
+                            $qty++;
+
+                            $query = "UPDATE compras_has_produto SET quantidade = ? WHERE ref_compra = ? AND ref_produto = ?";
+                            if(mysqli_stmt_prepare($stmt,$query)){
+                                mysqli_stmt_bind_param($stmt,'iii',$qty,$id_da_compra,$id_de_produto);
+                                if(mysqli_stmt_execute($stmt)){
+                                    $rd_to = 'Location: store-product.php?id='.$id_de_produto;
+                                    header($rd_to);
+                                }
+                            }
+                        }
+                        else{
+                            //acrescentar ao compra_has_produto
+                            $qtd = 1;
+                            $query = "INSERT INTO compras_has_produto (ref_compra,ref_produto,quantidade,custo_produto) VALUES(?,?,?,?)";
+                            if(mysqli_stmt_prepare($stmt,$query)){
+                                mysqli_stmt_bind_param($stmt,'iiid',$id_da_compra,$id_de_produto,$qtd,$preco);
+                                if(mysqli_stmt_execute($stmt)){
+                                    $rd_to = 'Location: store-product.php?id='.$id_de_produto;
+                                    header($rd_to);
+                                }
+                            }
+                        }
                     }
                 }
             }
