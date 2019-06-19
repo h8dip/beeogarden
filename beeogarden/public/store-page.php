@@ -28,6 +28,12 @@
                 <div class="mySlides fade" id="img2">
                     <img src="img/semente_girassol.jpg" alt="showcase-img">
                 </div>
+                <div class="mySlides fade" id="img3">
+                    <img src="img/produto-2.jpg" alt="showcase-img">
+                </div>
+                <div class="mySlides fade" id="img4">
+                    <img src="img/produto-4.jpg" alt="showcase-img">
+                </div>
                 <a class="prev" id="prev">&#10094;</a>
                 <a class="next" id="next">&#10095;</a>
             </div>

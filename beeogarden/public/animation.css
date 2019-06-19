@@ -96,10 +96,18 @@
     top:30%;
 }
 
+#prev:hover{
+    background-color: var(--hover-color);
+}
+
 #next{
     position:absolute;
     left:85%;
     top:30%;
+}
+
+#next:hover{
+    background-color: var(--hover-color);
 }
 
 .fade {
@@ -117,5 +125,34 @@
 @keyframes fade {
     from {opacity: .4} 
     to {opacity: 1}
+}
+
+
+/* MEDIA QUERIES */
+
+/* tablet */
+@media (min-width: 600px) {
+    .prev, .next {
+        padding: 0.5vw 2vw;
+        font-size: 4vw;
+    }
+
+    #next{
+        top:45%;
+        left:90%;
+    }
+
+    #prev{
+        top:45%;
+        left:5%;
+    }
+}
+
+/* computador */
+@media (min-width: 1025px) {
+    .prev, .next {
+        padding: 0.5vw 1vw;
+        font-size:2vw;
+    }
 }
 
