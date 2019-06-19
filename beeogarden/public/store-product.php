@@ -15,7 +15,8 @@
 <body>
     <div id="product-details-container" style="padding-bottom: 10vh">
 
-        <?php 
+        <?php
+            session_start(); 
             $current_page='store';
             include_once "components/navbar.php"; 
         
@@ -24,7 +25,7 @@
             
             $link = new_db_connection();
             $stmt = mysqli_stmt_init($link);
-            
+
             if(isset($_GET['id'])){
                 if(is_numeric($_GET['id'])){
                     $query = "SELECT img_path, nome_produto, descricao_produto, dimensoes, beecount, preco FROM produto WHERE id_produto = ?";
@@ -53,7 +54,86 @@
                             }
                         }
                     }
+            }
+
+            if(isset($_GET['action'])){
+                if(is_string($_GET['action'])){
+                    //add to cart!
+                    $user = $_SESSION['username'];
+                    $query = "SELECT id_utilizador FROM utilizador WHERE utilizador LIKE ?";
+                    if(mysqli_stmt_prepare($stmt,$query)){
+                        mysqli_stmt_bind_param($stmt,'s',$user);
+                        if(mysqli_stmt_execute($stmt)){
+                            mysqli_stmt_bind_result($stmt,$id_utilizador);
+                            if(mysqli_stmt_fetch($stmt)){
+
+                            }
+                        }
+                    }
+                    $query = "SELECT COUNT(*) FROM compras WHERE ref_Utilizador = ?";
+                    if(mysqli_stmt_prepare($stmt,$query)){
+                        mysqli_stmt_bind_param($stmt,'i',$id_utilizador);
+                        if(mysqli_stmt_execute($stmt)){
+                            mysqli_stmt_bind_result($stmt,$presenca);
+                            if(mysqli_stmt_fetch($stmt)){
+                                
+                            }
+                        }
+                    }
+
+                    if($presenca > 0){
+                        //tem compras, no entanto uma delas pode estar em aberto aka carrinho.
+                        $query = "SELECT COUNT(*) FROM compras WHERE ref_Utilizador = ? AND data_compra = NULL";
+                        if(mysqli_stmt_prepare($stmt,$query)){
+                            mysqli_stmt_bind_param($stmt,'i',$id_utilizador);
+                            if(mysqli_stmt_execute($stmt)){
+                                mysqli_stmt_bind_result($stmt,$carrinho);
+                                if(mysqli_stmt_fetch($stmt)){
+                                    
+                                }
+                            }
+                        }
+                        if($carrinho>=1){
+                            //possui um carrinho, logo vamos editar o mesmo em vez de abrir um novo
+                            $has_carrinho = true;
+                        }else{
+                            //nao possui , vamos abrir um carrinho novo
+                            $has_carrinho = false;
+                        }
+                    }
+                    else{
+                        //nao tem sequer compras por isso podemos abrir uma em aberto
+                        $has_carrinho = false;
+                    }
+
+                    if(isset($_GET['id'])){
+                        if(is_numeric($_GET['id'])){
+                            $id_de_produto = $_GET['id'];
+                        }
+                    }
+                    if(!$has_carrinho){
+                        //criar carrinho e inserir compra
+                        $query = "INSERT INTO compras VALUES(?,?)";
+                        if(mysqli_stmt_prepare($stmt,$query)){
+                            mysqli_stmt_bind_param($stmt,'di',$preco,$id_utilizador);
+                            if(mysqli_stmt_execute($stmt)){
+                                //grab last id.
+                                $last_id = mysqli_insert_id($link);
+                            }
+                        }
+                        $qtd = 1;
+                        $query = "INSERT INTO compras_has_produto VALUES(?,?,?,?)";
+                        if(mysqli_stmt_prepare($stmt,$query)){
+                            mysqli_stmt_bind_param($stmt,'iiid',$last_id,$id_de_produto,$qtd,$preco);
+                            if(mysqli_stmt_execute($stmt)){
+                                //success
+                            }
+                        }
+                    }else{
+                        //modificar compra existente.
+                    }
                 }
+            }
         ?>
 
         <div id="store-product-image">
@@ -150,7 +230,7 @@
             </div>
         </div>
         <div id="add-cart-button">
-            <a>Adicionar ao carrinho</a>
+            <a href=<?='"store-product.php?action=add&id='.$_GET['id'].'"'?>>Adicionar ao carrinho</a>
         </div>
     </div>
     <script src="main.js"></script>
