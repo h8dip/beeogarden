@@ -10,7 +10,7 @@
     <link href="animation.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/9327c61162.js"></script>
-    <title>beeogarden | Loja</title>
+    <title>beeogarden | Carrinho de Compras</title>
 </head>
 <body>
     <div id="cart-container">

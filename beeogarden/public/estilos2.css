@@ -183,3 +183,127 @@ body { overflow: -moz-scrollbars-none; }
     background-color: var(--primary-color);
     color: #fff;
 }
+
+/* Ranking */
+
+#ranking-container nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#ranking-container{
+    display: grid;
+    grid-template-columns: 100vw;
+    grid-template-rows: 10vh 33.33vw;
+}
+
+#top-three{
+    display: grid;
+    grid-template-columns: 33.33vw 33.33vw 33.33vw;
+}
+
+#top-three div{
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+#top-three div:nth-child(1){
+    margin: 20%;
+}
+
+#top-three div:nth-child(3){
+    margin: 13%;
+}
+
+#top-three div img{
+    position: absolute;
+    margin: auto;
+    top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    width: auto !important;
+    height: 100% !important;
+}
+
+#top-beeofriends{
+    border-radius: 5vh 5vh 0 0;
+    margin-top: -10vh;
+    justify-content: center;
+    background-color: #FBC02D;
+    display: grid;
+    grid-template-rows: 20vh;
+    grid-auto-rows: 15vh; 
+    grid-template-columns: 100vw;
+}
+
+#top-beeofriends-title{
+    display: flex;
+    align-items: flex-end;
+    color: #fff;
+    border-bottom: #fff solid 0.5vh;
+    justify-content: center;
+    margin: 0 4vw;
+    margin-bottom: 3vh;
+}
+
+#h1-title{
+    padding-top: 10%;
+}
+
+.ranking-spot{
+    display: grid;
+    grid-template-columns: 20% 55% 25%;
+    margin: 0.7vh 4vw;
+    border-radius: 3vh;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.ranking-num{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: var(--primary-color) 0.4vh solid;
+    margin: 7% 0;
+}
+
+.ranking-name{
+    display: grid;
+    grid-template-rows: 50% 50%;
+}
+
+.ranking-name div:first-child{
+    display: flex;
+    align-items: center;
+    padding-left: 5%;
+}
+
+.ranking-name div:nth-child(2){
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 5%;
+}
+
+.ranking-name div:nth-child(2) img{
+    width: 10%;
+    margin-left: 5%;
+}
+
+.ranking-foto{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ranking-foto img{
+    border-radius: 50%;
+    width: 75%;
+    border: #fff 0.3vh solid;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
