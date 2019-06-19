@@ -22,19 +22,16 @@
         <div id="showcase-store">
         
             <div id="showcase-image">
-                <div class="mySlides fade" id="img-1">
+                <div class="mySlides fade" id="img1">
                     <img src="img/bee-house.PNG" alt="showcase-img">
                 </div>
-                <div class="mySlides fade" id="img-2">
+                <div class="mySlides fade" id="img2">
                     <img src="img/semente_girassol.jpg" alt="showcase-img">
                 </div>
-                <a class="prev">&#10094;</a>
-                <a class="next">&#10095;</a>
+                <a class="prev" id="prev">&#10094;</a>
+                <a class="next" id="next">&#10095;</a>
             </div>
-            <div>
-                <!-- <i id="showcase-left" class="fas fa-chevron-circle-left"></i>
-                <i id="showcase-right" class="fas fa-chevron-circle-right"></i> -->
-            </div>
+        
         </div>
         <div id="filter-store">
             <i class="fas fa-chevron-right"></i>

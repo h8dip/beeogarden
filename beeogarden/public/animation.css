@@ -73,36 +73,33 @@
     border-bottom: #fff solid 0.3vw;
 }
 
-#sowcase-left{
-    position:absolute;
-    top: 600px;
-}
-
-#showcase-left:hover{
-    cursor:pointer;
-}
-
-#showcase-right:hover{
-    cursor:pointer;
-}
-
 .mySlides {
     display: none;
 }
 
 .prev, .next {
     cursor: pointer;
-    position: absolute;
-    top: 50%;
     width: auto;
-    margin-top: -22px;
-    padding: 16px;
+    padding: 2vw 4vw;
     color: white;
+    background-color: var(--primary-color);
     font-weight: bold;
-    font-size: 18px;
+    font-size: 5vw;
     transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
+    border-radius: 50%;
     user-select: none;
+}
+
+#prev{
+    position:absolute;
+    left:2%;
+    top:30%;
+}
+
+#next{
+    position:absolute;
+    left:85%;
+    top:30%;
 }
 
 .fade {
@@ -110,26 +107,15 @@
     -webkit-animation-duration: 1.5s;
     animation-name: fade;
     animation-duration: 1.5s;
-  }
+}
   
-  @-webkit-keyframes fade {
+@-webkit-keyframes fade {
     from {opacity: .4} 
     to {opacity: 1}
-  }
+}
   
-  @keyframes fade {
+@keyframes fade {
     from {opacity: .4} 
     to {opacity: 1}
-  }
-
-.prev{
-    position:absolute;
-    left:0;
-    top:50%;
 }
 
-.next{
-    position:absolute;
-    left:90%;
-    top:50%;
-}
