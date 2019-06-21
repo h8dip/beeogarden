@@ -13,42 +13,97 @@
     <title>beeogarden | Carrinho de Compras</title>
 </head>
 <body>
+    <?php 
+        session_start();
+
+        require_once "connections/connection.php";
+
+        $link = new_db_connection();
+        $stmt = mysqli_stmt_init($link);
+
+        if(isset($_SESSION['username'])){
+            $nome_utilizador = $_SESSION['username'];
+
+        }
+        $query = "SELECT id_utilizador FROM utilizador WHERE utilizador LIKE ?";
+        if(mysqli_stmt_prepare($stmt,$query)){
+            mysqli_stmt_bind_param($stmt,'s',$nome_utilizador);
+            if(mysqli_stmt_execute($stmt)){
+                mysqli_stmt_bind_result($stmt,$id_utilizador);
+                if(mysqli_stmt_fetch($stmt)){
+                    
+                }
+            }
+        }
+
+        $query = "SELECT COUNT(*) FROM compras WHERE ref_Utilizador = ? AND data_compra IS NULL OR data_compra = ' '";
+        if(mysqli_stmt_prepare($stmt,$query)){
+            mysqli_stmt_bind_param($stmt,'i',$id_utilizador);
+            if(mysqli_stmt_execute($stmt)){
+                mysqli_stmt_bind_result($stmt,$carrinho);
+                if(mysqli_stmt_fetch($stmt)){
+                   
+                }
+            }
+        }
+
+        if($carrinho >= 1){
+            //pogchamp
+            $query = "SELECT id_compra, preco_total FROM compras WHERE ref_Utilizador = ? AND data_compra IS NULL or data_compra = ' '";
+            if(mysqli_stmt_prepare($stmt,$query)){
+                mysqli_stmt_bind_param($stmt,'i',$id_utilizador);
+                if(mysqli_stmt_execute($stmt)){
+                    mysqli_stmt_bind_result($stmt,$id_compra,$preco_total);
+                    if(mysqli_stmt_fetch($stmt)){
+                        //temos agr id da compra e preço total.   
+                    }
+                }
+            }
+        }
+        else{
+            
+        }
+    ?> 
     <div id="cart-container">
         <h1>O MEU CARRINHO</h1>
         <div id="cart-products">
-            <div class="product-cart">
-                <input type="checkbox">
-                <div class="cart-products-img-container">
-                    <img src="img/bee-house.PNG" alt="beehouse">
-                </div>
-                <div class="product-cart-info">
-                    <h3>Casinha para abelhas</h3>
-                    <div>QTD:1</div>
-                    <h2>44,99€</h2>
-                </div>
-            </div>
-            <div class="product-cart">
-                <input type="checkbox">
-                <div class="cart-products-img-container">
-                    <img src="img/bee-house.PNG" alt="beehouse">
-                </div>
-                <div class="product-cart-info">
-                    <h3>Casinha para abelhas</h3>
-                    <div>QTD:1</div>
-                    <h2>44,99€</h2>
-                </div>
-            </div>
-            <div class="product-cart">
-                <input type="checkbox">
-                <div class="cart-products-img-container">
-                    <img src="img/bee-house.PNG" alt="beehouse">
-                </div>
-                <div class="product-cart-info">
-                    <h3>Casinha para abelhas</h3>
-                    <div>QTD:1</div>
-                    <h2>44,99€</h2>
-                </div>
-            </div>
+        <?php 
+            if($carrinho >=1){
+            $array_produtos = array();
+            $query = "SELECT quantidade, custo_produto, nome_produto, img_path FROM compras_has_produto INNER JOIN produto ON ref_produto = id_produto WHERE ref_compra = ?";
+            if(mysqli_stmt_prepare($stmt,$query)){
+                mysqli_stmt_bind_param($stmt,'i',$id_compra);
+                if(mysqli_stmt_execute($stmt)){
+                    mysqli_stmt_bind_result($stmt,$quantidade,$custo_produto,$nome_produto,$img_path);
+                    while(mysqli_stmt_fetch($stmt)){
+
+                        $img_p = explode(';',$img_path);
+                        $img_p = $img_p[0];
+
+                        echo '<div class="product-cart">';
+                        echo '<input type="checkbox" checked>';
+                        echo '<div class="cart-products-img-container">';
+                        echo '<img src="'.$img_p.'"" alt="alt">';
+                        echo '</div>';
+                        echo '<div class="product-cart-info">';
+                        echo '<h3>'.$nome_produto.'</h3>';
+                        echo '<div>QTD:'.$quantidade.'</div>';
+                        echo '<h2>'.($quantidade*$custo_produto).'€</h2>';
+                        echo '</div></div>';
+
+                        for($i=1;$i <= $quantidade;$i++){
+                            array_push($array_produtos, array($nome_produto => $custo_produto));
+                        }
+                    }
+                }
+            }
+        }else{
+            echo '<div class="product-cart">';
+            echo '<div class="product-cart-info">';
+            echo '<h3>Ainda não tens produtos no carrinho.</h3>';
+            echo '</div></div>';
+        }
+        ?>
             <div class="line">
                 <div class="dotted-line"></div>
             </div>
@@ -58,26 +113,26 @@
     <div id="price-pay">
         <h2>Preço a pagar</h2>
         <div id="price-pay-info">
-            <div class="product-buy">
-                <h3>Casinha para abelhas</h3>
-                <h2>44,99€</h2>
-            </div>
-            <div class="product-buy">
-                <h3>Casinha para abelhas</h3>
-                <h2>44,99€</h2>
-            </div>
-            <div class="product-buy">
-                <h3>Casinha para abelhas</h3>
-                <h2>44,99€</h2>
-            </div>
-            <div class="portes-envio">
-                <h3>Portes de Envio</h3>
-                <h2>5,99€</h2>
-            </div>
-            <div class="iva">
-                <h3>IVA</h3>
-                <h2>1,99€</h2>
-            </div>
+        <?php
+            if($carrinho>=1){ 
+            foreach($array_produtos as $arr){
+                foreach($arr as $key => $value){
+                echo '<div class="product-buy">';
+                echo '<h3>'.$key.'</h3>';
+                echo '<h2>'.$value.'€</h2>';
+                echo '</div>';
+            }
+        
+        }
+
+            echo '<div class="iva">';
+            echo '<h3>IVA</h3>';
+            $iva_val = $preco_total * 0.13;
+            $preco_total += $iva_val;
+            echo '<h2>'.$iva_val.'€</h2>';
+            echo '</div>';
+        }
+        ?>
             <div class="line">
                 <div class="dotted-line"></div>
             </div>
@@ -89,7 +144,11 @@
         <div id="total-info">
             <div class="total-buy">
                 <h3>Total</h3>
-                <h2>52,97€</h2>
+                <h2>
+                <?php if($carrinho>=1){
+                    echo $preco_total.'€';}
+                ?>
+                </h2>
             </div>
             <div class="line">
                 <div class="dotted-line"></div>
@@ -98,8 +157,17 @@
     </div>
 
     <div id="buy-btn">
-        <div><h2>CANCELAR</h2></div>
-        <div><h2>FINALIZAR COMPRA</h2></div>
+   
+        <div><a href="profile-page.php"><h2>CANCELAR</h2></a></div>
+        <?php 
+        if($carrinho>=1){
+            $link = "scripts/end_purchase.php?id=".$id_compra;
+            
+        }else{
+            $link = "#";
+        }
+    ?>
+        <div><a href=<?=$link?>><h2>FINALIZAR COMPRA</h2></a></div>
     </div>
 
 
