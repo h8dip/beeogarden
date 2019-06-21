@@ -8,9 +8,12 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Thasadith:400,400i,700,700i&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="animation.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
 
 </head>
 <body>
+    <?php include_once "components/loader.php"; ?>
     <div id="welcome-container">
         <div id="welcome-text">
             <div id="welcome-logo">
@@ -27,5 +30,6 @@
             <a href="register-page.php"><button class="btn-secondary">Registar</button></a>
         </div>
     </div>
+    <script src="main.js"></script>
 </body>
 </html>

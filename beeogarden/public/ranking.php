@@ -15,6 +15,9 @@
 </head>
 <body>
 
+    <?php include_once "components/loader.php"; ?>
+
+
 <div id="ranking-container">
     <?php
         $current_page='ranking';

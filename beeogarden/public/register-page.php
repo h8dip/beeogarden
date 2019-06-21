@@ -7,10 +7,12 @@
     <title>beeogarden | Registe-se</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Thasadith:400,400i,700,700i&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilos.css">
-    <link rel="stylesheet" href="estilos-temporary.css">
+    <link rel="stylesheet" href="animation.css">
 
 </head>
 <body>
+
+    <?php include_once "components/loader.php"; ?>
 
     <div id="register-container">
         <div id="upper-text">
@@ -38,5 +40,7 @@
             <p>Já tens uma conta? <a class="highlight-text" href="login-page.php">Faz login</a></p>
         </div>
     </div>
+    
+    <script src="main.js"></script>
 </body>
 </html>

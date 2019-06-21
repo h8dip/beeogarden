@@ -15,7 +15,9 @@
 
 </head>
 <body>
-    <nav></nav>
+
+    <?php include_once "components/loader.php"; ?>
+
     <div id="container-info">
         <?php
             $current_page='info';

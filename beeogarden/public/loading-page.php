@@ -13,21 +13,6 @@
 
     <div id="container-loading">
         <div id="logo-loading">
-                <!-- <div class="loading">
-                        <div>b</div>
-                        <div>e</div>
-                        <div>e</div>
-                        <div>o</div>
-                        <div>g</div>
-                        <div>a</div>
-                        <div>r</div>
-                        <div>d</div>
-                        <div>e</div>
-                        <div>n</div>
-                        <div>
-                            <img src="img/bee.png" alt="">
-                        </div>
-                </div> -->
             <img src="img/logo_beeogarden-8.png" alt="Logo">
         </div>
     </div>

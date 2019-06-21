@@ -13,6 +13,8 @@
     <title>beeogarden | Loja</title>
 </head>
 <body>
+
+
     <div id="product-details-container" style="padding-bottom: 10vh">
 
         <?php

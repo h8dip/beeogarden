@@ -30,6 +30,9 @@
         break;
     }
 </script>
+
+    <?php include_once "components/loader.php"; ?>
+
     <div id="login-container">
         <div id="upper-login-text">
             <div>
@@ -48,6 +51,7 @@
             <p>Ainda não tens uma conta? <a class="highlight-text" href="register-page.php">Regista-te!</a></p>
         </div>
     </div>
-    
+
+    <script src="main.js"></script>
 </body>
 </html>

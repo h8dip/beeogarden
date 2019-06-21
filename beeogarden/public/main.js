@@ -1,5 +1,7 @@
 window.onload=function(){
 
+    document.getElementById("loading-div-container").style.display ="none";
+
     $('#hamburger').click(function(){
         $('#hamburger').toggleClass("is-active");
     });
