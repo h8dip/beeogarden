@@ -1,3 +1,5 @@
+
+/* LOGIN EGISTO E ENTRAR  */
 .btn-primary:hover{
     background-color: var(--hover-color);
     cursor: pointer;
@@ -23,6 +25,8 @@
     cursor:pointer;
     font-weight: bold;
 }
+
+/* LOJA */
 
 .overlay {
     position: absolute;
@@ -61,6 +65,8 @@
     border-radius: 3vw;
 }
 
+/* NAVBAR */
+
 .nav-active{
     border-bottom: #fff solid 0.3vw;
 }
@@ -69,9 +75,28 @@
     border-bottom: #fff solid 0.3vw;
 }
 
+.fa-shopping-cart:hover{
+    opacity: 0.7;
+}    
+
+/* PERFIL */
+
+.campos:hover{
+    box-shadow: 5px 10px 10px  #f4f4f4;
+    cursor: pointer;
+}    
+
+.fa-comment:hover{
+   color: var(--primary-color);
+   cursor: pointer;
+}
+
+
+/* CAROUSSEL LOJA */
+
 .mySlides {
     display: none;
-}
+}    
 
 .prev, .next {
     cursor: pointer;
@@ -84,54 +109,47 @@
     transition: 0.6s ease;
     border-radius: 50%;
     user-select: none;
-}
+}    
 
 #prev{
     position:absolute;
     left:2%;
     top:30%;
-}
+}    
 
 #prev:hover{
     background-color: var(--hover-color);
-}
+}    
 
 #next{
     position:absolute;
     left:85%;
     top:30%;
-}
+}    
 
 #next:hover{
     background-color: var(--hover-color);
-}
+}    
 
 .fade {
     -webkit-animation-name: fade;
     -webkit-animation-duration: 1.5s;
     animation-name: fade;
     animation-duration: 1.5s;
-}
+}    
   
 @-webkit-keyframes fade {
     from {opacity: .4} 
     to {opacity: 1}
-}
+}    
   
 @keyframes fade {
     from {opacity: .4} 
     to {opacity: 1}
-}
+}    
 
-.fa-comment:hover{
-   color: var(--primary-color);
-}
 
-.fa-shopping-cart:hover{
-    opacity: 0.7;
-}
-
-/* MEDIA QUERIES */
+/* MEDIA QUERIES ------------------------------------------------------------------------------------*/
 
 /* tablet */
 @media (min-width: 600px) {
