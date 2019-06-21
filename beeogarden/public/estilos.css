@@ -420,6 +420,7 @@ body{
 }
 
 .campo #lower-campo{
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -1010,6 +1011,7 @@ nav #shopping-cart{
 
     .campo{
         width: 45vw;
+        grid-template-columns: 100%;
     }
 
     /* Product */
