@@ -237,8 +237,8 @@ body { overflow: -moz-scrollbars-none; }
     background-color: #FBC02D;
     display: grid;
     grid-template-rows: 20vh;
-    grid-auto-rows: 15vh; 
     grid-template-columns: 100vw;
+    padding-bottom: 5vh;
 }
 
 #top-beeofriends-title{
@@ -306,4 +306,36 @@ body { overflow: -moz-scrollbars-none; }
     width: 75%;
     border: #fff 0.3vh solid;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+@media (min-width: 1025px) {
+    #top-three{
+        grid-template-columns: 24vw 24vw 24vw;
+        margin: 0 14vw;
+    }
+
+    #ranking-container{
+        grid-template-rows: 20vh 24vw;
+    }
+
+    #ranking-container nav{
+        margin-bottom: 10vh;
+    }
+
+    #top-beeofriends{
+        grid-auto-rows: 25vh;
+        grid-template-rows: none;
+    }
+
+    .ranking-foto img{
+        width: 40%;
+    }
+
+    .ranking-name div:nth-child(2) img{
+        width: 5%;
+    }
+
+    .ranking-spot{
+        border-radius: 8vh;
+    }
 }
