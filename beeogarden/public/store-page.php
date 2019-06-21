@@ -34,8 +34,8 @@
                 <div class="mySlides fade" id="img4">
                     <img src="img/produto-4.jpg" alt="showcase-img">
                 </div>
-                <a class="prev" id="prev">&#10094;</a>
-                <a class="next" id="next">&#10095;</a>
+                <a class="prev" id="prev"><i class="fas fa-chevron-circle-left"></i></a>
+                <a class="next" id="next"><i class="fas fa-chevron-circle-right"></i></a>
             </div>
         
         </div>
