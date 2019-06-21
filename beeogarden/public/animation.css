@@ -114,7 +114,7 @@
 
 #prev{
     position:absolute;
-    left:2%;
+    left:5%;
     top:30%;
 }    
 
@@ -124,7 +124,7 @@
 
 #next{
     position:absolute;
-    left:85%;
+    left:90%;
     top:30%;
 }    
 
@@ -176,11 +176,21 @@
 /* computador */
 @media (min-width: 1025px) {
     .text{
-        font-size: 3vw;
+        font-size: 2vw;
     }
 
     .prev, .next {
         font-size:2vw;
     } 
+
+    #next{
+        top:45%;
+        left:92%;
+    }
+
+    #prev{
+        top:45%;
+        left:5%;
+    }
 }
 
