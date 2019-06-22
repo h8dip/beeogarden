@@ -245,10 +245,25 @@ svg {
 
 /* CARRINHO */
 
+.checkbox-cart:hover{
+    color:var(--primary-color);
+    background-color: var(--primary-color);
+}
+
+.checkbox-cart{
+    color: var(--primary-color);
+}
+
 #buy-btn a{
     text-decoration:none;
-    color: ;
+    color: #fff;
 }
+
+#buy-btn:hover{
+    cursor: pointer;
+}
+
+
 
 /* MEDIA QUERIES ------------------------------------------------------------------------------------*/
 

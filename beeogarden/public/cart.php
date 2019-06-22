@@ -81,7 +81,7 @@
                         $img_p = $img_p[0];
 
                         echo '<div class="product-cart">';
-                        echo '<input type="checkbox" checked>';
+                        echo '<input class="checkbox-cart" type="checkbox" checked>';
                         echo '<div class="cart-products-img-container">';
                         echo '<img src="'.$img_p.'"" alt="alt">';
                         echo '</div>';
