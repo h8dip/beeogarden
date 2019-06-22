@@ -19,6 +19,7 @@
 
         <?php
             session_start(); 
+            include_once "components/loader.php";
             $current_page='store';
             include_once "components/navbar.php"; 
         

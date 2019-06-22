@@ -16,18 +16,15 @@
     <script src="https://kit.fontawesome.com/9327c61162.js"></script>
 </head>
 <body>
-    
-    <?php include_once "components/loader.php"; ?>
 
     <div id="profile-container">
-        <?php
-            $current_page='profile'; 
-            include_once "components/navbar.php";
-            
-        ?>
+    
         <?php
 
             session_start();
+            include_once "components/loader.php";
+            $current_page='profile'; 
+            include_once "components/navbar.php";
 
             require_once "connections/connection.php";
             
