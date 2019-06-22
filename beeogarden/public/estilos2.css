@@ -318,6 +318,18 @@ body { overflow: -moz-scrollbars-none; }
     height: 100%;
 }
 
+#navbar-container-map{
+    height: 10vh;
+}
+
+#navbar-container-map nav{
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
 @media (min-width: 1025px) {
     #top-three{
         grid-template-columns: 24vw 24vw 24vw;

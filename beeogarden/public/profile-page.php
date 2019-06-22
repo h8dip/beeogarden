@@ -20,7 +20,6 @@
     <div id="profile-container">
     
         <?php
-
             session_start();
             $current_page='profile'; 
             include_once "components/navbar.php";
