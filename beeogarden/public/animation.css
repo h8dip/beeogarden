@@ -111,7 +111,6 @@
 } 
 
 
-
 #prev{
     position:absolute;
     left:5%;
@@ -227,6 +226,43 @@ svg {
 .bee-icon, .circle {
   fill: #ffffff; 
 }
+
+
+/* PRODUTO LOJA */
+
+#add-cart-button a{
+    text-decoration: none;
+    color: #fff;
+}
+
+#add-cart-button:hover{
+    cursor:pointer;
+}
+
+#add-cart-button a:hover{
+    border-bottom: #fff solid 0.3vw;
+}
+
+/* CARRINHO */
+
+.checkbox-cart:hover{
+    color:var(--primary-color);
+    background-color: var(--primary-color);
+}
+
+.checkbox-cart{
+    color: var(--primary-color);
+}
+
+#buy-btn a{
+    text-decoration:none;
+    color: #fff;
+}
+
+#buy-btn:hover{
+    cursor: pointer;
+}
+
 
 
 /* MEDIA QUERIES ------------------------------------------------------------------------------------*/
