@@ -152,8 +152,16 @@
         var marker = new google.maps.Marker({
           position: myLatLng,
           map: map,
-          title: 'Hello World!',
+          title: 'Universidade de Aveiro',
           icon: 'img/map-icon.png'
+        });
+
+        var myLatLng2 = {lat: 40.627148, lng: -8.649985};
+        new google.maps.Marker({
+            position: myLatLng2,
+            map:map,
+            title: 'Campinho do Marco',
+            icon: 'img/map-icon.png'
         });
         
         map.mapTypes.set('styled_map', styledMapType);
