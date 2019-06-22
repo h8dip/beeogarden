@@ -14,10 +14,10 @@
 </head>
 
 <body style="overflow-y: auto">
-
-    <?php include_once "components/loader.php"; ?>
-
-    <div id="container-loja">
+        
+        <?php include_once "components/loader.php"; ?>
+        
+    <div id="container-loja" class="hide-loading">
         <?php
             $current_page='store';
             include_once "components/navbar.php";

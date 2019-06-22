@@ -70,18 +70,18 @@
         <?php 
             if($carrinho >=1){
             $array_produtos = array();
-            $query = "SELECT quantidade, custo_produto, nome_produto, img_path FROM compras_has_produto INNER JOIN produto ON ref_produto = id_produto WHERE ref_compra = ?";
+            $query = "SELECT quantidade, custo_produto, nome_produto, img_path,id_produto FROM compras_has_produto INNER JOIN produto ON ref_produto = id_produto WHERE ref_compra = ?";
             if(mysqli_stmt_prepare($stmt,$query)){
                 mysqli_stmt_bind_param($stmt,'i',$id_compra);
                 if(mysqli_stmt_execute($stmt)){
-                    mysqli_stmt_bind_result($stmt,$quantidade,$custo_produto,$nome_produto,$img_path);
+                    mysqli_stmt_bind_result($stmt,$quantidade,$custo_produto,$nome_produto,$img_path,$p_id);
                     while(mysqli_stmt_fetch($stmt)){
 
                         $img_p = explode(';',$img_path);
                         $img_p = $img_p[0];
 
                         echo '<div class="product-cart">';
-                        echo '<input class="checkbox-cart" type="checkbox" checked>';
+                        echo '<a class="delete-btn" href="scripts/remove_item.php?c_id='.$id_compra.'&p_id='.$p_id.'"><i class="fas fa-trash-alt"></i></a>';
                         echo '<div class="cart-products-img-container">';
                         echo '<img src="'.$img_p.'"" alt="alt">';
                         echo '</div>';

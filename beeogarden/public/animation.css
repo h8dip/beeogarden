@@ -1,5 +1,5 @@
 
-/* LOGIN EGISTO E ENTRAR  */
+/* LOGIN REGISTO E ENTRAR  */
 .btn-primary:hover{
     background-color: var(--hover-color);
     cursor: pointer;
@@ -86,6 +86,24 @@
 
 /* PERFIL */
 
+#img-perfil a:hover{
+    cursor:pointer;
+}
+
+.fa-pencil-alt{
+    position: absolute;
+    top: 9%;
+    left: 62%;
+    color: #fff;
+    background-color: var(--primary-color);
+    padding: 2%;
+    border-radius: 50%;
+}
+
+.fa-pencil-alt:hover{
+    background-color: var(--hover-color);
+}
+
 .campo:hover{
     box-shadow: 0.1vw 0.2vw 15px #606060;
     cursor: pointer;
@@ -155,6 +173,10 @@
 
 
 /* LOADING */
+
+.hide-loading{
+    display:none;
+}
 
 #loading-div-container{
     display: flex;
@@ -250,6 +272,19 @@ svg {
 
 /* CARRINHO */
 
+.delete-btn{
+    text-decoration: none;
+}
+
+.fa-trash-alt{
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+.fa-trash-alt:hover{
+    color:  var(--hover-color);
+}
+
 #buy-btn a{
     text-decoration:none;
     color: #fff;
@@ -257,6 +292,14 @@ svg {
 
 #buy-btn:hover{
     cursor: pointer;
+}
+
+#buy-btn div:first-child:hover{
+    background-color: darkgray;
+}
+
+#buy-btn div:last-child:hover{
+    background-color: rgb(252, 200, 71);
 }
 
 
@@ -282,6 +325,11 @@ svg {
         top:45%;
         left:5%;
     }
+
+    .fa-pencil-alt{
+        top: 9%;
+        left: 59%;
+    }
 }
 
 /* computador */
@@ -303,5 +351,13 @@ svg {
         top:45%;
         left:5%;
     }
+
+    .fa-pencil-alt{
+        top: 13%;
+        left: 29%;
+        padding: 1%;
+        font-size: 1.6rem;
+    }
+
 }
 
