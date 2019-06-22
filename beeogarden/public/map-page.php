@@ -29,7 +29,10 @@
 
 <body>
     <div id="navbar-container-map">
-        <?php include_once "components/navbar.php" ?> 
+        <?php
+        $current_page='map';
+        include_once "components/navbar.php";
+        ?> 
     </div>
     <div id="map"></div>    
 
