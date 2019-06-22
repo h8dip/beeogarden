@@ -259,6 +259,14 @@ svg {
     cursor: pointer;
 }
 
+#buy-btn div:first-child:hover{
+    background-color: darkgray;
+}
+
+#buy-btn div:last-child:hover{
+    background-color: rgb(252, 200, 71);
+}
+
 
 
 /* MEDIA QUERIES ------------------------------------------------------------------------------------*/
