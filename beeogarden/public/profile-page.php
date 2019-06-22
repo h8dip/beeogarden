@@ -16,8 +16,6 @@
     <script src="https://kit.fontawesome.com/9327c61162.js"></script>
 </head>
 <body>
-    
-    <!-- <?php include_once "components/loader.php"; ?> -->
 
     <div id="profile-container">
     
