@@ -1,7 +1,7 @@
 window.onload=function(){
 
     document.getElementById("loading-div-container").style.display ="none";
-    // $(#)
+    // $('#container-loja').removeClass('hide-loading');
 
     $('#hamburger').click(function(){
         $('#hamburger').toggleClass("is-active");

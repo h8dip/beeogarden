@@ -1,5 +1,5 @@
 
-/* LOGIN EGISTO E ENTRAR  */
+/* LOGIN REGISTO E ENTRAR  */
 .btn-primary:hover{
     background-color: var(--hover-color);
     cursor: pointer;
@@ -173,6 +173,10 @@
 
 
 /* LOADING */
+
+.hide-loading{
+    display:none;
+}
 
 #loading-div-container{
     display: flex;
