@@ -111,7 +111,6 @@
 } 
 
 
-
 #prev{
     position:absolute;
     left:5%;
@@ -228,6 +227,28 @@ svg {
   fill: #ffffff; 
 }
 
+
+/* PRODUTO LOJA */
+
+#add-cart-button a{
+    text-decoration: none;
+    color: #fff;
+}
+
+#add-cart-button:hover{
+    cursor:pointer;
+}
+
+#add-cart-button a:hover{
+    border-bottom: #fff solid 0.3vw;
+}
+
+/* CARRINHO */
+
+#buy-btn a{
+    text-decoration:none;
+    color: ;
+}
 
 /* MEDIA QUERIES ------------------------------------------------------------------------------------*/
 
