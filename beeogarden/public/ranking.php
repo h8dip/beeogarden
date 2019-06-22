@@ -15,7 +15,20 @@
 </head>
 <body>
 
-    <?php include_once "components/loader.php"; ?>
+    <?php 
+    session_start();
+
+    require_once "connections/connection.php";
+            
+    $link = new_db_connection();
+    $stmt = mysqli_stmt_init($link);
+
+    if(!isset($_SESSION['username'])){
+        header('Location: login-page.php');
+    }else{
+        $p_granted = true;
+    }
+    ?>
 
 
 <div id="ranking-container">
@@ -25,100 +38,74 @@
     ?>
 
     <div id="top-three">
-        <div>
-            <img src="img/miguel.png" alt="">
-        </div>
-        <div>
-            <img src="img/marco_admin_imagem-perfil.png" alt="">    
-        </div>
-        <div>
-            <img src="img/greta.png" alt="">    
-        </div>
+    <?php 
+        //selecionar os top 3 img path
+        if($p_granted){
+            $query = "SELECT foto_perfil FROM utilizador ORDER BY beeopoints DESC LIMIT 0,3";
+            if(mysqli_stmt_prepare($stmt,$query)){
+                if(mysqli_stmt_execute($stmt)){
+                    mysqli_stmt_bind_result($stmt,$img);
+                    $counter=0;
+                    while(mysqli_stmt_fetch($stmt)){
+                        $counter++;
+                        if($counter==1){
+                            $number1_pic = $img;
+                        }else if ($counter==2){
+                            if($number1_pic == ""){$number1_pic = "img/bee-house.PNG";}
+                            if($img==""){$img="img/bee-house.PNG";}
+                            echo '<div>';
+                            echo '<img src="'.$img.'" alt="">';
+                            echo '</div>';
+                            echo '<div>';
+                            echo '<img src="'.$number1_pic.'" alt="">';
+                            echo '</div>';
+                        }else{
+                            if($img==""){$img="img/bee-house.PNG";}
+                            echo '<div>';
+                            echo '<img src="'.$img.'" alt="">';
+                            echo '</div>';
+                        }
+                    }
+                }
+            }
+        }
+    ?>
     </div>
 
     <div id="top-beeofriends">
         <div id="top-beeofriends-title">
             <h1 id="h1-title">TOP BEEOFRIENDS</h1>
         </div>
-
-        <div class="ranking-spot">
-            <div class="ranking-num"><h1>1</h1></div>
-            <div class="ranking-name">
-                <div><h2>Marco Pereira</h2></div>
-                <div>
-                    <h3>1347</h3>
-                    <img src="img/beeopoints.png" alt=""> 
-                </div>
-            </div>
-            <div class="ranking-foto">
-                <img src="img/marco_admin_imagem-perfil.png" alt="">    
-            </div>
-        </div>
-        <div class="ranking-spot">
-            <div class="ranking-num"><h1>1</h1></div>
-            <div class="ranking-name">
-                <div><h2>Marco Pereira</h2></div>
-                <div>
-                    <h3>1347</h3>
-                    <img src="img/beeopoints.png" alt=""> 
-                </div>
-            </div>
-            <div class="ranking-foto">
-                <img src="img/marco_admin_imagem-perfil.png" alt="">    
-            </div>
-        </div>
-        <div class="ranking-spot">
-            <div class="ranking-num"><h1>1</h1></div>
-            <div class="ranking-name">
-                <div><h2>Marco Pereira</h2></div>
-                <div>
-                    <h3>1347</h3>
-                    <img src="img/beeopoints.png" alt=""> 
-                </div>
-            </div>
-            <div class="ranking-foto">
-                <img src="img/marco_admin_imagem-perfil.png" alt="">    
-            </div>
-        </div>
-        <div class="ranking-spot">
-            <div class="ranking-num"><h1>1</h1></div>
-            <div class="ranking-name">
-                <div><h2>Marco Pereira</h2></div>
-                <div>
-                    <h3>1347</h3>
-                    <img src="img/beeopoints.png" alt=""> 
-                </div>
-            </div>
-            <div class="ranking-foto">
-                <img src="img/marco_admin_imagem-perfil.png" alt="">    
-            </div>
-        </div>
-        <div class="ranking-spot">
-            <div class="ranking-num"><h1>1</h1></div>
-            <div class="ranking-name">
-                <div><h2>Marco Pereira</h2></div>
-                <div>
-                    <h3>1347</h3>
-                    <img src="img/beeopoints.png" alt=""> 
-                </div>
-            </div>
-            <div class="ranking-foto">
-                <img src="img/marco_admin_imagem-perfil.png" alt="">    
-            </div>
-        </div>
-        <div class="ranking-spot">
-            <div class="ranking-num"><h1>1</h1></div>
-            <div class="ranking-name">
-                <div><h2>Marco Pereira</h2></div>
-                <div>
-                    <h3>1347</h3>
-                    <img src="img/beeopoints.png" alt=""> 
-                </div>
-            </div>
-            <div class="ranking-foto">
-                <img src="img/marco_admin_imagem-perfil.png" alt="">    
-            </div>
-        </div>
+        <?php 
+            if($p_granted){
+                $query = "SELECT foto_perfil, utilizador, beeopoints FROM utilizador ORDER BY beeopoints DESC";
+                if(mysqli_stmt_prepare($stmt,$query)){
+                    if(mysqli_stmt_execute($stmt)){
+                        mysqli_stmt_bind_result($stmt,$foto,$utilizador,$beeopoints);
+                        $ctr = 0;
+                        while(mysqli_stmt_fetch($stmt)){
+                            $ctr++;
+                            if($foto == "")
+                            {
+                                $foto="img/bee-house.PNG";
+                            }
+                            echo '<div class="ranking-spot">';
+                            echo '<div class="ranking-num"><h1>'.$ctr.'</h1></div>';
+                            echo '<div class="ranking-name">';
+                            echo '<div><h2>'.$utilizador.'</h2></div>';
+                            echo '<div>';
+                            echo '<h3>'.$beeopoints.'</h3>';
+                            echo '<img src="img/beeopoints.png" alt="">';
+                            echo '</div></div>';
+                            echo '<div class="ranking-foto">';
+                            echo '<img src="'.$foto.'" alt="">';
+                            echo '</div>';
+                            echo '</div>';
+                        }
+                    }
+                }
+            }
+        ?> 
     </div>
 </div>
 
