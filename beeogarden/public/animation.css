@@ -75,9 +75,14 @@
     border-bottom: #fff solid 0.3vw;
 }
 
+.fa-shopping-cart{
+    color:#000;
+}
+
 .fa-shopping-cart:hover{
     opacity: 0.7;
 }    
+
 
 /* PERFIL */
 
