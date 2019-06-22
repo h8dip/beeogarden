@@ -9,12 +9,13 @@
     <link rel="stylesheet" href="estilos2.css">
     <link rel="stylesheet" href="animation.css">
     <link href="hamburger.css" rel="stylesheet">
+    <script src="main.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/9327c61162.js"></script>
     <title>beeogarden | Loja</title>
     <style>
       #map {
-        height: 100%;
+        height: 90%;
       }
 
       html, body {
@@ -144,6 +145,7 @@
 
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 15,
+          disableDefaultUI: true
           });
         
         var myLatLng = {lat: 40.6303, lng: -8.6575};
@@ -158,9 +160,6 @@
         map.setMapTypeId('styled_map');
       }
     </script>
-
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHidfksxt61FmywDBiYGiGDNkHwnRG29k&callback=initMap"
     async defer></script>
-      <script src="main.js"></script>
-
 </body>
