@@ -81,7 +81,7 @@
                         $img_p = $img_p[0];
 
                         echo '<div class="product-cart">';
-                        echo '<button id="btn-cart-delete"><a href="scripts/remove_item.php?c_id='.$id_compra.'&p_id='.$p_id.'">X</a></button>';
+                        echo '<a class="delete-btn" href="scripts/remove_item.php?c_id='.$id_compra.'&p_id='.$p_id.'"><i class="fas fa-trash-alt"></i></a>';
                         echo '<div class="cart-products-img-container">';
                         echo '<img src="'.$img_p.'"" alt="alt">';
                         echo '</div>';
