@@ -17,7 +17,7 @@
 </head>
 <body>
     
-    <?php include_once "components/loader.php"; ?>
+    <!-- <?php include_once "components/loader.php"; ?> -->
 
     <div id="profile-container">
         <?php
