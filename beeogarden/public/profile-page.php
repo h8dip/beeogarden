@@ -20,14 +20,12 @@
     <!-- <?php include_once "components/loader.php"; ?> -->
 
     <div id="profile-container">
-        <?php
-            $current_page='profile'; 
-            include_once "components/navbar.php";
-            
-        ?>
+    
         <?php
 
             session_start();
+            $current_page='profile'; 
+            include_once "components/navbar.php";
 
             require_once "connections/connection.php";
             
