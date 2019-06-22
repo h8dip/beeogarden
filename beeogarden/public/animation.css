@@ -86,6 +86,24 @@
 
 /* PERFIL */
 
+#img-perfil a:hover{
+    cursor:pointer;
+}
+
+.fa-pencil-alt{
+    position: absolute;
+    top: 9%;
+    left: 62%;
+    color: #fff;
+    background-color: var(--primary-color);
+    padding: 2%;
+    border-radius: 50%;
+}
+
+.fa-pencil-alt:hover{
+    background-color: var(--hover-color);
+}
+
 .campo:hover{
     box-shadow: 0.1vw 0.2vw 15px #606060;
     cursor: pointer;
@@ -290,6 +308,11 @@ svg {
         top:45%;
         left:5%;
     }
+
+    .fa-pencil-alt{
+        top: 9%;
+        left: 59%;
+    }
 }
 
 /* computador */
@@ -311,5 +334,13 @@ svg {
         top:45%;
         left:5%;
     }
+
+    .fa-pencil-alt{
+        top: 13%;
+        left: 29%;
+        padding: 1%;
+        font-size: 1.6rem;
+    }
+
 }
 

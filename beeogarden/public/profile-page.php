@@ -56,6 +56,7 @@
         <div id="profile">
             <div id="profile-img">
                 <div id="img-perfil">
+                <a href="#"><i class="fas fa-pencil-alt"></i></a>
                 <?php 
                     if($foto_perfil == NULL or $foto_perfil==""){
                         
