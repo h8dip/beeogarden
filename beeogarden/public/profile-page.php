@@ -60,7 +60,7 @@
                 <a href="#"><i class="fas fa-pencil-alt"></i></a>
                 <?php 
                     if($foto_perfil == NULL or $foto_perfil==""){
-                        
+                        echo '<img src="'."img/default-user.png".'" alt="">';
                     }else{
                         echo '<img src="'.$foto_perfil.'" alt="">';
                     }

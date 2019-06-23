@@ -50,7 +50,7 @@
 
                                     for($i=0;$i <count($imagens_arr); $i++){
                                         if($imagens_arr[$i]==""){
-                                            $imagens_arr[$i]="img/bee-house.PNG";
+                                            $imagens_arr[$i]="img/default-product.PNG";
                                         }
                                     }
                                 }
@@ -221,7 +221,7 @@
                     echo '"';
                     if(array_key_exists(0,$imagens_arr)){
                         echo htmlspecialchars($imagens_arr[0]);
-                    }else{echo "img/bee-house.PNG";}
+                    }else{echo "img/default-product.PNG";}
                     echo '"';
                 ?> alt="">
             </div>
@@ -231,7 +231,7 @@
                     echo '"';
                     if(array_key_exists(0,$imagens_arr)){
                         echo htmlspecialchars($imagens_arr[0]);
-                    }else{echo "img/bee-house.PNG";}
+                    }else{echo "img/default-product.PNG";}
                     echo '"';
                 ?> alt="">
                 </div>
@@ -240,7 +240,7 @@
                     echo '"';
                     if(array_key_exists(1,$imagens_arr)){
                         echo htmlspecialchars($imagens_arr[1]);
-                    }else{echo "img/bee-house.PNG";}
+                    }else{echo "img/default-product.PNG";}
                     echo '"';
                 ?> alt="">
                 </div>
@@ -249,7 +249,7 @@
                     echo '"';
                     if(array_key_exists(2,$imagens_arr)){
                         echo htmlspecialchars($imagens_arr[2]);
-                    }else{echo "img/bee-house.PNG";}
+                    }else{echo "img/default-product.PNG";}
                     echo '"';
                 ?> alt="">
                 </div>
@@ -258,7 +258,7 @@
                     echo '"';
                     if(array_key_exists(3,$imagens_arr)){
                         echo htmlspecialchars($imagens_arr[3]);
-                    }else{echo "img/bee-house.PNG";}
+                    }else{echo "img/default-product.PNG";}
                     echo '"';
                 ?> alt="">
                 </div>

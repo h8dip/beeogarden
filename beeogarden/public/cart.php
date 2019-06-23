@@ -79,6 +79,7 @@
 
                         $img_p = explode(';',$img_path);
                         $img_p = $img_p[0];
+                        if($img_p==""){$img_p="img/default-product.PNG";}
 
                         echo '<div class="product-cart">';
                         echo '<a class="delete-btn" href="scripts/remove_item.php?c_id='.$id_compra.'&p_id='.$p_id.'"><i class="fas fa-trash-alt"></i></a>';
