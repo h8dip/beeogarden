@@ -49,6 +49,38 @@
                 </div>
             </div>
         </div>
+        <div class="info-slot">
+            <div class="info-title">
+                <p>Abelhas</p>
+            </div>
+            <div id="divider-line" class="line">
+                <div class="dotted-line"></div>
+            </div>
+            <div class="info-content">
+                <div class="info-img">
+                    <img src="img/salvia_off.jpg" alt="">
+                </div>
+                <div class="info-text">
+                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxtexto que fala sobre como as abelhinhas são muito lindas e importantes</p>
+                </div>
+            </div>
+        </div>
+        <div class="info-slot">
+            <div class="info-title">
+                <p>Abelhas</p>
+            </div>
+            <div id="divider-line" class="line">
+                <div class="dotted-line"></div>
+            </div>
+            <div class="info-content">
+                <div class="info-img">
+                    <img src="img/salvia_off.jpg" alt="">
+                </div>
+                <div class="info-text">
+                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxtexto que fala sobre como as abelhinhas são muito lindas e importantes</p>
+                </div>
+            </div>
+        </div>
     </div>
     
     <div id="topo-btn">
