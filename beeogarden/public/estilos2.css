@@ -330,6 +330,131 @@ body { overflow: -moz-scrollbars-none; }
     align-items: center;
 }
 
+/* Profile-edit */
+
+#profile-edit-container{
+    display: grid;
+    grid-template-rows: 35vh 58vh 7vh;
+}
+
+#pe-title{
+    display: grid;
+    grid-template-rows: 40% 60%;
+    background-color: var(--primary-color);
+    border-radius: 0 0 2vh 2vh;
+}
+
+#pe-title div:first-child{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#pe-title div:first-child h1{
+    color: #fff;
+}
+
+#pe-edit{
+    padding-top: -10vh;
+    margin: -20vh 5vh 7vh 5vh;
+    box-shadow: 0.1vw 0.2vw 15px #606060;
+    border-radius: 5vh;
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 30% 70%;
+}
+
+#pe-edit-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#pe-edit-img div {
+    width: 25vw;
+    height: 25vw;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    border: var(--primary-color) 0.5vh solid;
+}
+
+#pe-edit-img div img{
+    height: 100%;
+    width: auto;
+    position: absolute;
+    top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    margin: auto;
+}
+
+#pe-edit-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#pe-edit-form form{
+    width: 80%;
+}
+
+#pe-edit-form form input,
+#pe-edit-form form textarea,
+#pe-edit-form form select{
+    padding: 1vh;
+    width: 100%;
+    margin: 1vh 0;
+    background-color: lightgrey;
+    border: none;
+    height: 6vh;
+    border-radius: 2vh;
+}
+
+#pe-edit-form form textarea{
+    height: 18vh;
+    font-family: Thasadith, sans-serif;
+}
+
+#profile-edit-submit-btn{
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+    position: sticky;
+    bottom: 0;
+}
+
+#profile-edit-sbmt{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    text-align: center;
+}
+
+#profile-edit-sbmt div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#profile-edit-sbmt div:first-child{
+    background-color: #606060;
+    color: #fff;
+}
+
+#profile-edit-sbmt div:last-child{
+    background-color:var(--primary-color);
+    color: #fff;
+}
+
+@media (min-width: 600px){
+    /* Profile Edit */
+    #pe-edit{
+        grid-template-columns: 40% 60%;
+        grid-template-rows: 100%;
+    }
+}
+
 @media (min-width: 1025px) {
     #top-three{
         grid-template-columns: 24vw 24vw 24vw;
