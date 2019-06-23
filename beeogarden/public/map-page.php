@@ -33,6 +33,39 @@
         <?php
         $current_page='map';
         include_once "components/navbar.php";
+
+        session_start();
+
+        require_once "connections/connection.php";
+                
+        $link = new_db_connection();
+        $stmt = mysqli_stmt_init($link);
+        $array_coordenadas = array();
+        $array_nomes = array();
+        $reached_end = false;
+
+        if(!isset($_SESSION['username'])){
+          header('Location: login-page.php');
+        }else{
+          $query = 'SELECT coordenadas, nome_espaco FROM espaco WHERE privacidade LIKE ?';
+          if(mysqli_stmt_prepare($stmt,$query)){
+            $condition = "Publico";
+            mysqli_stmt_bind_param($stmt,'s',$condition);
+            if(mysqli_stmt_execute($stmt)){
+              mysqli_stmt_bind_result($stmt,$coord,$nome);
+              while(mysqli_stmt_fetch($stmt)){
+                array_push($array_coordenadas,$coord);
+                array_push($array_nomes,$nome);
+                $reached_end = true;
+              }
+            }
+          }
+          if($reached_end){
+            //json encode;
+            //$myjson = json_encode($array_coordenadas);
+          }
+
+        }
         ?> 
     </div>
     <div id="map"></div>    
@@ -147,22 +180,22 @@
           zoom: 15,
           disableDefaultUI: true
           });
-        
-        var myLatLng = {lat: 40.6303, lng: -8.6575};
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Universidade de Aveiro',
-          icon: 'img/map-icon.png'
-        });
 
-        var myLatLng2 = {lat: 40.627148, lng: -8.649985};
-        new google.maps.Marker({
-            position: myLatLng2,
-            map:map,
-            title: 'Campinho do Marco',
+        var coordenadas_array = <?php echo '["' . implode('", "',$array_coordenadas) . '"]' ?>;
+        var coordenadas_nome = <?php echo '["' . implode('", "',$array_nomes) . '"]' ?>;
+
+        for(var i = 0; i < coordenadas_array.length ; i++){
+          $temp = coordenadas_array[i].split(',');
+          
+          var myLatLng = { lat: parseFloat($temp[0]), lng: parseFloat($temp[1]) };
+          var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: coordenadas_nome[i],
             icon: 'img/map-icon.png'
-        });
+          });
+        }
+        
         
         map.mapTypes.set('styled_map', styledMapType);
         map.setMapTypeId('styled_map');

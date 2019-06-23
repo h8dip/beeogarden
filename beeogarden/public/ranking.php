@@ -51,8 +51,8 @@
                         if($counter==1){
                             $number1_pic = $img;
                         }else if ($counter==2){
-                            if($number1_pic == ""){$number1_pic = "img/bee-house.PNG";}
-                            if($img==""){$img="img/bee-house.PNG";}
+                            if($number1_pic == ""){$number1_pic = "img/default-user.PNG";}
+                            if($img==""){$img="default-user.PNG";}
                             echo '<div>';
                             echo '<img src="'.$img.'" alt="">';
                             echo '</div>';
@@ -60,7 +60,7 @@
                             echo '<img src="'.$number1_pic.'" alt="">';
                             echo '</div>';
                         }else{
-                            if($img==""){$img="img/bee-house.PNG";}
+                            if($img==""){$img="img/default-user.PNG";}
                             echo '<div>';
                             echo '<img src="'.$img.'" alt="">';
                             echo '</div>';
@@ -87,7 +87,7 @@
                             $ctr++;
                             if($foto == "")
                             {
-                                $foto="img/bee-house.PNG";
+                                $foto="img/default-user.PNG";
                             }
                             echo '<div class="ranking-spot">';
                             echo '<div class="ranking-num"><h1>'.$ctr.'</h1></div>';
