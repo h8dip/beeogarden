@@ -307,7 +307,7 @@ svg {
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     left: 0;
     top: 0;
     width: 100vw;
@@ -339,8 +339,14 @@ svg {
 }
 
 /* EDITAR PERFIL */
-#profile-edit-sbmt :hover
 
+#profile-edit-sbmt div:first-child:hover{
+    background-color: darkgray;
+}
+
+#profile-edit-sbmt div:last-child:hover{
+    background-color: rgb(252, 200, 71);
+}
 
 
 /* MEDIA QUERIES ------------------------------------------------------------------------------------*/
