@@ -302,6 +302,42 @@ svg {
     background-color: rgb(252, 200, 71);
 }
 
+/* MODAIS */
+
+.modal {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-auto-rows: 15vh;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 2vh;
+    border: 1px solid #888;
+    width: 85%;
+    border-radius: 5vh;
+    height: 80%;
+    overflow: scroll;
+}
+
+#titulo-modal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
 
 
 /* MEDIA QUERIES ------------------------------------------------------------------------------------*/

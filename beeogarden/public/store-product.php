@@ -13,13 +13,100 @@
     <title>beeogarden | Loja</title>
 </head>
 <body>
+   <?php session_start();  ?>
 
+    <div id="modal-campos" class="modal">
+        <div class="modal-content">
+            <div id="titulo-modal"><h2 style="font-weight: bold;">ESCOLHA UM BEEOGARDEN</h2></div>
+            <div class="campo" style="width:100%; padding: 0 !important; border-radius: 3vh;">
+                <div style="background-color: #FBC02D;  border-radius: 3vh 3vh 0 0;" id="upper-campo">
+                    <h2 style="color:#fff; padding: 0 2vh !important;">Campo do Marco</h2>
+                </div>
+                <div id="lower-campo" style="border: solid 0.5vh #FBC02D; border-radius: 0 0 3vh 3vh;">
+                    <div style="padding: 0 0 0 2vh !important;">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <h4>Aveiro</h4>
+                    </div>
+                    <div style="padding: 0 2vh 0 0 !important;">
+                        <p>1100</p>
+                        <img src="img/beeopoints.png" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="campo" style="width:100%; padding: 0 !important; border-radius: 3vh;">
+                <div style="background-color: #FBC02D;  border-radius: 3vh 3vh 0 0;" id="upper-campo">
+                    <h2 style="color:#fff; padding: 0 2vh !important;">Campo do Marco</h2>
+                </div>
+                <div id="lower-campo" style="border: solid 0.5vh #FBC02D; border-radius: 0 0 3vh 3vh;">
+                    <div style="padding: 0 0 0 2vh !important;">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <h4>Aveiro</h4>
+                    </div>
+                    <div style="padding: 0 2vh 0 0 !important;">
+                        <p>1100</p>
+                        <img src="img/beeopoints.png" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="campo" style="width:100%; padding: 0 !important; border-radius: 3vh;">
+                <div style="background-color: #FBC02D;  border-radius: 3vh 3vh 0 0;" id="upper-campo">
+                    <h2 style="color:#fff; padding: 0 2vh !important;">Campo do Marco</h2>
+                </div>
+                <div id="lower-campo" style="border: solid 0.5vh #FBC02D; border-radius: 0 0 3vh 3vh;">
+                    <div style="padding: 0 0 0 2vh !important;">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <h4>Aveiro</h4>
+                    </div>
+                    <div style="padding: 0 2vh 0 0 !important;">
+                        <p>1100</p>
+                        <img src="img/beeopoints.png" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="campo" style="width:100%; padding: 0 !important; border-radius: 3vh;">
+                <div style="background-color: #FBC02D;  border-radius: 3vh 3vh 0 0;" id="upper-campo">
+                    <h2 style="color:#fff; padding: 0 2vh !important;">Campo do Marco</h2>
+                </div>
+                <div id="lower-campo" style="border: solid 0.5vh #FBC02D; border-radius: 0 0 3vh 3vh;">
+                    <div style="padding: 0 0 0 2vh !important;">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <h4>Aveiro</h4>
+                    </div>
+                    <div style="padding: 0 2vh 0 0 !important;">
+                        <p>1100</p>
+                        <img src="img/beeopoints.png" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="campo" style="width:100%; padding: 0 !important; border-radius: 3vh;">
+                <div style="background-color: #FBC02D;  border-radius: 3vh 3vh 0 0;" id="upper-campo">
+                    <h2 style="color:#fff; padding: 0 2vh !important;">Campo do Marco</h2>
+                </div>
+                <div id="lower-campo" style="border: solid 0.5vh #FBC02D; border-radius: 0 0 3vh 3vh;">
+                    <div style="padding: 0 0 0 2vh !important;">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <h4>Aveiro</h4>
+                    </div>
+                    <div style="padding: 0 2vh 0 0 !important;">
+                        <p>1100</p>
+                        <img src="img/beeopoints.png" alt="">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
 
     <div id="product-details-container" style="padding-bottom: 10vh">
 
         <?php
-            session_start(); 
-            // include_once "components/loader.php";
+            // session_start(); 
+            include_once "components/loader.php";
             $current_page='store';
             include_once "components/navbar.php"; 
         
