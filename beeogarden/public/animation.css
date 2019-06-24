@@ -359,6 +359,21 @@ svg {
     cursor:pointer;
 }
 
+/* INFOS */
+
+#filter-info a:hover{
+    background-color: darkgray;
+}
+
+.active-info-div:hover{
+    background-color: #f2f2f2;
+}
+
+#topo-btn:hover{
+    cursor:pointer;
+    background-color: var(--hover-color);
+}
+
 
 /* MEDIA QUERIES ------------------------------------------------------------------------------------*/
 
