@@ -15,7 +15,6 @@
         <a href="ranking.php" id="nav-ranking" <?php if($current_page == 'ranking'){echo 'class="nav-active"';}?>>Ranking</a>
         <a href="map-page.php" id="nav-mapa" <?php if($current_page == 'map'){echo 'class="nav-active"';}?>>Mapa</a>
         <a href="info-page.php" id="nav-info"<?php if($current_page == 'info'){echo 'class="nav-active"';}?>>Info</a>
-        <a href="#" id="nav-definicoes">Definições</a>
         <a href="welcome-page.php" id="nav-sair">Sair</a>
     </div>
     <div id="shopping-cart">
