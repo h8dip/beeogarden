@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Thasadith:400,400i,700,700i&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="estilos2.css">
     <link rel="stylesheet" href="animation.css">
     <link href="hamburger.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -118,12 +119,12 @@
 
             if(isset($_GET['id'])){
                 if(is_numeric($_GET['id'])){
-                    $query = "SELECT img_path, nome_produto, descricao_produto, dimensoes, beecount, preco FROM produto WHERE id_produto = ?";
+                    $query = "SELECT img_path, nome_produto, descricao_produto, dimensoes, beecount, preco, categoria FROM produto WHERE id_produto = ?";
 
                     if(mysqli_stmt_prepare($stmt,$query)){
                         mysqli_stmt_bind_param($stmt, 'i', $_GET['id']);
                         if(mysqli_stmt_execute($stmt)){
-                            mysqli_stmt_bind_result($stmt,$img_path, $nome_produto,$descricao_produto, $dimensoes, $beecount, $preco);
+                            mysqli_stmt_bind_result($stmt,$img_path, $nome_produto,$descricao_produto, $dimensoes, $beecount, $preco, $categoria);
                             if(mysqli_stmt_fetch($stmt)){
                                 $dimensoes_arr = explode(";",$dimensoes);
                                 $imagens_arr = explode(";",$img_path);
@@ -393,22 +394,26 @@
                 </div>
             </div>
         </div>
+        
 
-        <!-- Se o produto for uma semente fetch este xd -->
-        <div id="add-cart-button-seed">
-            <div>
-                <h4>Comprar para mim</h4>
-            </div>
-
-            <div>
-                <h4>Plantar num beeogarden</h4>
-            </div>
-        </div>
-
-        <!-- Se não for fetch neste né ... -->
-        <div id="add-cart-button">
-            <a href=<?='"store-product.php?action=add&id='.$_GET['id'].'"'?>>Adicionar ao carrinho</a>
-        </div>
+        <?php 
+            if($categoria == "Sementes"){
+                echo '<div id="add-cart-button-seed">
+                <div>
+                    <h4>Comprar para mim</h4>
+                </div>
+    
+                <div id="plantar-num-beeogarden">
+                    <h4>Plantar num beeogarden</h4>
+                </div>
+            </div>';
+            }else{
+                echo '<div id="add-cart-button">';
+                echo '<a href="store-product.php?action=add&id='.$_GET['id'].'"> Adicionar ao carrinho </a>';
+                echo '</div>';
+            }
+        ?>
+        
     </div>
     <script src="main.js"></script>
 </body>

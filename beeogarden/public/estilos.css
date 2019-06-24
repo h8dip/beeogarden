@@ -696,7 +696,7 @@ nav #shopping-cart{
 }
 
 #add-cart-button{
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
