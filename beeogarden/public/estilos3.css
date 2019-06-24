@@ -80,7 +80,7 @@ body { overflow: -moz-scrollbars-none; }
 #info-abelhas, #info-flores{
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
 }
 
 .info-slot{
@@ -99,14 +99,14 @@ body { overflow: -moz-scrollbars-none; }
     font-weight: bold;
     text-align: center;
     margin: 2%;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 .info-content{
     align-items: center;
     justify-items: center;
     display: grid;
-    grid-template-columns: 50% 50%; 
+    grid-template-columns: 50% 50%;
 }
 
 .info-img{
@@ -130,11 +130,14 @@ body { overflow: -moz-scrollbars-none; }
 
 .info-text{
     width:90%;
-    height: 80%;
+    height: 90%;
     overflow:  hidden;
+    font-size: 1.1rem;
 }
 
-.info-text p{
+.info-text p{    
+    text-overflow: ellipsis;
+
     width:90%;
 }
 

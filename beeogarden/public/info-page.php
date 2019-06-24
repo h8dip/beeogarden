@@ -77,7 +77,7 @@
                     <img src="img/salvia_off.jpg" alt="">
                 </div>
                 <div class="info-text">
-                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxtexto que fala sobre como as abelhinhas são muito lindas e importantes</p>
+                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxtexto que fala sobre como as abelhinhas são muito lindas e importantes</p>
                 </div>
             </div>
         </div>
@@ -91,6 +91,7 @@
     <script src="main.js"></script>
 
     <script>
+        //não está a fazer coneção ao ficheiro js
         $('#filter-info a').click(function(){
             $('#filter-info a.active-info-div').removeClass('active-info-div');
             $(this).addClass('active-info-div');
