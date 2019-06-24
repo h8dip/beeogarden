@@ -26,12 +26,12 @@
         ?>
         <div id="filter-info">
             <h2>INFORMAÇÕES</h2>
-            <div id="info-abelhas" class="active-info-div">
-                <a href="#">Abelhas</a>
-            </div>
-            <div id="info-flores" class="inactive-info-div">
-                <a href="#">Flores</a>
-            </div>
+            <a class="active-info-div" id="info-abelhas" href="#">
+                Abelhas
+            </a>
+            <a id="info-flores" href="#">
+                Flores
+            </a>
         </div>
         <div class="info-slot">
             <div class="info-title">
@@ -86,7 +86,16 @@
     <div id="topo-btn">
         <a href="#">Voltar ao topo</a>
     </div>
+
+
     <script src="main.js"></script>
+
+    <script>
+        $('#filter-info a').click(function(){
+            $('#filter-info a.active-info-div').removeClass('active-info-div');
+            $(this).addClass('active-info-div');
+        });
+    </script>
 
 </body>
 </html>

@@ -13,6 +13,11 @@ window.onload=function(){
         $(this).addClass('filter-active');
     });
 
+    $('#filter-info a').click(function(){
+        $('#filter-info a.active-info-div').removeClass('active-info-div');
+        $(this).addClass('active-info-div');
+    });
+
 
 
     // CARROUSEL
