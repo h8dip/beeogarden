@@ -160,6 +160,44 @@ body { overflow: -moz-scrollbars-none; }
     font-weight: bold;
 }
 
+/* INFO DETAILS */
+
+#container-info-details{
+    display: grid;
+    grid-template-columns: 100vw;
+    grid-template-rows: 10vh 15vh 75vh;
+}
+
+#container-info-details nav{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 10vh;
+    background-color: var(--primary-color);
+}
+
+#title-info{
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight: bold;
+    font-size: 2rem;
+    text-align:center;
+}
+
+#info-detail-content{
+    padding-top: -10vh;
+    margin: -20vh 5vh 7vh 5vh;
+    box-shadow: 0.1vw 0.2vw 15px #606060;
+    border-radius: 5vh;
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 30% 70%;
+}
+
+#
+
 /* EDITAR PERFIL */
 
 #edit-photo{
