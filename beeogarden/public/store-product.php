@@ -306,6 +306,19 @@
                 </div>
             </div>
         </div>
+
+        <!-- Se o produto for uma semente fetch este xd -->
+        <div id="add-cart-button-seed">
+            <div>
+                <h4>Comprar para mim</h4>
+            </div>
+
+            <div>
+                <h4>Plantar num beeogarden</h4>
+            </div>
+        </div>
+
+        <!-- Se não for fetch neste né ... -->
         <div id="add-cart-button">
             <a href=<?='"store-product.php?action=add&id='.$_GET['id'].'"'?>>Adicionar ao carrinho</a>
         </div>
