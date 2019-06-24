@@ -160,6 +160,14 @@ body { overflow: -moz-scrollbars-none; }
     font-weight: bold;
 }
 
+/* EDITAR PERFIL */
+
+#edit-photo{
+    top: 19% !important;
+    left: 55% !important;
+    z-index: 2;
+}
+
 
 /* MEDIA QUERIES */
 

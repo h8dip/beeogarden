@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Thasadith:400,400i,700,700i&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilos2.css">
+    <link rel="stylesheet" href="estilos3.css">
     <link href="hamburger.css" rel="stylesheet">
     <link href="animation.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -23,6 +24,7 @@
 
         <div id="pe-edit">
             <div id="pe-edit-img">
+                <a href="#"><i class="fas fa-pencil-alt" id="edit-photo"></i></a>
                 <div>
                     <img src="img/horacio.PNG" alt="">
                 </div>
