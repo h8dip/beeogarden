@@ -45,7 +45,7 @@
         </div>
 
         <div id="profile-edit-sbmt">
-            <div><h3>CANCELAR</h3></div>
+            <div><a href="profile-page.php"><h3>CANCELAR</h3></a></div>
             <div><h3>GUARDAR ALTERAÇÕES</h3></div>
         </div>
     </div>

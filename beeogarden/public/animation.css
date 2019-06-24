@@ -317,12 +317,16 @@ svg {
     background-color: rgba(0,0,0,0.4);
 }
 
+.modal-content::-webkit-scrollbar { width: 0 !important };
+
+.modal-content { overflow: -moz-scrollbars-none; }
+
 .modal-content {
     display: grid;
     grid-template-columns: 100%;
     grid-auto-rows: 15vh;
     background-color: #fefefe;
-    margin: 15% auto;
+    margin: 5% auto;
     padding: 2vh;
     border: 1px solid #888;
     width: 85%;
@@ -340,12 +344,19 @@ svg {
 
 /* EDITAR PERFIL */
 
+#profile-edit-sbmt a{
+    text-decoration: none; 
+    color: #fff;
+}
+
 #profile-edit-sbmt div:first-child:hover{
     background-color: darkgray;
+    cursor:pointer;
 }
 
 #profile-edit-sbmt div:last-child:hover{
     background-color: rgb(252, 200, 71);
+    cursor:pointer;
 }
 
 
