@@ -175,11 +175,21 @@ body { overflow: -moz-scrollbars-none; }
     .info-slot{
         grid-column: unset;
     }
+
+    #edit-photo{
+        top: 40% !important;
+        left: 29% !important;
+    }
 }
 
 @media (min-width: 1024px){
    #container-info{
         grid-auto-rows: 45vh;
    }
+
+   #edit-photo{
+        top: 34% !important;
+        left: 30% !important;
+    }
 }
 
