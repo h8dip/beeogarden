@@ -19,6 +19,12 @@ window.onload=function(){
     });
 
 
+    $('#plantar-num-beeogarden').click(function(){
+        $('.modal').toggle();
+        $('body').toggleClass('body-overflow-modal');
+    })
+
+
 
     // CARROUSEL
 

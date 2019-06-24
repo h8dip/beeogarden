@@ -18,6 +18,11 @@ body{
 body::-webkit-scrollbar { width: 0 !important };
 
 body { overflow: -moz-scrollbars-none; }
+
+.body-overflow-modal{
+    overflow: hidden !important;
+}
+
 /* Cart */
 
 #cart-container{
