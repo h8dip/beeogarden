@@ -12,10 +12,13 @@
     <link href="animation.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/9327c61162.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
     <title>beeogarden | Carrinho de Compras</title>
 </head>
 <body>
     <div id="field-regist-container">
+    
         <div id="fr-title">
             <div>
                 <h1>REGISTA O TEU BEEOGARDEN</h1>
@@ -32,6 +35,18 @@
                     </div>
                     <input type="number" name="lotes" placeholder="Número de Lotes"> 
                     <input type="text" name="flores" placeholder="Tipos de flores"> 
+                    <div>
+                        <button onclick="myFunction()">Click Me!</button>
+                        <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
+                            <select multiple>
+                                <option value="volvo">Volvo</option>
+                                <option value="saab">Saab</option>
+                                <option value="opel">Opel</option>
+                                <option value="audi">Audi</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <select placeholder="Acessibilidade" name="acesso">
                         <option value="volvo">Público</option>
                         <option value="saab">Privado</option>
@@ -47,4 +62,17 @@
 
         <?php include_once "components/save-btn.php" ?>
     </div>
+
+
+    <script>
+function myFunction() {
+  var x = document.getElementById("Demo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
 </body>
