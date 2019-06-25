@@ -344,17 +344,17 @@ svg {
 
 /* EDITAR PERFIL */
 
-#profile-edit-sbmt a{
+.profile-edit-sbmt a{
     text-decoration: none; 
     color: #fff;
 }
 
-#profile-edit-sbmt div:first-child:hover{
+.profile-edit-sbmt div:first-child:hover{
     background-color: darkgray;
     cursor:pointer;
 }
 
-#profile-edit-sbmt div:last-child:hover{
+.profile-edit-sbmt div:last-child:hover{
     background-color: rgb(252, 200, 71);
     cursor:pointer;
 }

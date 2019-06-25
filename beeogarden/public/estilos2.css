@@ -430,24 +430,24 @@ body { overflow: -moz-scrollbars-none; }
     bottom: 0;
 }
 
-#profile-edit-sbmt{
+.profile-edit-sbmt{
     display: grid;
     grid-template-columns: 30% 70%;
     text-align: center;
 }
 
-#profile-edit-sbmt div{
+.profile-edit-sbmt div{
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#profile-edit-sbmt div:first-child{
+.profile-edit-sbmt div:first-child{
     background-color: #606060;
     color: #fff;
 }
 
-#profile-edit-sbmt div:last-child{
+.profile-edit-sbmt div:last-child{
     background-color:var(--primary-color);
     color: #fff;
 }
