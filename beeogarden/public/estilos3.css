@@ -196,11 +196,7 @@ body { overflow: -moz-scrollbars-none; }
     grid-template-rows: 30% 70%;
 }
 
-<<<<<<< HEAD
 /* REGISTAR CAMPO */
-=======
-/* -------------------estou aqui */
->>>>>>> e1c67b20e3296ad4b7db790d3ee706280c22db94
 
 #field-regist-container{
     display: grid;
@@ -320,6 +316,10 @@ body { overflow: -moz-scrollbars-none; }
     #field-regist-container{
         display: grid;
         grid-template-rows: 32vh 46vh 15vh 7vh; 
+    }
+
+    #fr-title-div{
+        padding-top: 3%;
     }
 
     #register-content{
