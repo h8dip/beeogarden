@@ -196,8 +196,91 @@ body { overflow: -moz-scrollbars-none; }
     grid-template-rows: 30% 70%;
 }
 
-/* -------------------estou aqui */
+/* REGISTAR CAMPO */
 
+#field-regist-container{
+    display: grid;
+    grid-template-rows: 32vh 41vh 20vh 7vh; 
+}
+
+#fr-title{
+    background-color: var(--primary-color);
+    border-radius: 0 0 2vh 2vh;
+}
+
+#fr-title div{
+    width: 60%;
+    text-align: center;
+    color: #fff;
+    padding-top: 5%;
+    margin: auto;
+}
+
+#fr-title div h1{
+    width: 100%;
+}
+
+#fr-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#fr-form form{
+    width: 80%;
+}
+
+#fr-form form input,
+#fr-form form textarea,
+#fr-form form select{
+    padding: 1vh;
+    width: 100%;
+    margin: 1vh 0;
+    background-color: lightgrey;
+    border: none;
+    height: 6vh;
+    border-radius: 2vh;
+}
+
+#register-content{
+    padding-top: -10vh;
+    margin: -14vh 5vh 7vh 5vh;
+    box-shadow: 0.1vw 0.2vw 15px #606060;
+    border-radius: 5vh;
+    background-color: #fff;
+    display: grid;
+}
+
+#zip-localidade{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+#zip-localidade input:last-child{
+   width: 97% !important; 
+   justify-self: end;
+}
+
+#zip-localidade input:first-child{
+    width: 97% !important; 
+    justify-self: start;
+}
+
+#warning-register{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 85%;
+}
+
+#ast{
+    color: red;
+}
+
+#public-warning{
+    font-family: Roboto, sans-serif;
+
+}
 /* EDITAR PERFIL */
 
 #edit-photo{
@@ -228,6 +311,19 @@ body { overflow: -moz-scrollbars-none; }
    #edit-photo{
         top: 34% !important;
         left: 30% !important;
+    }
+
+    #field-regist-container{
+        display: grid;
+        grid-template-rows: 32vh 46vh 15vh 7vh; 
+    }
+
+    #fr-title-div{
+        padding-top: 3%;
+    }
+
+    #register-content{
+        margin: -14vh 16vh 7vh 16vh;
     }
 }
 
