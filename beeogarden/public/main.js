@@ -1,7 +1,6 @@
 window.onload=function(){
 
     document.getElementById("loading-div-container").style.display ="none";
-    // $('#container-loja').removeClass('hide-loading');
 
     $('#hamburger').click(function(){
         $('#hamburger').toggleClass("is-active");
@@ -18,11 +17,19 @@ window.onload=function(){
         $(this).addClass('active-info-div');
     });
 
-
-    $('#plantar-num-beeogarden').click(function(){
-        $('.modal').toggle();
+    var modal = document.getElementById('modal-campos');
+    
+    document.getElementById('plantar-num-beeogarden').onclick = function(){
+        modal.style.display= 'block';
         $('body').toggleClass('body-overflow-modal');
-    })
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            $('body').toggleClass('body-overflow-modal');
+        }
+    }
 
 
 
