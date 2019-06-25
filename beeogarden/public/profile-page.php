@@ -24,7 +24,7 @@
             session_start();
             $current_page='profile'; 
             include_once "components/navbar.php";
-            include_once "components/loader.php";
+            // include_once "components/loader.php";
 
             require_once "connections/connection.php";
             
