@@ -359,6 +359,13 @@ svg {
     cursor:pointer;
 }
 
+/* COMPRAR SEMENTES */
+
+#add-cart-button-seed div:hover{
+    background-color: #f1f1f1;
+    cursor:pointer;
+}
+
 /* INFOS */
 
 #filter-info a:hover{
