@@ -14,6 +14,104 @@
     <title>beeogarden | Carrinho de Compras</title>
 </head>
 <body>
+<?php
+    session_start();
+    require_once "connections/connection.php";
+    $link = new_db_connection();
+    $stmt = mysqli_stmt_init($link);
+
+    if(isset($_SESSION['username'])){
+        if(isset($_GET['id'])){
+            $query = "SELECT foto_perfil, utilizador, biografia, email, ref_genero FROM utilizador WHERE id_utilizador = ?";
+            if(mysqli_stmt_prepare($stmt,$query)){
+                mysqli_stmt_bind_param($stmt,'i',$_GET['id']);
+                if(mysqli_stmt_execute($stmt)){
+                    mysqli_stmt_bind_result($stmt,$foto_perfil,$utilizador,$biografia,$email,$ref_genero);
+                    if(mysqli_stmt_fetch($stmt)){
+
+                    }
+                }
+            }
+
+            if(isset($_POST['nome'])){
+                $query = "UPDATE utilizador SET utilizador = ?, biografia = ?, email = ?, ref_genero = ? WHERE id_utilizador = ?";
+                if(mysqli_stmt_prepare($stmt,$query)){
+                    switch($_POST['genero']){
+                        case 'masculino':
+                            $genero = 1;
+                        break;
+                        case 'feminino':
+                            $genero = 2;
+                        break;
+                        case 'outro':
+                            $genero = 3;
+                        break;
+                        default:
+                            $genero = 1;
+                        break;
+                    }
+                    $genero = htmlspecialchars($genero);
+                    $nome_novo = htmlspecialchars($_POST['nome']);
+                    $bio_novo = htmlspecialchars($_POST['bio']);
+                    $email_novo = htmlspecialchars($_POST['email']);
+                    mysqli_stmt_bind_param($stmt,'sssii',$_POST['nome'],$_POST['bio'],$_POST['email'],$genero,$_GET['id']);
+                    if(mysqli_stmt_execute($stmt)){
+                        //success
+                        $_SESSION['username'] = $nome_novo;
+                        header("Location: profile-page.php");
+                    }
+                }
+            }
+            if(isset($_FILES['foto-perfil']['name'])){
+                $target_dir = "img/";
+                $username_d = $_SESSION['username'];
+                $rand = rand(1,1000000);
+                $fName = $username_d.$rand;
+                $target_file = $target_dir . basename($_FILES["foto-perfil"]["name"]);
+                $uploadOk = 1;
+                $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+                $target_file = $target_dir . basename($fName).'.' .$imageFileType;
+                $check = getimagesize($_FILES["foto-perfil"]["tmp_name"]);
+                if($check !== false){
+                    $uploadOk = 1;
+                }else{
+                    $uploadOk = 0;
+                }
+                do{
+                    $rand = rand(1,1000000);
+                    $target_file = $target_dir . basename($fName).'.' .$imageFileType;
+                }while(file_exists($target_file));
+                
+                if($_FILES["foto-perfil"]["size"] > 15000000){
+                    $uploadOk = 0;
+                }
+                
+                if($uploadOk == 0){
+
+                }else{
+                    if(move_uploaded_file($_FILES["foto-perfil"]["tmp_name"],$target_file)){
+                        //success
+                        //delete old one
+                        unlink($foto_perfil);
+                        $query = "UPDATE utilizador SET foto_perfil = ? WHERE id_utilizador = ?";
+                        if(mysqli_stmt_prepare($stmt,$query)){
+                            mysqli_stmt_bind_param($stmt,'si',$target_file,$_GET['id']);
+                            if(mysqli_stmt_execute($stmt)){
+                                header('Location: profile-page.php');
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }else{
+            header("Location: profile-page.php");
+        }
+    }else{
+        header("Location: login-page.php");
+    }
+?>
     
     <div id="profile-edit-container">
         <div id="pe-title">
@@ -24,21 +122,24 @@
 
         <div id="pe-edit">
             <div id="pe-edit-img">
-                <a href="#"><i class="fas fa-pencil-alt" id="edit-photo"></i></a>
+                <form method="post" action="profile-edit-page.php?id=<?= $_GET['id']?>" enctype="multipart/form-data">
+                    <input name="foto-perfil" type="file" onchange="this.form.submit();">
+                </form>
+                <i class="fas fa-pencil-alt" id="edit-photo"></i>
                 <div>
-                    <img src="img/horacio.PNG" alt="">
+                    <img src="<?= $foto_perfil ?>" alt="">
                 </div>
             </div>
 
             <div id="pe-edit-form">
-                <form action="scripts/profile-edit.php">
-                    <input type="text" name="nome" placeholder="Nome">
-                    <input type="email" name="email" placeholder="Email">
-                    <textarea type="bio" rows="40" name="bio" placeholder="Bio" style="display:block;"></textarea>  
+                <form id="form1" action="profile-edit-page.php?id=<?= $_GET['id']?>" method="post">
+                    <input type="text" name="nome" placeholder="Nome" value="<?=$utilizador?>">
+                    <input type="email" name="email" placeholder="Email" value="<?=$email?>">
+                    <textarea type="bio" rows="40" name="bio" placeholder="Bio" style="display:block;"><?=$biografia?></textarea>  
                     <select placeholder="Género" name="genero">
-                        <option value="volvo">Masculino</option>
-                        <option value="saab">Feminino</option>
-                        <option value="saab">Outro</option>
+                        <option value="masculino" <?php if($ref_genero==1){echo 'selected';}?> >Masculino</option>
+                        <option value="feminino"  <?php if($ref_genero==2){echo 'selected';}?> >Feminino</option>
+                        <option value="outro"  <?php if($ref_genero==3){echo 'selected';}?> >Outro</option>
                     </select>
                 </form>
             </div>
