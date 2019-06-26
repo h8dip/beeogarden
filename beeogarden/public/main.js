@@ -17,19 +17,6 @@ window.onload=function(){
         $(this).addClass('active-info-div');
     });
 
-    var modal = document.getElementById('modal-campos');
-    
-    document.getElementById('plantar-num-beeogarden').onclick = function(){
-        modal.style.display= 'block';
-        $('body').toggleClass('body-overflow-modal');
-    }
-
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-            $('body').toggleClass('body-overflow-modal');
-        }
-    }
 
 
 

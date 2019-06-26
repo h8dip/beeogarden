@@ -27,8 +27,12 @@
         </div>
 
         <div id="info-detail-content">
-            <img src="img/semente_girassol.jpg" alt="">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum voluptatum sapiente porro fuga provident suscipit corrupti facilis deleniti odio aut!zz</p>
+            <div>
+                <img src="img/semente_girassol.jpg" alt="">
+            </div>
+            <div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum voluptatum sapiente porro fuga provident suscipit corrupti facilis deleniti odio aut!zz</p>
+            </div>
         </div>
     </div>
 
