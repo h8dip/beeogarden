@@ -65,7 +65,7 @@
             if(isset($_FILES['foto-perfil']['name'])){
                 $target_dir = "img/";
                 $username_d = $_SESSION['username'];
-                $rand = rand(1,1000000);
+                $rand = rand(1,1000000000);
                 $fName = $username_d.$rand;
                 $target_file = $target_dir . basename($_FILES["foto-perfil"]["name"]);
                 $uploadOk = 1;
@@ -76,18 +76,20 @@
                     $uploadOk = 1;
                 }else{
                     $uploadOk = 0;
+                    echo 'O teu ficheiro não é uma foto.';
                 }
                 do{
-                    $rand = rand(1,1000000);
+                    $rand = rand(1,1000000000);
                     $target_file = $target_dir . basename($fName).'.' .$imageFileType;
                 }while(file_exists($target_file));
                 
-                if($_FILES["foto-perfil"]["size"] > 15000000){
+                if($_FILES["foto-perfil"]["size"] > 3000000){
                     $uploadOk = 0;
+                    echo 'A tua foto é demasiado grande.';
                 }
                 
                 if($uploadOk == 0){
-
+                    echo 'Upload não realizado.';
                 }else{
                     if(move_uploaded_file($_FILES["foto-perfil"]["tmp_name"],$target_file)){
                         //success
