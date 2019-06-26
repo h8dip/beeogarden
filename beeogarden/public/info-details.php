@@ -27,11 +27,11 @@
         </div>
 
         <div id="info-detail-content">
-            <div>
+            <div id="info-detail-img">
                 <img src="img/semente_girassol.jpg" alt="">
             </div>
-            <div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum voluptatum sapiente porro fuga provident suscipit corrupti facilis deleniti odio aut!zz</p>
+            <div id="info-detail-text">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt magni quaerat amet aliquam aperiam dolorum, vitae magnam et, dolores alias modi voluptatum ullam non aspernatur! Mollitia ex rerum et praesentium veritatis voluptate ipsum iure cumque. Dicta eius laborum deleniti velit! Deserunt repudiandae fugiat voluptas quam? Deleniti soluta corporis veritatis voluptates! Sunt at accusantium modi laboriosam saepe qui aliquid similique quisquam cum iusto error, officia libero nemo assumenda fugiat temporibus, nam velit tenetur dolores quas dolor voluptate ex. Illum saepe, quia hic officiis asperiores tempore amet? Placeat dignissimos officia ea consequatur, saepe odit iusto ipsam, eligendi voluptates, repellendus ducimus aliquid culpa!Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio modi eaque odio nisi perferendis cumque debitis tempore. Suscipit, saepe magnam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi laudantium praesentium nulla eaque quis atque autem aspernatur corporis nobis tempore.Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quod dignissimos aut veritatis deserunt iste, quas pariatur delectus quia assumenda? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex possimus hic debitis ipsa ea quam consequatur exercitationem aut nulla harum.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum voluptatum sapiente porro fuga provident suscipit corrupti facilis deleniti odio aut!zz</p>
             </div> 
         </div>
     </div>
