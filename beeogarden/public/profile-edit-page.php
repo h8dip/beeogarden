@@ -11,12 +11,14 @@
     <link href="animation.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/9327c61162.js"></script>
+    
     <title>beeogarden | Carrinho de Compras</title>
 </head>
 <body>
 <?php
     session_start();
     require_once "connections/connection.php";
+    require_once "scripts/php_scripts.php";
     $link = new_db_connection();
     $stmt = mysqli_stmt_init($link);
 
@@ -99,6 +101,7 @@
                         if(mysqli_stmt_prepare($stmt,$query)){
                             mysqli_stmt_bind_param($stmt,'si',$target_file,$_GET['id']);
                             if(mysqli_stmt_execute($stmt)){
+                                resize_crop_image(500,500,$target_file,$target_file);
                                 header('Location: profile-page.php');
                             }
                         }
