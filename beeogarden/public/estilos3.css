@@ -36,7 +36,13 @@ body { overflow: -moz-scrollbars-none; }
     justify-content: space-between;
     height: 10vh;
     grid-column: 1/span 2;
-    background-color: var(--primary-color);
+    background-color: var(--primary-color); 
+    color: #fff !important;
+}
+
+.info-more{
+    text-decoration: none;
+    color:#000;
 }
 
 #filter-info{
@@ -195,6 +201,9 @@ body { overflow: -moz-scrollbars-none; }
     grid-template-columns: 100%;
     grid-template-rows: 30% 70%;
 }
+
+
+
 
 /* REGISTAR CAMPO */
 

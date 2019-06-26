@@ -33,7 +33,7 @@
                 Flores
             </a>
         </div>
-        <div class="info-slot">
+        <a class="info-more" href="info-details.php"><div class="info-slot">
             <div class="info-title">
                 <p>Abelhas</p>
             </div>
@@ -48,8 +48,8 @@
                     <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxtexto que fala sobre como as abelhinhas são muito lindas e importantes</p>
                 </div>
             </div>
-        </div>
-        <div class="info-slot">
+        </div></a>
+        <a class="info-more" href="info-details.php"><div class="info-slot">
             <div class="info-title">
                 <p>Abelhas</p>
             </div>
@@ -64,8 +64,8 @@
                     <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxtexto que fala sobre como as abelhinhas são muito lindas e importantes</p>
                 </div>
             </div>
-        </div>
-        <div class="info-slot">
+        </div></a>
+        <a class="info-more" href="info-details.php"><div class="info-slot">
             <div class="info-title">
                 <p>Abelhas</p>
             </div>
@@ -80,7 +80,7 @@
                     <p>xxxxxxxxxxxxxxxxxxxxxxxxxxtexto que fala sobre como as abelhinhas são muito lindas e importantes</p>
                 </div>
             </div>
-        </div>
+        </div></a>
     </div>
     
     <div id="topo-btn">
