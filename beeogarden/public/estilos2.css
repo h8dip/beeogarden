@@ -465,7 +465,7 @@ body { overflow: -moz-scrollbars-none; }
 #feed-page-container{
     display: grid;
     grid-template-rows: 10vh 40vh;
-    padding-bottom: 10vh;
+    padding-bottom: 15vh;
 }
 
 #feed-title{
@@ -629,6 +629,15 @@ body { overflow: -moz-scrollbars-none; }
 }
 
 @media (min-width: 1025px) {
+    #posts{
+        grid-template-columns: 65%;
+
+    }
+
+    .post-image{
+        height: 50vh;
+    }
+
     #top-three{
         grid-template-columns: 24vw 24vw 24vw;
         margin: 0 14vw;

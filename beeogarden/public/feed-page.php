@@ -17,7 +17,10 @@
 <body>
 
     <div id="feed-page-container">
-        <?php include_once "components/navbar.php" ?>
+        <?php
+            $current_page='info';
+            include_once "components/navbar.php"
+         ?>
 
         <div id="feed-title">
             <h1>Universidade de Aveiro</h1>
