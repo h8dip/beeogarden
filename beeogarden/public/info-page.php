@@ -21,66 +21,75 @@
 
     <div id="container-info">
         <?php
+            session_start();
             $current_page='info';
             include_once "components/navbar.php";
+            require_once "connections/connection.php";
+            
+            if(isset($_GET['f'])){
+                switch($_GET['f']){
+                    case 'a':
+                        $categoria="2";
+                    break;
+                    case 'f':
+                        $categoria="1";
+                    break;
+                    default:
+                        $categoria="2";
+                    break;
+                }
+            }else{
+                $categoria="2";
+            }
         ?>
         <div id="filter-info">
             <h2>INFORMAÇÕES</h2>
-            <a class="active-info-div" id="info-abelhas" href="#">
-                Abelhas
-            </a>
-            <a id="info-flores" href="#">
-                Flores
-            </a>
+            <?php
+                if($categoria==1){
+                    $texto = ['','class="active-info-div"'];
+                }else{
+                    $texto = ['class="active-info-div"',''];
+                }
+
+                echo '<a ' . $texto[0] . ' id="info-abelhas" href="?f=a">Abelhas</a>';
+                echo '<a ' . $texto[1] . ' id="info-flores" href="?f=f">Flores</a>';
+            ?>
         </div>
-        <a class="info-more" href="info-details.php"><div class="info-slot">
-            <div class="info-title">
-                <p>Abelhas</p>
-            </div>
-            <div id="divider-line" class="line">
-                <div class="dotted-line"></div>
-            </div>
-            <div class="info-content">
-                <div class="info-img">
-                    <img src="img/salvia_off.jpg" alt="">
-                </div>
-                <div class="info-text">
-                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxtexto que fala sobre como as abelhinhas são muito lindas e importantes</p>
-                </div>
-            </div>
-        </div></a>
-        <a class="info-more" href="info-details.php"><div class="info-slot">
-            <div class="info-title">
-                <p>Abelhas</p>
-            </div>
-            <div id="divider-line" class="line">
-                <div class="dotted-line"></div>
-            </div>
-            <div class="info-content">
-                <div class="info-img">
-                    <img src="img/salvia_off.jpg" alt="">
-                </div>
-                <div class="info-text">
-                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxtexto que fala sobre como as abelhinhas são muito lindas e importantes</p>
-                </div>
-            </div>
-        </div></a>
-        <a class="info-more" href="info-details.php"><div class="info-slot">
-            <div class="info-title">
-                <p>Abelhas</p>
-            </div>
-            <div id="divider-line" class="line">
-                <div class="dotted-line"></div>
-            </div>
-            <div class="info-content">
-                <div class="info-img">
-                    <img src="img/salvia_off.jpg" alt="">
-                </div>
-                <div class="info-text">
-                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxtexto que fala sobre como as abelhinhas são muito lindas e importantes</p>
-                </div>
-            </div>
-        </div></a>
+        <?php 
+            $link = new_db_connection();
+            $stmt = mysqli_stmt_init($link);
+
+            if(isset($_SESSION['username'])){
+                
+                $query = "SELECT id_info, nome_info, info_descricao, info_imagem FROM info WHERE ref_categoria_info = ?";
+                if(mysqli_stmt_prepare($stmt,$query)){
+                    mysqli_stmt_bind_param($stmt,'i',$categoria);
+                    if(mysqli_stmt_execute($stmt)){
+                        mysqli_stmt_bind_result($stmt,$id_info,$nome_info,$info_descricao,$info_imagem);
+                        while(mysqli_stmt_fetch($stmt)){
+                            echo '<a class="info-more" href="info-details.php?id='.$id_info.'"><div class="info-slot">';
+                            echo '<div class="info-title">';
+                            echo '<p>'.$nome_info.'</p>';
+                            echo '</div>';
+                            echo '<div id="divider-line" class="line">';
+                            echo '<div class="dotted-line"></div>';
+                            echo '</div>';
+                            echo ' <div class="info-content">
+                            <div class="info-img">';
+                            echo '<img src="' . $info_imagem . '" alt=""></div>';
+                            echo '<div class="info-text">';
+                            echo '<p>'.$info_descricao.'</p></div>';
+                            echo '</div></div>
+                            </a>';
+                        }
+                    }
+                }
+
+            }else{
+                header('Location: login-page.php');
+            }
+        ?>
+        
     </div>
     
     <div id="topo-btn">

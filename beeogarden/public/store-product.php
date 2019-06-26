@@ -14,7 +14,9 @@
     <title>beeogarden | Loja</title>
 </head>
 <body>
-   <?php session_start();  ?>
+   <?php 
+    session_start();
+   ?>
 
     <div id="modal-campos" class="modal">
         <div class="modal-content">
@@ -105,9 +107,7 @@
 
     <div id="product-details-container" style="padding-bottom: 10vh">
 
-        <?php
-            // session_start(); 
-            include_once "components/loader.php";
+        <?php 
             $current_page='store';
             include_once "components/navbar.php"; 
         
@@ -148,7 +148,7 @@
             }
 
             if(isset($_GET['action'])){
-                if(is_string($_GET['action'])){
+                if(is_string($_GET['action']) and $_GET['action']=="add"){
                     //add to cart!
                     $user = $_SESSION['username'];
                     $query = "SELECT id_utilizador FROM utilizador WHERE utilizador LIKE ?";
@@ -279,8 +279,8 @@
                             if(mysqli_stmt_prepare($stmt,$query)){
                                 mysqli_stmt_bind_param($stmt,'iii',$qty,$id_da_compra,$id_de_produto);
                                 if(mysqli_stmt_execute($stmt)){
-                                    $rd_to = 'Location: store-product.php?id='.$id_de_produto;
-                                    header($rd_to);
+                                    
+                                    header("Location: store-page.php");
                                 }
                             }
                         }
@@ -291,8 +291,8 @@
                             if(mysqli_stmt_prepare($stmt,$query)){
                                 mysqli_stmt_bind_param($stmt,'iiid',$id_da_compra,$id_de_produto,$qtd,$preco);
                                 if(mysqli_stmt_execute($stmt)){
-                                    $rd_to = 'Location: store-product.php?id='.$id_de_produto;
-                                    header($rd_to);
+                                    
+                                    header("Location: store-page.php");
                                 }
                             }
                         }
@@ -400,7 +400,9 @@
             if($categoria == "Sementes"){
                 echo '<div id="add-cart-button-seed">
                 <div>
+                    <a href="store-product.php?action=add&id='.$_GET['id'].'">
                     <h4>Comprar para mim</h4>
+                    </a>
                 </div>
     
                 <div id="plantar-num-beeogarden">
