@@ -34,19 +34,13 @@
                         <input type="text" name="localidade" placeholder="Localidade">
                     </div>
                     <input type="number" name="lotes" placeholder="Número de Lotes"> 
-                    <input type="text" name="flores" placeholder="Tipos de flores"> 
-                    <div>
-                        <button onclick="myFunction()">Click Me!</button>
-                        <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
-                            <select multiple>
-                                <option value="volvo">Volvo</option>
-                                <option value="saab">Saab</option>
-                                <option value="opel">Opel</option>
-                                <option value="audi">Audi</option>
-                            </select>
-                        </div>
-                    </div>
-
+                    <select multiple name="flores" placeholder="Tipos de flores" id="dropdown-toggle"> 
+                            <option class="dropdown-item" value="USA">USA</option>
+                            <option class="dropdown-item" value="Russia">Russia</option>
+                            <option class="dropdown-item" value="India">India</option>
+                            <option class="dropdown-item" value="Britain">Britain</option>
+                    </select>
+                   
                     <select placeholder="Acessibilidade" name="acesso">
                         <option value="volvo">Público</option>
                         <option value="saab">Privado</option>
@@ -64,15 +58,9 @@
     </div>
 
 
-    <script>
-function myFunction() {
-  var x = document.getElementById("Demo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-</script>
+    
+
+    <script src="main.js"></script>
 
 </body>
+</html>

@@ -381,6 +381,13 @@ svg {
     background-color: var(--hover-color);
 }
 
+/* REGISTAR CAMPO */
+
+.dropdown-item{
+    /* display:none; */
+}
+
+
 
 /* MEDIA QUERIES ------------------------------------------------------------------------------------*/
 

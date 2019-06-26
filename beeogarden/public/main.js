@@ -65,8 +65,11 @@ window.onload=function(){
                 document.getElementById(img+p).style.display="block";
             }
         }
-    }
+    };
     
+    document.getElementById('dropdown-toggle').onclick=function(){
+        document.getElementsByClassName('dropdown-item').style.display = "block";
+    };
 
 }
 // FIM WINDOW.ONLOAD
