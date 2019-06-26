@@ -32,7 +32,7 @@
             </div>
             <div>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum voluptatum sapiente porro fuga provident suscipit corrupti facilis deleniti odio aut!zz</p>
-            </div>
+            </div> 
         </div>
     </div>
 
