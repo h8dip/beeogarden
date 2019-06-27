@@ -65,6 +65,19 @@ body{
     margin: auto;
 }
 
+/* Cart counter */
+
+#cart-counter{
+    position: absolute;
+    background-color: red;
+    color: #fff;
+    padding: 5% 12.5%;
+    top: -1vh;
+    left: 3vh;
+    font-size: 0.8rem;
+    border-radius: 50%;
+}
+
 /* Loading */
 
 
@@ -471,6 +484,7 @@ body{
 
 nav #shopping-cart{
     margin-right: 2vh;
+    position: relative;
 }
 
 #showcase-image{

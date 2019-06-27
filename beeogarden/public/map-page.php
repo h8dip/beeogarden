@@ -203,4 +203,34 @@
     </script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHidfksxt61FmywDBiYGiGDNkHwnRG29k&callback=initMap"
     async defer></script>
+
+    <div id="marker-info">
+        <div></div>
+
+        <div id="marker-info-details">
+            <div id="marker-details-title">
+                <div id="marker-details-img-container">
+                  <img src="img/greta.PNG" alt="">
+                </div>
+                <h2>UNIVERSIDADE DE AVEIRO</h2>
+            </div>
+
+            <div id="marker-details-address">
+              <div>
+                <p>Universidade de Aveiro</p>
+                <p>Campus Universitário de Santiago</p>
+                <p>3810-193 Aveiro</p>
+                <p>Portugal</p>
+              </div>
+              <div>
+                <img src="img/beeopoints.png" alt="">
+                <h2>1298</h2>
+              </div>
+            </div>
+
+            <div id="marker-plant-btn">
+              <a href="#"><h2>Quero plantar aqui!</h2></a>
+            </div>
+        </div>
+    </div>
 </body>

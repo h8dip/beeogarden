@@ -19,6 +19,7 @@
         <a href="welcome-page.php" id="nav-sair">Sair</a>
     </div>
     <div id="shopping-cart">
+        <div id="cart-counter">0</div>
         <a href="cart.php"><i class="fas fa-shopping-cart fa-2x"></i></a>
     </div>
 </nav>

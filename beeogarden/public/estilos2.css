@@ -313,6 +313,8 @@ body { overflow: -moz-scrollbars-none; }
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
+/* Map */
+
 #map-container{
     width: 100vw;
     height: 100vh;
@@ -334,6 +336,100 @@ body { overflow: -moz-scrollbars-none; }
     justify-content: space-between;
     align-items: center;
 }
+
+#marker-info{
+    display: none;
+    grid-template-columns: 100vw;
+    grid-template-rows: 50vh 50vh;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 3;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+
+#marker-info-details{
+    display: grid;
+    grid-template-rows: 33% 33% 33%;
+    grid-template-columns: 100%;
+    background-color: var(--primary-color);
+    border-radius: 5vh 5vh 0 0;
+}
+
+#marker-details-img-container{
+    position: relative;
+    overflow: hidden;
+    width: 16vh;
+    height: 16vh;
+    border-radius: 50%;
+    border: #fff solid 1vh;
+    padding-top: -8vh;
+}
+
+#marker-details-img-container img{
+    height: 100%;
+    width: auto;
+    position: absolute;
+    top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    margin: auto;
+}
+
+#marker-details-title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -8vh;
+    color: #fff;
+}
+
+#marker-details-title h2{
+    margin-top: 2vh;
+}
+
+#marker-details-address{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 6vw;
+    align-items: center;
+    color: #fff;
+}
+
+#marker-details-address div:last-child{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#marker-details-address div:last-child img{
+    width: 5vh;
+}
+
+#marker-plant-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#marker-plant-btn a{
+    background-color: #fff;
+    padding: 4% 15%;
+    text-decoration: none;
+    color: var(--primary-color);
+    border-radius: 5vh;
+    width: 90%;
+}
+
+
 
 /* Profile-edit */
 
@@ -620,6 +716,8 @@ body { overflow: -moz-scrollbars-none; }
     color: var(--primary-color);
 }
 
+
+
 @media (min-width: 600px){
     /* Profile Edit */
     #pe-edit{
@@ -667,4 +765,10 @@ body { overflow: -moz-scrollbars-none; }
     .ranking-spot{
         border-radius: 8vh;
     }
+
+    #marker-plant-btn a{
+        padding: 2% 10%;
+        width: 80%;
+    }
+    
 }
