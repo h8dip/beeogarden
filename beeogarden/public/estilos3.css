@@ -285,7 +285,7 @@ body { overflow: -moz-scrollbars-none; }
 
 #register-content{
     padding-top: -10vh;
-    margin: -14vh 5vh 7vh 5vh;
+    margin: -8vh 5vh 7vh 5vh;
     box-shadow: 0.1vw 0.2vw 15px #606060;
     border-radius: 5vh;
     background-color: #fff;
@@ -364,7 +364,7 @@ body { overflow: -moz-scrollbars-none; }
     }
 
     #register-content{
-        margin: -14vh 16vh 7vh 16vh;
+        margin: -9vh 16vh 7vh 16vh;
     }
 
     #title-info h2{

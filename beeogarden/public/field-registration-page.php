@@ -34,13 +34,7 @@
                         <input type="text" name="localidade" placeholder="Localidade">
                     </div>
                     <input type="number" name="lotes" placeholder="Número de Lotes"> 
-                    <select multiple name="flores" placeholder="Tipos de flores" id="dropdown-toggle"> 
-                            <option class="dropdown-item" value="USA">USA</option>
-                            <option class="dropdown-item" value="Russia">Russia</option>
-                            <option class="dropdown-item" value="India">India</option>
-                            <option class="dropdown-item" value="Britain">Britain</option>
-                    </select>
-                   
+                
                     <select placeholder="Acessibilidade" name="acesso">
                         <option value="volvo">Público</option>
                         <option value="saab">Privado</option>

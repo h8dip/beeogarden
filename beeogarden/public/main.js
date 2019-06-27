@@ -67,9 +67,7 @@ window.onload=function(){
         }
     };
     
-    document.getElementById('dropdown-toggle').onclick=function(){
-        document.getElementsByClassName('dropdown-item').style.display = "block";
-    };
+
 
 }
 // FIM WINDOW.ONLOAD
