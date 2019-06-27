@@ -17,6 +17,29 @@
     <title>beeogarden | Carrinho de Compras</title>
 </head>
 <body>
+
+    <div id="modal-register-tutorial" class="modal-tutorial">
+        <div class="modal-tutorial-content">
+            <div id="register-tutorial-img">
+                <img src="img/produto-2.jpg" id="reg-tut-img-1">
+                <img src="img/produto-1.jpg" id="reg-tut-img-2">
+                <img src="img/produto-4.jpg" id="reg-tut-img-3">
+            </div>
+            <div id="register-tutorial-text">
+                <p id="reg-tut-text-1">Tens um espaço disponível para plantar e queres ajudar quem não tem?</p>
+                <p id="reg-tut-text-2">Regista o teu espaço e divide em lotes de 1m. Indica quantos lotes tens disponíveis.</p>
+                <p id="reg-tut-text-3">Quando já não tiveres indica que o teu beeogarden está cheio no seu perfil.</p>
+            </div>
+            <div id="register-tutorial-dots">
+                <!-- inserir 3x icone pontinho e mudar a cor -->
+                <i class="far fa-circle" id="circle-1"></i>
+                <i class="far fa-circle" id="circle-2"></i>
+                <i class="far fa-circle" id="circle-3"></i>
+            
+            </div>
+        </div>  
+    </div>
+
     <div id="field-regist-container">
     
         <div id="fr-title">
@@ -53,8 +76,71 @@
 
 
     
-
     <script src="main.js"></script>
+
+    <script>
+        
+        window.onload = function(){
+            var modal_reg = document.getElementById('modal-register-tutorial');
+            var img1 = document.getElementById('reg-tut-img-1');
+            var img2 = document.getElementById('reg-tut-img-2');
+            var img3 = document.getElementById('reg-tut-img-3');
+            var text1 = document.getElementById('reg-tut-text-1');
+            var text2 = document.getElementById('reg-tut-text-2');
+            var text3 = document.getElementById('reg-tut-text-3');
+            var dot1 = document.getElementById('circle-1');
+            var dot2 = document.getElementById('circle-2');
+            var dot3 = document.getElementById('circle-3');
+            var modal_count = 1;   
+
+            modal_reg.style.display= 'block';
+            img1.style.display = 'block';
+            text1.style.display='block';
+            dot1.classList.remove("far");
+            dot1.classList.add("fas");
+            $('body').toggleClass('body-overflow-modal');
+       
+
+        modal_reg.onclick = function(){
+            if(modal_count == 1){
+                img1.style.display='none';
+                text1.style.display='none';
+                dot1.classList.remove("fas");
+                dot1.classList.add("far");
+
+                img2.style.display='block';
+                text2.style.display= 'block';
+                dot2.classList.remove("far");
+                dot2.classList.add("fas");
+
+                modal_count =2;
+            }else if(modal_count == 2){
+                img2.style.display='none';
+                text2.style.display='none';
+                dot2.classList.remove("fas");
+                dot2.classList.add("far");
+
+                img3.style.display='block';
+                text3.style.display='block';
+                dot3.classList.remove("far");
+                dot3.classList.add("fas");
+            }else{
+                modal_reg.style.display = "none";
+                $('body').toggleClass('body-overflow-modal');
+            }
+
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal_reg) {
+                modal_reg.style.display = "none";
+                $('body').toggleClass('body-overflow-modal');
+            };
+        };
+
+    };
+
+    </script>
 
 </body>
 </html>

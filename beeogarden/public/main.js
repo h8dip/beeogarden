@@ -19,9 +19,6 @@ window.onload=function(){
 
 
 
-
-
-
     // CARROUSEL
 
     var slideIndex = 1;
@@ -68,6 +65,9 @@ window.onload=function(){
     };
     
 
+    // TUTORIAL
+    
+   
 
 }
 // FIM WINDOW.ONLOAD
