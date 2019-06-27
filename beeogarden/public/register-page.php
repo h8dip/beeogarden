@@ -14,6 +14,7 @@
 
     <?php include_once "components/loader.php"; ?>
 
+
     <div id="register-container">
         <div id="upper-text">
             <div>
@@ -42,5 +43,6 @@
     </div>
     
     <script src="main.js"></script>
+
 </body>
 </html>
