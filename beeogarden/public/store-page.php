@@ -18,10 +18,11 @@
         
         
         
-    <div id="container-loja" class="hide-loading">
+    <div id="container-loja" >
         <?php
             $current_page='store';
             include_once "components/navbar.php";
+            include_once "components/loader.php";
         ?>
         <div id="showcase-store">
         
