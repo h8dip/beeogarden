@@ -381,11 +381,12 @@ svg {
     background-color: var(--hover-color);
 }
 
-/* REGISTAR CAMPO */
+/* FEED */
 
-.dropdown-item{
-    /* display:none; */
+#add-post-icon i:hover{
+    color: var(--hover-color);
 }
+
 
 
 
