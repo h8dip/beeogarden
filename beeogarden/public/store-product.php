@@ -13,6 +13,8 @@
     <script src="//maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyDHidfksxt61FmywDBiYGiGDNkHwnRG29k&sensor=false"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <title>beeogarden | Loja</title>
+    <link rel="shortcut icon" href="img/favicon.png" /> 
+
 </head>
 <body>
    <?php 
