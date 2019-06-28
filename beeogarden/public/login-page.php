@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="animation.css">
     <script src="scripts/checkQueryString.js"></script>
     <title>beeogarden | Faça login</title>
+    <link rel="shortcut icon" href="img/favicon.png" /> 
+
 </head>
 <body>
 

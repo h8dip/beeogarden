@@ -12,6 +12,8 @@
     <script src="https://kit.fontawesome.com/9327c61162.js"></script>
     <script src="scripts/checkQueryString.js"></script>
     <title>beeogarden | Loja</title>
+    <link rel="shortcut icon" href="img/favicon.png" /> 
+
 </head>
 
 <body style="overflow-y: auto">
