@@ -31,13 +31,23 @@
                 <p id="reg-tut-text-3">Quando já não tiveres indica que o teu beeogarden está cheio no seu perfil.</p>
             </div>
             <div id="register-tutorial-dots">
-                <!-- inserir 3x icone pontinho e mudar a cor -->
                 <i class="far fa-circle" id="circle-1"></i>
                 <i class="far fa-circle" id="circle-2"></i>
                 <i class="far fa-circle" id="circle-3"></i>
             
             </div>
         </div>  
+    </div>
+
+    <div id="modal-register-done" class="modal-tutorial">
+        <div id="modal-done-content">
+            <div id="register-done-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <div id="register-done-text">
+                <p id="reg-done-text">Obrigado pelo registo! Em breve entraremos em contacto com a confirmação do espaço.</p>
+            </div>
+        </div>
     </div>
 
     <div id="field-regist-container">
@@ -101,7 +111,7 @@
             $('body').toggleClass('body-overflow-modal');
        
 
-        modal_reg.onclick = function(){
+        modal_reg.onclick = function (){
             if(modal_count == 1){
                 img1.style.display='none';
                 text1.style.display='none';
@@ -131,11 +141,71 @@
 
         }
 
+        dot1.onclick = function(){
+            img1.style.display = 'block';
+            text1.style.display='block';
+            dot1.classList.remove("far");
+            dot1.classList.add("fas");
+            
+            img2.style.display = 'none';
+            img3.style.display = 'none';
+            text2.style.display = 'none';
+            text3.style.display = 'none';
+            dot2.classList.remove("fas");
+            dot2.classList.add("far");
+            dot3.classList.remove("fas");
+            dot3.classList.add("far");
+        }
+
+        dot2.onclick = function(){
+            img2.style.display = 'block';
+            text2.style.display='block';
+            dot2.classList.remove("far");
+            dot2.classList.add("fas");
+            
+            img1.style.display = 'none';
+            img3.style.display = 'none';
+            text1.style.display = 'none';
+            text3.style.display = 'none';
+            dot1.classList.remove("fas");
+            dot1.classList.add("far");
+            dot3.classList.remove("fas");
+            dot3.classList.add("far");
+        }
+
+        dot3.onclick = function(){
+            img3.style.display = 'block';
+            text3.style.display='block';
+            dot3.classList.remove("far");
+            dot3.classList.add("fas");
+            
+            img2.style.display = 'none';
+            img1.style.display = 'none';
+            text2.style.display = 'none';
+            text1.style.display = 'none';
+            dot2.classList.remove("fas");
+            dot2.classList.add("far");
+            dot1.classList.remove("fas");
+            dot1.classList.add("far");
+        }
+
+        var submit_trigger= document.getElementById('register-beeogarden-btn');
+        var modal_done = document.getElementById('modal-register-done');
+
+        submit_trigger.onclick=function(){
+            modal_done.style.display="block";
+        }
+
         window.onclick = function(event) {
             if (event.target == modal_reg) {
                 modal_reg.style.display = "none";
                 $('body').toggleClass('body-overflow-modal');
             };
+            if(event.target == modal_done){
+                modal_done.style.display = "none";
+                $('body').toggleClass('body-overflow-modal');
+            };
+            
         };
 
     };

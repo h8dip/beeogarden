@@ -532,18 +532,19 @@ body { overflow: -moz-scrollbars-none; }
     text-align: center;
 }
 
-.profile-edit-sbmt div{
+.profile-edit-sbmt a div{
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.profile-edit-sbmt div:first-child{
+.cancel-btn{
     background-color: #606060;
     color: #fff;
+    text-decoration:none;
 }
 
-.profile-edit-sbmt div:last-child{
+.submit-btn{
     background-color:var(--primary-color);
     color: #fff;
 }
