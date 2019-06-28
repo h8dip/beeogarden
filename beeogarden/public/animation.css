@@ -590,11 +590,89 @@ svg {
     background-color: rgba(0,0,0,0.4);
 }
 
-.modal-post-content::-webkit-scrollbar { width: 0 !important };
+#modal-post-container::-webkit-scrollbar { width: 0 !important };
 
-.modal-tutorial-content { overflow: -moz-scrollbars-none; }
+#modal-post-container { overflow: -moz-scrollbars-none; }
 
+#modal-post-container{
+    display:grid;
+    grid-template-columns: 100%;
+    grid-template-rows:15% 85%;
+    background-color: var(--primary-color);
+    margin: 5% auto;
+    padding: 2vh;
+    border: 1px solid #888;
+    width: 85%;
+    border-radius: 5vh;
+    height: 80%;
+}
 
+#modal-post-header{
+    width:80%;
+    margin:2vh auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+#modal-post-header i{
+    color:#fff;
+    font-size:2rem;
+}
+
+#modal-post-header a{
+    text-decoration: none;
+    align-items:center;
+    background-color: #fff;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.3rem;
+    border-radius: 2vh;
+    padding:1rem 1.2rem;
+}
+
+#modal-post-header i:hover{
+    opacity:0.8;
+}
+
+#modal-post-header a:hover{
+    opacity:0.9;
+}
+
+#modal-post-content{
+    display:grid;
+    grid-template-rows: 85% 15%;
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 2vh;
+    border: 1px solid #888;
+    width: 85%;
+    border-radius: 5vh;
+    height: 90%;
+    justify-content: center;
+}
+
+#modal-post-input{
+    margin: 0.5vh auto;
+}
+
+#modal-post-input textarea{
+    font-family: Thasadith, sans-serif;
+    border:none;
+    overflow:scroll;
+    font-size:1.2rem;
+}
+
+#modal-post-upload{
+    border-top: 0.7vh solid var(--primary-color);
+    width:95%;
+}
+
+#modal-post-upload i{
+    color: var(--primary-color);
+    font-size:2rem;
+    margin-top:0.7vh;
+}
 
 
 /* MEDIA QUERIES ------------------------------------------------------------------------------------*/

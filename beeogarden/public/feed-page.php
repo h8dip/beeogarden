@@ -19,20 +19,23 @@
 <body>
 
     <div id="modal-post" class="modal-post">
-        <div id="modal-post-header">
-            <i></i>
-            <a href="">
-                <div id="btn-post">
-                    <p>Publicar</p>
-                </div>
-            </a>
-        </div>
-        <div id="modal-post-content">
-            <div id="modal-post-input">
-                
+        <div id="modal-post-container">
+            <div id="modal-post-header">
+                <i class="fas fa-arrow-left"></i>
+                <a href="#">
+                    <div id="btn-post">
+                        <p>Publicar</p>
+                    </div>
+                </a>
             </div>
-            <div id="modal-post-upload">
-                <i></i>
+            <div id="modal-post-content">
+                <div id="modal-post-input">
+                    <textarea rows="12" cols="27">  O que está a acontecer?
+                    </textarea>
+                </div>
+                <div id="modal-post-upload">
+                    <i class="fas fa-images"></i>
+                </div>
             </div>
         </div>
     </div>
@@ -115,4 +118,26 @@
     <div id="add-post-icon"><i class="fas fa-plus-circle fa-5x"></i></div>
 
     <script src="main.js"></script>
+
+    <script>
+
+        window.onload = function(){
+            var modal_post = document.getElementById('modal-post');
+            var post_trigger = document.getElementById('add-post-icon');
+
+            post_trigger.onclick=function(){
+                modal_post.style.display='block';
+                $('body').toggleClass('body-overflow-modal');
+            };
+
+            window.onclick = function(event){
+                if(event.target == modal_post){
+                    modal_post.style.display = "none";
+                    $('body').toggleClass('body-overflow-modal');
+                };
+            };
+        }
+
+    </script>
+
 </body>
