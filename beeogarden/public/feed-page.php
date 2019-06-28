@@ -18,6 +18,25 @@
 </head>
 <body>
 
+    <div id="modal-post" class="modal-post">
+        <div id="modal-post-header">
+            <i></i>
+            <a href="">
+                <div id="btn-post">
+                    <p>Publicar</p>
+                </div>
+            </a>
+        </div>
+        <div id="modal-post-content">
+            <div id="modal-post-input">
+                
+            </div>
+            <div id="modal-post-upload">
+                <i></i>
+            </div>
+        </div>
+    </div>
+
     <div id="feed-page-container">
         <?php
             $current_page='info';
