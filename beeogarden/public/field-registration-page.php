@@ -134,7 +134,9 @@
                 text3.style.display='block';
                 dot3.classList.remove("far");
                 dot3.classList.add("fas");
-            }else{
+
+                modal_count = 3;
+            }else if(modal_count == 3){
                 modal_reg.style.display = "none";
                 $('body').toggleClass('body-overflow-modal');
             }

@@ -420,6 +420,7 @@ svg {
     height: 80%;
     overflow: scroll;
 }
+
 #register-tutorial-img{
     margin: 3vh auto;
     width: 90%;
@@ -505,6 +506,74 @@ svg {
     text-align:center;
     font-family: Thasadith, sans-serif;
 }
+
+/* TUTORIAL NOVO USER */
+
+
+.modal-user-content::-webkit-scrollbar { width: 0 !important };
+
+.modal-user-content { overflow: -moz-scrollbars-none; }
+
+.modal-user-content{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 70% 20% 10%;
+    justify-content: center;
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 2vh;
+    border: 1px solid #888;
+    width: 85%;
+    border-radius: 5vh;
+    height: 80%;
+    overflow: hidden;
+}
+
+#register-user-img{
+    margin: 3vh auto;
+    width: 90%;
+    /* height: 90%; */
+    overflow: hidden;
+    position: relative;
+    border-radius: 2vw;
+}
+
+#register-user-img img{
+    position: absolute;
+    height: auto !important;
+    width: 100%  !important;
+    top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    margin: auto;  
+
+    display:none;
+}
+
+#register-user-text{
+    width:80%;
+    font-size: 1.5rem;
+    margin: auto;
+    text-align:center;
+    font-family: Thasadith, sans-serif;
+}
+
+#register-user-text p{
+    display:none;    
+}
+
+#register-user-dots{
+    margin:auto;
+    width:30%;
+    display:flex;
+    justify-content: space-between;
+}
+
+#register-user-dots i{
+    color: var(--primary-color);
+}
+
 
 
 /* MEDIA QUERIES ------------------------------------------------------------------------------------*/

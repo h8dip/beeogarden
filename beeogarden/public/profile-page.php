@@ -12,11 +12,32 @@
     <script src="https://kit.fontawesome.com/9327c61162.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Thasadith:400,400i,700,700i&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilos2.css">
+    <link rel="stylesheet" href="estilos3.css">
     <link rel="stylesheet" href="animation.css">
    
 
 </head>
 <body>
+
+<div id="modal-user-tutorial" class="modal-tutorial">
+        <div class="modal-user-content">
+            <div id="register-user-img">
+                <img src="img/produto-2.jpg" id="reg-user-img-1">
+                <img src="img/produto-1.jpg" id="reg-user-img-2">
+                <img src="img/produto-4.jpg" id="reg-user-img-3">
+            </div>
+            <div id="register-user-text">
+                <p id="reg-user-text-1">Explora os produtos da nossa loja.</p>
+                <p id="reg-user-text-2">Compra para ti ou envia para um beeogarden.</p>
+                <p id="reg-user-text-3">Vê quantas abalhinhas ajudaste!</p>
+            </div>
+            <div id="register-user-dots">
+                <i class="far fa-circle" id="circle-user-1"></i>
+                <i class="far fa-circle" id="circle-user-2"></i>
+                <i class="far fa-circle" id="circle-user-3"></i>
+            </div>
+        </div>  
+    </div>
 
     <div id="profile-container">
     
@@ -120,5 +141,70 @@
     </div>
 
     <script src="main.js"></script>
+    <script>
+        
+        window.onload = function(){
+            var modal_user = document.getElementById('modal-user-tutorial');
+            var imguser1 = document.getElementById('reg-user-img-1');
+            var imguser2 = document.getElementById('reg-user-img-2');
+            var imguser3 = document.getElementById('reg-user-img-3');
+            var textuser1 = document.getElementById('reg-user-text-1');
+            var textuser2 = document.getElementById('reg-user-text-2');
+            var textuser3 = document.getElementById('reg-user-text-3');
+            var dotuser1 = document.getElementById('circle-user-1');
+            var dotuser2 = document.getElementById('circle-user-2');
+            var dotuser3 = document.getElementById('circle-user-3');
+            var modal_user_count = 1;   
+
+            modal_user.style.display= 'block';
+            imguser1.style.display = 'block';
+            textuser1.style.display='block';
+            dotuser1.classList.remove("far");
+            dotuser1.classList.add("fas");
+            $('body').toggleClass('body-overflow-modal');
+       
+
+            modal_user.onclick = function (){
+                if(modal_user_count == 1){
+                    imguser1.style.display='none';
+                    textuser1.style.display='none';
+                    dotuser1.classList.remove("fas");
+                    dotuser1.classList.add("far");
+
+                    imguser2.style.display='block';
+                    textuser2.style.display= 'block';
+                    dotuser2.classList.remove("far");
+                    dotuser2.classList.add("fas");
+
+                    modal_user_count =2;
+                }else if(modal_user_count == 2){
+                    imguser2.style.display='none';
+                    textuser2.style.display='none';
+                    dotuser2.classList.remove("fas");
+                    dotuser2.classList.add("far");
+
+                    imguser3.style.display='block';
+                    textuser3.style.display='block';
+                    dotuser3.classList.remove("far");
+                    dotuser3.classList.add("fas");
+
+                    modal_user_count=3;
+                }else if(modal_user_count==3){
+                    modal_user.style.display = "none";
+                    $('body').toggleClass('body-overflow-modal');
+                }
+
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal_user) {
+                    modal_user.style.display = "none";
+                    $('body').toggleClass('body-overflow-modal');
+                };
+            };
+
+        }
+
+        </script>
 </body>
 </html>
