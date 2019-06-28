@@ -204,6 +204,7 @@
             if(event.target == modal_done){
                 modal_done.style.display = "none";
                 $('body').toggleClass('body-overflow-modal');
+                window.location='profile-page.php';
             };
             
         };
