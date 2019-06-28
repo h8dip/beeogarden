@@ -19,7 +19,13 @@
 
 </head>
 <body>
+<script>
+    //$.post("scripts/receive_ajax.php",{data : "PUTA!!!!"});
+</script>
 
+<?php 
+    
+?> 
 <div id="modal-user-tutorial" class="modal-tutorial">
         <div class="modal-user-content">
             <div id="register-user-img">

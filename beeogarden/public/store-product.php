@@ -14,6 +14,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <title>beeogarden | Loja</title>
     <link rel="shortcut icon" href="img/favicon.png" /> 
+    <script src="scripts/checkQueryString.js"></script>
 
 </head>
 <body>
@@ -56,10 +57,12 @@
 
         }
    ?>
-   
+    <div id="processor_holder" style="display : none;">
+        
+    </div>
 
     <div id="modal-campos" class="modal">
-        <div class="modal-content">
+        <div class="modal-content" id="modal-campos-2">
         <div id="titulo-modal"><h2 style="font-weight: bold;">ESCOLHA UM BEEOGARDEN</h2></div>
             <script>
                 var coordenadas_array = <?php echo '["' . implode('", "',$array_coordenadas) . '"]' ?>;
@@ -67,10 +70,8 @@
                 var beeopoints_array = <?php echo '["' . implode('", "',$array_beeopts) . '"]' ?>;
                 var localidades_array = <?php echo '["' . implode('", "',$array_localidades) . '"]' ?>;
                 var ids_array = <?php echo '["' . implode('", "',$array_ids) . '"]' ?>;
+
                 
-                const data = {
-                    position: null
-                }
 
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(function(position) {
@@ -82,11 +83,19 @@
                     });
                 }
 
+
+                var chosenFields_nomes = [];
+                var chosenFields_ids = [];
+                var chosenFields_beeopoints = [];
+                var chosenFields_localidades = [];
+
+                var nome_array_text;
+                var ids_array_text;
+                var beeopoints_array_text;
+                var localidades_array_text;
+
                 function success(pos){
-                    var chosenFields_nomes = [];
-                    var chosenFields_ids = [];
-                    var chosenFields_beeopoints = [];
-                    var chosenFields_localidades = [];
+                    
 
                     for(var i = 0; i < coordenadas_array.length ; i++){
                         $i = i;
@@ -98,61 +107,41 @@
                             chosenFields_ids.push(ids_array[i]);
                             chosenFields_beeopoints.push(beeopoints_array[i]);
                             chosenFields_localidades.push(localidades_array[i]);
-                            $.ajax({
-                                url: "store-product.php",
-                                type: "POST",
-                                data: {nomes:chosenFields_nomes, ids:chosenFields_ids,beepts:chosenFields_beeopoints,local:chosenFields_localidades},
-                                dataType: "json",
-                                success: function(data){
-                                    alert(data);
-                                }
-                            });
-                            // 
-                            //     echo '<div class="campo" style="width:100%; padding: 0 !important; border-radius: 3vh;">';
-                            //     echo '<div style="background-color: #FBC02D;  border-radius: 3vh 3vh 0 0;" id="upper-campo">';
-                            //     echo '<h2 style="color:#fff; padding: 0 2vh !important;">'.$array_nomes[$i].'</h2>';
-                            //     echo '</div>';
-                            //     echo '<div id="lower-campo" style="border: solid 0.5vh #FBC02D; border-radius: 0 0 3vh 3vh;">';
-                            //     echo '<div style="padding: 0 0 0 2vh !important;">';
-                            //     echo '<i class="fas fa-map-marker-alt" aria-hidden="true"></i>';
-                            //     echo '<h4>'.$array_localidades[$i].'</h4>';
-                            //     echo '</div';
-                            //     echo '<div style="padding: 0 2vh 0 0 !important;">';
-                            //     echo '<p>'.$array_beeopts[$i].'</p>';
-                            //     echo '<img src="img/beeopoints.png" alt="">';
-                            //     echo '</div>';
-                            //     echo '</div>';
-                            //     echo '</div>';
-                            // 
                         }
                     }
-                }
-            </script>
-            <?php 
-                if(isset($_POST['nomes'])){
-                    $myArray = $_POST['nomes'];
-                    echo $myArray;
-                }
-            ?>
-            <div class="campo" style="width:100%; padding: 0 !important; border-radius: 3vh;">
-                <div style="background-color: #FBC02D;  border-radius: 3vh 3vh 0 0;" id="upper-campo">
-                    <h2 style="color:#fff; padding: 0 2vh !important;">Campo do Marco</h2>
-                </div>
-                <div id="lower-campo" style="border: solid 0.5vh #FBC02D; border-radius: 0 0 3vh 3vh;">
-                    <div style="padding: 0 0 0 2vh !important;">
-                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                        <h4>Aveiro</h4>
-                    </div>
-                    <div style="padding: 0 2vh 0 0 !important;">
-                        <p>1100</p>
-                        <img src="img/beeopoints.png" alt="">
-                    </div>
-                </div>
-            </div>
 
+                    nome_array_text = JSON.stringify(chosenFields_nomes);
+                    ids_array_text = JSON.stringify(chosenFields_ids);
+                    beeopoints_array_text = JSON.stringify(chosenFields_beeopoints);
+                    localidades_array_text = JSON.stringify(chosenFields_localidades);
+
+                    //var c_page = getParameterByName("id");
+
+                    //var post_url = "store-product.php?id=" + c_page + "&fetched=true";
+
+                    var $holder= $('#modal-campos-2');
+
+                    var object = {
+                        nomes : nome_array_text,
+                        ids : ids_array_text,
+                        beepts : beeopoints_array_text,
+                        locals : localidades_array_text,
+                    };
+
+                    $.post("scripts/receive_ajax.php?page=product",object, function(data){
+                        //alert(data);
+                        $holder.append(data);
+                    });
+                }
+                //alert(ids_array_text);               
+            </script>
         </div>
 
     </div>
+    
+    <?php
+        
+    ?>
 
     <div id="product-details-container" style="padding-bottom: 10vh">
 
