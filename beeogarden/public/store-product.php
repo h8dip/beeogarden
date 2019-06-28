@@ -9,82 +9,129 @@
     <link rel="stylesheet" href="estilos2.css">
     <link rel="stylesheet" href="animation.css">
     <link href="hamburger.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/9327c61162.js"></script>
+    <script src="//maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyDHidfksxt61FmywDBiYGiGDNkHwnRG29k&sensor=false"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <title>beeogarden | Loja</title>
 </head>
 <body>
    <?php 
-    session_start();
+        session_start();
+
+        require_once "connections/connection.php";
+                
+        $link = new_db_connection();
+        $stmt2 = mysqli_stmt_init($link);
+        $array_coordenadas = array();
+        $array_nomes = array();
+        $array_beeopts = array();
+        $array_localidades = array();
+        $array_ids = array();
+        $reached_end = false;
+
+        if(!isset($_SESSION['username'])){
+          header('Location: login-page.php');
+        }else{
+          $query = 'SELECT id_espaco, coordenadas, nome_espaco, localidade, ref_Utilizador, beeopoints FROM espaco INNER JOIN utilizador ON id_Utilizador = ref_Utilizador WHERE privacidade LIKE ?';
+          if(mysqli_stmt_prepare($stmt2,$query)){
+            $condition = "Publico";
+            mysqli_stmt_bind_param($stmt2,'s',$condition);
+            if(mysqli_stmt_execute($stmt2)){
+              mysqli_stmt_bind_result($stmt2,$id_espaco,$coord,$nome,$localidade,$ref_Utilizador,$beeopoints);
+              while(mysqli_stmt_fetch($stmt2)){
+                array_push($array_coordenadas,$coord);
+                array_push($array_nomes,$nome);
+                array_push($array_localidades,$localidade);
+                array_push($array_beeopts,$beeopoints);
+                array_push($array_ids,$id_espaco);
+                $reached_end = true;
+              }
+            }
+          }
+          if($reached_end){
+            //
+          }
+
+        }
    ?>
+   
 
     <div id="modal-campos" class="modal">
         <div class="modal-content">
-            <div id="titulo-modal"><h2 style="font-weight: bold;">ESCOLHA UM BEEOGARDEN</h2></div>
-            <div class="campo" style="width:100%; padding: 0 !important; border-radius: 3vh;">
-                <div style="background-color: #FBC02D;  border-radius: 3vh 3vh 0 0;" id="upper-campo">
-                    <h2 style="color:#fff; padding: 0 2vh !important;">Campo do Marco</h2>
-                </div>
-                <div id="lower-campo" style="border: solid 0.5vh #FBC02D; border-radius: 0 0 3vh 3vh;">
-                    <div style="padding: 0 0 0 2vh !important;">
-                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                        <h4>Aveiro</h4>
-                    </div>
-                    <div style="padding: 0 2vh 0 0 !important;">
-                        <p>1100</p>
-                        <img src="img/beeopoints.png" alt="">
-                    </div>
-                </div>
-            </div>
+        <div id="titulo-modal"><h2 style="font-weight: bold;">ESCOLHA UM BEEOGARDEN</h2></div>
+            <script>
+                var coordenadas_array = <?php echo '["' . implode('", "',$array_coordenadas) . '"]' ?>;
+                var nomes_array = <?php echo '["' . implode('", "',$array_nomes) . '"]' ?>;
+                var beeopoints_array = <?php echo '["' . implode('", "',$array_beeopts) . '"]' ?>;
+                var localidades_array = <?php echo '["' . implode('", "',$array_localidades) . '"]' ?>;
+                var ids_array = <?php echo '["' . implode('", "',$array_ids) . '"]' ?>;
+                
+                const data = {
+                    position: null
+                }
 
-            <div class="campo" style="width:100%; padding: 0 !important; border-radius: 3vh;">
-                <div style="background-color: #FBC02D;  border-radius: 3vh 3vh 0 0;" id="upper-campo">
-                    <h2 style="color:#fff; padding: 0 2vh !important;">Campo do Marco</h2>
-                </div>
-                <div id="lower-campo" style="border: solid 0.5vh #FBC02D; border-radius: 0 0 3vh 3vh;">
-                    <div style="padding: 0 0 0 2vh !important;">
-                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                        <h4>Aveiro</h4>
-                    </div>
-                    <div style="padding: 0 2vh 0 0 !important;">
-                        <p>1100</p>
-                        <img src="img/beeopoints.png" alt="">
-                    </div>
-                </div>
-            </div>
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        var pos = new google.maps.LatLng(
+                        position.coords.latitude,
+                        position.coords.longitude      
+                        );
+                        success(pos);
+                    });
+                }
 
-            <div class="campo" style="width:100%; padding: 0 !important; border-radius: 3vh;">
-                <div style="background-color: #FBC02D;  border-radius: 3vh 3vh 0 0;" id="upper-campo">
-                    <h2 style="color:#fff; padding: 0 2vh !important;">Campo do Marco</h2>
-                </div>
-                <div id="lower-campo" style="border: solid 0.5vh #FBC02D; border-radius: 0 0 3vh 3vh;">
-                    <div style="padding: 0 0 0 2vh !important;">
-                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                        <h4>Aveiro</h4>
-                    </div>
-                    <div style="padding: 0 2vh 0 0 !important;">
-                        <p>1100</p>
-                        <img src="img/beeopoints.png" alt="">
-                    </div>
-                </div>
-            </div>
+                function success(pos){
+                    var chosenFields_nomes = [];
+                    var chosenFields_ids = [];
+                    var chosenFields_beeopoints = [];
+                    var chosenFields_localidades = [];
 
-            <div class="campo" style="width:100%; padding: 0 !important; border-radius: 3vh;">
-                <div style="background-color: #FBC02D;  border-radius: 3vh 3vh 0 0;" id="upper-campo">
-                    <h2 style="color:#fff; padding: 0 2vh !important;">Campo do Marco</h2>
-                </div>
-                <div id="lower-campo" style="border: solid 0.5vh #FBC02D; border-radius: 0 0 3vh 3vh;">
-                    <div style="padding: 0 0 0 2vh !important;">
-                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                        <h4>Aveiro</h4>
-                    </div>
-                    <div style="padding: 0 2vh 0 0 !important;">
-                        <p>1100</p>
-                        <img src="img/beeopoints.png" alt="">
-                    </div>
-                </div>
-            </div>
-
+                    for(var i = 0; i < coordenadas_array.length ; i++){
+                        $i = i;
+                        $temp = coordenadas_array[i].split(',');
+                        var myLatLng = new google.maps.LatLng(parseFloat($temp[0]), parseFloat($temp[1]));
+                        var xDist = google.maps.geometry.spherical.computeDistanceBetween(pos,myLatLng);
+                        if(xDist <= 30000.0){
+                            chosenFields_nomes.push(nomes_array[i]);
+                            chosenFields_ids.push(ids_array[i]);
+                            chosenFields_beeopoints.push(beeopoints_array[i]);
+                            chosenFields_localidades.push(localidades_array[i]);
+                            $.ajax({
+                                url: "store-product.php",
+                                type: "POST",
+                                data: {nomes:chosenFields_nomes, ids:chosenFields_ids,beepts:chosenFields_beeopoints,local:chosenFields_localidades},
+                                dataType: "json",
+                                success: function(data){
+                                    alert(data);
+                                }
+                            });
+                            // 
+                            //     echo '<div class="campo" style="width:100%; padding: 0 !important; border-radius: 3vh;">';
+                            //     echo '<div style="background-color: #FBC02D;  border-radius: 3vh 3vh 0 0;" id="upper-campo">';
+                            //     echo '<h2 style="color:#fff; padding: 0 2vh !important;">'.$array_nomes[$i].'</h2>';
+                            //     echo '</div>';
+                            //     echo '<div id="lower-campo" style="border: solid 0.5vh #FBC02D; border-radius: 0 0 3vh 3vh;">';
+                            //     echo '<div style="padding: 0 0 0 2vh !important;">';
+                            //     echo '<i class="fas fa-map-marker-alt" aria-hidden="true"></i>';
+                            //     echo '<h4>'.$array_localidades[$i].'</h4>';
+                            //     echo '</div';
+                            //     echo '<div style="padding: 0 2vh 0 0 !important;">';
+                            //     echo '<p>'.$array_beeopts[$i].'</p>';
+                            //     echo '<img src="img/beeopoints.png" alt="">';
+                            //     echo '</div>';
+                            //     echo '</div>';
+                            //     echo '</div>';
+                            // 
+                        }
+                    }
+                }
+            </script>
+            <?php 
+                if(isset($_POST['nomes'])){
+                    $myArray = $_POST['nomes'];
+                    echo $myArray;
+                }
+            ?>
             <div class="campo" style="width:100%; padding: 0 !important; border-radius: 3vh;">
                 <div style="background-color: #FBC02D;  border-radius: 3vh 3vh 0 0;" id="upper-campo">
                     <h2 style="color:#fff; padding: 0 2vh !important;">Campo do Marco</h2>
@@ -434,5 +481,7 @@
         };
     };
     </script>
+
+
 </body>
 </html>
