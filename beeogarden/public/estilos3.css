@@ -330,8 +330,118 @@ body { overflow: -moz-scrollbars-none; }
     z-index: 2;
 }
 
+/* CHAT */
 
-/* MEDIA QUERIES */
+#chat-container{
+    display:grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 13vh 78vh 10vh;
+}
+
+#top-chat{
+    background-color: var(--primary-color);
+}
+
+#top-chat-content{
+    color:#fff;
+    width:90%;
+    height:100%;
+    font-size: 1.4rem;
+    font-weight: bold;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:center;
+    margin: 0 auto;
+}
+
+#top-chat-content img{
+    height:6vh;
+    border-radius: 40vh;
+    border: 0.2vh solid #fff;
+}
+
+#chat-content{
+    overflow:scroll;
+    margin:2vh 2vh;
+}
+
+.recieve-msg{
+    width:auto;
+    height:auto;
+    display: flex;
+    align-items:center;
+    margin: 2vh 0;
+    float:left;
+}
+
+.recieve-msg img{
+    height:6vh;
+    border-radius:40vh;   
+}
+
+.recieve-msg-txt{
+    max-width:60vw;
+    color: #000;
+    background-color: #f4f4f4;
+    border-radius: 5vw;
+    padding:2vh;
+    margin: 0 2vh;
+}
+
+.sent-msg{
+    width:auto;
+    height:auto;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    margin: 2vh 0;
+    float:right;
+}
+
+.sent-msg-txt{
+    max-width: 60vw;
+    color:#fff;
+    background-color: var(--primary-color);
+    border-radius:5vw;
+    padding:2vh;
+    mrgin:0 2vh;
+}
+
+.sent-msg img{
+    height:6vh;
+    border-radius:40vh;
+}
+
+#chat-bottom{
+    width:95%;
+    border-top: 0.5vh solid #f4f4f4;
+    margin:1vh auto;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items: center;
+}
+
+#chat-bottom textarea{
+    font-family: Thasadith, sans-serif;
+    border:none;
+    overflow:scroll;
+    font-size:1.2rem;
+    height: 2em;
+    width: 20em;
+}
+
+#chat-bottom i{
+    font-size:1.7rem;
+    margin:0 0.5vh;
+    color:grey;
+}
+
+
+
+
+/* MEDIA QUERIES-------------------------------------- ------------------------*/
 
 @media (min-width: 600px){
     .info-slot{

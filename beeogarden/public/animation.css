@@ -172,6 +172,15 @@
 }    
 
 
+/* STORE PRODUCT */
+#add-cart-button a{
+    text-decoration:none;
+}
+
+#add-cart-button:hover{
+    background-color: var(--hover-color);
+}
+
 /* LOADING */
 
 .hide-loading{
