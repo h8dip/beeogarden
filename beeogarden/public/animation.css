@@ -661,6 +661,8 @@ svg {
     border:none;
     overflow:scroll;
     font-size:1.2rem;
+    height: 17em;
+    width: 12em;
 }
 
 #modal-post-upload{
@@ -701,6 +703,12 @@ svg {
         top: 9%;
         left: 59%;
     }
+    
+    #modal-post-input textarea{
+        font-size: 1.5rem;
+        height: 12em;
+        width: 17em;
+    }
 }
 
 /* computador */
@@ -736,6 +744,16 @@ svg {
 
     #register-done-text{
         font-size: 2.5rem;
+    }
+
+    #modal-post-content{
+        margin: 1% auto;
+    }
+
+    #modal-post-input textarea{
+        font-size: 1.5rem;
+        height: 12em;
+        width: 29em;
     }
 
 }
