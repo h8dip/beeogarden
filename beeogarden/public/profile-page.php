@@ -19,13 +19,7 @@
 
 </head>
 <body>
-<script>
-    //$.post("scripts/receive_ajax.php",{data : "PUTA!!!!"});
-</script>
 
-<?php 
-    
-?> 
 <div id="modal-user-tutorial" class="modal-tutorial">
         <div class="modal-user-content">
             <div id="register-user-img">
@@ -50,6 +44,14 @@
     
         <?php
             session_start();
+
+            require_once "scripts/php_scripts.php";
+
+            if(verifyLogin()){
+
+            
+            
+
             $current_page='profile'; 
             include_once "components/navbar.php";
             // include_once "components/loader.php";
@@ -58,14 +60,29 @@
             
             $link = new_db_connection();
             $stmt = mysqli_stmt_init($link);
-            $query = "SELECT beeopoints, foto_perfil, id_utilizador FROM utilizador WHERE utilizador LIKE ?";
+            //check if first timer.
+
+            $query = "SELECT beeopoints, foto_perfil, id_utilizador,first_time FROM utilizador WHERE utilizador LIKE ?";
 
             if(mysqli_stmt_prepare($stmt,$query)){
                 mysqli_stmt_bind_param($stmt,'s',$_SESSION['username']);
                 if(mysqli_stmt_execute($stmt)){
-                    mysqli_stmt_bind_result($stmt, $beeopoints,$foto_perfil, $user_id);
+                    mysqli_stmt_bind_result($stmt, $beeopoints,$foto_perfil, $user_id,$first_time);
                     if(mysqli_stmt_fetch($stmt)){
                         
+                    }
+                }
+            }
+
+            if($first_time == 0){
+
+
+
+                $query = "UPDATE utilizador SET first_time = 1 WHERE id_utilizador LIKE ?";
+                if(mysqli_stmt_prepare($stmt,$query)){
+                    mysqli_stmt_bind_param($stmt,'i',$user_id);
+                    if(mysqli_stmt_execute($stmt)){
+                        //
                     }
                 }
             }
@@ -79,7 +96,9 @@
                     mysqli_stmt_fetch($stmt);
                 }
             }
-
+        }else{
+            header('Location: login-page.php');
+        }
             
         ?>
         <div id="profile">
@@ -151,6 +170,11 @@
     <script>
         
         window.onload = function(){
+
+            var first_timer = <?= $first_time ?>
+
+            if(first_timer == 0){
+
             var modal_user = document.getElementById('modal-user-tutorial');
             var imguser1 = document.getElementById('reg-user-img-1');
             var imguser2 = document.getElementById('reg-user-img-2');
@@ -209,6 +233,8 @@
                     $('body').toggleClass('body-overflow-modal');
                 };
             };
+
+            }
 
         }
 

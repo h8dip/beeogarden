@@ -16,7 +16,7 @@
         <a href="map-page.php" id="nav-mapa" <?php if($current_page == 'map'){echo 'class="nav-active"';}?>>Mapa</a>
         <a href="info-page.php" id="nav-info"<?php if($current_page == 'info'){echo 'class="nav-active"';}?>>Info</a>
         <a href="field-registration-page.php" id="nav-register">Registar</a>
-        <a href="welcome-page.php" id="nav-sair">Sair</a>
+        <a href="scripts/logout.php" id="nav-sair">Sair</a>
     </div>
     <div id="shopping-cart">
         <div id="cart-counter">0</div>

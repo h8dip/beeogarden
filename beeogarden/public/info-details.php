@@ -21,19 +21,44 @@
     <div id="container-info-details">
         <?php 
             $current_page = 'info';
+            session_start();
             include_once "components/navbar.php";
+            require_once "connections/connection.php";
+            require_once "scripts/php_scripts.php";
+
+            if(verifyLogin()){
+                $link = new_db_connection();
+                $stmt = mysqli_stmt_init($link);
+                if(isset($_GET['id'])){
+                    $id = htmlspecialchars($_GET['id']);
+                    $query = "SELECT nome_info, info_descricao, info_imagem FROM info WHERE id_info = ?";
+                    if(mysqli_stmt_prepare($stmt,$query)){
+                        mysqli_stmt_bind_param($stmt,'i',$id);
+                        if(mysqli_stmt_execute($stmt)){
+                            mysqli_stmt_bind_result($stmt,$nome_info,$descricao_info,$imagem_info);
+                            if(mysqli_stmt_fetch($stmt)){
+
+                            }
+                        }
+                    }
+                }else{
+                    header('Location: info-page.php');
+                }
+            }else{
+                header('Location: login-page.php');
+            }
         ?>
 
         <div id="title-info">
-            <h2>TITULO</h2>
+            <h2><?= $nome_info?></h2>
         </div>
 
         <div id="info-detail-content">
             <div id="info-detail-img">
-                <img src="img/semente_girassol.jpg" alt="">
+                <img src="<?= $imagem_info?>" alt="">
             </div>
             <div id="info-detail-text">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt magni quaerat amet aliquam aperiam dolorum, vitae magnam et, dolores alias modi voluptatum ullam non aspernatur! Mollitia ex rerum et praesentium veritatis voluptate ipsum iure cumque. Dicta eius laborum deleniti velit! Deserunt repudiandae fugiat voluptas quam? Deleniti soluta corporis veritatis voluptates! Sunt at accusantium modi laboriosam saepe qui aliquid similique quisquam cum iusto error, officia libero nemo assumenda fugiat temporibus, nam velit tenetur dolores quas dolor voluptate ex. Illum saepe, quia hic officiis asperiores tempore amet? Placeat dignissimos officia ea consequatur, saepe odit iusto ipsam, eligendi voluptates, repellendus ducimus aliquid culpa!Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio modi eaque odio nisi perferendis cumque debitis tempore. Suscipit, saepe magnam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi laudantium praesentium nulla eaque quis atque autem aspernatur corporis nobis tempore.Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quod dignissimos aut veritatis deserunt iste, quas pariatur delectus quia assumenda? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex possimus hic debitis ipsa ea quam consequatur exercitationem aut nulla harum.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum voluptatum sapiente porro fuga provident suscipit corrupti facilis deleniti odio aut!zz</p>
+                <p><?= $descricao_info?></p>
             </div> 
         </div>
     </div>

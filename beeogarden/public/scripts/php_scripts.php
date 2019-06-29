@@ -50,4 +50,16 @@
       if($dst_img)imagedestroy($dst_img);
       if($src_img)imagedestroy($src_img);
   }
+
+  function verifyLogin(){
+      if(isset($_SESSION['username'])){
+          if(!empty($_SESSION['username'])){
+            return true;
+          }else{
+              return false;
+          }
+      }else{
+          return false;
+      }
+  }
 ?>
