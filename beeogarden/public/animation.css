@@ -404,6 +404,11 @@ svg {
     background-color: var(--hover-color);
 }
 
+.info-slot:hover{ 
+    box-shadow: 0.1vw 0.2vw 15px #606060;
+    cursor:pointer;
+}
+
 /* FEED */
 
 #add-post-icon i:hover{
