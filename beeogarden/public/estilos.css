@@ -1034,7 +1034,7 @@ nav #shopping-cart{
 
     #profile{
         grid-template-columns: 50vw;
-        grid-template-rows: 50% 50%;
+        grid-template-rows: 60% 40%;
     }
 
     #profile #profile-img{

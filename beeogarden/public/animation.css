@@ -114,6 +114,15 @@
    cursor: pointer;
 }
 
+#upper-campo a{
+    text-decoration:none;
+    color:#000;
+}
+
+#upper-campo a:hover{
+    color: var(--primary-color);
+}
+
 
 /* CAROUSSEL LOJA */
 
