@@ -114,7 +114,12 @@
        
 
         modal_reg.onclick = function (){
-            if(modal_count == 1){
+            if(modal_count==0){
+                img1.style.display = 'block';
+                text1.style.display='block';
+                dot1.classList.remove("far");
+                dot1.classList.add("fas");
+            }else if(modal_count == 1){
                 img1.style.display='none';
                 text1.style.display='none';
                 dot1.classList.remove("fas");
@@ -159,6 +164,8 @@
             dot2.classList.add("far");
             dot3.classList.remove("fas");
             dot3.classList.add("far");
+
+            modal_count=0;
         }
 
         dot2.onclick = function(){
@@ -175,6 +182,8 @@
             dot1.classList.add("far");
             dot3.classList.remove("fas");
             dot3.classList.add("far");
+            
+            modal_count=1;
         }
 
         dot3.onclick = function(){
@@ -191,6 +200,8 @@
             dot2.classList.add("far");
             dot1.classList.remove("fas");
             dot1.classList.add("far");
+            
+            modal_count=2;
         }
 
         var submit_trigger= document.getElementById('register-beeogarden-btn');
