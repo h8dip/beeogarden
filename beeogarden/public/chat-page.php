@@ -21,7 +21,7 @@
     <div id="chat-container">
         <div id="top-chat">
             <div id="top-chat-content">
-                <i id="back-chat-btn" class="fas fa-arrow-left"></i>
+                <a href="profile-page.php"><i id="back-chat-btn" class="fas fa-arrow-left"></i></a>
                 <img src="img/greta.PNG" alt="">
                 <p>Universidade de Aveiro</p>
                 <i id="def-btn" class="fas fa-cog"></i>

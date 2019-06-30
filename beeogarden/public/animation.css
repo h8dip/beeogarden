@@ -685,6 +685,14 @@ svg {
     margin-top:0.7vh;
 }
 
+/* CHAT */
+
+#top-chat-content a:hover{
+    cursor:pointer;
+    opacity:0.7;
+}
+
+
 
 /* MEDIA QUERIES ------------------------------------------------------------------------------------*/
 
