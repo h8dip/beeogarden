@@ -196,7 +196,12 @@
        
 
             modal_user.onclick = function (){
-                if(modal_user_count == 1){
+                if(modal_user_count==0){
+                    imguser1.style.display = 'block';
+                    textuser1.style.display='block';
+                    dotuser1.classList.remove("far");
+                    dotuser1.classList.add("fas");
+                }else if(modal_user_count == 1){
                     imguser1.style.display='none';
                     textuser1.style.display='none';
                     dotuser1.classList.remove("fas");
@@ -226,6 +231,61 @@
                 }
 
             }
+
+        dotuser1.onclick = function(){
+            imguser1.style.display = 'block';
+            textuser1.style.display='block';
+            dotuser1.classList.remove("far");
+            dotuser1.classList.add("fas");
+            
+            imguser2.style.display = 'none';
+            imguser3.style.display = 'none';
+            textuser2.style.display = 'none';
+            textuser3.style.display = 'none';
+            dotuser2.classList.remove("fas");
+            dotuser2.classList.add("far");
+            dotuser3.classList.remove("fas");
+            dotuser3.classList.add("far");
+
+            modal_user_count=0;
+        }
+
+        dotuser2.onclick = function(){
+            imguser2.style.display = 'block';
+            textuser2.style.display='block';
+            dotuser2.classList.remove("far");
+            dotuser2.classList.add("fas");
+            
+            imguser1.style.display = 'none';
+            imguser3.style.display = 'none';
+            textuser1.style.display = 'none';
+            textuser3.style.display = 'none';
+            dotuser1.classList.remove("fas");
+            dotuser1.classList.add("far");
+            dotuser3.classList.remove("fas");
+            dotuser3.classList.add("far");
+            
+            modal_user_count=1;
+        }
+
+        dotuser3.onclick = function(){
+            imguser3.style.display = 'block';
+            textuser3.style.display='block';
+            dotuser3.classList.remove("far");
+            dotuser3.classList.add("fas");
+            
+            imguser2.style.display = 'none';
+            imguser1.style.display = 'none';
+            textuser2.style.display = 'none';
+            textuser1.style.display = 'none';
+            dotuser2.classList.remove("fas");
+            dotuser2.classList.add("far");
+            dotuser1.classList.remove("fas");
+            dotuser1.classList.add("far");
+            
+            modal_user_count=2;
+        }
+
 
             window.onclick = function(event) {
                 if (event.target == modal_user) {

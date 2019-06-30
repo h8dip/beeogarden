@@ -114,6 +114,15 @@
    cursor: pointer;
 }
 
+#upper-campo a{
+    text-decoration:none;
+    color:#000;
+}
+
+#upper-campo a:hover{
+    color: var(--primary-color);
+}
+
 
 /* CAROUSSEL LOJA */
 
@@ -269,6 +278,11 @@ svg {
 #add-cart-button a{
     text-decoration: none;
     color: #fff;
+}
+
+#add-cart-button-seed a{
+    text-decoration:none;
+    color:var(--primary-color);
 }
 
 #add-cart-button:hover{
