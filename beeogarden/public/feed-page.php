@@ -22,19 +22,21 @@
         <div id="modal-post-container">
             <div id="modal-post-header">
                 <i id="back-post-btn" class="fas fa-arrow-left"></i>
-                <a href="#">
+                <a id="btn-post-a">
                     <div id="btn-post">
                         <p>Publicar</p>
                     </div>
                 </a>
             </div>
             <div id="modal-post-content">
+            <form id="form-post" method="post" enctype="multipart/form-data" action="<?="scripts/submit_post.php?id=".$_GET['id']?>">
                 <div id="modal-post-input">
-                    <textarea placeholder="O que está a acontecer?"></textarea>
+                    <textarea name="texto-post" placeholder="O que está a acontecer?"></textarea>
                 </div>
                 <div id="modal-post-upload">
-                    <i class="fas fa-images"></i>
+                    <input id="ficheiro_img" type="file" name="foto-post" class="fas fa-images" onchange=''></i>        
                 </div>
+            </form>    
             </div>
         </div>
     </div>
@@ -124,9 +126,10 @@
                                         echo '<div class="post-text">';
                                         echo '<h3>'.$descricao.'</h3>';
                                         echo '</div>';
+                                        if(is_null($imagem)){}else{
                                         echo '<div class="post-image">';
                                         echo '<img src="'.$imagem.'" alt="">';
-                                        echo '</div>';
+                                        echo '</div>';}
                                         echo '</div>';
                                     }
                                 }
@@ -151,6 +154,11 @@
             var modal_post = document.getElementById('modal-post');
             var post_trigger = document.getElementById('add-post-icon');
             var back_btn = document.getElementById('back-post-btn');
+            var submit_btn = document.getElementById('btn-post-a');
+
+            submit_btn.onclick=function(){
+                $('#form-post').submit();
+            };
 
             post_trigger.onclick=function(){
                 modal_post.style.display='block';
