@@ -129,11 +129,10 @@
 
         <div id="pe-edit">
             <div id="pe-edit-img">
-                <button method="post" action="profile-edit-page.php?id=<?= $_GET['id']?>" enctype="multipart/form-data">
-                        <i class="fas fa-pencil-alt" id="edit-photo"></i>
-                    <button name="foto-perfil" type="file" onchange="this.form.submit();">
-                    </button>
-</button>
+                <form method="post" action="profile-edit-page.php?id=<?= $_GET['id']?>" enctype="multipart/form-data">
+                    <input name="foto-perfil" type="file" onchange="this.form.submit();">
+                </form>
+                <i class="fas fa-pencil-alt" id="edit-photo"></i>
                 <div>
                     <img src="<?= $foto_perfil ?>" alt="">
                 </div>
