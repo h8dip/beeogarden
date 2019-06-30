@@ -138,27 +138,49 @@
         <div id="campos-container">
             <h1>OS MEUS CAMPOS</h1>
             <?php 
-            $query = "SELECT id_espaco, nome_espaco, localidade FROM espaco WHERE ref_Utilizador LIKE ? ";
+            $query = "SELECT id_espaco, nome_espaco, localidade, ref_contribuidores,ref_Utilizador FROM espaco WHERE ref_Utilizador LIKE ? OR ref_contribuidores IS NOT NULL";
 
             if(mysqli_stmt_prepare($stmt,$query)){
                 mysqli_stmt_bind_param($stmt,'i',$user_id);
                 if(mysqli_stmt_execute($stmt)){
-                    mysqli_stmt_bind_result($stmt,$id_espaco, $nome_espaco, $localidade);
+                    mysqli_stmt_bind_result($stmt,$id_espaco, $nome_espaco, $localidade,$ref_contribuidores,$ref_Utilizador);
                     while(mysqli_stmt_fetch($stmt)){
-                        echo '<div class="campo" >';
-                        echo '<div id="upper-campo">';
-                        echo '<a href="feed-page.php?f=1&id='.$id_espaco.'"><h3>'.$nome_espaco.'</h3></a>   ';
-                        echo '<i class="far fa-comment fa-2x"></i>';
-                        echo '</div>';
-                        echo '<div id="lower-campo">';
-                        echo '<div>';
-                        echo '<i class="fas fa-map-marker-alt"></i>';
-                        echo '<h4>'.$localidade.'</h4>';
-                        echo '</div>';
-                        echo '<div>';
-                        echo '<p>'.$beeopoints.'</p>';
-                        echo '<img src="img/beeopoints.png" alt="">';
-                        echo '</div></div></div>';
+                        if($ref_Utilizador != $user_id){
+                            $array_contribuidores = explode(',',$ref_contribuidores);
+                            for($i = 0; $i<count($array_contribuidores); $i++){
+                                if($array_contribuidores[$i]==$user_id){
+                                    echo '<div class="campo" >';
+                                    echo '<div id="upper-campo">';
+                                    echo '<a href="feed-page.php?f=1&id='.$id_espaco.'"><h3>'.$nome_espaco.'</h3></a>   ';
+                                    echo '<i class="far fa-comment fa-2x"></i>';
+                                    echo '</div>';
+                                    echo '<div id="lower-campo">';
+                                    echo '<div>';
+                                    echo '<i class="fas fa-map-marker-alt"></i>';
+                                    echo '<h4>'.$localidade.'</h4>';
+                                    echo '</div>';
+                                    echo '<div>';
+                                    echo '<p>'.$beeopoints.'</p>';
+                                    echo '<img src="img/beeopoints.png" alt="">';
+                                    echo '</div></div></div>';
+                                }
+                            }
+                        }else{
+                            echo '<div class="campo" >';
+                            echo '<div id="upper-campo">';
+                            echo '<a href="feed-page.php?f=1&id='.$id_espaco.'"><h3>'.$nome_espaco.'</h3></a>   ';
+                            echo '<i class="far fa-comment fa-2x"></i>';
+                            echo '</div>';
+                            echo '<div id="lower-campo">';
+                            echo '<div>';
+                            echo '<i class="fas fa-map-marker-alt"></i>';
+                            echo '<h4>'.$localidade.'</h4>';
+                            echo '</div>';
+                            echo '<div>';
+                            echo '<p>'.$beeopoints.'</p>';
+                            echo '<img src="img/beeopoints.png" alt="">';
+                            echo '</div></div></div>';
+                        }
                     }
                 }
             }
