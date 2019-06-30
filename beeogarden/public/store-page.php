@@ -22,6 +22,13 @@
         
     <div id="container-loja" >
         <?php
+            session_start();
+            require_once "scripts/php_scripts.php";
+            if(verifyLogin()){
+
+            }else{
+                header('Location: login-page.php');
+            }
             $current_page='store';
             include_once "components/navbar.php";
             include_once "components/loader.php";

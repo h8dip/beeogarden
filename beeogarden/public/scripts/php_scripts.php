@@ -62,4 +62,64 @@
           return false;
       }
   }
+
+  function checkCartCounter(){
+
+    $link = new_db_connection();
+    $stmt = mysqli_stmt_init($link);
+
+    if(isset($_SESSION['username'])){
+        $nome_utilizador = $_SESSION['username'];
+
+    }
+    $query = "SELECT id_utilizador FROM utilizador WHERE utilizador LIKE ?";
+    if(mysqli_stmt_prepare($stmt,$query)){
+        mysqli_stmt_bind_param($stmt,'s',$nome_utilizador);
+        if(mysqli_stmt_execute($stmt)){
+            mysqli_stmt_bind_result($stmt,$id_utilizador);
+            if(mysqli_stmt_fetch($stmt)){
+                
+            }
+        }
+    }
+
+    $query = "SELECT COUNT(*) FROM compras WHERE ref_Utilizador = ? AND data_compra IS NULL OR data_compra = ' '";
+    if(mysqli_stmt_prepare($stmt,$query)){
+        mysqli_stmt_bind_param($stmt,'i',$id_utilizador);
+        if(mysqli_stmt_execute($stmt)){
+            mysqli_stmt_bind_result($stmt,$carrinho);
+            if(mysqli_stmt_fetch($stmt)){
+               
+            }
+        }
+    }
+
+    if($carrinho >= 1){
+        $query = "SELECT id_compra FROM compras WHERE ref_Utilizador = ? AND data_compra IS NULL or data_compra = ' '";
+            if(mysqli_stmt_prepare($stmt,$query)){
+                mysqli_stmt_bind_param($stmt,'i',$id_utilizador);
+                if(mysqli_stmt_execute($stmt)){
+                    mysqli_stmt_bind_result($stmt,$id_compra);
+                    if(mysqli_stmt_fetch($stmt)){
+                        //temos agr id da compra e preço total.   
+                    }
+                }
+        }
+
+        $query = "SELECT COUNT(*),quantidade FROM compras_has_produto WHERE ref_compra = ?";
+        if(mysqli_stmt_prepare($stmt,$query)){
+            mysqli_stmt_bind_param($stmt,'i',$id_compra);
+            if(mysqli_stmt_execute($stmt)){
+                mysqli_stmt_bind_result($stmt,$counter,$quantidade);
+                $extra = 0;
+                while (mysqli_stmt_fetch($stmt)){
+                    $extra += ($quantidade-1);
+                }
+                return $counter+$extra;
+            }
+        }
+    }else{
+        return 0;
+    }
+  }
 ?>

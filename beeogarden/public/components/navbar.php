@@ -19,7 +19,13 @@
         <a href="scripts/logout.php" id="nav-sair">Sair</a>
     </div>
     <div id="shopping-cart">
-        <div id="cart-counter">0</div>
+        <?php
+            require_once "connections/connection.php";
+            require_once "scripts/php_scripts.php";
+
+            $compras = checkCartCounter();
+            echo '<div id="cart-counter">'.$compras.'</div>';
+        ?>       
         <a href="cart.php"><i class="fas fa-shopping-cart fa-2x"></i></a>
     </div>
 </nav>
