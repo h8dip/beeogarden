@@ -69,6 +69,8 @@
             if(isset($_FILES['foto-perfil']['name'])){
                 $target_dir = "img/";
                 $username_d = $_SESSION['username'];
+                $username_d = str_replace('#','',$username_d);
+                $username_d = str_replace('*','',$username_d);
                 $rand = rand(1,1000000000);
                 $fName = $username_d.$rand;
                 $target_file = $target_dir . basename($_FILES["foto-perfil"]["name"]);
