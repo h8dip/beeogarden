@@ -24,7 +24,7 @@
                 <i id="back-chat-btn" class="fas fa-arrow-left"></i>
                 <img src="img/greta.PNG" alt="">
                 <p>Universidade de Aveiro</p>
-                <i class="fas fa-cog"></i>
+                <i id="def-btn" class="fas fa-cog"></i>
             </div>
         </div>
         <div id="chat-content">
