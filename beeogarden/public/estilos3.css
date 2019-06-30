@@ -367,11 +367,16 @@ body { overflow: -moz-scrollbars-none; }
 }
 
 .recieve-msg{
-    width:auto;
+    width:100%;
     height:auto;
-    display: flex;
-    align-items:center;
     margin: 2vh 0;
+    display:inline-block;
+}
+
+.recieve-msg-content{
+    display: flex;
+    flex-direction:row;
+    align-items:center;
     float:left;
 }
 
@@ -390,12 +395,16 @@ body { overflow: -moz-scrollbars-none; }
 }
 
 .sent-msg{
-    width:auto;
+    width:100%;
     height:auto;
-    display:flex;
+    margin: 2vh 0;
+    display:inline-block;
+}
+
+.sent-msg-content{
+    display: flex;
     flex-direction:row;
     align-items:center;
-    margin: 2vh 0;
     float:right;
 }
 

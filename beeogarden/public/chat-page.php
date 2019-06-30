@@ -29,90 +29,124 @@
         </div>
         <div id="chat-content">
             <div class="recieve-msg">
-                <img src="img/greta.PNG" alt="">
-                <div class="recieve-msg-txt">
-                    <p>Obrigada por plantares no nosso jardim!</p>
+                <div class="recieve-msg-content">
+                    <img src="img/greta.PNG" alt="">
+                    <div class="recieve-msg-txt">
+                        <p>Obrigada por plantares no nosso jardim!</p>
+                    </div>
                 </div>
             </div>
             <div class="sent-msg">
-                <div class="sent-msg-txt">
-                    <p>De nada !!</p>
+                <div class="sent-msg-content">
+                    <div class="sent-msg-txt">
+                        <p>De nada !!</p>
+                    </div>
+                    <img src="img/marco_admin_imagem-perfil.png" alt="">
                 </div>
-                <img src="img/marco_admin_imagem-perfil.png" alt="">
             </div>
+            
             <div class="recieve-msg">
-                <img src="img/greta.PNG" alt="">
-                <div class="recieve-msg-txt">
-                    <p>Obrigada por plantares no nosso jardim!</p>
+                <div class="recieve-msg-content">
+                    <img src="img/greta.PNG" alt="">
+                    <div class="recieve-msg-txt">
+                        <p>Obrigada por plantares no nosso jardim!</p>
+                    </div>
                 </div>
             </div>
             <div class="sent-msg">
-                <div class="sent-msg-txt">
-                    <p>De nada !!</p>
+                <div class="sent-msg-content">
+                    <div class="sent-msg-txt">
+                        <p>De nada !!</p>
+                    </div>
+                    <img src="img/marco_admin_imagem-perfil.png" alt="">
                 </div>
-                <img src="img/marco_admin_imagem-perfil.png" alt="">
             </div>
+            
             <div class="recieve-msg">
-                <img src="img/greta.PNG" alt="">
-                <div class="recieve-msg-txt">
-                    <p>Obrigada por plantares no nosso jardim!</p>
+                <div class="recieve-msg-content">
+                    <img src="img/greta.PNG" alt="">
+                    <div class="recieve-msg-txt">
+                        <p>Obrigada por plantares no nosso jardim!</p>
+                    </div>
                 </div>
             </div>
             <div class="sent-msg">
-                <div class="sent-msg-txt">
-                    <p>De nada !!</p>
+                <div class="sent-msg-content">
+                    <div class="sent-msg-txt">
+                        <p>De nada !!</p>
+                    </div>
+                    <img src="img/marco_admin_imagem-perfil.png" alt="">
                 </div>
-                <img src="img/marco_admin_imagem-perfil.png" alt="">
             </div>
+            
             <div class="recieve-msg">
-                <img src="img/greta.PNG" alt="">
-                <div class="recieve-msg-txt">
-                    <p>Obrigada por plantares no nosso jardim!</p>
+                <div class="recieve-msg-content">
+                    <img src="img/greta.PNG" alt="">
+                    <div class="recieve-msg-txt">
+                        <p>Obrigada por plantares no nosso jardim!</p>
+                    </div>
                 </div>
             </div>
             <div class="sent-msg">
-                <div class="sent-msg-txt">
-                    <p>De nada !!</p>
+                <div class="sent-msg-content">
+                    <div class="sent-msg-txt">
+                        <p>De nada !!</p>
+                    </div>
+                    <img src="img/marco_admin_imagem-perfil.png" alt="">
                 </div>
-                <img src="img/marco_admin_imagem-perfil.png" alt="">
             </div>
+            
             <div class="recieve-msg">
-                <img src="img/greta.PNG" alt="">
-                <div class="recieve-msg-txt">
-                    <p>Obrigada por plantares no nosso jardim!</p>
+                <div class="recieve-msg-content">
+                    <img src="img/greta.PNG" alt="">
+                    <div class="recieve-msg-txt">
+                        <p>Obrigada por plantares no nosso jardim!</p>
+                    </div>
                 </div>
             </div>
             <div class="sent-msg">
-                <div class="sent-msg-txt">
-                    <p>De nada !!</p>
+                <div class="sent-msg-content">
+                    <div class="sent-msg-txt">
+                        <p>De nada !!</p>
+                    </div>
+                    <img src="img/marco_admin_imagem-perfil.png" alt="">
                 </div>
-                <img src="img/marco_admin_imagem-perfil.png" alt="">
             </div>
+            
             <div class="recieve-msg">
-                <img src="img/greta.PNG" alt="">
-                <div class="recieve-msg-txt">
-                    <p>Obrigada por plantares no nosso jardim!</p>
+                <div class="recieve-msg-content">
+                    <img src="img/greta.PNG" alt="">
+                    <div class="recieve-msg-txt">
+                        <p>Obrigada por plantares no nosso jardim!</p>
+                    </div>
                 </div>
             </div>
             <div class="sent-msg">
-                <div class="sent-msg-txt">
-                    <p>De nada !!</p>
+                <div class="sent-msg-content">
+                    <div class="sent-msg-txt">
+                        <p>De nada !!</p>
+                    </div>
+                    <img src="img/marco_admin_imagem-perfil.png" alt="">
                 </div>
-                <img src="img/marco_admin_imagem-perfil.png" alt="">
             </div>
+            
             <div class="recieve-msg">
-                <img src="img/greta.PNG" alt="">
-                <div class="recieve-msg-txt">
-                    <p>Obrigada por plantares no nosso jardim!</p>
+                <div class="recieve-msg-content">
+                    <img src="img/greta.PNG" alt="">
+                    <div class="recieve-msg-txt">
+                        <p>Obrigada por plantares no nosso jardim!</p>
+                    </div>
                 </div>
             </div>
-            <br>
             <div class="sent-msg">
-                <div class="sent-msg-txt">
-                    <p>De nada !!</p>
+                <div class="sent-msg-content">
+                    <div class="sent-msg-txt">
+                        <p>De nada !!</p>
+                    </div>
+                    <img src="img/marco_admin_imagem-perfil.png" alt="">
                 </div>
-                <img src="img/marco_admin_imagem-perfil.png" alt="">
             </div>
+            
 
         </div>
         <div id="chat-bottom">
