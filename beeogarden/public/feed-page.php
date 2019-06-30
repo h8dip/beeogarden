@@ -42,13 +42,43 @@
     <div id="feed-page-container">
         <?php
             $current_page='info';
-            include_once "components/navbar.php"
+            include_once "components/navbar.php";
+            require_once "connections/connection.php";
+            session_start();
+            require_once "scripts/php_scripts.php";
+
+
+            $link = new_db_connection();
+            $stmt = mysqli_stmt_init($link);
+            $stmt2 = mysqli_stmt_init($link);
          ?>
 
         <div id="feed-title">
-            <h1>Universidade de Aveiro</h1>
-            <div>
-                <img src="img/greta.png" alt="">
+            
+           
+                <?php
+                if(verifyLogin()){
+                    if(isset($_GET['id'])){
+                        $id_espaco = htmlspecialchars($_GET['id']);
+                        $query = "SELECT nome_espaco, foto_perfil FROM espaco INNER JOIN utilizador ON ref_Utilizador = id_utilizador WHERE id_espaco = ?";
+                        if(mysqli_stmt_prepare($stmt,$query)){
+                            mysqli_stmt_bind_param($stmt,'i',$id_espaco);
+                            if(mysqli_stmt_execute($stmt)){
+                                mysqli_stmt_bind_result($stmt,$nome_espaco, $foto_f_owner);
+                                if(mysqli_stmt_fetch($stmt)){
+                                    echo '<h1>'.$nome_espaco.'</h1><div>';
+                                    echo '<img src="'.$foto_f_owner.'" alt="">';
+
+                                }
+                            }
+                        }
+                    }
+                }   
+                else{
+                    header('Location: login-page.php');
+                }
+                ?> 
+               
             </div>
         </div>
 
@@ -66,52 +96,49 @@
                     <h3>09</h3>
                 </div>
             </div>
-
-            <div class="post">
-                <div class="post-details">
-                    <div><img src="img/greta.png" alt=""></div>
-                    <div>
-                        <h3>Greta Thunberg</h3>
-                        <h6>Ontem às 16:00h</h6>
-                    </div>
-                </div>
-                <div class="post-text">
-                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum quidem iure aliquam, excepturi necessitatibus rem.</h3>
-                </div>
-                <div class="post-image">
-                    <img src="img/bee-house.PNG" alt="">
-                </div>
-            </div>
-
-            <div class="post">
-                <div class="post-details">
-                    <div><img src="img/greta.png" alt=""></div>
-                    <div>
-                        <h3>Greta Thunberg</h3>
-                        <h6>Ontem às 16:00h</h6>
-                    </div>
-                </div>
-                <div class="post-text">
-                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum quidem iure aliquam, excepturi necessitatibus rem.</h3>
-                </div>
-            </div>
-
-            <div class="post">
-                <div class="post-details">
-                    <div><img src="img/greta.png" alt=""></div>
-                    <div>
-                        <h3>Greta Thunberg</h3>
-                        <h6>Ontem às 16:00h</h6>
-                    </div>
-                </div>
-                <div class="post-text">
-                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum quidem iure aliquam, excepturi necessitatibus rem.</h3>
-                </div>
-                <div class="post-image">
-                    <img src="img/bee-house.PNG" alt="">
-                </div>
-            </div>
-        </div>
+            <?php 
+             if(verifyLogin()){
+                if(isset($_GET["f"]))
+                {
+                    if($_GET['f'] == 1){
+                        //field feed
+                        if(isset($_GET['id'])){
+                            $id = htmlspecialchars($_GET['id']);
+                            $query = "SELECT id_post, descricao, data, imagem, ref_Utilizador, foto_perfil, utilizador FROM posts INNER JOIN utilizador ON ref_Utilizador = id_utilizador WHERE ref_espaco = ?";
+                            if(mysqli_stmt_prepare($stmt,$query)){
+                                mysqli_stmt_bind_param($stmt,'i',$id);
+                                if(mysqli_stmt_execute($stmt))
+                                {
+                                    mysqli_stmt_bind_result($stmt,$id_post,$descricao,$data,$imagem,$ref_Utilizador,$foto_perfil,$username);
+                                    $query2 = "SELECT foto_perfil FROM utilizador WHERE ";
+                                    while(mysqli_stmt_fetch($stmt)){
+                                        
+                                        echo '<div class="post">';
+                                        echo '<div class="post-details">';
+                                        echo '<div><img src="'.$foto_perfil.'" alt=""></div>';
+                                        echo '<div>';
+                                        echo '<h3>'.$username.'</h3>';
+                                        echo '<h6>'.$data.'</h6>';
+                                        echo '</div>';
+                                        echo '</div>';
+                                        echo '<div class="post-text">';
+                                        echo '<h3>'.$descricao.'</h3>';
+                                        echo '</div>';
+                                        echo '<div class="post-image">';
+                                        echo '<img src="'.$imagem.'" alt="">';
+                                        echo '</div>';
+                                        echo '</div>';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }else{
+                header('Location: login-page.php');
+            }
+            ?>
+        </div>    
     </div>
     
     <div id="add-post-icon"><i class="fas fa-plus-circle fa-5x"></i></div>

@@ -138,14 +138,14 @@
         <div id="campos-container">
             <h1>OS MEUS CAMPOS</h1>
             <?php 
-            $query = "SELECT nome_espaco, localidade FROM espaco WHERE ref_Utilizador LIKE ? ";
+            $query = "SELECT id_espaco, nome_espaco, localidade FROM espaco WHERE ref_Utilizador LIKE ? ";
 
             if(mysqli_stmt_prepare($stmt,$query)){
                 mysqli_stmt_bind_param($stmt,'i',$user_id);
                 if(mysqli_stmt_execute($stmt)){
-                    mysqli_stmt_bind_result($stmt, $nome_espaco, $localidade);
+                    mysqli_stmt_bind_result($stmt,$id_espaco, $nome_espaco, $localidade);
                     while(mysqli_stmt_fetch($stmt)){
-                        echo '<div class="campo">';
+                        echo '<a href="feed-page.php?f=1&id='.$id_espaco.'"><div class="campo" >';
                         echo '<div id="upper-campo">';
                         echo '<h3>'.$nome_espaco.'</h3>';
                         echo '<i class="far fa-comment fa-2x"></i>';
@@ -158,7 +158,7 @@
                         echo '<div>';
                         echo '<p>'.$beeopoints.'</p>';
                         echo '<img src="img/beeopoints.png" alt="">';
-                        echo '</div></div></div>';
+                        echo '</div></div></div></a>';
                     }
                 }
             }
