@@ -397,6 +397,7 @@ body { overflow: -moz-scrollbars-none; }
     border-radius: 5vw;
     padding:2vh;
     margin: 0 2vh;
+    overflow-wrap:break-word;
 }
 
 .sent-msg{
@@ -420,6 +421,7 @@ body { overflow: -moz-scrollbars-none; }
     border-radius:5vw;
     padding:2vh;
     margin:0 2vh;
+    overflow-wrap:break-word;
 }
 
 .sent-msg img{
