@@ -145,9 +145,9 @@
                 if(mysqli_stmt_execute($stmt)){
                     mysqli_stmt_bind_result($stmt,$id_espaco, $nome_espaco, $localidade);
                     while(mysqli_stmt_fetch($stmt)){
-                        echo '<a href="feed-page.php?f=1&id='.$id_espaco.'"><div class="campo" >';
+                        echo '<div class="campo" >';
                         echo '<div id="upper-campo">';
-                        echo '<h3>'.$nome_espaco.'</h3>';
+                        echo '<a href="feed-page.php?f=1&id='.$id_espaco.'"><h3>'.$nome_espaco.'</h3></a>';
                         echo '<i class="far fa-comment fa-2x"></i>';
                         echo '</div>';
                         echo '<div id="lower-campo">';
@@ -158,7 +158,7 @@
                         echo '<div>';
                         echo '<p>'.$beeopoints.'</p>';
                         echo '<img src="img/beeopoints.png" alt="">';
-                        echo '</div></div></div></a>';
+                        echo '</div></div></div>';
                     }
                 }
             }
