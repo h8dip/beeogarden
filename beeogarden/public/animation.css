@@ -271,6 +271,11 @@ svg {
     color: #fff;
 }
 
+#add-cart-button-seed a{
+    text-decoration:none;
+    color:var(--primary-color);
+}
+
 #add-cart-button:hover{
     cursor:pointer;
 }
