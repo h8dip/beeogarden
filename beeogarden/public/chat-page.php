@@ -18,13 +18,33 @@
 
 </head>
 <body>
+
+    <div id="modal-block">
+        <div class="modal-block-content">
+            <div id="modal-block-top">
+                <h1>Tem a certeza que pretende bloquear este utilizador? Esta ação não pode ser revertida mais tarde.</h1>
+            </div>
+            <div id="modal-block-btns">
+                <button id="cancel-btn-modal" class="cancel-btn-modal">Cancelar</button>
+                <button class="continue-btn-modal">Continuar</button>
+            </div>
+        </div>
+    </div>
+
     <div id="chat-container">
         <div id="top-chat">
             <div id="top-chat-content">
                 <a href="profile-page.php"><i id="back-chat-btn" class="fas fa-arrow-left"></i></a>
                 <img src="img/greta.PNG" alt="">
                 <p>Universidade de Aveiro</p>
-                <i id="def-btn" class="fas fa-cog"></i>
+                <div class="dropdown">
+                    <i id="def-btn" class="fas fa-cog dropbtn"></i>
+                    <div class="dropdown-content">
+                        <a href="#">Notificações</a>
+                        <a id="block-user" href="#">Bloquear utilizador</a>
+                        <a id="report-user" href="#">Denunciar utilizador</a>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="chat-content">
@@ -157,6 +177,35 @@
     
 
 <script src="main.js"></script>
+
+<script>
+
+    window.onload=function(){
+        var block_btn = document.getElementById('block-user');
+        var report_btn = document.getElementById('report-user');
+
+        var modal_block = document.getElementById('modal-block');
+        var modal_block_cancel = document.getElementById('cancel-btn-modal');
+
+        block_btn.onclick=function(){
+            modal_block.style.display="block";
+            $('body').toggleClass('body-overflow-modal');
+        };
+
+        modal_block_cancel.onclick=function(){
+            modal_block.style.display = "none";
+            $('body').toggleClass('body-overflow-modal');
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal_block) {
+                modal_block.style.display = "none";
+                $('body').toggleClass('body-overflow-modal');
+            };
+        };
+    }
+
+</script>
 
 
 </body>
