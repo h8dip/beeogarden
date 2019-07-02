@@ -718,7 +718,7 @@ svg {
 .dropdown-content {
     display: none;
     position: absolute;
-    margin-left: -20vh;
+    margin-left: -23vh;
     background-color: #f1f1f1;
     width: 30vh;
     color:#000 !important;
@@ -777,16 +777,15 @@ svg {
 
 #modal-block-top{
     width:90%; 
-    font-size:0.8rem;
-    padding-top: 2vh;
+    font-size:0.7rem;
     margin:auto;
     justify-content:center;
     align-items:center;
 }
 
 #modal-block-btns{
-    width:30%;
-    margin-left:65%;
+    width:60%;
+    margin-left:35%;
     display:flex;
     justify-content:space-between;
 }
@@ -797,12 +796,10 @@ svg {
     font-weight:bold;
     border:none;
     color:var(--primary-color);
-    /* border-radius:4vh; */
     background-color:#fff;
 }
 
 .cancel-btn-modal:hover{
-    opacity:0.8;
     cursor:pointer;
 }
 
@@ -818,9 +815,85 @@ svg {
 }
 
 .continue-btn-modal:hover{
-    opacity:0.8;
     cursor:pointer;
 }
+
+/* MODAL REPORT */
+
+#modal-report{
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-report-content::-webkit-scrollbar { width: 0 !important };
+
+.modal-report-content { overflow: -moz-scrollbars-none; }
+
+.modal-report-content{
+    display:grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 5vh 55vh 10vh;
+    background-color: #fefefe;
+    margin:5% auto;
+    border: 1px solid #888;
+    border-radius:5vh;
+    height:70vh;
+    width:75vw;
+    justify-content: center;
+    overflow:hidden;
+}
+
+#modal-report-top{
+    display:flex;
+    background-color:var(--primary-color);
+    align-items:center;
+    justify-content:center;
+    color: #fff;
+    font-weight:bold;
+}
+
+#modal-report-form{
+    margin:auto;
+    width:95%;
+
+}
+
+#modal-report-form form select{
+    padding: 1vh;
+    width: 100%;
+    margin: 1vh 0;
+    background-color: lightgrey;
+    border: none;
+    height: 6vh;
+    border-radius: 2vh;
+}
+
+#modal-report-form textarea{
+    padding: 1vh;
+    margin: 1vh 0;
+    background-color: lightgrey;
+    border: none;
+    width: 71vw;
+    height: 22em;
+    border-radius: 2vh;
+}
+
+#modal-report-btns{
+    width:60%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-left: 30%;
+}
+
 
 
 /* MEDIA QUERIES ------------------------------------------------------------------------------------*/
@@ -855,6 +928,25 @@ svg {
         height: 12em;
         width: 17em;
     }
+
+    #modal-block-top{
+        font-size:0.8rem;
+    }
+    
+    #modal-block-btns{
+        width:40%;
+        margin-left:55%;
+    }
+
+    .modal-block-content{
+        margin: 25% auto;
+    }
+
+    #modal-report-btns{
+        width:30%;
+        margin-left:60%;
+    }
+
 }
 
 /* computador */
@@ -902,5 +994,31 @@ svg {
         width: 29em;
     }
 
+    #modal-block-btns{
+        width:20%;
+        margin-left:75%;
+    }
+
+    .dropdown {
+        margin-top: -100vh;
+    }
+
+    .dropdown i{
+        margin-left:-2vw;
+    }
+
+    .dropdown-content{
+        margin-left:-28vh;
+        margin-top: 12vh;
+    }
+
+    #modal-report-btns{
+        width:20%;
+        margin-left:70%;
+    }
+
+    #modal-report-form textarea{
+        height: 16em;
+    }
 }
 

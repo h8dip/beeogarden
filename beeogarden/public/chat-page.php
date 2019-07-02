@@ -30,6 +30,28 @@
             </div>
         </div>
     </div>
+    
+    <div id="modal-report">
+        <div class="modal-report-content">
+            <div id="modal-report-top">
+                <h3>Reportar utilizador</h3>
+            </div>
+            <div id="modal-report-form">
+                    <form action="" id="report-form">
+                        <select placeholder="Motivo da denúncia" name="motivo">
+                            <option value="volvo">Conteúdo impróprio</option>
+                            <option value="saab">Conta falsa</option>
+                            <option value="saab">Chantagem</option>
+                        </select>
+                    </form>
+                    <textarea name="comentario" id="report-obs" form="report-form"></textarea>
+            </div>
+            <div id="modal-report-btns">
+                <button id="cancel-report-modal" class="cancel-btn-modal">Cancelar</button>
+                <button class="continue-btn-modal">Reportar</button>
+            </div>
+        </div>
+    </div>
 
     <div id="chat-container">
         <div id="top-chat">
@@ -61,7 +83,6 @@
                     <div class="sent-msg-txt">
                         <p>De nada !!</p>
                     </div>
-                    <img src="img/marco_admin_imagem-perfil.png" alt="">
                 </div>
             </div>
             
@@ -78,7 +99,6 @@
                     <div class="sent-msg-txt">
                         <p>De nada !!</p>
                     </div>
-                    <img src="img/marco_admin_imagem-perfil.png" alt="">
                 </div>
             </div>
             
@@ -95,7 +115,6 @@
                     <div class="sent-msg-txt">
                         <p>De nada !!</p>
                     </div>
-                    <img src="img/marco_admin_imagem-perfil.png" alt="">
                 </div>
             </div>
             
@@ -112,7 +131,6 @@
                     <div class="sent-msg-txt">
                         <p>De nada !!</p>
                     </div>
-                    <img src="img/marco_admin_imagem-perfil.png" alt="">
                 </div>
             </div>
             
@@ -129,7 +147,6 @@
                     <div class="sent-msg-txt">
                         <p>De nada !!</p>
                     </div>
-                    <img src="img/marco_admin_imagem-perfil.png" alt="">
                 </div>
             </div>
             
@@ -146,7 +163,6 @@
                     <div class="sent-msg-txt">
                         <p>De nada !!</p>
                     </div>
-                    <img src="img/marco_admin_imagem-perfil.png" alt="">
                 </div>
             </div>
             
@@ -163,7 +179,6 @@
                     <div class="sent-msg-txt">
                         <p>De nada !!</p>
                     </div>
-                    <img src="img/marco_admin_imagem-perfil.png" alt="">
                 </div>
             </div>
             
@@ -187,6 +202,9 @@
         var modal_block = document.getElementById('modal-block');
         var modal_block_cancel = document.getElementById('cancel-btn-modal');
 
+        var modal_report = document.getElementById('modal-report');
+        var modal_report_cancel = document.getElementById('cancel-report-modal');
+
         block_btn.onclick=function(){
             modal_block.style.display="block";
             $('body').toggleClass('body-overflow-modal');
@@ -195,13 +213,26 @@
         modal_block_cancel.onclick=function(){
             modal_block.style.display = "none";
             $('body').toggleClass('body-overflow-modal');
-        }
+        };
+
+        report_btn.onclick=function(){
+            modal_report.style.display = "block";
+            $('body').toggleClass('body-overflow-modal');
+        };
+
+        modal_report_cancel.onclick=function(){
+            modal_report.style.display = "none";
+            $('body').toggleClass('body-overflow-modal');
+        };
 
         window.onclick = function(event) {
             if (event.target == modal_block) {
                 modal_block.style.display = "none";
                 $('body').toggleClass('body-overflow-modal');
-            };
+            }else if(event.target == modal_report){
+                modal_report.style.display = "none";
+                $('body').toggleClass('body-overflow-modal');
+            }
         };
     }
 
