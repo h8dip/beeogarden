@@ -62,7 +62,8 @@
 
         <div id="register-content">
             <div id="fr-form">
-                <form action="register-field.php">
+                <form id="register-field-form" action="scripts/register-field.php" method="post">
+                    <input type="text" name="nome_do_espaco" placeholder="Nome do Campo">
                     <input type="text" name="morada" placeholder="Morada">
                     <div id="zip-localidade">
                         <input type="text" name="codpostal" placeholder="Cód.Postal">
@@ -71,8 +72,8 @@
                     <input type="number" name="lotes" placeholder="Número de Lotes"> 
                 
                     <select placeholder="Acessibilidade" name="acesso">
-                        <option value="volvo">Público</option>
-                        <option value="saab">Privado</option>
+                        <option value="Publico">Publico</option>
+                        <option value="Privado">Privado</option>
                     </select>
                 </form>
             </div>
@@ -208,7 +209,7 @@
         var modal_done = document.getElementById('modal-register-done');
 
         submit_trigger.onclick=function(){
-            modal_done.style.display="block";
+            $('#register-field-form').submit();
         }
 
         window.onclick = function(event) {
