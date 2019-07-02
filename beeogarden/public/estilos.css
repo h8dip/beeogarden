@@ -753,7 +753,7 @@ nav #shopping-cart{
 /* Mobile Navbar */
 
 #mobile-navbar{
-    display: grid;
+    display: none;
     grid-template-columns: 65vw 35vw;
     height: 100vh;
     grid-template-rows: 100vh;
