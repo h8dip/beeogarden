@@ -17,7 +17,12 @@
 </head>
 
 <body style="overflow-y: auto">
-        
+
+    <div id="mobile-navbar">
+        <div id="mobile-nav-content">
+
+        </div>
+    </div>
         
         
     <div id="container-loja" >

@@ -4,7 +4,7 @@
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
         </span>
-    </button> 
+    </button>
     </div>
     <div id="logo-store">
         <img src="img/logo_beeogarden-8.png" alt="">
