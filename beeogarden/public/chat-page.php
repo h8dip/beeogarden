@@ -186,8 +186,8 @@
         </div>
         <div id="chat-bottom">
             <textarea  placeholder="escreva a sua mensagem"></textarea>
-            <i class="far fa-smile"></i>
-            <i class="fas fa-location-arrow"></i>        </div>
+            <i class="fas fa-location-arrow"></i>    
+        </div>
     </div>
     
 
