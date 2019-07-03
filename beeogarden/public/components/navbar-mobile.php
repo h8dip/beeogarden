@@ -14,6 +14,6 @@
             <div class="mobile-nav-item"><a href="map-page.php"><h3>MAPA</h3></a></div>
             <div class="mobile-nav-last-item"><a href="scripts/logout.php"><h3>SAIR</h3></a></div>
             <div></div>
-            <div id="registo-beeogarden-btn"><h3>Registar beeogarden</h3></div>
+            <div id="registo-beeogarden-btn"><a href="field-registration-page.php" id="nav-register-btn"><h3>Registar beeogarden</h3></a></div>
         </div>
     </div>

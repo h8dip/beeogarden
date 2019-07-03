@@ -23,8 +23,8 @@
     <div id="modal-register-tutorial" class="modal-tutorial">
         <div class="modal-tutorial-content">
             <div id="register-tutorial-img">
-                <img src="img/produto-2.jpg" id="reg-tut-img-1">
-                <img src="img/produto-1.jpg" id="reg-tut-img-2">
+                <img src="img/tutorial-registo-1.png" id="reg-tut-img-1">
+                <img src="img/tutorial-registo-2.png" id="reg-tut-img-2">
                 <img src="img/produto-4.jpg" id="reg-tut-img-3">
             </div>
             <div id="register-tutorial-text">

@@ -23,14 +23,14 @@
 <div id="modal-user-tutorial" class="modal-tutorial">
         <div class="modal-user-content">
             <div id="register-user-img">
-                <img src="img/produto-2.jpg" id="reg-user-img-1">
-                <img src="img/produto-1.jpg" id="reg-user-img-2">
-                <img src="img/produto-4.jpg" id="reg-user-img-3">
+                <img src="img/tutorial-user-1.PNG" id="reg-user-img-1">
+                <img src="img/tutorial-user-2.PNG" id="reg-user-img-2">
+                <img src="img/tutorial-user-3.PNG" id="reg-user-img-3">
             </div>
             <div id="register-user-text">
                 <p id="reg-user-text-1">Explora os produtos da nossa loja.</p>
                 <p id="reg-user-text-2">Compra para ti ou envia para um beeogarden.</p>
-                <p id="reg-user-text-3">Vê quantas abalhinhas ajudaste!</p>
+                <p id="reg-user-text-3">Vê quantas abelhinhas ajudaste!</p>
             </div>
             <div id="register-user-dots">
                 <i class="far fa-circle" id="circle-user-1"></i>
