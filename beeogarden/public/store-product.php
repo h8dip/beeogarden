@@ -22,6 +22,7 @@
         session_start();
 
         require_once "connections/connection.php";
+        
                 
         $link = new_db_connection();
         $stmt2 = mysqli_stmt_init($link);
@@ -57,6 +58,8 @@
 
         }
    ?>
+    
+
     <div id="processor_holder" style="display : none;">
         
     </div>
@@ -143,11 +146,12 @@
         
     ?>
 
-    <div id="product-details-container" style="padding-bottom: 10vh">
+    <div id="product-details-container" class="container-main" style="padding-bottom: 10vh">
 
         <?php 
             $current_page='store';
             include_once "components/navbar.php"; 
+            include_once "components/navbar-mobile.php";
         
             require_once "connections/connection.php";
             require_once "scripts/php_scripts.php";
@@ -338,6 +342,16 @@
                 }
             }
         ?>
+
+    <script>
+        $('#hamburger').click(function(){
+            $('#hamburger').toggleClass("is-active");
+            $('#mobile-navbar').toggleClass("grid-class");
+            $('#ham-phone').toggleClass("z-index-6");
+            $('body').toggleClass("overflow-hid");
+            $('.container-main').toggleClass("overflow-hid");
+        });
+    </script>
 
         <div id="store-product-image">
             <div id="showcase-product-detail">

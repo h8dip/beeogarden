@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="estilos2.css">
     <link rel="stylesheet" href="estilos3.css">
     <link rel="stylesheet" href="animation.css">
-    <link href="hamburger.css" rel="stylesheet">
+    <link rel="stylesheet" href="hamburger.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/9327c61162.js"></script>
     <title>Beeogarden | Info</title>
@@ -18,13 +18,15 @@
 
 </head>
 <body>
-    <div id="container-info-details">
+    <div id="container-info-details" class="container-main">
         <?php 
             $current_page = 'info';
             session_start();
             include_once "components/navbar.php";
             require_once "connections/connection.php";
             require_once "scripts/php_scripts.php";
+            include_once "components/navbar-mobile.php";
+            
 
             if(verifyLogin()){
                 $link = new_db_connection();
@@ -49,6 +51,16 @@
             }
         ?>
 
+        <script>
+            $('#hamburger').click(function(){
+                $('#hamburger').toggleClass("is-active");
+                $('#mobile-navbar').toggleClass("grid-class");
+                $('#ham-phone').toggleClass("z-index-6");
+                $('body').toggleClass("overflow-hid");
+                $('.container-main').toggleClass("overflow-hid");
+            });
+        </script>
+
         <div id="title-info">
             <h2><?= $nome_info?></h2>
         </div>
@@ -62,8 +74,6 @@
             </div> 
         </div>
     </div>
-
-
 <script src="main.js"></script>
 
 </body>

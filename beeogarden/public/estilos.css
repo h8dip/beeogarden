@@ -166,6 +166,7 @@ body{
     border: none;
     opacity: 0.85;
     font-size: 90%; 
+    margin-left: 7.5%;
 }
 
 .btn-secondary{
@@ -779,7 +780,7 @@ nav #shopping-cart{
 #mobile-nav-content{
     background-color: var(--primary-color);
     display: grid;
-    grid-template-rows: 10vh 15vh 7vh 7vh 7vh 7vh 7vh 7vh 7vh 19vh 7vh;
+    grid-template-rows: 10vh 15vh 7vh 7vh 7vh 7vh 7vh 7vh 26vh 7vh;
     border-radius: 0 2vh 2vh 0;
 }
 

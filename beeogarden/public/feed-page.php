@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Thasadith:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hamburger.css">
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="estilos2.css">
     <link rel="stylesheet" href="estilos3.css">
     <link rel="stylesheet" href="animation.css">
-    <link href="hamburger.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/9327c61162.js"></script>
     <title>beeogarden | Feed</title>
     <link rel="shortcut icon" href="img/favicon.png" /> 
+
 
 </head>
 <body>
@@ -47,13 +48,16 @@
         </div>
     </div>
 
-    <div id="feed-page-container">
+    <div id="feed-page-container" class="container-main">
+        
         <?php
+            
             $current_page='info';
             include_once "components/navbar.php";
             require_once "connections/connection.php";
             session_start();
             require_once "scripts/php_scripts.php";
+            include_once "components/navbar-mobile.php";
 
 
             $link = new_db_connection();
@@ -62,6 +66,16 @@
          ?>
 
         <div id="feed-title">
+        <script>
+            $('#hamburger').click(function(){
+                $('#hamburger').toggleClass("is-active");
+                $('#mobile-navbar').toggleClass("grid-class");
+                $('#ham-phone').toggleClass("z-index-6");
+                $('body').toggleClass("overflow-hid");
+                $('.container-main').toggleClass("overflow-hid");
+            });
+        
+        </script>
             
            
                 <?php
@@ -199,5 +213,4 @@
         }
 
     </script>
-
 </body>

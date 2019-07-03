@@ -29,7 +29,8 @@
 </head>
 
 <body>
-    <div id="navbar-container-map">
+    <div id="navbar-container-map" class="container-main">
+
         <?php
         $current_page='map';
         include_once "components/navbar.php";
@@ -66,7 +67,20 @@
           }
 
         }
+
+        include_once "components/navbar-mobile.php";
         ?> 
+
+      <script>
+          $('#hamburger').click(function(){
+              $('#hamburger').toggleClass("is-active");
+              $('#mobile-navbar').toggleClass("grid-class");
+              $('#ham-phone').toggleClass("z-index-6");
+              $('body').toggleClass("overflow-hid");
+              $('.container-main').toggleClass("overflow-hid");
+          });
+      </script>
+
     </div>
     <div id="map"></div>    
 

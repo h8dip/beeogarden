@@ -40,11 +40,12 @@
         </div>  
     </div>
 
-    <div id="profile-container">
+    <div id="profile-container" class="container-main">
     
         <?php
             session_start();
 
+            include_once "components/navbar-mobile.php";
             require_once "scripts/php_scripts.php";
 
             if(verifyLogin()){
@@ -101,6 +102,17 @@
         }
             
         ?>
+
+        <script>
+            $('#hamburger').click(function(){
+                $('#hamburger').toggleClass("is-active");
+                $('#mobile-navbar').toggleClass("grid-class");
+                $('#ham-phone').toggleClass("z-index-6");
+                $('body').toggleClass("overflow-hid");
+                $('.container-main').toggleClass("overflow-hid");
+            });
+        </script>
+
         <div id="profile">
             <div id="profile-img">
                 <div id="img-perfil">
