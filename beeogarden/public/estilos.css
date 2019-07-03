@@ -17,6 +17,19 @@ body{
 
 /* Utility */
 
+.grid-class{
+    display: grid !important;
+}
+
+.z-index-6{
+    z-index: 6 !important;
+}
+
+.overflow-hid{
+    overflow: hidden !important;
+    height: 100vh !important;
+}
+
 .form-input{
     border-radius: 15px;
     border: none;
@@ -754,7 +767,7 @@ nav #shopping-cart{
 
 #mobile-navbar{
     display: none;
-    grid-template-columns: 65vw 35vw;
+    grid-template-columns: 70vw 30vw;
     height: 100vh;
     grid-template-rows: 100vh;
     background-color: rgba(0, 0, 0, 0.7);
@@ -765,6 +778,73 @@ nav #shopping-cart{
 
 #mobile-nav-content{
     background-color: var(--primary-color);
+    display: grid;
+    grid-template-rows: 10vh 15vh 7vh 7vh 7vh 7vh 7vh 7vh 7vh 19vh 7vh;
+    border-radius: 0 2vh 2vh 0;
+}
+
+#mobile-nav-img-profile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 2vh;
+}
+
+#mobile-nav-img-container{
+    width: 7vh;
+    height: 7vh;
+    border-radius: 50%;
+    position: relative;
+}
+
+#mobile-nav-img-container img{
+    height: auto!important;
+    width: 100% !important; 
+    position: absolute;
+    top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    margin: auto;
+    border-radius: 50%;
+}
+
+#mobile-nav-img-profile h3{
+    color: white;
+    margin-left: 2vh;
+}
+
+.mobile-nav-item{
+    display: flex;
+    width: 90%;
+    margin-left: 5%;
+    align-items: center;
+    border-bottom: #fff 0.4vh solid;
+}
+
+.mobile-nav-item h3,
+.mobile-nav-last-item h3,
+.mobile-nav-item a,
+.mobile-nav-last-item a{
+    color: #fff;
+    text-decoration: none;
+    width: 100%;
+}
+
+.mobile-nav-last-item{
+    display: flex;
+    width: 90%;
+    margin-left: 2vh;
+    align-items: center;
+}
+
+#registo-beeogarden-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    color: var(--primary-color);
+    border-radius: 0 0 2vh 0;
 }
 /* MEDIA QUERIES */
 
