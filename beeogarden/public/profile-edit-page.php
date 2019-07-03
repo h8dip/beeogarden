@@ -10,7 +10,8 @@
     <link href="hamburger.css" rel="stylesheet">
     <link href="animation.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://kit.fontawesome.com/9327c61162.js"></script>
+    <!-- <script src="https://kit.fontawesome.com/9327c61162.js"></script> -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     
     <title>beeogarden | Editar Perfil </title>
     <link rel="shortcut icon" href="img/favicon.png" /> 
@@ -132,9 +133,9 @@
         <div id="pe-edit">
             <div id="pe-edit-img">
                 <form method="post" action="profile-edit-page.php?id=<?= $_GET['id']?>" enctype="multipart/form-data">
-                    <input name="foto-perfil" type="file" onchange="this.form.submit();">
+                    <input id="file-label" name="foto-perfil" type="file" onchange="this.form.submit();">
                 </form>
-                <i class="fas fa-pencil-alt" id="edit-photo"></i>
+                <label for="file-label"><i class="fas fa-pencil-alt" id="edit-photo"></i></label>
                 <div>
                     <img src="<?= $foto_perfil ?>" alt="">
                 </div>

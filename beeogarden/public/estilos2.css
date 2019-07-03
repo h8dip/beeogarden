@@ -549,6 +549,10 @@ body { overflow: -moz-scrollbars-none; }
     color: #fff;
 }
 
+#file-label{
+    display: none;
+}
+
 /* Feed Page */
 
 #feed-page-container nav{
