@@ -98,8 +98,12 @@ body { overflow: -moz-scrollbars-none; }
     height: 90%;
     border: 0.3vw solid grey;
     border-radius: 5vw;
-    grid-column: 1/span 2;
     margin: 2vh auto;
+}
+
+.info-more{
+    display: grid;
+    grid-column: 1/span 2;
 }
 
 .info-title{
@@ -461,7 +465,7 @@ body { overflow: -moz-scrollbars-none; }
 /* MEDIA QUERIES-------------------------------------- ------------------------*/
 
 @media (min-width: 600px){
-    .info-slot{
+    .info-more{
         grid-column: unset;
     }
 
