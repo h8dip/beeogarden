@@ -16,16 +16,12 @@
 
 </head>
 
-<body style="overflow-y: auto">
+<body>
 
-    <div id="mobile-navbar">
-        <div id="mobile-nav-content">
-
-        </div>
-    </div>
+    <?php include_once "components/navbar-mobile.php"?>
         
         
-    <div id="container-loja" >
+    <div id="container-loja" class="container-main" >
         <?php
             session_start();
             require_once "scripts/php_scripts.php";
