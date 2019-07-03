@@ -39,9 +39,13 @@
             <div id="modal-report-form">
                     <form action="" id="report-form">
                         <select placeholder="Motivo da denúncia" name="motivo">
-                            <option value="volvo">Conteúdo impróprio</option>
-                            <option value="saab">Conta falsa</option>
-                            <option value="saab">Chantagem</option>
+                            <option value="spam">Spam</option>
+                            <option value="nudez">Nudez ou pornogarfia</option>
+                            <option value="improprio">Discurso impróprio</option>
+                            <option value="violencia">Ameças de violência</option>
+                            <option value="drogas">Venda ou promoção de drogas</option>
+                            <option value="assedio">Assédio ou bullying</option>
+                            <option value="identidade">Usurpação de identidade</option>
                         </select>
                     </form>
                     <textarea name="comentario" id="report-obs" form="report-form"></textarea>
