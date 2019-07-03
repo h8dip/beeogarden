@@ -41,6 +41,12 @@
         </div>
     </div>
 
+    <div id="modal-zoom">
+        <div id="modal-zoom-content">
+            <img src="img/semente_girassol.jpg" alt="">
+        </div>
+    </div>
+
     <div id="feed-page-container">
         <?php
             $current_page='info';
@@ -156,6 +162,9 @@
             var back_btn = document.getElementById('back-post-btn');
             var submit_btn = document.getElementById('btn-post-a');
 
+            // var post_zoom = document.getElementsByClassName('post-image');
+            // var modal_zoom = ocument.getElementById('modal-zoom');
+
             submit_btn.onclick=function(){
                 $('#form-post').submit();
             };
@@ -170,10 +179,21 @@
                     $('body').toggleClass('body-overflow-modal');
             };
 
+            // for(z=0;z<post_zoom.lenght; z++){
+            //     post_zoom[z].onclick = function(){
+            //         modal_zoom.style.display='block';
+            //         $('body').toggleClass('body-overflow-modal');
+            //     }                
+            // }
+
+
             window.onclick = function(event){
                 if(event.target == modal_post){
                     modal_post.style.display = "none";
                     $('body').toggleClass('body-overflow-modal');
+                // }else if(event.target == modal_zoom){
+                //     modal_zoom.style.display = "none";
+                //     $('body').toggleClass('body-overflow-modal');
                 };
             };
         }
