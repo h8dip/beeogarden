@@ -479,6 +479,20 @@ body{
     align-items: center;
 }
 
+#no-fields-msg{
+    grid-row: span 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#no-fields-msg img{
+    width: 30%;
+}
+
+#no-fields-msg-text{
+    padding: 0 10%;
+}
 
 /* Loja */
 #container-loja{
@@ -1157,6 +1171,14 @@ nav #shopping-cart{
     .campo{
         width: 45vw;
         grid-template-columns: 100%;
+    }
+
+    #no-fields-msg{
+        grid-row: span 4;
+    }
+
+    #no-fields-msg img{
+        width: 50%;
     }
 
     /* Product */

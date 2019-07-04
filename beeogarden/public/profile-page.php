@@ -17,7 +17,7 @@
    
 
 </head>
-<body>
+<body style="overflow: hidden;">
 
 <div id="modal-user-tutorial" class="modal-tutorial">
         <div class="modal-user-content">
@@ -146,9 +146,18 @@
             </div>
         </div>
 
+    <!-- Dar fetch caso não haja campos -->
         <div id="campos-container">
             <h1>OS MEUS CAMPOS</h1>
+            <div id="no-fields-msg">
+                <img src="img/no-fields.png" alt="">
+            </div>
+            <div id="no-fields-msg-text">
+                <h2>Ainda não tem campos plantados!</h2>
+            </div>
             <?php 
+            
+
             $query = "SELECT id_espaco, nome_espaco, localidade, ref_contribuidores,ref_Utilizador FROM espaco WHERE ref_Utilizador LIKE ? OR ref_contribuidores IS NOT NULL";
 
             if(mysqli_stmt_prepare($stmt,$query)){
