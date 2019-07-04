@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="estilos3.css">
     <link href="hamburger.css" rel="stylesheet">
     <link href="animation.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <!-- <script src="https://kit.fontawesome.com/9327c61162.js"></script> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
+    <script src="https://kit.fontawesome.com/9327c61162.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     
     <title>beeogarden | Editar Perfil </title>
