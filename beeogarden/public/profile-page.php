@@ -169,10 +169,11 @@
                             $array_contribuidores = explode(',',$ref_contribuidores);
                             for($i = 0; $i<count($array_contribuidores); $i++){
                                 if($array_contribuidores[$i]==$user_id){
+                                    //<i class="far fa-comment fa-2x"></i>
                                     echo '<div class="campo" >';
                                     echo '<div id="upper-campo">';
                                     echo '<a href="feed-page.php?f=1&id='.$id_espaco.'"><h3>'.$nome_espaco.'</h3></a>   ';
-                                    echo '<a href="chat-page.php"><i class="far fa-comment fa-2x"></i></a>';
+                                    echo '<a href="chat-page.php?f_id='.$id_espaco.'&u_id='.$user_id.'"><h3>Hijo</h3></a>';
                                     echo '</div>';
                                     echo '<div id="lower-campo">';
                                     echo '<div>';
