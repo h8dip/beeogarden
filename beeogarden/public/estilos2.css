@@ -646,6 +646,10 @@ body { overflow: -moz-scrollbars-none; }
     width: 33%;
 }
 
+#ficheiro_img{
+    display: none;
+}
+
 .post{
     padding: 3vh 2vh;
     display: grid;

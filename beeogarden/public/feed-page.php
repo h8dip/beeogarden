@@ -32,10 +32,11 @@
             <div id="modal-post-content">
             <form id="form-post" method="post" enctype="multipart/form-data" action="<?="scripts/submit_post.php?id=".$_GET['id']?>">
                 <div id="modal-post-input">
-                    <textarea name="texto-post" placeholder="O que está a acontecer?"></textarea>
+                    <textarea name="texto-post" style="overflow: auto;" placeholder="O que está a acontecer?"></textarea>
                 </div>
-                <div id="modal-post-upload">
-                    <input id="ficheiro_img" type="file" name="foto-post" class="fas fa-images" onchange=''></i>        
+                <div id="modal-post-upload">~
+                    <label for="ficheiro_img"><i class="fas fa-images"></i></label>
+                    <input id="ficheiro_img" type="file" name="foto-post" onchange=''>       
                 </div>
             </form>    
             </div>
