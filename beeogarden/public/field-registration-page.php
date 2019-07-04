@@ -18,7 +18,7 @@
     <link rel="shortcut icon" href="img/favicon.png" /> 
 
 </head>
-<body>
+<body style="overflow:hidden;">
 
     <div id="modal-register-tutorial" class="modal-tutorial">
         <div class="modal-tutorial-content">

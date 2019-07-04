@@ -735,6 +735,11 @@ body { overflow: -moz-scrollbars-none; }
 }
 
 @media (min-width: 1025px) {
+    .product-cart-info h3{
+        text-overflow: unset;
+        width: 100%;
+    }
+
     #posts{
         grid-template-columns: 65%;
 

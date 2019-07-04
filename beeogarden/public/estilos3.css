@@ -236,7 +236,7 @@ body { overflow: -moz-scrollbars-none; }
 #info-detail-text{
     width: 90%;
     margin-top: 2vh;
-    overflow: scroll;
+    overflow: auto;
     padding-bottom: 2vh;
 }
 

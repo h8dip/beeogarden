@@ -17,7 +17,7 @@
 
 
 </head>
-<body>
+<body style="overflow-x:hidden;">
 
     <?php //include_once "components/loader.php"; ?>
 

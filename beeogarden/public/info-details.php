@@ -17,7 +17,7 @@
 
 
 </head>
-<body>
+<body style="overflow: hidden;">
     <div id="container-info-details" class="container-main">
         <?php 
             $current_page = 'info';

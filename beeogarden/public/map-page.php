@@ -28,7 +28,7 @@
 
 </head>
 
-<body>
+<body style="overflow-x: hidden;">
     <div id="navbar-container-map" class="container-main">
 
         <?php

@@ -14,7 +14,7 @@
     <link rel="shortcut icon" href="img/favicon.png" /> 
 
 </head>
-<body>
+<body style="overflow-x:hidden;">
     <?php 
         session_start();
 
