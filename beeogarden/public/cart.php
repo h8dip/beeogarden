@@ -15,6 +15,18 @@
 
 </head>
 <body style="overflow-x:hidden;">
+
+    <div id="modal-compra">
+        <div id="modal-compra-content">
+            <div id="modal-compra-top">
+                <h2>A sua compra foi finalizada com sucesso!</h2>
+            </div>
+            <div id="modal-compra-btn">
+                <a class="continue-btn-compra" href="profile-page.php">Continuar</a>
+            </div>
+        </div>
+    </div>
+
     <?php 
         session_start();
 
@@ -170,10 +182,32 @@
             $link = "#";
         }
     ?>
-        <div><a href=<?=$link?>><h2>FINALIZAR COMPRA</h2></a></div>
+        <div><a href=<?=$link?> id="finalizar-btn"><h2>FINALIZAR COMPRA</h2></a></div>
     </div>
 
 
 
 <script src="main.js"></script>
+
+<script>
+
+        window.onload=function(){
+            var modal_compra = document.getElementById('modal-compra');
+            var btn_compra = document.getElementById('finalizar-btn');
+
+            btn_compra.onclick = function(){
+                modal_compra.style.display='block';
+                $('body').toggleClass('body-overflow-modal');
+            };
+
+            window.onclick=function(event){
+                if(event.target == modal_compra){
+                    modal_compra.style.display = 'none';
+                    $('body').toggleClass('body-overflow-modal');
+                };
+            };
+        };
+
+</script>
+
 </body>
