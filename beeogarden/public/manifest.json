@@ -1,0 +1,16 @@
+{
+    "name": "PWAConf",
+    "short_name": "PWAConf",
+    "start_url": "localhost/beeogarden/beeogarden/beeogarden/public",
+    "display": "standalone",
+    "background_color": "#FBC02D",
+    "description": "Uma aplicação para ajudar as abelhas",
+    "theme_color": "#FBC02D",
+    "icons": [
+      {
+        "src": "img/favicon.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
