@@ -150,12 +150,7 @@
     <!-- Dar fetch caso não haja campos -->
         <div id="campos-container">
             <h1>OS MEUS CAMPOS</h1>
-            <div id="no-fields-msg">
-                <img src="img/no-fields.png" alt="">
-            </div>
-            <div id="no-fields-msg-text">
-                <h2>Ainda não tem campos plantados!</h2>
-            </div>
+            
             <?php 
             
 
@@ -165,16 +160,21 @@
                 mysqli_stmt_bind_param($stmt,'i',$user_id);
                 if(mysqli_stmt_execute($stmt)){
                     mysqli_stmt_bind_result($stmt,$id_espaco, $nome_espaco, $localidade,$ref_contribuidores,$ref_Utilizador);
+                    $contador_de_campos_contribuidos = 0;
+                    $contador_de_meus_campos = 0;
                     while(mysqli_stmt_fetch($stmt)){
+
                         if($ref_Utilizador != $user_id){
                             $array_contribuidores = explode(',',$ref_contribuidores);
+                            
                             for($i = 0; $i<count($array_contribuidores); $i++){
                                 if($array_contribuidores[$i]==$user_id){
-                                    //<i class="far fa-comment fa-2x"></i>
+                                    $contador_de_campos_contribuidos++;
+                                    //
                                     echo '<div class="campo" >';
                                     echo '<div id="upper-campo">';
                                     echo '<a href="feed-page.php?f=1&id='.$id_espaco.'"><h3>'.$nome_espaco.'</h3></a>';
-                                    echo '<a href="chat-page.php?u_id='.$ref_Utilizador.'"><h3>Hijo</h3></a>';
+                                    echo '<a href="chat-page.php?u_id='.$ref_Utilizador.'"><i class="far fa-comment fa-2x"></i></a>';
                                     echo '</div>';
                                     echo '<div id="lower-campo">';
                                     echo '<div>';
@@ -188,6 +188,7 @@
                                 }
                             }
                         }else{
+                            $contador_de_meus_campos++;
                             echo '<div class="campo" >';
                             echo '<div id="upper-campo">';
                             echo '<a href="feed-page.php?f=1&id='.$id_espaco.'"><h3>'.$nome_espaco.'</h3></a>   ';
@@ -202,9 +203,21 @@
                             echo '<p>'.$beeopoints.'</p>';
                             echo '<img src="img/beeopoints.png" alt="">';
                             echo '</div></div></div>';
-                        }
+
+                           
                     }
+                    
                 }
+            }
+            $count = $contador_de_meus_campos+$contador_de_campos_contribuidos;
+                    if($count == 0){
+                        echo'<div id="no-fields-msg">
+                        <img src="img/no-fields.png" alt="">
+                    </div>
+                    <div id="no-fields-msg-text">
+                        <h2>Ainda não tem campos plantados!</h2>
+                    </div>';
+                    }
             }
             ?>
         </div>

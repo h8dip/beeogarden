@@ -38,7 +38,7 @@
         if(mysqli_stmt_prepare($stmt,$query)){
           mysqli_stmt_bind_param($stmt,'di',$novo_preco,$_GET['id']);
           if(mysqli_stmt_execute($stmt)){
-              header('Location: ../cart.php');
+              header('Location: ../cart.php?f=true');
           }
         }
       }else{

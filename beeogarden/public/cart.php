@@ -16,16 +16,23 @@
 </head>
 <body style="overflow-x:hidden;">
 
-    <div id="modal-compra">
-        <div id="modal-compra-content">
-            <div id="modal-compra-top">
-                <h2>A sua compra foi finalizada com sucesso!</h2>
-            </div>
-            <div id="modal-compra-btn">
-                <a class="continue-btn-compra" href="profile-page.php">Continuar</a>
-            </div>
-        </div>
-    </div>
+   <?php 
+        if(isset($_GET['f'])){
+            if($_GET['f']=="true"){
+                echo '<div id="modal-compra">
+                <div id="modal-compra-content">
+                    <div id="modal-compra-top">
+                        <h2>A sua compra foi finalizada com sucesso!</h2>
+                    </div>
+                    <div id="modal-compra-btn">
+                        <a class="continue-btn-compra" href="profile-page.php">Continuar</a>
+                    </div>
+                </div>
+            </div>';
+            }
+        }
+   ?> 
+
 
     <?php 
         session_start();
@@ -188,17 +195,24 @@
 
 
 <script src="main.js"></script>
+<script src="scripts/checkQueryString.js"></script>
 
 <script>
+    
 
         window.onload=function(){
             var modal_compra = document.getElementById('modal-compra');
             var btn_compra = document.getElementById('finalizar-btn');
 
+            if(getParameterByName('f')=="true"){
+                modal_compra.style.display='block';
+                $('body').toggleClass('body-overflow-modal');
+            }
+            /*
             btn_compra.onclick = function(){
                 modal_compra.style.display='block';
                 $('body').toggleClass('body-overflow-modal');
-            };
+            };*/
 
             window.onclick=function(event){
                 if(event.target == modal_compra){
