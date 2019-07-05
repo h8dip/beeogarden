@@ -206,7 +206,10 @@
 
                            
                     }
-                    $count = $contador_de_meus_campos+$contador_de_campos_contribuidos;
+                    
+                }
+            }
+            $count = $contador_de_meus_campos+$contador_de_campos_contribuidos;
                     if($count == 0){
                         echo'<div id="no-fields-msg">
                         <img src="img/no-fields.png" alt="">
@@ -215,8 +218,6 @@
                         <h2>Ainda não tem campos plantados!</h2>
                     </div>';
                     }
-                    }
-                }
             }
             ?>
         </div>
