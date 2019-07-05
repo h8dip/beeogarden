@@ -127,7 +127,7 @@
                         //field feed
                         if(isset($_GET['id'])){
                             $id = htmlspecialchars($_GET['id']);
-                            $query = "SELECT id_post, descricao, data, imagem, ref_Utilizador, foto_perfil, utilizador FROM posts INNER JOIN utilizador ON ref_Utilizador = id_utilizador WHERE ref_espaco = ?";
+                            $query = "SELECT id_post, descricao, data, imagem, ref_Utilizador, foto_perfil, utilizador FROM posts INNER JOIN utilizador ON ref_Utilizador = id_utilizador WHERE ref_espaco = ? ORDER BY id_post DESC";
                             if(mysqli_stmt_prepare($stmt,$query)){
                                 mysqli_stmt_bind_param($stmt,'i',$id);
                                 if(mysqli_stmt_execute($stmt))

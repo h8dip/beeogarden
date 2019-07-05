@@ -90,7 +90,7 @@
                     $target_file = $target_dir . basename($fName).'.' .$imageFileType;
                 }while(file_exists($target_file));
                 
-                if($_FILES["foto-perfil"]["size"] > 3000000){
+                if($_FILES["foto-perfil"]["size"] > 30000000){
                     $uploadOk = 0;
                     echo 'A tua foto é demasiado grande.';
                 }
@@ -137,7 +137,9 @@
                 </form>
                 <label for="file-label"><i class="fas fa-pencil-alt" id="edit-photo"></i></label>
                 <div>
-                    <img src="<?= $foto_perfil ?>" alt="">
+                    <img src="<?php 
+                    if($foto_perfil==""){$foto_perfil="img/default-user.png";}
+                    echo $foto_perfil ?>" alt="">
                 </div>
             </div>
 

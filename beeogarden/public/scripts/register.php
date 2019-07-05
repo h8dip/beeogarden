@@ -48,7 +48,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
         mysqli_close($link);
-        header("Location: ../register-page.php");
+        header("Location: ../login-page.php");
     }
 
     
