@@ -195,18 +195,24 @@
 
 
 <script src="main.js"></script>
+<script src="scripts/checkQueryString.js"></script>
 
 <script>
+    
 
         window.onload=function(){
             var modal_compra = document.getElementById('modal-compra');
             var btn_compra = document.getElementById('finalizar-btn');
 
-            btn_compra.onclick = function(){
-                
+            if(getParameterByName('f')=="true"){
                 modal_compra.style.display='block';
                 $('body').toggleClass('body-overflow-modal');
-            };
+            }
+            /*
+            btn_compra.onclick = function(){
+                modal_compra.style.display='block';
+                $('body').toggleClass('body-overflow-modal');
+            };*/
 
             window.onclick=function(event){
                 if(event.target == modal_compra){
