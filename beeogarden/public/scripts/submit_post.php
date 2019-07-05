@@ -45,7 +45,7 @@ if(verifyLogin()){
           $target_file = $target_dir . basename($fName).'.' .$imageFileType;
       }while(file_exists($target_file));
       
-      if($_FILES["foto-post"]["size"] > 5000000){
+      if($_FILES["foto-post"]["size"] > 30000000){
           $uploadOk = 0;
           echo 'A tua foto é demasiado grande.';
       }

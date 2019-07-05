@@ -16,16 +16,23 @@
 </head>
 <body style="overflow-x:hidden;">
 
-    <div id="modal-compra">
-        <div id="modal-compra-content">
-            <div id="modal-compra-top">
-                <h2>A sua compra foi finalizada com sucesso!</h2>
-            </div>
-            <div id="modal-compra-btn">
-                <a class="continue-btn-compra" href="profile-page.php">Continuar</a>
-            </div>
-        </div>
-    </div>
+   <?php 
+        if(isset($_GET['f'])){
+            if($_GET['f']=="true"){
+                echo '<div id="modal-compra">
+                <div id="modal-compra-content">
+                    <div id="modal-compra-top">
+                        <h2>A sua compra foi finalizada com sucesso!</h2>
+                    </div>
+                    <div id="modal-compra-btn">
+                        <a class="continue-btn-compra" href="profile-page.php">Continuar</a>
+                    </div>
+                </div>
+            </div>';
+            }
+        }
+   ?> 
+
 
     <?php 
         session_start();
@@ -196,6 +203,7 @@
             var btn_compra = document.getElementById('finalizar-btn');
 
             btn_compra.onclick = function(){
+                
                 modal_compra.style.display='block';
                 $('body').toggleClass('body-overflow-modal');
             };
