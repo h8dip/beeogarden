@@ -511,7 +511,7 @@ svg {
 }
 
 #register-tutorial-text p{
-    display:none;    
+    display:none;   
 }
 
 #register-tutorial-dots{
@@ -519,6 +519,7 @@ svg {
     width:30%;
     display:flex;
     justify-content: space-between;
+    padding-top: 10vw;
 }
 
 #register-tutorial-dots i{
@@ -627,6 +628,7 @@ svg {
     width:30%;
     display:flex;
     justify-content: space-between;
+    padding-top: 10vw;
 }
 
 #register-user-dots i{

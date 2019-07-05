@@ -24,7 +24,7 @@
             <img src="img/404-img.png" alt="">
         </div>
         <div id="txt-404">
-            <p>Esta página não existe ou não foi encontrada :(</p>
+            <p>Esta página não existe ou não foi encontrada</p>
         </div>
         <div id="btn-404">
             <a href="profile-page.php">Voltar</a>
