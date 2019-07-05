@@ -536,6 +536,7 @@ body { overflow: -moz-scrollbars-none; }
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
 }
 
 .cancel-btn{
