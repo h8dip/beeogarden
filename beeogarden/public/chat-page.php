@@ -60,7 +60,7 @@
     <div id="chat-container">
         <div id="top-chat">
             <div id="top-chat-content">
-                <a href="profile-page.php"><i id="back-chat-btn" class="fas fa-arrow-left"></i></a>
+                <a href="chat-list.php"><i id="back-chat-btn" class="fas fa-arrow-left"></i></a>
                 <img src="img/greta.PNG" alt="">
                 <p>Universidade de Aveiro</p>
                 <div class="dropdown">

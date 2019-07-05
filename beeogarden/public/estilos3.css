@@ -474,6 +474,11 @@ body { overflow: -moz-scrollbars-none; }
     background-color: var(--primary-color);
 }
 
+#chat-list-top a{
+    text-decoration:none;
+    color:#fff;
+}
+
 #chat-list-top h2{
     color: #fff;
 }
