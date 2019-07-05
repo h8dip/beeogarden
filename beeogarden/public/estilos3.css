@@ -240,8 +240,6 @@ body { overflow: -moz-scrollbars-none; }
     padding-bottom: 2vh;
 }
 
-
-
 /* REGISTAR CAMPO */
 
 #field-regist-container{
@@ -586,7 +584,45 @@ body { overflow: -moz-scrollbars-none; }
     padding: 1vh 0;
 }
 
+/* 404 PAGE */
 
+#container-404{
+    display:grid;
+    grid-template-columns:100vw;
+    grid-template-rows: 60vh 20vh 20vh;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background-color:var(--primary-color);
+    color:#fff;
+    font-family: Thasadith, sans-serif;
+}
+
+#top-404{
+    width:100%;
+    margin:auto;
+}
+
+#top-404 img{
+   height:30vw;
+}
+
+
+#txt-404 p{
+    font-size:1.5rem;
+    font-weight:bold;
+}
+
+#btn-404 a{
+    width: 60%;
+    background-color: #fff;
+    color:var(--primary-color);
+    border-radius:4vh;
+    font-size:1.5rem;
+    font-weight:bold;
+    padding:2vh;
+    text-decoration:none;
+}
 
 /* MEDIA QUERIES-------------------------------------- ------------------------*/
 
