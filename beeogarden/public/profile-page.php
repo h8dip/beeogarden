@@ -89,14 +89,36 @@
             }
             
             $camp_count = "SELECT COUNT(*) FROM espaco WHERE ref_Utilizador LIKE ?";
-
+            $cntb_ctr = 0;
             if(mysqli_stmt_prepare($stmt,$camp_count)){
                 mysqli_stmt_bind_param($stmt,'i',$user_id);
                 if(mysqli_stmt_execute($stmt)){
                     mysqli_stmt_bind_result($stmt,$count);
-                    mysqli_stmt_fetch($stmt);
+                    if(mysqli_stmt_fetch($stmt)){
+                        
+                        
+                    }
                 }
             }
+
+            $query = "SELECT ref_contribuidores FROM espaco WHERE ref_contribuidores IS NOT NULL";
+            if(mysqli_stmt_prepare($stmt,$query)){
+                if(mysqli_stmt_execute($stmt)){
+                    mysqli_stmt_bind_result($stmt,$camp_contribuidores);
+                    while(mysqli_stmt_fetch($stmt)){
+                        $s = explode(',',$camp_contribuidores);
+                        foreach($s as $contribuidor){
+                            if($contribuidor == $user_id){
+                                $cntb_ctr++;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            $count += $cntb_ctr;
         }else{
             header('Location: login-page.php');
         }
@@ -185,6 +207,7 @@
                                     echo '<p>'.$beeopoints.'</p>';
                                     echo '<img src="img/beeopoints.png" alt="">';
                                     echo '</div></div></div>';
+                                    break;
                                 }
                             }
                         }else{
@@ -202,22 +225,20 @@
                             echo '<div>';
                             echo '<p>'.$beeopoints.'</p>';
                             echo '<img src="img/beeopoints.png" alt="">';
-                            echo '</div></div></div>';
-
-                           
+                            echo '</div></div></div>';                           
                     }
                     
                 }
             }
-            $count = $contador_de_meus_campos+$contador_de_campos_contribuidos;
-                    if($count == 0){
-                        echo'<div id="no-fields-msg">
+                $count = $contador_de_meus_campos+$contador_de_campos_contribuidos;
+                if($count == 0){
+                    echo'<div id="no-fields-msg">
                         <img src="img/no-fields.png" alt="">
-                    </div>
-                    <div id="no-fields-msg-text">
+                        </div>
+                        <div id="no-fields-msg-text">
                         <h2>Ainda não tem campos plantados!</h2>
-                    </div>';
-                    }
+                        </div>';
+                }
             }
             ?>
         </div>
