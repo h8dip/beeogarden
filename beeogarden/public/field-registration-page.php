@@ -12,7 +12,6 @@
     <link href="animation.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/9327c61162.js"></script>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <title>beeogarden | Registo Beeogarden</title>
     <link rel="shortcut icon" href="img/favicon.png" /> 
