@@ -117,7 +117,9 @@
                     ids_array_text = JSON.stringify(chosenFields_ids);
                     beeopoints_array_text = JSON.stringify(chosenFields_beeopoints);
                     localidades_array_text = JSON.stringify(chosenFields_localidades);
+                    var id_de_produto = <?= $_GET['id']; ?>
 
+                    
                     //var c_page = getParameterByName("id");
 
                     //var post_url = "store-product.php?id=" + c_page + "&fetched=true";
@@ -129,6 +131,7 @@
                         ids : ids_array_text,
                         beepts : beeopoints_array_text,
                         locals : localidades_array_text,
+                        pid : id_de_produto,
                     };
 
                     $.post("scripts/receive_ajax.php?page=product",object, function(data){
@@ -256,6 +259,18 @@
                             }
                         }
                         $qtd = 1;
+                        if(isset($_GET['f'])){
+                            $campo_id = $_GET['f'];
+                            $query = "INSERT INTO compras_has_produto (ref_compra,ref_produto,custo_produto,outro_campo,outro_campo_qtd) VALUES(?,?,?,?,?)";
+                            if(mysqli_stmt_prepare($stmt,$query)){
+                                mysqli_stmt_bind_param($stmt,'iidii',$last_id,$id_de_produto,$preco,$campo_id,$qtd);
+                                if(mysqli_stmt_execute($stmt)){
+                                    //success
+                                    $rd_to = 'Location: store-product.php?id='.$id_de_produto;
+                                    header($rd_to);
+                                }
+                            }
+                        }else{
                         $query = "INSERT INTO compras_has_produto (ref_compra,ref_produto,quantidade,custo_produto) VALUES(?,?,?,?)";
                         if(mysqli_stmt_prepare($stmt,$query)){
                             mysqli_stmt_bind_param($stmt,'iiid',$last_id,$id_de_produto,$qtd,$preco);
@@ -265,6 +280,7 @@
                                 header($rd_to);
                             }
                         }
+                      }
                     }else{
                         //modificar compra existente.
                         /*
@@ -306,35 +322,97 @@
 
                         if($ctcP >= 1){
                             //update qty
-                            $query = "SELECT quantidade FROM compras_has_produto WHERE ref_compra = ? AND ref_produto = ?";
-                            if(mysqli_stmt_prepare($stmt,$query)){
-                                mysqli_stmt_bind_param($stmt,'ii',$id_da_compra,$id_de_produto);
-                                if(mysqli_stmt_execute($stmt)){
-                                    mysqli_stmt_bind_result($stmt,$qty);
-                                    mysqli_stmt_fetch($stmt);
+                            if(isset($_GET['f'])){
+                                $campo_id = $_GET['f'];
+                                $query = "SELECT outro_campo_qtd FROM compras_has_produto WHERE ref_compra = ? AND ref_produto = ?";
+                                if(mysqli_stmt_prepare($stmt,$query)){
+                                    mysqli_stmt_bind_param($stmt,'ii',$id_da_compra,$id_de_produto);
+                                    if(mysqli_stmt_execute($stmt)){
+                                        mysqli_stmt_bind_result($stmt,$qty);
+                                        mysqli_stmt_fetch($stmt);
+                                    }
                                 }
-                            }
-
-                            $qty++;
-
-                            $query = "UPDATE compras_has_produto SET quantidade = ? WHERE ref_compra = ? AND ref_produto = ?";
-                            if(mysqli_stmt_prepare($stmt,$query)){
-                                mysqli_stmt_bind_param($stmt,'iii',$qty,$id_da_compra,$id_de_produto);
-                                if(mysqli_stmt_execute($stmt)){
-                                    
-                                    header("Location: store-page.php");
+                                if($qty == null or $qty == '' or is_null($qty) or empty($qty)){
+                                    $qty = 1;
+                                }else{
+                                    $qty++;
                                 }
-                            }
+                                $query = "SELECT outro_campo FROM compras_has_produto WHERE ref_compra = ? AND ref_produto = ?";
+                                if(mysqli_stmt_prepare($stmt,$query)){
+                                    mysqli_stmt_bind_param($stmt,'ii',$id_da_compra,$id_de_produto);
+                                    if(mysqli_stmt_execute($stmt)){
+                                        //coolio
+                                        mysqli_stmt_bind_result($stmt,$outro_campo);
+                                        mysqli_stmt_fetch($stmt);
+
+                                    }
+                                }
+
+                                if(!is_numeric($outro_campo)){
+                                    $query = "UPDATE compras_has_produto SET outro_campo_qtd = ?, outro_campo = ? WHERE ref_compra = ? AND ref_produto = ?";
+                                    if(mysqli_stmt_prepare($stmt,$query)){
+                                        mysqli_stmt_bind_param($stmt,'iiii',$qty,$campo_id,$id_da_compra,$id_de_produto);
+                                        if(mysqli_stmt_execute($stmt)){
+                                            header("Location: store-page.php");
+                                        }
+                                    }
+                                }else{
+                                    $query = "UPDATE compras_has_produto SET outro_campo_qtd = ? WHERE ref_compra = ? AND ref_produto = ?";
+                                        if(mysqli_stmt_prepare($stmt,$query)){
+                                            mysqli_stmt_bind_param($stmt,'iii',$qty,$id_da_compra,$id_de_produto);
+                                            if(mysqli_stmt_execute($stmt)){
+                                                header("Location: store-page.php");
+                                            }
+                                        }
+                                }
+                                
+                            }else{
+                                $query = "SELECT quantidade FROM compras_has_produto WHERE ref_compra = ? AND ref_produto = ?";
+                                if(mysqli_stmt_prepare($stmt,$query)){
+                                    mysqli_stmt_bind_param($stmt,'ii',$id_da_compra,$id_de_produto);
+                                    if(mysqli_stmt_execute($stmt)){
+                                        mysqli_stmt_bind_result($stmt,$qty);
+                                        mysqli_stmt_fetch($stmt);
+                                    }
+                                }
+                                if($qty == null or $qty == '' or is_null($qty) or empty($qty)){
+                                    $qty = 1;
+                                }else{
+                                    $qty++;
+                                }
+
+                                $query = "UPDATE compras_has_produto SET quantidade = ? WHERE ref_compra = ? AND ref_produto = ?";
+                                if(mysqli_stmt_prepare($stmt,$query)){
+                                    mysqli_stmt_bind_param($stmt,'iii',$qty,$id_da_compra,$id_de_produto);
+                                    if(mysqli_stmt_execute($stmt)){
+                                        
+                                        header("Location: store-page.php");
+                                    }
+                                }
+                            } 
                         }
                         else{
                             //acrescentar ao compra_has_produto
-                            $qtd = 1;
-                            $query = "INSERT INTO compras_has_produto (ref_compra,ref_produto,quantidade,custo_produto) VALUES(?,?,?,?)";
-                            if(mysqli_stmt_prepare($stmt,$query)){
-                                mysqli_stmt_bind_param($stmt,'iiid',$id_da_compra,$id_de_produto,$qtd,$preco);
-                                if(mysqli_stmt_execute($stmt)){
-                                    
-                                    header("Location: store-page.php");
+                            if(isset($_GET['f'])){
+                                $id_campo = $_GET['f'];
+                                $qtd = 1;
+                                $query = "INSERT INTO compras_has_produto (ref_compra,ref_produto,outro_campo,outro_campo_qtd,custo_produto) VALUES(?,?,?,?,?)";
+                                if(mysqli_stmt_prepare($stmt,$query)){
+                                    mysqli_stmt_bind_param($stmt,'iiiid',$id_da_compra,$id_de_produto,$id_campo,$qtd,$preco);
+                                    if(mysqli_stmt_execute($stmt)){
+                                        
+                                        header("Location: store-page.php");
+                                    }
+                                }
+                            }else{
+                                $qtd = 1;
+                                $query = "INSERT INTO compras_has_produto (ref_compra,ref_produto,quantidade,custo_produto) VALUES(?,?,?,?)";
+                                if(mysqli_stmt_prepare($stmt,$query)){
+                                    mysqli_stmt_bind_param($stmt,'iiid',$id_da_compra,$id_de_produto,$qtd,$preco);
+                                    if(mysqli_stmt_execute($stmt)){
+                                        
+                                        header("Location: store-page.php");
+                                    }
                                 }
                             }
                         }
@@ -459,6 +537,7 @@
     
                 <div id="plantar-num-beeogarden">
                     <h4>Plantar num beeogarden</h4>
+                    </a>
                 </div>
             </div>';
             }else{

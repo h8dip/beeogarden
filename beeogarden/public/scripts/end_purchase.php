@@ -32,7 +32,8 @@
       }
 
       if($count >= 1){
-
+        //verificar se contem outros campos
+        //first task of the day :D
         $novo_preco = $preco_total + (0.13*$preco_total);
         $query = "UPDATE compras SET data_compra = CURRENT_TIMESTAMP, preco_total = ? WHERE id_compra = ?";
         if(mysqli_stmt_prepare($stmt,$query)){
