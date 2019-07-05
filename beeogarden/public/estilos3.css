@@ -487,6 +487,11 @@ body { overflow: -moz-scrollbars-none; }
     margin: 0 2vh;
 }
 
+#chat-list-top i{
+    margin: 0 2vh;
+    color: #fff;
+}
+
 #chat-list-img-container img{
     position: absolute;
     height: 100%;

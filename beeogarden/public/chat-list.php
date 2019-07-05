@@ -19,6 +19,7 @@
 <body>
     <div id="chat-list-container">
         <div id="chat-list-top">
+            <i class="fas fa-arrow-left fa-2x"></i>
             <div id="chat-list-img-container">
                 <img src="img/greta.PNG" alt="">
             </div>
