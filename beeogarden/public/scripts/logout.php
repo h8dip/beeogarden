@@ -5,6 +5,6 @@
     session_destroy();
     header('Location: ../index.php');
   }else{
-    header('Location: ../profile-page.php');
+    header('Location: ../index.php');
   }
 ?>
