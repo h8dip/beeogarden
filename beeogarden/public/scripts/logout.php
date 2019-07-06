@@ -3,8 +3,8 @@
   session_start();
   if(verifyLogin()){
     session_destroy();
-    header('Location: ../welcome-page.php');
+    header('Location: ../index.php');
   }else{
-    header('Location: ../profile-page.php');
+    header('Location: ../index.php');
   }
 ?>

@@ -519,7 +519,6 @@ svg {
     width:30%;
     display:flex;
     justify-content: space-between;
-    padding-top: 10vw;
 }
 
 #register-tutorial-dots i{
@@ -1133,5 +1132,30 @@ svg {
         padding-top:1vh;
     }
 
+    .modal-tutorial-content{
+        grid-template-rows: 70% 20% 10%;
+    }
+
+}
+
+@media (max-width: 400px) {
+    #img-perfil a .fa-pencil-alt{
+        top: 11% !important;
+    }
+}
+
+/* Ipad Pro */
+
+@media (min-width: 1020px) and (min-height: 1300px) {
+    .fa-pencil-alt{
+        top: 14%;
+        left: 56%;
+    }
+}
+
+@media (min-height: 1020px) and (min-width: 1300px) {
+    .fa-pencil-alt{
+        top: 23%;
+    }
 }
 

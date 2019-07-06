@@ -106,6 +106,7 @@
                 }
         }
 
+        $middle = 0;
         $query = "SELECT COUNT(*),quantidade FROM compras_has_produto WHERE ref_compra = ?";
         if(mysqli_stmt_prepare($stmt,$query)){
             mysqli_stmt_bind_param($stmt,'i',$id_compra);
@@ -115,7 +116,21 @@
                 while (mysqli_stmt_fetch($stmt)){
                     $extra += ($quantidade-1);
                 }
-                return $counter+$extra;
+                $middle = $counter+$extra;
+            }
+        }
+        $outros_total=0;
+        $query = "SELECT outro_campo_qtd FROM compras_has_produto WHERE ref_compra = ?";
+        if(mysqli_stmt_prepare($stmt,$query)){
+            mysqli_stmt_bind_param($stmt,'i',$id_compra);
+            if(mysqli_stmt_execute($stmt)){
+                mysqli_stmt_bind_result($stmt,$quantidade_outros);
+                while (mysqli_stmt_fetch($stmt)){
+                    if(is_numeric($quantidade_outros)){
+                        $outros_total += $quantidade_outros;
+                    }
+                }
+                return $middle + $outros_total;
             }
         }
     }else{

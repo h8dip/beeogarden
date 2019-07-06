@@ -465,7 +465,7 @@ body{
 }
 
 #lower-campo div:last-child img{
-    height: 60%;
+    height: 3vh;
 }
 
 #lower-campo div:last-child p{
@@ -475,7 +475,6 @@ body{
 #lower-campo div:last-child{
     display: flex;
     flex-direction: row;
-    height: 100%;
     align-items: center;
 }
 
@@ -866,7 +865,6 @@ nav #shopping-cart{
     text-decoration:none;
     color:var(--primary-color);
 }
-
 
 /* MEDIA QUERIES */
 

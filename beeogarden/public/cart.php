@@ -91,13 +91,17 @@
         <?php 
             if($carrinho >=1){
             $array_produtos = array();
-            $query = "SELECT quantidade, custo_produto, nome_produto, img_path,id_produto FROM compras_has_produto INNER JOIN produto ON ref_produto = id_produto WHERE ref_compra = ?";
+            $query = "SELECT quantidade, custo_produto, nome_produto, img_path,id_produto,outro_campo_qtd FROM compras_has_produto INNER JOIN produto ON ref_produto = id_produto WHERE ref_compra = ?";
             if(mysqli_stmt_prepare($stmt,$query)){
                 mysqli_stmt_bind_param($stmt,'i',$id_compra);
                 if(mysqli_stmt_execute($stmt)){
-                    mysqli_stmt_bind_result($stmt,$quantidade,$custo_produto,$nome_produto,$img_path,$p_id);
+                    mysqli_stmt_bind_result($stmt,$quantidade,$custo_produto,$nome_produto,$img_path,$p_id,$qtd_outros);
                     while(mysqli_stmt_fetch($stmt)){
-
+                        if(is_numeric($qtd_outros)){
+                            if($qtd_outros >= 0){
+                                $quantidade += $qtd_outros;
+                            }
+                        }
                         $img_p = explode(';',$img_path);
                         $img_p = $img_p[0];
                         if($img_p==""){$img_p="img/default-product.PNG";}
@@ -109,7 +113,7 @@
                         echo '</div>';
                         echo '<div class="product-cart-info">';
                         echo '<h3>'.$nome_produto.'</h3>';
-                        echo '<div>QTD:'.$quantidade.'</div>';
+                        echo '<div>QTD:'.($quantidade).'</div>';
                         echo '<h2>'.($quantidade*$custo_produto).'€</h2>';
                         echo '</div></div>';
 
