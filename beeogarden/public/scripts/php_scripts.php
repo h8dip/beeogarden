@@ -137,4 +137,20 @@
         return 0;
     }
   }
+
+  function getUserId(){
+      $nome = $_SESSION['username'];
+      $link = new_db_connection();
+      $stmt = mysqli_stmt_init($link);
+      $query = "SELECT id_utilizador FROM utilizador WHERE utilizador LIKE ?";
+      if(mysqli_stmt_prepare($stmt,$query)){
+          mysqli_stmt_bind_param($stmt,'s',$nome);
+          if(mysqli_stmt_execute($stmt)){
+              mysqli_stmt_bind_result($stmt,$id_user_ex);
+              if(mysqli_stmt_fetch($stmt)){
+                  return $id_user_ex;
+              }
+          }
+      }
+  }
 ?>
