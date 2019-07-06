@@ -348,7 +348,7 @@
                                     }
                                 }
 
-                                if(!is_numeric($outro_campo)){
+                                if($outro_campo == '' or is_null($outro_campo) or empty($outro_campo)){
                                     $query = "UPDATE compras_has_produto SET outro_campo_qtd = ?, outro_campo = ? WHERE ref_compra = ? AND ref_produto = ?";
                                     if(mysqli_stmt_prepare($stmt,$query)){
                                         mysqli_stmt_bind_param($stmt,'iiii',$qty,$campo_id,$id_da_compra,$id_de_produto);
@@ -357,9 +357,11 @@
                                         }
                                     }
                                 }else{
-                                    $query = "UPDATE compras_has_produto SET outro_campo_qtd = ? WHERE ref_compra = ? AND ref_produto = ?";
+                                    //add new field to current list.
+                                    $outro_campo .= ','.$campo_id;
+                                    $query = "UPDATE compras_has_produto SET outro_campo = ?, outro_campo_qtd = ? WHERE ref_compra = ? AND ref_produto = ?";
                                         if(mysqli_stmt_prepare($stmt,$query)){
-                                            mysqli_stmt_bind_param($stmt,'iii',$qty,$id_da_compra,$id_de_produto);
+                                            mysqli_stmt_bind_param($stmt,'siii',$outro_campo,$qty,$id_da_compra,$id_de_produto);
                                             if(mysqli_stmt_execute($stmt)){
                                                 header("Location: store-page.php");
                                             }
