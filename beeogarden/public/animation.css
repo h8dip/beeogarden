@@ -1138,3 +1138,24 @@ svg {
 
 }
 
+@media (max-width: 400px) {
+    #img-perfil a .fa-pencil-alt{
+        top: 11% !important;
+    }
+}
+
+/* Ipad Pro */
+
+@media (min-width: 1020px) and (min-height: 1300px) {
+    .fa-pencil-alt{
+        top: 14%;
+        left: 56%;
+    }
+}
+
+@media (min-height: 1020px) and (min-width: 1300px) {
+    .fa-pencil-alt{
+        top: 23%;
+    }
+}
+
