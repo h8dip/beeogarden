@@ -39,6 +39,10 @@
         }else{
             header('Location: login-page.php');
         }
+
+        $all_ids = array();
+
+        
     ?>
     <div id="modal-block">
         <div class="modal-block-content">
@@ -121,16 +125,17 @@
         </div>
         <div id="chat-content">
             <?php 
-                loadAllChatMessages($chat,$our_id,$rec_id,$stmt,$foto);
+                loadAllChatMessages($chat,$our_id,$rec_id,$stmt,$foto,$all_ids);
 
-                function loadAllChatMessages($chat,$us,$them,$stmt,$foto){
-                    $query = "SELECT mensagem, estado_mensagem, sender_id FROM mensagens WHERE ref_chat = ?";
+                function loadAllChatMessages($chat,$us,$them,$stmt,$foto,&$array){
+                    $query = "SELECT id_mensagem, mensagem, estado_mensagem, sender_id FROM mensagens WHERE ref_chat = ?";
                     if(mysqli_stmt_prepare($stmt,$query)){
                         mysqli_stmt_bind_param($stmt,'i',$chat);
                         if(mysqli_stmt_execute($stmt)){
-                            mysqli_stmt_bind_result($stmt,$mensagem,$estado_mensagem,$sender_id);
+                            mysqli_stmt_bind_result($stmt,$id_msg,$mensagem,$estado_mensagem,$sender_id);
                             while(mysqli_stmt_fetch($stmt))
                             {
+                                array_push($array,$id_msg);
                                 if($sender_id != $us){
                                     echo '<div class="recieve-msg">';
                                     echo '<div class="recieve-msg-content">';
@@ -166,25 +171,33 @@
 
 <script>
 
+    var all_messages_array = null; //filled on load.
+
     function sendMessage(){
         //get variables.
         var texto_msg = $('#mensagem-texto').val();
+        if(texto_msg != ''){
+
+        
         $('#mensagem-texto').val('');
         var id_chat = <?= $chat; ?>;
         var our_id = <?= $our_id; ?>;
-        //var their_id = 
+        
         
         var object = {
             mensagem : texto_msg,
             id : id_chat,
             sender_id : our_id,
+            
         };
 
         var holder = $('#chat-content');
 
         $.post("scripts/receive_ajax.php?page=chat",object,function(data){
             holder.append(data);
+            //update_chat_history_data()
         });
+        }
     }
 
     function update_chat_history_data(){
@@ -192,29 +205,36 @@
         var our_id = <?= $our_id; ?>;
         var foto = <?= '"' . $foto . '"' ;?>;
         var their_id = <?= $rec_id ?>;
+        var all_ids = JSON.stringify(all_messages_array);
 
         var object = {
             id_chat : id_chat,
             sender_id : our_id,
             their_id : their_id,
             foto : foto,
+            all_ids : all_ids,
         };
 
         var holder = $('#chat-content');
 
-        $('#chat-content').empty(); //no bueno!
+
         $.post("scripts/receive_ajax.php?page=chat_reload",object,function(data){
             holder.append(data);
         });
 
-        //$('#chat-content').animate({scrollTop:$(document).height()}, 'fast');
+        //have to fix this animation.
+        
     }
 
     window.onload=function(){
 
+        all_messages_array = <?php echo '["' . implode('", "',$all_ids) . '"]'; ?>;
+
+        
+
         setInterval(function(){
             update_chat_history_data();
-        }, 2500);
+        }, 1500);
 
         var block_btn = document.getElementById('block-user');
         var report_btn = document.getElementById('report-user');

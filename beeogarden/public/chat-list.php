@@ -96,7 +96,8 @@
                                             mysqli_stmt_bind_result($stmt,$foto_perfil,$username);
                                             if(mysqli_stmt_fetch($stmt)){
                                                 layout_chat($colaborador,$username,$foto_perfil,$id_espaco);
-                                                //TO-DO : Grab last message if any , time of , if any.. display.
+                                                displayLastMessage();
+                                                //TO-DO : Grab last message if any , time of , if any.. display. yeh.
                                             }
                                         }
                                     }

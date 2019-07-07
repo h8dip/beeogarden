@@ -154,6 +154,10 @@
       }
   }
 
+  function displayLastMessage(){
+      //
+  }
+
   function obtainOwnerInfo($id){
     $link = new_db_connection();
     $stmt = mysqli_stmt_init($link);
