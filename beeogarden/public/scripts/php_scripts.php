@@ -169,20 +169,20 @@
     }
   }
   
-  function fill_owner_chat($info){
+  function fill_owner_chat($info,$f_id){
     if($info[2] == "" or is_null($info[2])){
         $info[2] = "img/default-user.png";
     }
     echo '<div class="chat-person">';
     echo '<div class="chat-person-image">';
-    echo '<a href="chat-page.php?id='.$info[0].'">';
+    echo '<a href="chat-page.php?id='.$info[0].'&f_id='.$f_id.'">';
     echo '<div class="chat-person-img-container">';
     echo '<img src="'.$info[2].'" alt="">';
     echo '</div>';
     echo '</a>';
     echo '</div>';
     echo '<div class="chat-person-text-container">';
-    echo '<a href="chat-page.php?id='.$info[0].'">';
+    echo '<a href="chat-page.php?id='.$info[0].'&f_id='.$f_id.'">';
     echo '<h2>'.$info[1].'</h2>';
     echo '<h4>Obrigado pelas flores</h4>';
     echo '</a>';
@@ -194,20 +194,20 @@
     echo '</div>';
   }
 
-  function layout_chat($id,$name,$foto){
+  function layout_chat($id,$name,$foto,$f_id){
     if($foto == "" or is_null($foto)){
         $foto = "img/default-user.png";
     }
     echo '<div class="chat-person">';
     echo '<div class="chat-person-image">';
-    echo '<a href="chat-page.php?id='.$id.'">';
+    echo '<a href="chat-page.php?id='.$id.'&f_id='.$f_id.'">';
     echo '<div class="chat-person-img-container">';
     echo '<img src="'.$foto.'" alt="">';
     echo '</div>';
     echo '</a>';
     echo '</div>';
     echo '<div class="chat-person-text-container">';
-    echo '<a href="chat-page.php?id='.$id.'">';
+    echo '<a href="chat-page.php?id='.$id.'&f_id='.$f_id.'">';
     echo '<h2>'.$name.'</h2>';
     echo '<h4>Obrigado pelas flores</h4>';
     echo '</a>';

@@ -81,7 +81,14 @@
     <div id="chat-container">
         <div id="top-chat">
             <div id="top-chat-content">
-                <a href="chat-list.php"><i id="back-chat-btn" class="fas fa-arrow-left"></i></a>
+                <?php 
+                    if(isset($_GET['f_id']) and is_numeric($_GET['f_id'])){
+                        echo '<a href="chat-list.php?f_id='.$_GET['f_id'].'">';
+                    }else{
+                        echo '<a href="profile-page.php">';
+                    }
+                ?>
+                <i id="back-chat-btn" class="fas fa-arrow-left"></i></a>
                 <?php 
                     if(isset($_GET['id']) and is_numeric($_GET['id'])){
                         $query = "SELECT foto_perfil, utilizador FROM utilizador WHERE id_utilizador = ?";
@@ -195,12 +202,12 @@
 
         var holder = $('#chat-content');
 
-        $('#chat-content').empty();
+        $('#chat-content').empty(); //no bueno!
         $.post("scripts/receive_ajax.php?page=chat_reload",object,function(data){
             holder.append(data);
         });
 
-        $('#chat-content').animate({scrollTop:$(document).height()}, 'fast');
+        //$('#chat-content').animate({scrollTop:$(document).height()}, 'fast');
     }
 
     window.onload=function(){
