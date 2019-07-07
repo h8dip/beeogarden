@@ -18,7 +18,7 @@
 
 </head>
 <body>
-   <?php 
+<?php 
         session_start();
 
         require_once "scripts/php_scripts.php";
@@ -70,11 +70,11 @@
         <div class="modal-content" id="modal-campos-2">
         <div id="titulo-modal"><h2 style="font-weight: bold;">ESCOLHA UM BEEOGARDEN</h2></div>
             <script>
-                var coordenadas_array = <?php echo '["' . implode('", "',$array_coordenadas) . '"]' ?>;
-                var nomes_array = <?php echo '["' . implode('", "',$array_nomes) . '"]' ?>;
-                var beeopoints_array = <?php echo '["' . implode('", "',$array_beeopts) . '"]' ?>;
-                var localidades_array = <?php echo '["' . implode('", "',$array_localidades) . '"]' ?>;
-                var ids_array = <?php echo '["' . implode('", "',$array_ids) . '"]' ?>;
+                var coordenadas_array = <?php echo '["' . implode('", "',$array_coordenadas) . '"]'; ?>;
+                var nomes_array = <?php echo '["' . implode('", "',$array_nomes) . '"]';?>;
+                var beeopoints_array = <?php echo '["' . implode('", "',$array_beeopts) . '"]'; ?>;
+                var localidades_array = <?php echo '["' . implode('", "',$array_localidades) . '"]'; ?>;
+                var ids_array = <?php echo '["' . implode('", "',$array_ids) . '"]'; ?>;
 
                 
 
