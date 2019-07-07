@@ -785,8 +785,8 @@ body { overflow: -moz-scrollbars-none; }
     }
 
     #chat-bottom textarea{
-        height:2em;
-        width:23em;
+        height: 100%;
+        width: 100%;
     }
 
     #chat-bottom i{
