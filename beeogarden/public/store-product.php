@@ -21,7 +21,9 @@
    <?php 
         session_start();
 
+        require_once "scripts/php_scripts.php";
         require_once "connections/connection.php";
+
         
                 
         $link = new_db_connection();
@@ -156,8 +158,7 @@
             include_once "components/navbar.php"; 
             include_once "components/navbar-mobile.php";
         
-            require_once "connections/connection.php";
-            require_once "scripts/php_scripts.php";
+
             
             $link = new_db_connection();
             $stmt = mysqli_stmt_init($link);
