@@ -140,10 +140,11 @@ body { overflow: -moz-scrollbars-none; }
 }
 
 .info-text{
-    width:90%;
-    height: 90%;
-    overflow:  hidden;
+    width: 90%;
+    height: 16vh;
+    overflow: hidden;
     font-size: 1.1rem;
+    text-overflow: ellipsis;
 }
 
 .info-text p{    
