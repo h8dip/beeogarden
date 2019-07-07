@@ -17,7 +17,7 @@
 
 
 </head>
-<body>
+<body style="overflow:hidden;">
 
     <div id="modal-post" class="modal-post">
         <div id="modal-post-container">
@@ -53,11 +53,12 @@
         
         <?php
             
-            $current_page='info';
-            include_once "components/navbar.php";
+            $current_page='profile';
             require_once "connections/connection.php";
             session_start();
             require_once "scripts/php_scripts.php";
+            include_once "components/loader.php";
+            include_once "components/navbar.php";
             include_once "components/navbar-mobile.php";
 
 
@@ -172,6 +173,12 @@
     <script>
 
         window.onload = function(){
+
+            document.getElementById("loading-div-container").style.display ="none";
+            $('html, body').css({
+                'overflow': 'auto',
+            })     
+            
             var modal_post = document.getElementById('modal-post');
             var post_trigger = document.getElementById('add-post-icon');
             var back_btn = document.getElementById('back-post-btn');

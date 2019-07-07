@@ -17,7 +17,7 @@
     <link rel="shortcut icon" href="img/favicon.png" /> 
 
 </head>
-<body>
+<body style="overflow:hidden;">
 
     <div id="modal-register-tutorial" class="modal-tutorial">
         <div class="modal-tutorial-content">
@@ -50,6 +50,8 @@
             </div>
         </div>
     </div>
+
+    <?php include_once "components/loader.php" ?>
 
     <div id="field-regist-container">
     
@@ -93,6 +95,13 @@
     <script>
         
         window.onload = function(){
+
+            document.getElementById("loading-div-container").style.display ="none";
+        
+            $('html, body').css({
+                'overflow': 'auto',
+            }) 
+
             var modal_reg = document.getElementById('modal-register-tutorial');
             var img1 = document.getElementById('reg-tut-img-1');
             var img2 = document.getElementById('reg-tut-img-2');

@@ -14,7 +14,7 @@
     <title>beeogarden | Ranking</title>
     <link rel="shortcut icon" href="img/favicon.png" /> 
 </head>
-<body>
+<body style="overflow:hidden;">
 
     <?php 
     session_start();
@@ -35,6 +35,7 @@
 <div id="ranking-container" class="container-main">
     <?php
         $current_page='ranking';
+        include_once "components/loader.php";
         include_once "components/navbar.php";
         include_once "components/navbar-mobile.php";
     ?>
@@ -122,6 +123,14 @@
 </div>
 
 
-
     <script src="main.js"></script>
+    <script>
+        window.onload=function(){
+            document.getElementById("loading-div-container").style.display ="none";
+            $('html, body').css({
+                'overflow': 'auto',
+            })     
+        }
+    </script>
 </body>
+</html>

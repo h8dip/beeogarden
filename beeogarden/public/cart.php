@@ -14,7 +14,7 @@
     <link rel="shortcut icon" href="img/favicon.png" /> 
 
 </head>
-<body style="overflow-x:hidden;">
+<body style="overflow-x:hidden; overflow:hidden;">
 
    <?php 
         if(isset($_GET['f'])){
@@ -205,6 +205,13 @@
     
 
         window.onload=function(){
+
+            document.getElementById("loading-div-container").style.display ="none";
+
+            $('html, body').css({
+                'overflow': 'auto',
+            })
+
             var modal_compra = document.getElementById('modal-compra');
             var btn_compra = document.getElementById('finalizar-btn');
 

@@ -46,6 +46,7 @@
             session_start();
 
             include_once "components/navbar-mobile.php";
+            include_once "components/loader.php";
             require_once "scripts/php_scripts.php";
 
             if(verifyLogin()){
@@ -248,6 +249,9 @@
     <script>
         
         window.onload = function(){
+            
+            document.getElementById("loading-div-container").style.display ="none";
+        
 
             var first_timer = <?= $first_time ?>
 

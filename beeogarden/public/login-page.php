@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="img/favicon.png" /> 
 
 </head>
-<body>
+<body style="overflow:hidden;">
 
 <script>
 
@@ -55,5 +55,13 @@
     </div>
 
     <script src="main.js"></script>
+    <script>
+        window.onload=function(){
+            document.getElementById("loading-div-container").style.display ="none";
+            $('html, body').css({
+                'overflow': 'auto',
+            }) 
+        }
+    </script>
 </body>
 </html>

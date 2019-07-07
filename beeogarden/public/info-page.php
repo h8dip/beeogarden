@@ -17,7 +17,7 @@
 
 
 </head>
-<body style="overflow-x:hidden;">
+<body style="overflow-x:hidden; overflow:hidden;">
 
     <?php //include_once "components/loader.php"; ?>
 
@@ -25,6 +25,7 @@
         <?php
             session_start();
             $current_page='info';
+            include_once "components/loader.php";
             include_once "components/navbar.php";
             require_once "connections/connection.php";
             include_once "components/navbar-mobile.php";
@@ -119,6 +120,13 @@
             $('#filter-info a.active-info-div').removeClass('active-info-div');
             $(this).addClass('active-info-div');
         });
+
+        window.onload=function(){
+            document.getElementById("loading-div-container").style.display ="none";
+            $('html, body').css({
+                'overflow': 'auto',
+            }) 
+        }
     </script>
 
 </body>

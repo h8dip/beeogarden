@@ -17,9 +17,10 @@
     <link rel="shortcut icon" href="img/favicon.png" /> 
 
 </head>
-<body>
+<body style="overflow:hidden;">
 <?php
     session_start();
+    include_once "components/loader.php";
     require_once "connections/connection.php";
     require_once "scripts/php_scripts.php";
     $link = new_db_connection();
@@ -160,4 +161,15 @@
         <?php include_once "components/save-btn.php"; ?>
     </div>
 
+
+    <script>
+        window.onload=function(){
+            document.getElementById("loading-div-container").style.display ="none";
+            $('html, body').css({
+                'overflow': 'auto',
+            }) 
+        }
+    </script>
+    
 </body>
+</html>
