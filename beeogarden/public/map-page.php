@@ -28,11 +28,12 @@
 
 </head>
 
-<body style="overflow-x: hidden;">
+<body style="overflow-x: hidden; overflow:hidden;">
     <div id="navbar-container-map" class="container-main">
 
         <?php
         $current_page='map';
+        include_once "components/loader.php";
         include_once "components/navbar.php";
 
         session_start();
@@ -83,6 +84,16 @@
 
     </div>
     <div id="map"></div>    
+
+
+    <script>
+        window.onload=function(){
+            document.getElementById("loading-div-container").style.display ="none";
+            $('html, body').css({
+                'overflow': 'auto',
+            }) 
+        }
+    </script>
 
     <script>
       var map;

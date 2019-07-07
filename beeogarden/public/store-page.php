@@ -16,7 +16,7 @@
 
 </head>
 
-<body>
+<body style="overflow:hidden;">
 
     <?php include_once "components/navbar-mobile.php"?>
         
@@ -25,6 +25,7 @@
         <?php
             session_start();
             require_once "scripts/php_scripts.php";
+            include_once "components/loader.php";
             if(verifyLogin()){
 
             }else{
@@ -32,7 +33,6 @@
             }
             $current_page='store';
             include_once "components/navbar.php";
-            include_once "components/loader.php";
         ?>
         <div id="showcase-store">
         
@@ -157,5 +157,13 @@
             }
         ?>
     <script src="main.js"></script>
+    <script>
+        window.onload=function(){
+            document.getElementById("loading-div-container").style.display ="none";
+            $('html, body').css({
+                'overflow': 'auto',
+            }) 
+        }
+    </script>
 </body>
 </html>

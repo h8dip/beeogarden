@@ -32,5 +32,10 @@
         </div>
     </div>
     <script src="main.js"></script>
+    <script>
+        window.onload=function(){
+            document.getElementById("loading-div-container").style.display ="none";
+        }
+    </script>
 </body>
 </html>

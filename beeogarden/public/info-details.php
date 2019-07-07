@@ -22,6 +22,7 @@
         <?php 
             $current_page = 'info';
             session_start();
+            include_once "components/loader.php";
             include_once "components/navbar.php";
             require_once "connections/connection.php";
             require_once "scripts/php_scripts.php";
@@ -75,6 +76,12 @@
         </div>
     </div>
 <script src="main.js"></script>
+
+<script>
+    window.onload=function(){
+            document.getElementById("loading-div-container").style.display ="none";
+    }
+</script>
 
 </body>
 </html>
