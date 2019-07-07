@@ -1,6 +1,6 @@
 
 window.onload=function(){
-
+    
     $(function() {
         var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
         var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -17,7 +17,7 @@ window.onload=function(){
         $('body').toggleClass("overflow-hid");
         $('.container-main').toggleClass("overflow-hid");
     });
-
+    
 
     $('#filter-store a').click(function(){
         $('#filter-store a.filter-active').removeClass('filter-active');
