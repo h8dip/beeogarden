@@ -153,4 +153,118 @@
           }
       }
   }
+
+  function obtainOwnerInfo($id){
+    $link = new_db_connection();
+    $stmt = mysqli_stmt_init($link);
+    $query = "SELECT id_utilizador, utilizador, foto_perfil FROM utilizador INNER JOIN espaco ON id_utilizador = ref_Utilizador WHERE id_espaco = ?";
+    if(mysqli_stmt_prepare($stmt,$query)){
+        mysqli_stmt_bind_param($stmt,'i',$id);
+        if(mysqli_stmt_execute($stmt)){
+            mysqli_stmt_bind_result($stmt,$id_user,$username,$foto_perfil);
+            if(mysqli_stmt_fetch($stmt)){
+                return array($id_user,$username,$foto_perfil);
+            }
+        }
+    }
+  }
+  
+  function fill_owner_chat($info){
+    if($info[2] == "" or is_null($info[2])){
+        $info[2] = "img/default-user.png";
+    }
+    echo '<div class="chat-person">';
+    echo '<div class="chat-person-image">';
+    echo '<a href="chat-page.php?id='.$info[0].'">';
+    echo '<div class="chat-person-img-container">';
+    echo '<img src="'.$info[2].'" alt="">';
+    echo '</div>';
+    echo '</a>';
+    echo '</div>';
+    echo '<div class="chat-person-text-container">';
+    echo '<a href="chat-page.php?id='.$info[0].'">';
+    echo '<h2>'.$info[1].'</h2>';
+    echo '<h4>Obrigado pelas flores</h4>';
+    echo '</a>';
+    echo '</div>';
+    echo '<div class="chat-person-info-container">';
+    echo '<i class="fas fa-check"></i>';
+    echo '<h4>23:53:</h4>';
+    echo '</div>';
+    echo '</div>';
+  }
+
+  function layout_chat($id,$name,$foto){
+    if($foto == "" or is_null($foto)){
+        $foto = "img/default-user.png";
+    }
+    echo '<div class="chat-person">';
+    echo '<div class="chat-person-image">';
+    echo '<a href="chat-page.php?id='.$id.'">';
+    echo '<div class="chat-person-img-container">';
+    echo '<img src="'.$foto.'" alt="">';
+    echo '</div>';
+    echo '</a>';
+    echo '</div>';
+    echo '<div class="chat-person-text-container">';
+    echo '<a href="chat-page.php?id='.$id.'">';
+    echo '<h2>'.$name.'</h2>';
+    echo '<h4>Obrigado pelas flores</h4>';
+    echo '</a>';
+    echo '</div>';
+    echo '<div class="chat-person-info-container">';
+    echo '<i class="fas fa-check"></i>';
+    echo '<h4>23:53:</h4>';
+    echo '</div>';
+    echo '</div>';
+  }
+
+  function getChat($ida,$idb){
+    $link = new_db_connection();
+    $stmt = mysqli_stmt_init($link);
+    $success = array(0,0);
+    $query = "SELECT COUNT(*), id_chat FROM chat WHERE ref_utilizador_a = ? and ref_utilizador_b = ?";
+    if(mysqli_stmt_prepare($stmt,$query)){
+        mysqli_stmt_bind_param($stmt,'ii',$ida,$idb);
+        if(mysqli_stmt_execute($stmt)){
+            mysqli_stmt_bind_result($stmt,$count_f_1,$chat_id_1);
+            if(mysqli_stmt_fetch($stmt)){
+                $success[0] = 1;
+            }
+        }
+    }
+
+    $query = "SELECT COUNT(*), id_chat FROM chat WHERE ref_utilizador_a = ? and ref_utilizador_b = ?";
+    if(mysqli_stmt_prepare($stmt,$query)){
+        mysqli_stmt_bind_param($stmt,'ii',$idb,$ida);
+        if(mysqli_stmt_execute($stmt)){
+            mysqli_stmt_bind_result($stmt,$count_f_2,$chat_id_2);
+            if(mysqli_stmt_fetch($stmt)){
+                $success[1] = 1;
+            }
+        }
+    }
+
+    if($success[0] == 1 and $success[1] == 1){
+        if($count_f_1 == 0 and $count_f_2 == 0)
+        {
+            //create chat.
+            //return id.
+            $query = "INSERT INTO chat (ref_utilizador_a,ref_utilizador_b) VALUES(?,?)";
+            if(mysqli_stmt_prepare($stmt,$query)){
+                mysqli_stmt_bind_param($stmt,'ii',$ida,$idb);
+                if(mysqli_stmt_execute($stmt)){
+                    //pog.
+                    $last_id = mysqli_insert_id($link);
+                    return $last_id;
+                }
+            }
+        }
+        else{
+            //return existing chat id.
+            if($chat_id_1 == '' or !is_numeric($chat_id_1)){}else{return $chat_id_1;}
+            if($chat_id_2 == '' or !is_numeric($chat_id_2)){}else{return $chat_id_2;}
+        }
+    }
+  }
 ?>

@@ -17,11 +17,49 @@
     <link rel="shortcut icon" href="img/favicon.png" /> 
 </head>
 <body>
+
+    <?php 
+        session_start();
+        require_once "scripts/php_scripts.php";
+        require_once "connections/connection.php";
+
+        $link = new_db_connection();
+        $stmt = mysqli_stmt_init($link);
+
+        $our_id = getUserId();
+
+        if(verifyLogin()){
+
+        }else{
+            header('login-page.php'); 
+        }
+    ?>
     <div id="chat-list-container">
         <div id="chat-list-top">
             <a href="profile-page.php"><i class="fas fa-arrow-left fa-2x"></i></a>
             <div id="chat-list-img-container">
-                <img src="img/greta.PNG" alt="">
+                <?php 
+                    if(isset($_GET['f_id']) and is_numeric($_GET['f_id'])){
+                        
+                        $id_espaco = htmlspecialchars($_GET['f_id']);
+                        $query = "SELECT foto_perfil FROM espaco INNER JOIN utilizador ON ref_Utilizador = id_utilizador WHERE id_espaco = ?";
+                        if(mysqli_stmt_prepare($stmt,$query)){
+                            mysqli_stmt_bind_param($stmt,'i',$id_espaco);
+                            if(mysqli_stmt_execute($stmt)){
+                                mysqli_stmt_bind_result($stmt, $foto_f_owner);
+                                if(mysqli_stmt_fetch($stmt)){
+                                    echo '<img src="'.$foto_f_owner.'" alt="">';
+
+                                }
+                            }
+                        }
+                        
+                    }else{
+                        //bye bye
+                        header('profile-page.php');
+                    }
+
+                ?>
             </div>
             <h2>Chat</h2>
         </div>
@@ -33,149 +71,49 @@
             </form>
         </div>
 
-        <div class="chat-person">
-            <div class="chat-person-image">
-                <div class="chat-person-img-container">
-                    <img src="img/greta.PNG" alt="">
-                </div>
-            </div>
-            <div class="chat-person-text-container">
-                <h2>Greta Thunberg</h2>
-                <h4>Obrigado pelas flores</h4>
-            </div>
-            <div class="chat-person-info-container">
-                <i class="fas fa-check"></i>
-                <h4>23:53</h4>
-            </div>
-        </div>
+        <?php 
+            
 
-        <div class="chat-person">
-            <div class="chat-person-image">
-                <div class="chat-person-img-container">
-                    <img src="img/greta.PNG" alt="">
-                </div>
-            </div>
-            <div class="chat-person-text-container">
-                <h2>Greta Thunberg</h2>
-                <h4>Obrigado pelas flores</h4>
-            </div>
-            <div class="chat-person-info-container">
-                <i class="fas fa-check"></i>
-                <h4>23:53</h4>
-            </div>
-        </div>
+            if(isset($_GET['f_id']) and is_numeric($_GET['f_id'])){
+                
+                $id_espaco = $_GET['f_id'];
+                $owner_info = obtainOwnerInfo($id_espaco);
+                fill_owner_chat($owner_info);
 
-        <div class="chat-person">
-            <div class="chat-person-image">
-                <div class="chat-person-img-container">
-                    <img src="img/greta.PNG" alt="">
-                </div>
-            </div>
-            <div class="chat-person-text-container">
-                <h2>Greta Thunberg</h2>
-                <h4>Obrigado pelas flores</h4>
-            </div>
-            <div class="chat-person-info-container">
-                <i class="fas fa-check"></i>
-                <h4>23:53</h4>
-            </div>
-        </div>
+                $query = "SELECT ref_contribuidores FROM espaco WHERE id_espaco = ?";
+                if(mysqli_stmt_prepare($stmt,$query)){
+                    mysqli_stmt_bind_param($stmt,'i',$id_espaco);
+                    if(mysqli_stmt_execute($stmt)){
+                        mysqli_stmt_bind_result($stmt,$ref_contribuidores);
+                        if(mysqli_stmt_fetch($stmt)){
+                            $individual = explode(',',$ref_contribuidores);
+                            foreach($individual as $colaborador){
+                                if($colaborador != $our_id){
+                                    $query = "SELECT foto_perfil, utilizador FROM utilizador WHERE id_utilizador = ?";
+                                    if(mysqli_stmt_prepare($stmt,$query)){
+                                        mysqli_stmt_bind_param($stmt,'i',$colaborador);
+                                        if(mysqli_stmt_execute($stmt)){
+                                            mysqli_stmt_bind_result($stmt,$foto_perfil,$username);
+                                            if(mysqli_stmt_fetch($stmt)){
+                                                layout_chat($colaborador,$username,$foto_perfil);
+                                                //TO-DO : Grab last message if any , time of , if any.. display.
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
 
-        <div class="chat-person">
-            <div class="chat-person-image">
-                <div class="chat-person-img-container">
-                    <img src="img/greta.PNG" alt="">
-                </div>
-            </div>
-            <div class="chat-person-text-container">
-                <h2>Greta Thunberg</h2>
-                <h4>Obrigado pelas flores</h4>
-            </div>
-            <div class="chat-person-info-container">
-                <i class="fas fa-check"></i>
-                <h4>23:53</h4>
-            </div>
-        </div>
+            }else{
+                //bye bye
+                header('profile-page.php');
+            }
 
-        <div class="chat-person">
-            <div class="chat-person-image">
-                <div class="chat-person-img-container">
-                    <img src="img/greta.PNG" alt="">
-                </div>
-            </div>
-            <div class="chat-person-text-container">
-                <h2>Greta Thunberg</h2>
-                <h4>Obrigado pelas flores</h4>
-            </div>
-            <div class="chat-person-info-container">
-                <i class="fas fa-check"></i>
-                <h4>23:53</h4>
-            </div>
-        </div>
 
-        <div class="chat-person">
-            <div class="chat-person-image">
-                <div class="chat-person-img-container">
-                    <img src="img/greta.PNG" alt="">
-                </div>
-            </div>
-            <div class="chat-person-text-container">
-                <h2>Greta Thunberg</h2>
-                <h4>Obrigado pelas flores</h4>
-            </div>
-            <div class="chat-person-info-container">
-                <i class="fas fa-check"></i>
-                <h4>23:53</h4>
-            </div>
-        </div>
-
-        <div class="chat-person">
-            <div class="chat-person-image">
-                <div class="chat-person-img-container">
-                    <img src="img/greta.PNG" alt="">
-                </div>
-            </div>
-            <div class="chat-person-text-container">
-                <h2>Greta Thunberg</h2>
-                <h4>Obrigado pelas flores</h4>
-            </div>
-            <div class="chat-person-info-container">
-                <i class="fas fa-check"></i>
-                <h4>23:53</h4>
-            </div>
-        </div>
-
-        <div class="chat-person">
-            <div class="chat-person-image">
-                <div class="chat-person-img-container">
-                    <img src="img/greta.PNG" alt="">
-                </div>
-            </div>
-            <div class="chat-person-text-container">
-                <h2>Greta Thunberg</h2>
-                <h4>Obrigado pelas flores</h4>
-            </div>
-            <div class="chat-person-info-container">
-                <i class="fas fa-check"></i>
-                <h4>23:53</h4>
-            </div>
-        </div>
-
-        <div class="chat-person">
-            <div class="chat-person-image">
-                <div class="chat-person-img-container">
-                    <img src="img/greta.PNG" alt="">
-                </div>
-            </div>
-            <div class="chat-person-text-container">
-                <h2>Greta Thunberg</h2>
-                <h4>Obrigado pelas flores</h4>
-            </div>
-            <div class="chat-person-info-container">
-                <i class="fas fa-check"></i>
-                <h4>23:53</h4>
-            </div>
-        </div>
+            
+        ?>
     </div>
 </body>
 </html>

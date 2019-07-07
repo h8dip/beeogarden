@@ -18,7 +18,28 @@
 
 </head>
 <body>
+    <?php
+        session_start();
 
+        require_once "scripts/php_scripts.php";
+        require_once "connections/connection.php";
+
+        $link = new_db_connection();
+        $stmt = mysqli_stmt_init($link);
+
+        $our_id = getUserId();
+        $rec_id = null;
+        $chat = null;
+
+        if(verifyLogin()){
+            if(isset($_GET['id']) and is_numeric($_GET['id'])){
+                $rec_id = $_GET['id'];
+            }
+            $chat = getChat($our_id,$rec_id); //creates if doesnt exist, returns id. :)
+        }else{
+            header('Location: login-page.php');
+        }
+    ?>
     <div id="modal-block">
         <div class="modal-block-content">
             <div id="modal-block-top">
@@ -61,8 +82,26 @@
         <div id="top-chat">
             <div id="top-chat-content">
                 <a href="chat-list.php"><i id="back-chat-btn" class="fas fa-arrow-left"></i></a>
-                <img src="img/greta.PNG" alt="">
-                <p>Universidade de Aveiro</p>
+                <?php 
+                    if(isset($_GET['id']) and is_numeric($_GET['id'])){
+                        $query = "SELECT foto_perfil, utilizador FROM utilizador WHERE id_utilizador = ?";
+                        if(mysqli_stmt_prepare($stmt,$query)){
+                            mysqli_stmt_bind_param($stmt,'i',$rec_id);
+                            if(mysqli_stmt_execute($stmt)){
+                                mysqli_stmt_bind_result($stmt, $foto,$user);
+                                if(mysqli_stmt_fetch($stmt)){
+                                    echo '<img src="'.$foto.'" alt="">';
+                                    echo '<p>'.$user.'</p>';
+
+                                }
+                            }
+                        }
+                        
+                    }else{
+                        //bye bye
+                        header('profile-page.php');
+                    }
+                ?>
                 <div class="dropdown">
                     <i id="def-btn" class="fas fa-cog dropbtn"></i>
                     <div class="dropdown-content">
@@ -74,123 +113,44 @@
             </div>
         </div>
         <div id="chat-content">
-            <div class="recieve-msg">
-                <div class="recieve-msg-content">
-                    <img src="img/greta.PNG" alt="">
-                    <div class="recieve-msg-txt">
-                        <p>Obrigada por plantares no nosso jardim!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="sent-msg">
-                <div class="sent-msg-content">
-                    <div class="sent-msg-txt">
-                        <p>De nada !!</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="recieve-msg">
-                <div class="recieve-msg-content">
-                    <img src="img/greta.PNG" alt="">
-                    <div class="recieve-msg-txt">
-                        <p>Obrigada por plantares no nosso jardim!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="sent-msg">
-                <div class="sent-msg-content">
-                    <div class="sent-msg-txt">
-                        <p>De nada !!</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="recieve-msg">
-                <div class="recieve-msg-content">
-                    <img src="img/greta.PNG" alt="">
-                    <div class="recieve-msg-txt">
-                        <p>Obrigada por plantares no nosso jardim!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="sent-msg">
-                <div class="sent-msg-content">
-                    <div class="sent-msg-txt">
-                        <p>De nada !!</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="recieve-msg">
-                <div class="recieve-msg-content">
-                    <img src="img/greta.PNG" alt="">
-                    <div class="recieve-msg-txt">
-                        <p>Obrigada por plantares no nosso jardim!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="sent-msg">
-                <div class="sent-msg-content">
-                    <div class="sent-msg-txt">
-                        <p>De nada !!</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="recieve-msg">
-                <div class="recieve-msg-content">
-                    <img src="img/greta.PNG" alt="">
-                    <div class="recieve-msg-txt">
-                        <p>Obrigada por plantares no nosso jardim!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="sent-msg">
-                <div class="sent-msg-content">
-                    <div class="sent-msg-txt">
-                        <p>De nada !!</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="recieve-msg">
-                <div class="recieve-msg-content">
-                    <img src="img/greta.PNG" alt="">
-                    <div class="recieve-msg-txt">
-                        <p>Obrigada por plantares no nosso jardim!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="sent-msg">
-                <div class="sent-msg-content">
-                    <div class="sent-msg-txt">
-                        <p>De nada !!</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="recieve-msg">
-                <div class="recieve-msg-content">
-                    <img src="img/greta.PNG" alt="">
-                    <div class="recieve-msg-txt">
-                        <p>Obrigada por plantares no nosso jardim!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="sent-msg">
-                <div class="sent-msg-content">
-                    <div class="sent-msg-txt">
-                        <p>De nada !!</p>
-                    </div>
-                </div>
-            </div>
-            
+            <?php 
+                loadAllChatMessages($chat,$our_id,$rec_id,$stmt,$foto);
 
+                function loadAllChatMessages($chat,$us,$them,$stmt,$foto){
+                    $query = "SELECT mensagem, estado_mensagem, sender_id FROM mensagens WHERE ref_chat = ?";
+                    if(mysqli_stmt_prepare($stmt,$query)){
+                        mysqli_stmt_bind_param($stmt,'i',$chat);
+                        if(mysqli_stmt_execute($stmt)){
+                            mysqli_stmt_bind_result($stmt,$mensagem,$estado_mensagem,$sender_id);
+                            while(mysqli_stmt_fetch($stmt))
+                            {
+                                if($sender_id != $us){
+                                    echo '<div class="recieve-msg">';
+                                    echo '<div class="recieve-msg-content">';
+                                    echo '<img src="'.$foto.'" alt="">';
+                                    echo '<div class="recieve-msg-txt">';
+                                    echo '<p>'.$mensagem.'</p>';
+                                    echo '</div>';
+                                    echo '</div>';
+                                    echo '</div>';
+                                }else{
+                                    echo '<div class="sent-msg">';
+                                    echo '<div class="sent-msg-content">';
+                                    echo '<div class="sent-msg-txt">';
+                                    echo '<p>'.$mensagem.'</p>';
+                                    echo '</div>';
+                                    echo '</div>';
+                                    echo '</div>';
+                                }
+                            }
+                        }
+                    }
+                }
+            ?>             
         </div>
         <div id="chat-bottom">
-            <textarea  placeholder="escreva a sua mensagem"></textarea>
-            <i class="fas fa-location-arrow"></i>    
+            <textarea id="mensagem-texto" placeholder="escreva a sua mensagem"></textarea>
+            <i class="fas fa-location-arrow" onclick='sendMessage();'></i>    
         </div>
     </div>
     
@@ -199,7 +159,56 @@
 
 <script>
 
+    function sendMessage(){
+        //get variables.
+        var texto_msg = $('#mensagem-texto').val();
+        $('#mensagem-texto').val('');
+        var id_chat = <?= $chat; ?>;
+        var our_id = <?= $our_id; ?>;
+        //var their_id = 
+        
+        var object = {
+            mensagem : texto_msg,
+            id : id_chat,
+            sender_id : our_id,
+        };
+
+        var holder = $('#chat-content');
+
+        $.post("scripts/receive_ajax.php?page=chat",object,function(data){
+            holder.append(data);
+        });
+    }
+
+    function update_chat_history_data(){
+        var id_chat = <?= $chat; ?>;
+        var our_id = <?= $our_id; ?>;
+        var foto = <?= '"' . $foto . '"' ;?>;
+        var their_id = <?= $rec_id ?>;
+
+        var object = {
+            id_chat : id_chat,
+            sender_id : our_id,
+            their_id : their_id,
+            foto : foto,
+        };
+
+        var holder = $('#chat-content');
+
+        $('#chat-content').empty();
+        $.post("scripts/receive_ajax.php?page=chat_reload",object,function(data){
+            holder.append(data);
+        });
+
+        $('#chat-content').animate({scrollTop:$(document).height()}, 'fast');
+    }
+
     window.onload=function(){
+
+        setInterval(function(){
+            update_chat_history_data();
+        }, 2500);
+
         var block_btn = document.getElementById('block-user');
         var report_btn = document.getElementById('report-user');
 
@@ -238,6 +247,8 @@
                 $('body').toggleClass('body-overflow-modal');
             }
         };
+
+        
     }
 
 </script>

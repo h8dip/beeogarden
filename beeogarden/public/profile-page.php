@@ -196,7 +196,7 @@
                                     echo '<div class="campo" >';
                                     echo '<div id="upper-campo">';
                                     echo '<a href="feed-page.php?f=1&id='.$id_espaco.'"><h3>'.$nome_espaco.'</h3></a>';
-                                    echo '<a href="chat-page.php?u_id='.$ref_Utilizador.'"><i class="far fa-comment fa-2x"></i></a>';
+                                    echo '<a href="chat-list.php?f_id='.$id_espaco.'"><i class="far fa-comment fa-2x"></i></a>';
                                     echo '</div>';
                                     echo '<div id="lower-campo">';
                                     echo '<div>';
@@ -215,7 +215,7 @@
                             echo '<div class="campo" >';
                             echo '<div id="upper-campo">';
                             echo '<a href="feed-page.php?f=1&id='.$id_espaco.'"><h3>'.$nome_espaco.'</h3></a>   ';
-                            echo '<a href="chat-page.php"><i class="far fa-comment fa-2x"></i></a>';
+                            echo '<a href="chat-list.php?f_id='.$id_espaco.'"><i class="far fa-comment fa-2x"></i></a>';
                             echo '</div>';
                             echo '<div id="lower-campo">';
                             echo '<div>';

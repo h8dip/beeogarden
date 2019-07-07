@@ -5,6 +5,45 @@
   }
 </script>
 <?php
+  session_start();
+  require_once "php_scripts.php";
+  require_once "../connections/connection.php";
+
+
+  function loadAllChatMessages($chat,$us,$them,$stmt,$foto){
+    $query = "SELECT mensagem, estado_mensagem, sender_id FROM mensagens WHERE ref_chat = ?";
+    if(mysqli_stmt_prepare($stmt,$query)){
+        mysqli_stmt_bind_param($stmt,'i',$chat);
+        if(mysqli_stmt_execute($stmt)){
+            mysqli_stmt_bind_result($stmt,$mensagem,$estado_mensagem,$sender_id);
+            while(mysqli_stmt_fetch($stmt))
+            {
+                if($sender_id != $us){
+                    echo '<div class="recieve-msg">';
+                    echo '<div class="recieve-msg-content">';
+                    echo '<img src="'.$foto.'" alt="">';
+                    echo '<div class="recieve-msg-txt">';
+                    echo '<p>'.$mensagem.'</p>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                }else{
+                    echo '<div class="sent-msg">';
+                    echo '<div class="sent-msg-content">';
+                    echo '<div class="sent-msg-txt">';
+                    echo '<p>'.$mensagem.'</p>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                }
+            }
+        }
+    }
+  }
+
+
+  if(verifyLogin()){
+
   if(isset($_GET['page']))
   {
      if($_GET['page']=="product"){
@@ -34,6 +73,48 @@
           echo '</div>';
           echo '</div>';
        }
-     }
+    }
+    else if($_GET['page']=='chat'){
+
+      $link = new_db_connection();
+      $stmt = mysqli_stmt_init($link);
+
+      $mensagem = $_POST['mensagem'];
+      $chat_id = json_decode($_POST['id']);
+      $sender_id = json_decode($_POST['sender_id']);
+
+      //query.
+      $query = "INSERT INTO mensagens (mensagem,ref_chat,sender_id) VALUES (?,?,?)";
+      if(mysqli_stmt_prepare($stmt,$query)){
+        mysqli_stmt_bind_param($stmt,'sii',$mensagem,$chat_id,$sender_id);
+        if(mysqli_stmt_execute($stmt)){
+
+        //echo time.
+        echo '<div class="sent-msg">';
+        echo '<div class="sent-msg-content">';
+        echo '<div class="sent-msg-txt">';
+        echo '<p>'.$mensagem.'</p>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        }
+      }
+    }
+    else if($_GET['page']=="chat_reload"){
+
+      $link = new_db_connection();
+      $stmt = mysqli_stmt_init($link);
+
+
+      $id_chat = $_POST['id_chat'];
+      $sender_id = $_POST['sender_id'];
+      $foto = $_POST['foto'];
+      $their_id = $_POST['their_id'];
+
+      loadAllChatMessages($id_chat,$sender_id,$their_id,$stmt,$foto);
+    }
   }
+}else{
+  header('Location: ../login-page.php');
+}
 ?>
