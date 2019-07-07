@@ -848,7 +848,7 @@ nav #shopping-cart{
 .mobile-nav-last-item{
     display: flex;
     width: 90%;
-    margin-left: 2vh;
+    margin-left: 5%;
     align-items: center;
 }
 
