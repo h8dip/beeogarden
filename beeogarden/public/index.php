@@ -15,14 +15,17 @@
 </head>
 <body>
     <?php 
-     session_start();
-     include_once "components/loader.php";
-    
+    session_start();
+   
+     
+     
     require_once "scripts/php_scripts.php";
    
     if(verifyLogin()){
         header('Location: profile-page.php');
     }
+
+    include_once "components/loader.php";
     ?>
     <div id="welcome-container">
         <div id="welcome-text">
