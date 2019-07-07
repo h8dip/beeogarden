@@ -16,7 +16,7 @@
 <body>
     <?php 
      session_start();
-    //  include_once "components/loader.php";
+     include_once "components/loader.php";
     
     require_once "scripts/php_scripts.php";
    
