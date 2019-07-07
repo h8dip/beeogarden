@@ -577,6 +577,11 @@ body { overflow: -moz-scrollbars-none; }
     color: gray;
 }
 
+.chat-person-text-container a{
+    text-decoration: none;
+    color: #000;
+}
+
 .chat-person-info-container{
     display: flex;
     flex-direction: column;
