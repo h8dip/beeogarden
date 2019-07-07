@@ -252,13 +252,13 @@ svg {
     -webkit-transform: rotate(0deg);
   }
 }
-/* @-moz-keyframes infinite-spinning {
+@-moz-keyframes infinite-spinning {
   from {
     -moz-transform: rotate(0deg);
   }
   to {
     -moz-transform: rotate(360deg);
-  } */
+  }
 }
 
 .bee-icon, .circle {
@@ -1105,7 +1105,7 @@ svg {
 
     .dropdown-content{
         margin-left:-28vh;
-        margin-top: 12vh;
+        margin-top: 11.2vh;
     }
 
     #modal-report-btns{
