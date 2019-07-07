@@ -33,11 +33,11 @@
 
         <?php
         $current_page='map';
+        
+        session_start();
+        
         include_once "components/loader.php";
         include_once "components/navbar.php";
-
-        session_start();
-
         require_once "connections/connection.php";
                 
         $link = new_db_connection();
