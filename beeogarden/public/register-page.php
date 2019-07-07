@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="animation.css">
 
 </head>
-<body>
+<body style="overflow:hidden;">
 
     <?php include_once "components/loader.php"; ?>
 

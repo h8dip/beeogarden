@@ -278,7 +278,7 @@
                             if(mysqli_stmt_execute($stmt)){
                                 //success
                                 $rd_to = 'Location: store-product.php?id='.$id_de_produto;
-                                header($rd_to);
+                                // header($rd_to);
                             }
                         }
                       }
@@ -335,6 +335,7 @@
                                 }
                                 if($qty == null or $qty == '' or is_null($qty) or empty($qty)){
                                     $qty = 1;
+                                    var_dump($qty);
                                 }else{
                                     $qty++;
                                 }
@@ -389,7 +390,7 @@
                                     mysqli_stmt_bind_param($stmt,'iii',$qty,$id_da_compra,$id_de_produto);
                                     if(mysqli_stmt_execute($stmt)){
                                         
-                                        header("Location: store-page.php");
+                                        // header("Location: store-page.php");
                                     }
                                 }
                             } 
@@ -414,7 +415,7 @@
                                     mysqli_stmt_bind_param($stmt,'iiid',$id_da_compra,$id_de_produto,$qtd,$preco);
                                     if(mysqli_stmt_execute($stmt)){
                                         
-                                        header("Location: store-page.php");
+                                        // header("Location: store-page.php");
                                     }
                                 }
                             }

@@ -13,7 +13,7 @@
 
     <link rel="manifest" href="manifest.json">
 </head>
-<body>
+<body style="overflow-x:hidden;">
     <?php 
     session_start();
    
