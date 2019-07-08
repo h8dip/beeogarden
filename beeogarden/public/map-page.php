@@ -44,20 +44,40 @@
         $stmt = mysqli_stmt_init($link);
         $array_coordenadas = array();
         $array_nomes = array();
+        $array_beeopts = array();
+        $array_moradas = array();
+        $array_fotografias = array();
         $reached_end = false;
 
         if(!isset($_SESSION['username'])){
           header('Location: login-page.php');
         }else{
-          $query = 'SELECT coordenadas, nome_espaco FROM espaco WHERE privacidade LIKE ?';
+          $query = 'SELECT coordenadas, nome_espaco, beeopoints,morada, codigo_postal, localidade,ref_Utilizador FROM espaco WHERE privacidade LIKE ?';
           if(mysqli_stmt_prepare($stmt,$query)){
             $condition = "Publico";
             mysqli_stmt_bind_param($stmt,'s',$condition);
             if(mysqli_stmt_execute($stmt)){
-              mysqli_stmt_bind_result($stmt,$coord,$nome);
+              mysqli_stmt_bind_result($stmt,$coord,$nome,$beeopoints,$tm_morada,$codigo,$localidade,$ref_u);
+              $link2 = new_db_connection();
+              $stmt2 = mysqli_stmt_init($link2);
+
               while(mysqli_stmt_fetch($stmt)){
                 array_push($array_coordenadas,$coord);
                 array_push($array_nomes,$nome);
+                array_push($array_beeopts,$beeopoints);
+                $morada = '<p>' . $tm_morada . '</p><p>' . $codigo . '</p><p>' . $localidade . '</p>';
+                array_push($array_moradas,$morada);
+                $query = "SELECT foto_perfil FROM utilizador WHERE id_utilizador = ?";
+                if(mysqli_stmt_prepare($stmt2,$query)){
+                  mysqli_stmt_bind_param($stmt2,'i',$ref_u);
+                  if(mysqli_stmt_execute($stmt2)){
+                    mysqli_stmt_bind_result($stmt2,$foto);
+                    if(mysqli_stmt_fetch($stmt2)){
+
+                    }
+                  }
+                }
+                array_push($array_fotografias,$foto);
                 $reached_end = true;
               }
             }
@@ -208,19 +228,50 @@
 
         var coordenadas_array = <?php echo '["' . implode('", "',$array_coordenadas) . '"]' ?>;
         var coordenadas_nome = <?php echo '["' . implode('", "',$array_nomes) . '"]' ?>;
+        var beeopts_array = <?php echo '["' . implode('", "',$array_beeopts) . '"]' ?>;
+        var moradas_array = <?php echo '["' . implode('", "',$array_moradas) . '"]' ?>;
+        var fotos_array = <?php echo '["' . implode('", "',$array_fotografias) . '"]' ?>;
 
         for(var i = 0; i < coordenadas_array.length ; i++){
           $temp = coordenadas_array[i].split(',');
           
+          var contentString = '<div id="marker-info">'+
+          '<div>'+'</div>'+'<div id="marker-info-details">'+
+          '<div id="marker-details-title">'+
+          '<div id="marker-details-img-container">'+
+          '<img src="'+fotos_array[i]+'" alt="">'+
+          '</div>'+'<h2>'+coordenadas_nome[i]+'</h2>'+'</div>'+
+          '<div id="marker-details-address">'+'<div>'+
+          moradas_array[i]+
+          '</div>'+
+          '<div>'+
+          '<img src="img/beeopoints.png" alt="">'+
+          '<h2>'+beeopts_array[i]+'</h2>'+
+          '</div>'+
+          '</div>'+
+          '</div>'+
+          '</div>';
+
+          var infoWindow = new google.maps.InfoWindow({
+            //content: contentString
+          });
+
           var myLatLng = { lat: parseFloat($temp[0]), lng: parseFloat($temp[1]) };
           var marker = new google.maps.Marker({
             position: myLatLng,
             map: map,
             title: coordenadas_nome[i],
-            icon: 'img/map-icon.png'
+            icon: 'img/map-icon.png',
+            info: contentString,
           });
-        }
-        
+
+          marker.addListener('click', function() {
+            infoWindow.setContent(this.info);
+            infoWindow.open(map,this);
+          });
+
+          
+        } 
         
         map.mapTypes.set('styled_map', styledMapType);
         map.setMapTypeId('styled_map');
@@ -228,34 +279,4 @@
     </script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHidfksxt61FmywDBiYGiGDNkHwnRG29k&callback=initMap"
     async defer></script>
-
-    <div id="marker-info">
-        <div></div>
-
-        <div id="marker-info-details">
-            <div id="marker-details-title">
-                <div id="marker-details-img-container">
-                  <img src="img/greta.PNG" alt="">
-                </div>
-                <h2>UNIVERSIDADE DE AVEIRO</h2>
-            </div>
-
-            <div id="marker-details-address">
-              <div>
-                <p>Universidade de Aveiro</p>
-                <p>Campus Universitário de Santiago</p>
-                <p>3810-193 Aveiro</p>
-                <p>Portugal</p>
-              </div>
-              <div>
-                <img src="img/beeopoints.png" alt="">
-                <h2>1298</h2>
-              </div>
-            </div>
-
-            <div id="marker-plant-btn">
-              <a href="#"><h2>Quero plantar aqui!</h2></a>
-            </div>
-        </div>
-    </div>
 </body>
