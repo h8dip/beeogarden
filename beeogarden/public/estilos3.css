@@ -97,7 +97,7 @@ body { overflow: -moz-scrollbars-none; }
     width: 90%;
     height: 90%;
     border: 0.3vw solid grey;
-    border-radius: 5vw;
+    border-radius: 5vh;
     margin: 2vh auto;
 }
 
@@ -125,7 +125,7 @@ body { overflow: -moz-scrollbars-none; }
     height: 80%;
     overflow: hidden;
     position: relative;
-    border-radius: 2vw;
+    border-radius: 5vh;
 }
 
 .info-img img{
