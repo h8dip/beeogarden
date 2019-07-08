@@ -18,6 +18,12 @@
 
 </head>
 <body>
+<script>
+  function purchase_other(campo_id,pid){
+      var link = 'store-product.php?action=add&f='+campo_id+'&id='+pid;
+      window.location.href = link;
+  }
+</script>
 <?php 
         session_start();
 

@@ -14,7 +14,7 @@
     <link rel="shortcut icon" href="img/favicon.png" /> 
 
 </head>
-<body style="overflow-x:hidden; overflow:hidden;">
+<body style="overflow-x:hidden;">
 
    <?php 
         if(isset($_GET['f'])){
@@ -219,11 +219,11 @@
                 modal_compra.style.display='block';
                 $('body').toggleClass('body-overflow-modal');
             }
-            /*
+            
             btn_compra.onclick = function(){
                 modal_compra.style.display='block';
                 $('body').toggleClass('body-overflow-modal');
-            };*/
+            };
 
             window.onclick=function(event){
                 if(event.target == modal_compra){

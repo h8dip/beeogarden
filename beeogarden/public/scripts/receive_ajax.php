@@ -1,9 +1,4 @@
-<script>
-  function purchase_other(campo_id,pid){
-      var link = 'store-product.php?action=add&f='+campo_id+'&id='+pid;
-      window.location.href = link;
-  }
-</script>
+
 <?php
   session_start();
   require_once "php_scripts.php";
@@ -56,6 +51,7 @@
   if(isset($_GET['page']))
   {
      if($_GET['page']=="product"){
+
        //code for maps
        //var names : nomes, ids, beepts, locals
        //develop arrays
