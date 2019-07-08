@@ -373,6 +373,7 @@ body { overflow: -moz-scrollbars-none; }
 #chat-content{
     overflow:scroll;
     margin:2vh 2vh;
+    overflow-x: hidden;
 }
 
 .recieve-msg{
@@ -431,7 +432,7 @@ body { overflow: -moz-scrollbars-none; }
 #chat-bottom{
     width:95%;
     border-top: 0.5vh solid #f4f4f4;
-    margin:1vh auto;
+    margin:0 1vh;
     display:flex;
     flex-direction:row;
     justify-content:space-between;
