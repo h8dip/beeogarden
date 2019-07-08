@@ -105,7 +105,19 @@ checkAdmin();
                                                 echo '<div class="card-body">';
                                                 echo '<p>'.$data_report.'</p>';
                                                 echo '<hr>';
-                                                echo '<p class="mb-0">Post ID : '.$ref_post.'</p>';
+                                                $link2 = new_db_connection();
+                                                $stmt2 = mysqli_stmt_init($link2);
+                                                $query = "SELECT utilizador FROM utilizador WHERE id_utilizador = ?";
+                                                if(mysqli_stmt_prepare($stmt2,$query)){
+                                                    mysqli_stmt_bind_param($stmt2,'i',$ref_post);
+                                                    if(mysqli_stmt_execute($stmt2)){
+                                                        mysqli_stmt_bind_result($stmt2,$reportado);
+                                                        if(mysqli_stmt_fetch($stmt2)){
+
+                                                        }
+                                                    }
+                                                }
+                                                echo '<p class="mb-0">Reportado : '.$reportado.'</p>';
                                                 echo '<p class="mb-0">Reportado por : '.$utilizador.'</p>';
                                                 echo '</div></div>';
                                             }

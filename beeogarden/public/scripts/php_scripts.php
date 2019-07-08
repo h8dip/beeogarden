@@ -223,6 +223,29 @@
     echo '</div>';
   }
 
+  function getBlockList($our_id,$rec_id){
+    $link = new_db_connection();
+    $stmt = mysqli_stmt_init($link);
+    
+    $query = "SELECT blocked_by FROM utilizador WHERE id_utilizador = ?";
+    if(mysqli_stmt_prepare($stmt,$query)){
+        mysqli_stmt_bind_param($stmt,'i',$rec_id);
+        if(mysqli_stmt_execute($stmt)){
+            mysqli_stmt_bind_result($stmt,$list);
+            if(mysqli_stmt_fetch($stmt)){
+                $tmp = explode(',',$list);
+                foreach($tmp as $id){
+                    if($id == $our_id){
+                        return 1;
+                    }
+                }
+            }
+        }
+    }
+    return 0;
+    
+  }
+
   function getChat($ida,$idb){
     $link = new_db_connection();
     $stmt = mysqli_stmt_init($link);

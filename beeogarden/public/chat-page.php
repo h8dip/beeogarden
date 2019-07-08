@@ -42,6 +42,9 @@
 
         $all_ids = array();
 
+        //grab block list.
+        $blocked = getBlockList($our_id,$rec_id); //returns 1 if blocked, 0 if not.
+
         
     ?>
     <div id="modal-block">
@@ -51,7 +54,7 @@
             </div>
             <div id="modal-block-btns">
                 <button id="cancel-btn-modal" class="cancel-btn-modal">Cancelar</button>
-                <button class="continue-btn-modal">Continuar</button>
+                <button id="block-btn-modal" class="continue-btn-modal">Continuar</button>
             </div>
         </div>
     </div>
@@ -62,7 +65,7 @@
                 <h3>Reportar utilizador</h3>
             </div>
             <div id="modal-report-form">
-                    <form action="" id="report-form">
+                    <form id="report-form" method="post" action="<?= 'scripts/report_user.php?id='.$our_id.'&b_id='.$rec_id ?>" id="report-form">
                         <select placeholder="Motivo da denúncia" name="motivo">
                             <option value="spam">Spam</option>
                             <option value="nudez">Nudez ou pornogarfia</option>
@@ -72,12 +75,13 @@
                             <option value="assedio">Assédio ou bullying</option>
                             <option value="identidade">Usurpação de identidade</option>
                         </select>
+                        <textarea name="comentario" id="report-obs" form="report-form"></textarea>
                     </form>
-                    <textarea name="comentario" id="report-obs" form="report-form"></textarea>
+                    
             </div>
             <div id="modal-report-btns">
                 <button id="cancel-report-modal" class="cancel-btn-modal">Cancelar</button>
-                <button class="continue-btn-modal">Reportar</button>
+                <button class="continue-btn-modal" onclick='$("#report-form").submit();'>Reportar</button>
             </div>
         </div>
     </div>
@@ -124,8 +128,14 @@
             </div>
         </div>
         <div id="chat-content">
-            <?php 
+            <?php
+            
+                if($blocked!=1){
                 loadAllChatMessages($chat,$our_id,$rec_id,$stmt,$foto,$all_ids);
+                }
+                else{
+                    echo 'Bloqueaste permanentemente este utilizador.';
+                }
 
                 function loadAllChatMessages($chat,$us,$them,$stmt,$foto,&$array){
                     $query = "SELECT id_mensagem, mensagem, estado_mensagem, sender_id FROM mensagens WHERE ref_chat = ?";
@@ -174,6 +184,9 @@
     var all_messages_array = null; //filled on load.
 
     function sendMessage(){
+        var blocked = <?=$blocked?>;
+        var holder = $('#chat-content');
+        if(blocked==0){
         //get variables.
         var texto_msg = $('#mensagem-texto').val();
         if(texto_msg != ''){
@@ -191,16 +204,21 @@
             
         };
 
-        var holder = $('#chat-content');
+        
 
         $.post("scripts/receive_ajax.php?page=chat",object,function(data){
             holder.append(data);
             //update_chat_history_data()
         });
         }
+        }else{
+            holder.append("\nNao podes enviar mensagens a este utilizador. Bloqueaste-o.")
+        }
     }
 
     function update_chat_history_data(){
+        var blocked = <?=$blocked?>;
+        if(blocked==0){
         var id_chat = <?= $chat; ?>;
         var our_id = <?= $our_id; ?>;
         var foto = <?= '"' . $foto . '"' ;?>;
@@ -221,7 +239,7 @@
         $.post("scripts/receive_ajax.php?page=chat_reload",object,function(data){
             holder.append(data);
         });
-
+        }
         //have to fix this animation.
         
     }
@@ -248,9 +266,17 @@
 
         var modal_block = document.getElementById('modal-block');
         var modal_block_cancel = document.getElementById('cancel-btn-modal');
+        var block_btn_actual = document.getElementById('block-btn-modal');
 
         var modal_report = document.getElementById('modal-report');
         var modal_report_cancel = document.getElementById('cancel-report-modal');
+        
+        block_btn_actual.onclick=function(){
+            var my_id = <?=$our_id; ?>;
+            var their_id = <?= $rec_id; ?>;
+            var link = "scripts/block-user.php?id="+my_id+"&b_id="+their_id;
+            window.location.href=link;
+        };
 
         block_btn.onclick=function(){
             modal_block.style.display="block";
