@@ -20,7 +20,7 @@
 <body style="overflow:hidden;">
 <?php
     session_start();
-    include_once "components/loader.php";
+
     require_once "connections/connection.php";
     require_once "scripts/php_scripts.php";
     $link = new_db_connection();
@@ -122,6 +122,7 @@
     }else{
         header("Location: login-page.php");
     }
+    include_once "components/loader.php";
 ?>
     
     <div id="profile-edit-container">
