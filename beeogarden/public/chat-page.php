@@ -137,7 +137,7 @@
                             {
                                 array_push($array,$id_msg);
                                 if($sender_id != $us){
-                                    echo '<div class="recieve-msg">';
+                                    echo '<div id="msg-'.$id_msg.'" class="recieve-msg">';
                                     echo '<div class="recieve-msg-content">';
                                     echo '<img src="'.$foto.'" alt="">';
                                     echo '<div class="recieve-msg-txt">';
@@ -146,7 +146,7 @@
                                     echo '</div>';
                                     echo '</div>';
                                 }else{
-                                    echo '<div class="sent-msg">';
+                                    echo '<div id="msg-'.$id_msg.'" class="sent-msg">';
                                     echo '<div class="sent-msg-content">';
                                     echo '<div class="sent-msg-txt">';
                                     echo '<p>'.$mensagem.'</p>';
@@ -179,7 +179,7 @@
         if(texto_msg != ''){
 
         
-        $('#mensagem-texto').val('');
+        
         var id_chat = <?= $chat; ?>;
         var our_id = <?= $our_id; ?>;
         
@@ -228,9 +228,16 @@
 
     window.onload=function(){
 
+        $(document).keypress(function(e){
+            if (e.which == 13){
+                sendMessage();
+            }
+        });
+        
         all_messages_array = <?php echo '["' . implode('", "',$all_ids) . '"]'; ?>;
 
-        
+        var url = "#msg-" + all_messages_array[all_messages_array.length-1];
+        window.location.href=url;
 
         setInterval(function(){
             update_chat_history_data();

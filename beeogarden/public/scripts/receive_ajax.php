@@ -21,7 +21,7 @@
               } 
               if($clearance){ 
               if($sender_id != $us){
-                  echo '<div class="recieve-msg">';
+                  echo '<div id="msg-'.$msg_id.'" class="recieve-msg">';
                   echo '<div class="recieve-msg-content">';
                   echo '<img src="'.$foto.'" alt="">';
                   echo '<div class="recieve-msg-txt">';
@@ -30,7 +30,7 @@
                   echo '</div>';
                   echo '</div>';
               }else{
-                  echo '<div class="sent-msg">';
+                  echo '<div id="msg-'.$msg_id.'" class="sent-msg">';
                   echo '<div class="sent-msg-content">';
                   echo '<div class="sent-msg-txt">';
                   echo '<p>'.$mensagem.'</p>';
@@ -38,7 +38,11 @@
                   echo '</div>';
                   echo '</div>';
               }
-              echo '<script>all_messages_array.push("'.$msg_id.'")</script>';
+              echo '<script>all_messages_array.push("'.$msg_id.'")
+              var url = "#msg-'.$msg_id.'";
+              window.location.href=url;
+              $("#mensagem-texto").focus();
+              </script>';
             }
           }
         }
@@ -95,16 +99,21 @@
         mysqli_stmt_bind_param($stmt,'sii',$mensagem,$chat_id,$sender_id);
         if(mysqli_stmt_execute($stmt)){
           //echo time.
-          echo '<div class="sent-msg">';
+          $last_id = mysqli_insert_id($link);
+          echo '<div id="msg-'.$last_id.'" class="sent-msg">';
           echo '<div class="sent-msg-content">';
           echo '<div class="sent-msg-txt">';
           echo '<p>'.$mensagem.'</p>';
           echo '</div>';
           echo '</div>';
           echo '</div>';
-          $last_id = mysqli_insert_id($link);
+          
           echo '<script>
           all_messages_array.push("'.$last_id.'");
+          var url = "#msg-'.$last_id.'";
+          window.location.href=url;
+          $("#mensagem-texto").val("");
+          $("#mensagem-texto").focus();
           </script>';
         }
       }
