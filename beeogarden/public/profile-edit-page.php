@@ -91,7 +91,7 @@
                     $target_file = $target_dir . basename($fName).'.' .$imageFileType;
                 }while(file_exists($target_file));
                 
-                if($_FILES["foto-perfil"]["size"] > 30000000){
+                if($_FILES["foto-perfil"]["size"] > 300000000){
                     $uploadOk = 0;
                     echo 'A tua foto é demasiado grande.';
                 }
