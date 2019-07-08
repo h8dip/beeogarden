@@ -246,15 +246,19 @@
     </div>
 
     <script src="main.js"></script>
+    <script src="scripts/checkQueryString.js"></script>
     <script>
         
         window.onload = function(){
             
             document.getElementById("loading-div-container").style.display ="none";
-        
 
-            var first_timer = <?= $first_time ?>
 
+            var first_timer = <?= $first_time ?>;
+
+            if(getParameterByName('error')=='empty-field'){
+                alert("O teu campo não foi registado porque não preencheste corretamente o formulário.");
+            }
             if(first_timer == 0){
 
             var modal_user = document.getElementById('modal-user-tutorial');
@@ -275,8 +279,9 @@
             dotuser1.classList.remove("far");
             dotuser1.classList.add("fas");
             $('body').toggleClass('body-overflow-modal');
-       
-
+            
+            
+            
             modal_user.onclick = function (){
                 if(modal_user_count==0){
                     imguser1.style.display = 'block';
