@@ -33,7 +33,19 @@
     }
 </script>
 
-    <?php include_once "components/loader.php"; ?>
+    <?php 
+          require_once "scripts/php_scripts.php";
+
+
+          session_start();
+
+          if(verifyLogin()){
+              header('Location: profile-page.php');
+          }
+
+          include_once "components/loader.php"; 
+    ?>
+    
 
     <div id="login-container">
         <div id="upper-login-text">

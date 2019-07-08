@@ -338,10 +338,10 @@ body { overflow: -moz-scrollbars-none; }
 }
 
 #marker-info{
-    display: none;
+    display: block;
     grid-template-columns: 100vw;
     grid-template-rows: 50vh 50vh;
-    position: absolute;
+    
     width: 100vw;
     height: 100vh;
     background-color: rgba(0,0,0,0.5);
