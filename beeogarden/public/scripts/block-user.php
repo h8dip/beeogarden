@@ -43,7 +43,7 @@
             mysqli_stmt_bind_param($stmt2,'si',$block_list,$to_block);
             if(mysqli_stmt_execute($stmt2)){
               //success.
-              header('../profile-page.php');
+              header('Location: ../profile-page.php');
             }
           }
         }
