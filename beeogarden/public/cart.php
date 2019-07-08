@@ -198,15 +198,13 @@
 
 
 
-<script src="main.js"></script>
+<!-- <script src="main.js"></script> -->
 <script src="scripts/checkQueryString.js"></script>
 
 <script>
     
 
         window.onload=function(){
-
-            document.getElementById("loading-div-container").style.display ="none";
 
             $('html, body').css({
                 'overflow': 'auto',
