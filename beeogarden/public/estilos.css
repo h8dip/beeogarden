@@ -407,6 +407,15 @@ body{
     justify-self: flex-start;
 }
 
+.trash{
+    display: flex;
+    align-items: center;
+}
+
+.trash i {
+    margin-left: 2vh;
+}
+
 #campos img{
     width: 100%;
     margin-bottom: 1vh;

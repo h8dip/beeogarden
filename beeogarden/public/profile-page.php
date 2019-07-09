@@ -222,7 +222,7 @@
                             $contador_de_meus_campos++;
                             echo '<div class="campo" >';
                             echo '<div id="upper-campo">';
-                            echo '<a href="feed-page.php?f=1&id='.$id_espaco.'"><h3>'.$nome_espaco.'</h3></a>   ';
+                            echo '<div class="trash"><a href="feed-page.php?f=1&id='.$id_espaco.'"><h3>'.$nome_espaco.'</h3></a><i class="fas fa-trash"></i></div>   ';
                             echo '<a href="chat-list.php?f_id='.$id_espaco.'"><i class="far fa-comment fa-2x"></i></a>';
                             echo '</div>';
                             echo '<div id="lower-campo">';
