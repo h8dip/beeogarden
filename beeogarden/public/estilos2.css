@@ -723,9 +723,10 @@ body { overflow: -moz-scrollbars-none; }
 }
 
 #add-post-icon{
-    position: sticky;
+    position: fixed;
     bottom: 2vh;
     text-align: center;
+    width: 100%;
 }
 
 #add-post-icon i {

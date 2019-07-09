@@ -25,8 +25,7 @@
   }
 </script>
 <?php 
-        session_start();
-
+        include_once "components/navbar-mobile.php";
         require_once "scripts/php_scripts.php";
         require_once "connections/connection.php";
 
@@ -164,7 +163,7 @@
         <?php 
             $current_page='store';
             include_once "components/navbar.php"; 
-            include_once "components/navbar-mobile.php";
+            
         
 
             
@@ -275,8 +274,8 @@
                                 mysqli_stmt_bind_param($stmt,'iidii',$last_id,$id_de_produto,$preco,$campo_id,$qtd);
                                 if(mysqli_stmt_execute($stmt)){
                                     //success
-                                    $rd_to = 'Location: store-product.php?id='.$id_de_produto;
-                                    header($rd_to);
+                                    $rd_to = 'store-product.php?id='.$id_de_produto;
+                                    echo '<script>window.location.href="'.$rd_to.'"</script>';
                                 }
                             }
                         }else{
@@ -285,8 +284,8 @@
                             mysqli_stmt_bind_param($stmt,'iiid',$last_id,$id_de_produto,$qtd,$preco);
                             if(mysqli_stmt_execute($stmt)){
                                 //success
-                                $rd_to = 'Location: store-product.php?id='.$id_de_produto;
-                                // header($rd_to);
+                                $rd_to = 'store-product.php?id='.$id_de_produto;
+                                echo '<script>window.location.href="'.$rd_to.'"</script>';
                             }
                         }
                       }
@@ -363,7 +362,8 @@
                                     if(mysqli_stmt_prepare($stmt,$query)){
                                         mysqli_stmt_bind_param($stmt,'iiii',$qty,$campo_id,$id_da_compra,$id_de_produto);
                                         if(mysqli_stmt_execute($stmt)){
-                                            header("Location: store-page.php");
+                                            $rd_to = 'store-product.php?id='.$id_de_produto;
+                                            echo '<script>window.location.href="'.$rd_to.'"</script>';
                                         }
                                     }
                                 }else{
@@ -373,7 +373,8 @@
                                         if(mysqli_stmt_prepare($stmt,$query)){
                                             mysqli_stmt_bind_param($stmt,'siii',$outro_campo,$qty,$id_da_compra,$id_de_produto);
                                             if(mysqli_stmt_execute($stmt)){
-                                                header("Location: store-page.php");
+                                                $rd_to = 'store-product.php?id='.$id_de_produto;
+                                                echo '<script>window.location.href="'.$rd_to.'"</script>';
                                             }
                                         }
                                 }
@@ -398,7 +399,8 @@
                                     mysqli_stmt_bind_param($stmt,'iii',$qty,$id_da_compra,$id_de_produto);
                                     if(mysqli_stmt_execute($stmt)){
                                         
-                                        // header("Location: store-page.php");
+                                        $rd_to = 'store-product.php?id='.$id_de_produto;
+                                        echo '<script>window.location.href="'.$rd_to.'"</script>';
                                     }
                                 }
                             } 
@@ -413,7 +415,8 @@
                                     mysqli_stmt_bind_param($stmt,'iiiid',$id_da_compra,$id_de_produto,$id_campo,$qtd,$preco);
                                     if(mysqli_stmt_execute($stmt)){
                                         
-                                        header("Location: store-page.php");
+                                        $rd_to = 'store-product.php?id='.$id_de_produto;
+                                        echo '<script>window.location.href="'.$rd_to.'"</script>';
                                     }
                                 }
                             }else{
@@ -423,7 +426,8 @@
                                     mysqli_stmt_bind_param($stmt,'iiid',$id_da_compra,$id_de_produto,$qtd,$preco);
                                     if(mysqli_stmt_execute($stmt)){
                                         
-                                        // header("Location: store-page.php");
+                                        $rd_to = 'store-product.php?id='.$id_de_produto;
+                                        echo '<script>window.location.href="'.$rd_to.'"</script>';
                                     }
                                 }
                             }

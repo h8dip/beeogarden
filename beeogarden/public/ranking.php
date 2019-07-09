@@ -17,8 +17,7 @@
 <body style="overflow:hidden;">
 
     <?php 
-    session_start();
-
+    include_once "components/navbar-mobile.php";
     require_once "connections/connection.php";
             
     $link = new_db_connection();
@@ -37,7 +36,7 @@
         $current_page='ranking';
         include_once "components/loader.php";
         include_once "components/navbar.php";
-        include_once "components/navbar-mobile.php";
+        
     ?>
 
     <script>

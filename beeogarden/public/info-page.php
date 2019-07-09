@@ -23,12 +23,12 @@
 
     <div id="container-info" class="container-main">
         <?php
-            session_start();
+            include_once "components/navbar-mobile.php";
             $current_page='info';
             include_once "components/loader.php";
             include_once "components/navbar.php";
             require_once "connections/connection.php";
-            include_once "components/navbar-mobile.php";
+            
             
             if(isset($_GET['f'])){
                 switch($_GET['f']){

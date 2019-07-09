@@ -18,6 +18,13 @@
 
 </head>
 <body style="overflow:hidden;">
+<?php 
+    session_start();
+    require_once "scripts/php_scripts.php";
+    if(!verifyLogin()){
+        header('Location: login-page.php');
+    }
+?>
 
     <div id="modal-register-tutorial" class="modal-tutorial">
         <div class="modal-tutorial-content">

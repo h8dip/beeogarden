@@ -20,6 +20,8 @@
     </div>
     <div id="shopping-cart">
         <?php
+            
+
             require_once "connections/connection.php";
             require_once "scripts/php_scripts.php";
 

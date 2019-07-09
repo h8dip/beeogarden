@@ -3,9 +3,15 @@
             <div></div>
             <div id="mobile-nav-img-profile">
                 <div id="mobile-nav-img-container">
-                    <img src="img/greta.PNG" alt="">
-                </div>
-                <h3>Greta Thunberg</h3>
+                <?php
+                    session_start();
+
+                    require_once "connections/connection.php"; 
+                    require_once "scripts/php_scripts.php";
+
+                    loadMobileNavBar(getUserId());
+                ?>
+                    
             </div>
             <div class="mobile-nav-item"><a href="profile-page.php"><h3>PERFIL</h3></a></div>
             <div class="mobile-nav-item"><a href="store-page.php"><h3>LOJA</h3></a></div>
