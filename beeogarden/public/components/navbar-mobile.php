@@ -4,12 +4,12 @@
             <div id="mobile-nav-img-profile">
                 <div id="mobile-nav-img-container">
                 <?php
+                    session_start();
+
                     require_once "connections/connection.php"; 
                     require_once "scripts/php_scripts.php";
 
-
                     loadMobileNavBar(getUserId());
-
                 ?>
                     
             </div>

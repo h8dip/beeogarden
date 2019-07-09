@@ -23,7 +23,6 @@
         
     <div id="container-loja" class="container-main" >
         <?php
-            session_start();
             require_once "scripts/php_scripts.php";
             include_once "components/loader.php";
             if(verifyLogin()){

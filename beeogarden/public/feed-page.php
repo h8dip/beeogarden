@@ -52,14 +52,14 @@
     <div id="feed-page-container" class="container-main">
         
         <?php
-            
+            include_once "components/navbar-mobile.php";
             $current_page='profile';
             require_once "connections/connection.php";
-            session_start();
+            
             require_once "scripts/php_scripts.php";
             include_once "components/loader.php";
             include_once "components/navbar.php";
-            include_once "components/navbar-mobile.php";
+            
 
 
             $link = new_db_connection();

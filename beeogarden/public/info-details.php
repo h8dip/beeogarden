@@ -21,12 +21,12 @@
     <div id="container-info-details" class="container-main">
         <?php 
             $current_page = 'info';
-            session_start();
+            include_once "components/navbar-mobile.php";
             include_once "components/loader.php";
             include_once "components/navbar.php";
             require_once "connections/connection.php";
             require_once "scripts/php_scripts.php";
-            include_once "components/navbar-mobile.php";
+            
             
 
             if(verifyLogin()){

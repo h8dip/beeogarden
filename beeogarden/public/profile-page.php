@@ -43,7 +43,6 @@
     <div id="profile-container" class="container-main">
     
         <?php
-            session_start();
 
             include_once "components/navbar-mobile.php";
             include_once "components/loader.php";
