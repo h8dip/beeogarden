@@ -8,7 +8,7 @@ window.onload=function(){
         $("body").css({"width":w,"height":h});
     });
 
-    document.getElementById("loading-div-container").style.display ="none";
+   // document.getElementById("loading-div-container").style.display ="none";
 
     $('#hamburger').click(function(){
         $('#hamburger').toggleClass("is-active");
