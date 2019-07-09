@@ -96,7 +96,16 @@
                     <a href="?f=c">CONSTRUÇÕES</a>
                     <a href="?f=s">SEMENTES</a>';
                 }
-            ?>            
+            ?> 
+        <script>
+        $('#hamburger').click(function(){
+            $('#hamburger').toggleClass("is-active");
+            $('#mobile-navbar').toggleClass("grid-class");
+            $('#ham-phone').toggleClass("z-index-6");
+            $('body').toggleClass("overflow-hid");
+            $('.container-main').toggleClass("overflow-hid");
+        });
+        </script>           
         </div>
         <?php 
             require_once "connections/connection.php";

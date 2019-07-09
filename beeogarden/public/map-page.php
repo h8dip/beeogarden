@@ -249,8 +249,13 @@
           '<h2>'+beeopts_array[i]+'</h2>'+
           '</div>'+
           '</div>'+
+          '<div id="marker-plant-btn">'+
+          '<a href="store-page.php?f=s"><h2>Quero plantar aqui!</h2></a>'+
+          '</div>'+
           '</div>'+
           '</div>';
+
+
 
           var infoWindow = new google.maps.InfoWindow({
             //content: contentString
