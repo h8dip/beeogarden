@@ -338,12 +338,11 @@ body { overflow: -moz-scrollbars-none; }
 }
 
 #marker-info{
-    display: block;
-    grid-template-columns: 100vw;
-    grid-template-rows: 50vh 50vh;
-    
-    width: 100vw;
-    height: 100vh;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 15% 85%;
+    width: 60vw;
+    height: 56vh;
     background-color: rgba(0,0,0,0.5);
     z-index: 3;
     top: 0;
@@ -736,6 +735,9 @@ body { overflow: -moz-scrollbars-none; }
 }
 
 @media (min-width: 1025px) {
+    #marker-info{
+        width: 45vw;
+    }
     .product-cart-info h3{
         text-overflow: unset;
         width: 100%;

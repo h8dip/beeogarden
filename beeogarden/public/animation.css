@@ -467,7 +467,7 @@ svg {
     margin: 5% auto;
     padding: 2vh;
     border: 1px solid #888;
-    width: 85%;
+    width: 60%;
     border-radius: 5vh;
     height: 80%;
     overflow: scroll;
@@ -511,7 +511,11 @@ svg {
     margin:auto;
     width:30%;
     display:flex;
-    justify-content: space-between;
+    justify-content: center;
+}
+
+#register-tutorial-dots i{
+    margin-right: 1vh;
 }
 
 #register-tutorial-dots i{
@@ -1070,10 +1074,6 @@ svg {
         left: 29%;
         padding: 1%;
         font-size: 1.6rem;
-    }
-
-    #register-tutorial-text{
-        font-size: 2.5rem;
     }
 
     #register-done-text{

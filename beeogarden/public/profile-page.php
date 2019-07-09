@@ -177,12 +177,12 @@
             <?php 
             
 
-            $query = "SELECT id_espaco, nome_espaco, localidade, ref_contribuidores,ref_Utilizador FROM espaco WHERE ref_Utilizador LIKE ? OR ref_contribuidores IS NOT NULL";
+            $query = "SELECT id_espaco, nome_espaco, localidade, ref_contribuidores,ref_Utilizador, beeopoints FROM espaco WHERE ref_Utilizador LIKE ? OR ref_contribuidores IS NOT NULL";
 
             if(mysqli_stmt_prepare($stmt,$query)){
                 mysqli_stmt_bind_param($stmt,'i',$user_id);
                 if(mysqli_stmt_execute($stmt)){
-                    mysqli_stmt_bind_result($stmt,$id_espaco, $nome_espaco, $localidade,$ref_contribuidores,$ref_Utilizador);
+                    mysqli_stmt_bind_result($stmt,$id_espaco, $nome_espaco, $localidade,$ref_contribuidores,$ref_Utilizador,$beeopoints_field);
                     $contador_de_campos_contribuidos = 0;
                     $contador_de_meus_campos = 0;
                     while(mysqli_stmt_fetch($stmt)){
@@ -205,7 +205,7 @@
                                     echo '<h4>'.$localidade.'</h4>';
                                     echo '</div>';
                                     echo '<div>';
-                                    echo '<p>'.$beeopoints.'</p>';
+                                    echo '<p>'.$beeopoints_field.'</p>';
                                     echo '<img src="img/beeopoints.png" alt="">';
                                     echo '</div></div></div>';
                                     break;
@@ -224,7 +224,7 @@
                             echo '<h4>'.$localidade.'</h4>';
                             echo '</div>';
                             echo '<div>';
-                            echo '<p>'.$beeopoints.'</p>';
+                            echo '<p>'.$beeopoints_field.'</p>';
                             echo '<img src="img/beeopoints.png" alt="">';
                             echo '</div></div></div>';                           
                     }
