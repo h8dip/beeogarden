@@ -222,7 +222,7 @@
                             $contador_de_meus_campos++;
                             echo '<div class="campo" >';
                             echo '<div id="upper-campo">';
-                            echo '<div class="trash"><a href="feed-page.php?f=1&id='.$id_espaco.'"><h3>'.$nome_espaco.'</h3></a><i class="fas fa-trash"></i></div>   ';
+                            echo '<div class="trash"><a href="feed-page.php?f=1&id='.$id_espaco.'"><h3>'.$nome_espaco.'</h3></a><a href="scripts/delete_field.php?id='.$id_espaco.'"><i class="fas fa-trash"></i></a></div>   ';
                             echo '<a href="chat-list.php?f_id='.$id_espaco.'"><i class="far fa-comment fa-2x"></i></a>';
                             echo '</div>';
                             echo '<div id="lower-campo">';
@@ -268,8 +268,11 @@
                     alert("O teu campo não foi registado porque não preencheste corretamente o formulário.");
                 break;
                 case 'wrong_id_edit_profile':
-                    alert("Tentaste editar um perfil que não te pertence");
+                    alert("Tentaste editar um perfil que não te pertence.");
                 break;
+                case 'not_field_owner':
+                    alert("Tentaste apagar um campo que nao te pertence.");
+                    break;
             } 
             if(first_timer == 0){
 
