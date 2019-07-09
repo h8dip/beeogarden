@@ -144,7 +144,7 @@
                             $img_s = htmlspecialchars($img_a[0]);
                         }
                         $rndN = rand(1,100);
-                        if($rndN > 95){
+                        if($rndN > 92){
                             $class = "produto-span-2";        
                         }else{$class=""; };
                         echo '<div id="produto-'.$id_produto.'" class="produto '.$class.'">';
