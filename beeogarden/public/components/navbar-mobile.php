@@ -22,4 +22,5 @@
             <div></div>
             <div id="registo-beeogarden-btn"><a href="field-registration-page.php" id="nav-register-btn"><h3>Registar beeogarden</h3></a></div>
         </div>
+        <div id="nav-mob-cls"></div>
     </div>

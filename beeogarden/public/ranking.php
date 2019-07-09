@@ -48,6 +48,14 @@
             $('body').toggleClass("overflow-hid");
             $('.container-main').toggleClass("overflow-hid");
         });
+
+        $('#nav-mob-cls').click(function(){
+                $('#hamburger').toggleClass("is-active");
+                $('#mobile-navbar').toggleClass("grid-class");
+                $('#ham-phone').toggleClass("z-index-6");
+                $('body').toggleClass("overflow-hid");
+                $('.container-main').toggleClass("overflow-hid");
+            });
     </script>
 
     <div id="top-three">
@@ -105,7 +113,7 @@
                             echo '<div class="ranking-spot">';
                             echo '<div class="ranking-num"><h1>'.$ctr.'</h1></div>';
                             echo '<div class="ranking-name">';
-                            echo '<div><h2>'.$utilizador.'</h2></div>';
+                            echo '<div><h2 class="ranking-name-text">'.$utilizador.'</h2></div>';
                             echo '<div>';
                             echo '<h3>'.$beeopoints.'</h3>';
                             echo '<img src="img/beeopoints.png" alt="">';
