@@ -38,6 +38,7 @@
         //first task of the day :D
 
         verificaCampos($_GET['id']);
+        distribuirBeeopts($_GET['id']);
 
         $novo_preco = $preco_total + (0.13*$preco_total);
         $query = "UPDATE compras SET data_compra = CURRENT_TIMESTAMP, preco_total = ? WHERE id_compra = ?";
@@ -56,6 +57,100 @@
   }else{
     header('Location: ../login-page.php');
   }
+  }
+  
+  function distribuirBeeopts($id_compra){
+    $link = new_db_connection();
+    $stmt = mysqli_stmt_init($link);
+    $our_id = getUserId();
+
+
+    //obter todo o valor de beeopts de cada produto para consumo individual.
+    $query = "SELECT ref_produto, quantidade, custo_produto, outro_campo, outro_campo_qtd FROM compras_has_produto WHERE ref_compra = ?";
+    if(mysqli_stmt_prepare($stmt,$query)){
+      mysqli_stmt_bind_param($stmt,'i',$id_compra);
+      if(mysqli_stmt_execute($stmt)){
+        mysqli_stmt_bind_result($stmt,$ref_produto,$quantidade,$custo_produto,$outro_campo,$outro_campo_qtd);
+        while(mysqli_stmt_fetch($stmt)){
+          $beevalue = obtainBeeValue($ref_produto);
+   
+          //add to self.
+          $beepts = $beevalue * $quantidade;
+  
+          creditSelf($our_id,$beepts);
+
+          //calculate field pts , if any.
+          if(!empty($outro_campo) or !is_null($outro_campo) or $outro_campo != ''){
+            $list = explode(',',$outro_campo);
+            $beepts = $beevalue * $outro_campo_qtd;
+            foreach($list as $campo){
+              creditCampo($campo,$beepts);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  function creditCampo($id,$beepts){
+    $link = new_db_connection();
+    $stmt = mysqli_stmt_init($link);
+    $query = "SELECT beeopoints FROM espaco WHERE id_espaco = ?";
+    if(mysqli_stmt_prepare($stmt,$query)){
+      mysqli_stmt_bind_param($stmt,'i',$id);
+      if(mysqli_stmt_execute($stmt)){
+        mysqli_stmt_bind_result($stmt,$beect);
+        if(mysqli_stmt_fetch($stmt)){
+          $newpts = $beect + $beepts;
+          $query = "UPDATE espaco SET beeopoints = ? WHERE id_espaco = ?";
+          if(mysqli_stmt_prepare($stmt,$query)){
+            mysqli_stmt_bind_param($stmt,'ii',$newpts,$id);
+              if(mysqli_stmt_execute($stmt)){
+                //done.
+              }
+          }
+        }
+      }
+    }
+  }
+
+  function creditSelf($id,$beepts){
+    $link = new_db_connection();
+    $stmt = mysqli_stmt_init($link);
+    $query = "SELECT beeopoints FROM utilizador WHERE id_utilizador = ?";
+    if(mysqli_stmt_prepare($stmt,$query)){
+      mysqli_stmt_bind_param($stmt,'i',$id);
+      if(mysqli_stmt_execute($stmt)){
+        mysqli_stmt_bind_result($stmt,$beect);
+        if(mysqli_stmt_fetch($stmt)){
+          $newpts = $beect + $beepts;
+        
+          $query = "UPDATE utilizador SET beeopoints = ? WHERE id_utilizador = ?";
+          if(mysqli_stmt_prepare($stmt,$query)){
+            mysqli_stmt_bind_param($stmt,'ii',$newpts,$id);
+              if(mysqli_stmt_execute($stmt)){
+                //done.
+              }
+            
+          }
+        }
+      }
+    }
+  }
+
+  function obtainBeeValue($id_produto){
+    $link2 = new_db_connection();
+    $stmt2 = mysqli_stmt_init($link2);
+    $query_pd = "SELECT beecount FROM produto WHERE id_produto = ?";
+    if(mysqli_stmt_prepare($stmt2,$query_pd)){
+      mysqli_stmt_bind_param($stmt2,'i',$id_produto);
+      if(mysqli_stmt_execute($stmt2)){
+        mysqli_stmt_bind_result($stmt2,$beecount);
+        if(mysqli_stmt_fetch($stmt2)){
+          return $beecount;
+        }
+      }
+    }
   }
 
   function verificaCampos($id_compra){
