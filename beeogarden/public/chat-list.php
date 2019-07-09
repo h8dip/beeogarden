@@ -78,7 +78,7 @@
                 
                 $id_espaco = $_GET['f_id'];
                 $owner_info = obtainOwnerInfo($id_espaco);
-                fill_owner_chat($owner_info,$id_espaco);
+                fill_owner_chat($owner_info,$id_espaco,$our_id);
 
                 $query = "SELECT ref_contribuidores FROM espaco WHERE id_espaco = ?";
                 if(mysqli_stmt_prepare($stmt,$query)){
@@ -95,8 +95,8 @@
                                         if(mysqli_stmt_execute($stmt)){
                                             mysqli_stmt_bind_result($stmt,$foto_perfil,$username);
                                             if(mysqli_stmt_fetch($stmt)){
-                                                layout_chat($colaborador,$username,$foto_perfil,$id_espaco);
-                                                displayLastMessage();
+                                                layout_chat($colaborador,$username,$foto_perfil,$id_espaco,$our_id);
+                                                
                                                 //TO-DO : Grab last message if any , time of , if any.. display. yeh.
                                             }
                                         }

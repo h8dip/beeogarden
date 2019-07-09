@@ -156,9 +156,44 @@
       
   }
 
-  function displayLastMessage(){
-      //
-  }
+  function fetchLastMessage($our_id,$other_id){
+      $link = new_db_connection();
+      $stmt = mysqli_stmt_init($link);
+      $query = "SELECT COUNT(*), id_chat FROM chat WHERE ref_utilizador_a = ? and ref_utilizador_b = ?";
+      if(mysqli_stmt_prepare($stmt,$query)){
+          mysqli_stmt_bind_param($stmt,'ii',$our_id,$other_id);
+          if(mysqli_stmt_execute($stmt)){
+              mysqli_stmt_bind_result($stmt,$count,$id);
+              if(mysqli_stmt_fetch($stmt)){
+                  if($count == 0){
+                    $query = "SELECT COUNT(*), id_chat FROM chat WHERE ref_utilizador_a = ? and ref_utilizador_b = ?";
+                    if(mysqli_stmt_prepare($stmt,$query)){
+                        mysqli_stmt_bind_param($stmt,'ii',$other_id,$our_id);
+                        if(mysqli_stmt_execute($stmt)){
+                            mysqli_stmt_bind_result($stmt,$count,$id);
+                            if(mysqli_stmt_fetch($stmt)){
+                                //grab id
+
+                            }
+                  }
+                    }
+                }
+      }
+     }
+    }
+
+    //our id.
+    $query = "SELECT mensagem, date_creation_message FROM mensagens WHERE ref_chat = ? ORDER BY id_mensagem DESC";
+    if(mysqli_stmt_prepare($stmt,$query)){
+        mysqli_stmt_bind_param($stmt,'i',$id);
+        if(mysqli_stmt_execute($stmt)){
+            mysqli_stmt_bind_result($stmt,$mensagem,$date);
+            if(mysqli_stmt_fetch($stmt)){
+                return array($mensagem,$date);
+            }
+        }
+    }
+   }
 
   function obtainOwnerInfo($id){
     $link = new_db_connection();
@@ -175,10 +210,11 @@
     }
   }
   
-  function fill_owner_chat($info,$f_id){
+  function fill_owner_chat($info,$f_id,$our_id){
     if($info[2] == "" or is_null($info[2])){
         $info[2] = "img/default-user.png";
     }
+    $arr = fetchLastMessage($our_id,$info[0]);
     echo '<div class="chat-person">';
     echo '<div class="chat-person-image">';
     echo '<a href="chat-page.php?id='.$info[0].'&f_id='.$f_id.'">';
@@ -190,20 +226,21 @@
     echo '<div class="chat-person-text-container">';
     echo '<a href="chat-page.php?id='.$info[0].'&f_id='.$f_id.'">';
     echo '<h2>'.$info[1].'</h2>';
-    echo '<h4>Obrigado pelas flores</h4>';
+    echo '<h4>'.$arr[0].'</h4>';
     echo '</a>';
     echo '</div>';
     echo '<div class="chat-person-info-container">';
     echo '<i class="fas fa-check"></i>';
-    echo '<h4>23:53:</h4>';
+    echo '<h4>'.$arr[1].'</h4>';
     echo '</div>';
     echo '</div>';
   }
 
-  function layout_chat($id,$name,$foto,$f_id){
+  function layout_chat($id,$name,$foto,$f_id,$our_id){
     if($foto == "" or is_null($foto)){
         $foto = "img/default-user.png";
     }
+    $arr = fetchLastMessage($our_id,$id);
     echo '<div class="chat-person">';
     echo '<div class="chat-person-image">';
     echo '<a href="chat-page.php?id='.$id.'&f_id='.$f_id.'">';
@@ -215,12 +252,12 @@
     echo '<div class="chat-person-text-container">';
     echo '<a href="chat-page.php?id='.$id.'&f_id='.$f_id.'">';
     echo '<h2>'.$name.'</h2>';
-    echo '<h4>Obrigado pelas flores</h4>';
+    echo '<h4>'.$arr[0].'</h4>';
     echo '</a>';
     echo '</div>';
     echo '<div class="chat-person-info-container">';
     echo '<i class="fas fa-check"></i>';
-    echo '<h4>23:53:</h4>';
+    echo '<h4>'.$arr[1].'</h4>';
     echo '</div>';
     echo '</div>';
   }
