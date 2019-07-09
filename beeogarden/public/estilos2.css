@@ -300,6 +300,13 @@ body { overflow: -moz-scrollbars-none; }
     margin-left: 5%;
 }
 
+.ranking-name-text{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 80%;
+}
+
 .ranking-foto{
     display: flex;
     align-items: center;

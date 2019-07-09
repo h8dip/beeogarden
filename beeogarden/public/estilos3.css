@@ -684,7 +684,7 @@ body { overflow: -moz-scrollbars-none; }
 
 }
 
-@media (min-width: 1024px){
+@media (min-width: 1025px){
    #container-info{
         grid-auto-rows: 45vh;
    }
