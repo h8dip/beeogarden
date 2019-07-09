@@ -169,14 +169,14 @@ checkAdmin();
 
                                     if(isset($_POST)){
                                         if(!empty($_POST['search_query'])){
-                                            $query = "SELECT nome_espaco, localidade, ref_Utilizador, ajuda, utilizador, date_creation, beeopoints,id_espaco,slots,id_estado_campo
+                                            $query = "SELECT nome_espaco, localidade, ref_Utilizador, ajuda, utilizador, date_creation, espaco.beeopoints,id_espaco,slots,id_estado_campo
                                             FROM espaco INNER JOIN utilizador ON ref_Utilizador = id_utilizador WHERE utilizador LIKE \"%" . htmlspecialchars($_POST['search_query']) . "%\"" . " LIMIT $start, $items_per_page";
                                         }else{
-                                            $query = "SELECT nome_espaco, localidade, ref_Utilizador, ajuda, utilizador, date_creation, beeopoints,id_espaco,slots,id_estado_campo
+                                            $query = "SELECT nome_espaco, localidade, ref_Utilizador, ajuda, utilizador, date_creation, espaco.beeopoints,id_espaco,slots,id_estado_campo
                                             FROM espaco INNER JOIN utilizador ON ref_Utilizador = id_utilizador LIMIT $start, $items_per_page";
                                         }
                                     }else{
-                                        $query = "SELECT nome_espaco, localidade, ref_Utilizador, ajuda, utilizador, date_creation, beeopoints,id_espaco,slots,id_estado_campo
+                                        $query = "SELECT nome_espaco, localidade, ref_Utilizador, ajuda, utilizador, date_creation, espaco.beeopoints,id_espaco,slots,id_estado_campo
                                         FROM espaco INNER JOIN utilizador ON ref_Utilizador = id_utilizador LIMIT $start, $items_per_page";
                                     }
 

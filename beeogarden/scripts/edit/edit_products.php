@@ -7,11 +7,11 @@
     $action_to .= "&id=".$_GET['id'];
     $link = new_db_connection();
     $stmt = mysqli_stmt_init($link);
-    $query = "SELECT nome_produto, descricao_produto, dimensoes, beecount, preco FROM produto WHERE id_produto LIKE ?";
+    $query = "SELECT nome_produto, descricao_produto, dimensoes, beecount, preco,categoria FROM produto WHERE id_produto LIKE ?";
     if(mysqli_stmt_prepare($stmt, $query)){
       mysqli_stmt_bind_param($stmt,'i',$_GET['id']);
       if(mysqli_stmt_execute($stmt)){
-        mysqli_stmt_bind_result($stmt,$nome_produto,$descricao_produto,$dimensoes,$beecount,$preco);
+        mysqli_stmt_bind_result($stmt,$nome_produto,$descricao_produto,$dimensoes,$beecount,$preco,$categoria);
         if(mysqli_stmt_fetch($stmt)){
             //perfectooo
         }
@@ -43,6 +43,14 @@
   <div class="form-group">
     <label>Preco</label><br>
     <input type="number" step=".01" name="preco" id="preco" class="form-control form-control-user" value="<?=htmlspecialchars($preco)?>">
+  </div>
+  <div class="form-group">
+    <label>Categoria do Produto</label><br> 
+    <select name="categoria" class="form-control form-control-user">
+      <option value="1" <?php if($categoria == "Construcao"){echo 'selected';}?>>Construcao</option>
+      <option value="2" <?php if($categoria == "Sementes"){echo 'selected';}?>>Sementes</option>
+      <option value="3" <?php if($categoria == "Roupa"){echo 'selected';}?>>Roupa</option>
+    </select>
   </div>
   <button type="Submit" class="btn btn-primary btn-user btn-block">Editar</button>
 </form>

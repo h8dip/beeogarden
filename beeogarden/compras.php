@@ -202,10 +202,10 @@ checkAdmin();
                                                     echo '<td>Concluida : '.$data_compra.'</td>';
                                                 }
                                             }
-                                            mysqli_stmt_close($stmt);
-                                            mysqli_close($link);
-                                            mysqli_stmt_close($stmt2);
-                                            mysqli_close($link2);
+                                            //mysqli_stmt_close($stmt);
+                                            //mysqli_close($link);
+                                            //mysqli_stmt_close($stmt2);
+                                            //mysqli_close($link2);
                                         }else{
                                          //failed execute
                                          
