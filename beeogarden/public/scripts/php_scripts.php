@@ -246,6 +246,31 @@
     
   }
 
+  function loadMobileNavBar($id){
+    $link = new_db_connection();
+    $stmt = mysqli_stmt_init($link);
+    $query = "SELECT foto_perfil ,utilizador FROM utilizador WHERE id_utilizador = ?";
+    if(mysqli_stmt_prepare($stmt,$query)){
+        mysqli_stmt_bind_param($stmt,'i',$id);
+        if(mysqli_stmt_execute($stmt)){
+            mysqli_stmt_bind_result($stmt,$foto,$user);
+            if(mysqli_stmt_fetch($stmt)){
+                echo '<img src="' . $foto . '" alt="">';
+                echo '</div>';
+                echo '<h3>' . $user . '</h3>';
+            }
+        }
+    }
+  }
+
+  function verifyId($logged_in,$id){
+    if(getUserId($logged_in) == $id){
+        return true;
+    }else{
+        return false;
+    }
+  }
+
   function getChat($ida,$idb){
     $link = new_db_connection();
     $stmt = mysqli_stmt_init($link);

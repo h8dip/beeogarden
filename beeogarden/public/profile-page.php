@@ -256,9 +256,14 @@
 
             var first_timer = <?= $first_time ?>;
 
-            if(getParameterByName('error')=='empty-field'){
-                alert("O teu campo não foi registado porque não preencheste corretamente o formulário.");
-            }
+            switch(getParameterByName('error')){
+                case 'empty-field':
+                    alert("O teu campo não foi registado porque não preencheste corretamente o formulário.");
+                break;
+                case 'wrong_id_edit_profile':
+                    alert("Tentaste editar um perfil que não te pertence");
+                break;
+            } 
             if(first_timer == 0){
 
             var modal_user = document.getElementById('modal-user-tutorial');

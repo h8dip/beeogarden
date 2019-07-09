@@ -28,6 +28,8 @@
 
     if(isset($_SESSION['username'])){
         if(isset($_GET['id'])){
+            if(verifyId($_SESSION['username'],$_GET['id'])){
+            
             $query = "SELECT foto_perfil, utilizador, biografia, email, ref_genero FROM utilizador WHERE id_utilizador = ?";
             if(mysqli_stmt_prepare($stmt,$query)){
                 mysqli_stmt_bind_param($stmt,'i',$_GET['id']);
@@ -114,8 +116,9 @@
                     }
                 }
             }
-
-
+            }else{
+                header('Location: profile-page.php?error=wrong_id_edit_profile');
+            }
         }else{
             header("Location: profile-page.php");
         }
