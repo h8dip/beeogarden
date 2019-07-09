@@ -85,6 +85,7 @@
             $beepts = $beevalue * $outro_campo_qtd;
             foreach($list as $campo){
               creditCampo($campo,$beepts);
+              creditSelf($our_id,$beepts);
             }
           }
         }

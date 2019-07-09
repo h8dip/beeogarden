@@ -44,13 +44,15 @@
         if(!isset($_SESSION['username'])){
           header('Location: login-page.php');
         }else{
-          $query = 'SELECT id_espaco, coordenadas, nome_espaco, localidade, ref_Utilizador, beeopoints FROM espaco INNER JOIN utilizador ON id_Utilizador = ref_Utilizador WHERE privacidade LIKE ?';
+          $query = 'SELECT id_espaco, coordenadas, nome_espaco, localidade, ref_Utilizador, espaco.beeopoints FROM espaco INNER JOIN utilizador ON id_utilizador = ref_Utilizador WHERE privacidade LIKE ?';
           if(mysqli_stmt_prepare($stmt2,$query)){
             $condition = "Publico";
             mysqli_stmt_bind_param($stmt2,'s',$condition);
             if(mysqli_stmt_execute($stmt2)){
               mysqli_stmt_bind_result($stmt2,$id_espaco,$coord,$nome,$localidade,$ref_Utilizador,$beeopoints);
+              
               while(mysqli_stmt_fetch($stmt2)){
+                
                 array_push($array_coordenadas,$coord);
                 array_push($array_nomes,$nome);
                 array_push($array_localidades,$localidade);
@@ -62,6 +64,7 @@
           }
           if($reached_end){
             //
+            
           }
 
         }
@@ -107,7 +110,6 @@
 
                 function success(pos){
                     
-
                     for(var i = 0; i < coordenadas_array.length ; i++){
                         $i = i;
                         $temp = coordenadas_array[i].split(',');
@@ -341,7 +343,7 @@
                                 }
                                 if($qty == null or $qty == '' or is_null($qty) or empty($qty)){
                                     $qty = 1;
-                                    var_dump($qty);
+                                    //var_dump($qty);
                                 }else{
                                     $qty++;
                                 }
